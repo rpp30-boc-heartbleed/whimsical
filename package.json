@@ -1,0 +1,19 @@
+{
+  "name": "whimsical",
+  "version": "1.0.0",
+  "description": "Bagels",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rpp30-boc-heartbleed/whimsical.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rpp30-boc-heartbleed/whimsical/issues"
+  },
+  "homepage": "https://github.com/rpp30-boc-heartbleed/whimsical#readme"
+}
