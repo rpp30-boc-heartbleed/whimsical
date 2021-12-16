@@ -1,0 +1,26 @@
+{
+  "extends": [
+    "airbnb",
+    "airbnb/hooks"
+  ],
+  "plugins": ["react"],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "project": "./tsconfig.json"
+  },
+  "rules": {
+    "arrow-body-style": 0,
+    "import/no-unresolved": 0,
+    "react/jsx-filename-extension": [1],
+    "no-use-before-define": "off",
+    "import/extensions": ["error", "never"],
+    "react/function-component-definition": 0,
+    "react/prop-types": 0,
+    "no-shadow": "off",
+    "no-console": 0
+  }
+}
