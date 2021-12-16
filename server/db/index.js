@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-require('dotenv').config();
 
 const connectDb = () => mongoose.connect('mongodb://localhost:27017/exampleDB', {
   useNewUrlParser: true,
