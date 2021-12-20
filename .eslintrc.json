@@ -23,6 +23,7 @@
     "no-shadow": "off",
     "no-console": 0,
     "no-unused-vars": 0,
-    "jsx-quotes": 0
+    "jsx-quotes": 0,
+    "func-names": 0
   }
 }
