@@ -1,22 +1,16 @@
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-const connectDb = () => mongoose.connect('mongodb://localhost:27017/exampleDB', {
+const connectDb = () => mongoose.connect(process.env.DB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-});
-const { Schema } = mongoose;
+})
+  .then(() => {
+    console.log('Connected to MongoDBagel');
+  })
+  .catch((err) => {
+    console.log('Connection to database failed womp womp');
+    process.exit(1);
+  });
 
-const exampleSchema = new Schema({
-  email: String,
-  password: String,
-  name: String,
-  karma: Number,
-});
-
-const Example = mongoose.model('Example', exampleSchema, 'examples');
-
-module.exports = {
-  Example,
-  connectDb,
-};
+module.exports = connectDb;
