@@ -9,23 +9,25 @@ import {
   ErrandTrackerContainer,
   LoginContainer,
   MapContainer,
+  NavBarContainer,
   UserProfileContainer,
-} from './components';
+} from '../components';
 
 const Stack = createNativeStackNavigator();
 
-const Main = () => {
+const Navigation = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Test'>
+      <Stack.Navigator initialRouteName='Login'>
+        <Stack.Screen name='Login' component={LoginContainer} />
         <Stack.Screen name='Dashboard' component={DashboardContainer} />
         <Stack.Screen name='ErrandTracker' component={ErrandTrackerContainer} />
-        <Stack.Screen name='Login' component={LoginContainer} />
         <Stack.Screen name='Map' component={MapContainer} />
+        <Stack.Screen name='NavBar' component={NavBarContainer} />
         <Stack.Screen name='UserProfile' component={UserProfileContainer} />
       </Stack.Navigator>
     </NavigationContainer>
   );
 };
 
-export default Main;
+export default Navigation;

@@ -9,13 +9,13 @@ import {
   Button,
 } from 'react-native';
 
-const LoginContainer = ({ navigation }) => {
+const MapContainer = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text>This is the Login Component</Text>
+      <Text>This is the NavBar Component</Text>
       <Button
-        title="Go to next"
-        onPress={() => navigation.push('Dashboard')} // push the name property of the Stack.Screen component as defined in App.jsx
+        title="Go to User Profile"
+        onPress={() => navigation.push('UserProfile')} // push the name property of the Stack.Screen component as defined in App.jsx
       />
       <Button title="Go to Dashboard" onPress={() => navigation.navigate('Dashboard')} />
       <Button title="Go back" onPress={() => navigation.goBack()} />
@@ -33,4 +33,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginContainer;
+export default MapContainer;

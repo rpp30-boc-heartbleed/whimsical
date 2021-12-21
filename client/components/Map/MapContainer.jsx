@@ -12,10 +12,10 @@ import {
 const MapContainer = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text>This is the Map</Text>
+      <Text>This is the Map Component</Text>
       <Button
-        title="Go to User Profile"
-        onPress={() => navigation.push('UserProfile')} // push the name property of the Stack.Screen component as defined in App.jsx
+        title="Go to Nav Bar"
+        onPress={() => navigation.push('NavBar')} // push the name property of the Stack.Screen component as defined in App.jsx
       />
       <Button title="Go to Dashboard" onPress={() => navigation.navigate('Dashboard')} />
       <Button title="Go back" onPress={() => navigation.goBack()} />

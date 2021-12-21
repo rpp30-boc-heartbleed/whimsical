@@ -12,7 +12,7 @@ import {
 const DashboardContainer = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text>This is the Dashboard</Text>
+      <Text>This is the Dashboard Component</Text>
       <Button
         title="Go to Errand Tracker"
         onPress={() => navigation.push('ErrandTracker')} // push the name property of the Stack.Screen component as defined in App.jsx

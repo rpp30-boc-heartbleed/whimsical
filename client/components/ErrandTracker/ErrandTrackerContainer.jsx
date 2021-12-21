@@ -12,10 +12,10 @@ import {
 const ErrrandTrackerContainer = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text>This is the Errand Tracker</Text>
+      <Text>This is the Errand Tracker Component</Text>
       <Button
-        title="Go to Login"
-        onPress={() => navigation.push('Login')} // push the name property of the Stack.Screen component as defined in App.jsx
+        title="Go to Map"
+        onPress={() => navigation.push('Map')} // push the name property of the Stack.Screen component as defined in App.jsx
       />
       <Button title="Go to Dashboard" onPress={() => navigation.navigate('Dashboard')} />
       <Button title="Go back" onPress={() => navigation.goBack()} />

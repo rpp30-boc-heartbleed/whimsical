@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-filename-extension */
 import React from 'react';
 import {
   RecoilRoot,
@@ -7,12 +8,12 @@ import {
   useRecoilValue,
 } from 'recoil';
 
-import Main from './Main';
+import Navigation from './navigation/Navigation';
 
 function App() {
   return (
     <RecoilRoot>
-      <Main />
+      <Navigation />
     </RecoilRoot>
   );
 }
