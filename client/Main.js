@@ -14,7 +14,7 @@ import {
 
 const Stack = createNativeStackNavigator();
 
-const App = () => {
+const Main = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName='Test'>
@@ -28,4 +28,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default Main;
