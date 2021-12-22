@@ -42,6 +42,7 @@ const FriendsListContainer = () => {
           keyboardShouldPersistTaps="handled"
         />
       </View>
+      <Text style={styles.navbar}>NAV BAR</Text>
     </View>
   );
 };
@@ -73,7 +74,6 @@ const styles = StyleSheet.create({
   },
   list: {
     flex: 1,
-    fontSize: 14,
     width: '70%',
   },
   friend: {
@@ -85,6 +85,16 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 60,
     marginTop: 25,
+  },
+  navbar: {
+    borderRadius: 10,
+    fontSize: 14,
+    borderColor: 'black',
+    borderWidth: 1,
+    width: '60%',
+    height: 40,
+    paddingHorizontal: 75,
+    paddingTop: 10,
   },
 });
 
