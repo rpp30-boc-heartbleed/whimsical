@@ -4,8 +4,10 @@ const { Schema } = mongoose;
 
 const errandSchema = new Schema({
   _id: Schema.Types.ObjectId,
-  userId: { type: Schema.Types.ObjectId, ref: 'User', default: null },
-  errands: { type: Array, default: [] },
+  requestorId: { type: Schema.Types.ObjectId, ref: 'User', default: null }, // Errand requester
+  placeId: { type: Schema.Types.ObjectId, ref: 'Places', default: null }, // Errand location(s)
+  runnerId: { type: Schema.Types.ObjectId, ref: 'User', default: null }, // Errand runner
+  errands: { type: Array, default: [] }, // Empty list if no errands
   status: {
     type: String,
     enum: ['Pending', 'Picked Up', 'Delivered'],
@@ -13,14 +15,16 @@ const errandSchema = new Schema({
   },
   deliveryLoc: { type: [Number] },
   deliveryAddr: { type: String, default: null },
-  reqLoc: { type: [Number] },
+  requestorLoc: { type: [Number] },
   starRating: {
     type: Number,
     default: 0,
   },
-  userLoc: { type: [Number] },
-  userName: { type: String, default: null },
-  userPic: { type: String, default: null },
+  placeName: { type: String, default: null },
+  placeAddr: { type: String, default: null },
+  runnerLoc: { type: [Number] },
+  runnerName: { type: String, default: null },
+  runnerPic: { type: String, default: null },
   // onErrand: Boolean
 });
 
