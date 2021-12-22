@@ -1,7 +1,7 @@
-const model = require('../models/userProfile');
+const { Profile } = require('../models/userProfile');
 
 const placeholder = (req, res) => {
-  model.Profile.find()
+  Profile.find()
     .then(() => {
       res.json({ message: 'this is a placeholder' });
     })
