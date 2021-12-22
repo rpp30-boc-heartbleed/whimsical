@@ -1,4 +1,4 @@
-const model = require('../models/errandTracker');
+const model = require('../models/errand');
 
 const placeholder = (req, res) => {
   model.Example.find()
