@@ -8,6 +8,7 @@ const errandSchema = new Schema({
   placeId: { type: Schema.Types.ObjectId, ref: 'Places', default: null }, // Errand location(s)
   runnerId: { type: Schema.Types.ObjectId, ref: 'User', default: null }, // Errand runner
   errands: { type: Array, default: [] }, // Empty list if no errands
+  time: { type: Date, required: true }, // new Date().toLocaleString();
   status: {
     type: String,
     enum: ['Pending', 'Picked Up', 'Delivered'],
@@ -26,7 +27,7 @@ const errandSchema = new Schema({
   runnerName: { type: String, default: null },
   runnerPic: { type: String, default: null },
   // onErrand: Boolean
-});
+}, { timestamps: true }); // adds a createdAt and updatedAt field
 
 const Errand = mongoose.model('Errand', errandSchema, 'errandCollection');
 
