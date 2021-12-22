@@ -2,15 +2,13 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const exampleSchema = new Schema({
-  email: String,
+const errandSchema = new Schema({
   name: String,
-  karma: Number,
+  star: Number,
   onErrand: Boolean,
-  pastErrands: Array,
   currentErrand: Object,
 });
 
-const Example = mongoose.model('Example', exampleSchema, 'exampleCollection');
+const Errand = mongoose.model('Errand', errandSchema, 'errandCollection');
 
-module.exports = { Example };
+module.exports = { Errand };
