@@ -2,7 +2,6 @@ import React from 'react';
 import {
   View,
   Text,
-  TouchableOpacity, // A wrapper to add press/touch functionality to any component
   StyleSheet,
   TextInput,
   StatusBar,

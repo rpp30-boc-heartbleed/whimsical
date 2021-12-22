@@ -2,7 +2,6 @@ import React from 'react';
 import {
   View,
   Text,
-  TouchableOpacity, // A wrapper to add press/touch functionality to any component
   StyleSheet,
   TextInput,
   StatusBar,
@@ -14,8 +13,8 @@ const LoginContainer = ({ navigation }) => {
     <View style={styles.container}>
       <Text>This is the Login Component</Text>
       <Button
-        title="Go to next"
-        onPress={() => navigation.push('Dashboard')} // push the name property of the Stack.Screen component as defined in App.jsx
+        title="Go to FriendsList"
+        onPress={() => navigation.push('FriendsList')} // push the name property of the Stack.Screen component as defined in App.jsx
       />
       <Button title="Go to Dashboard" onPress={() => navigation.navigate('Dashboard')} />
       <Button title="Go back" onPress={() => navigation.goBack()} />

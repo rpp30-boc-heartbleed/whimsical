@@ -7,6 +7,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {
   DashboardContainer,
   ErrandTrackerContainer,
+  FriendsListContainer,
   LoginContainer,
   MapContainer,
   NavBarContainer,
@@ -25,6 +26,8 @@ const Navigation = () => {
         <Stack.Screen name='Map' component={MapContainer} />
         <Stack.Screen name='NavBar' component={NavBarContainer} />
         <Stack.Screen name='UserProfile' component={UserProfileContainer} />
+        <Stack.Screen name='FriendsList' component={FriendsListContainer} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );

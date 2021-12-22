@@ -1,57 +1,91 @@
 import React, { useState } from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 import {
   View,
   Text,
+  Image,
   StyleSheet,
   TouchableOpacity,
   TextInput,
   FlatList,
 } from 'react-native';
+import friendsListState from '../../state/atoms/friendsList';
 
 const FriendsListContainer = () => {
-  const [friendsList, setFriendsList] = useState([{
-    id: 1,
-    name: 'll cool j',
-  },
-  {
-    id: 2,
-    name: 'sam jackson',
-  }]);
-  const [color, setColor] = useState('white');
-
-  const handleTap = () => {
-    if (color === 'white') {
-      setColor('red');
-    } else {
-      setColor('white');
-    }
-  };
+  const [friendsList, setFriendsList] = useRecoilState(friendsListState);
 
   return (
-    <>
-      <FlatList
-        data={friendsList}
-        renderItem={({ item, index }) => {
-          return (
-            <TouchableOpacity onPress={handleTap}>
-              <Text style={{ backgroundColor: color }}>{item.name}</Text>
-            </TouchableOpacity>
-          );
-        }}
-        keyExtractor={(friend) => friend.id}
-        keyboardShouldPersistTaps="handled"
-        style={styles.friendsList}
+    <View style={styles.container}>
+      <Text style={styles.heading}>Buddies</Text>
+      <Text style={styles.number}>{friendsList.length} friends</Text>
+      <TextInput
+        style={styles.search}
+        placeholder='SEARCH'
       />
-      {/* <Text>hey there</Text> */}
-    </>
+      <View style={styles.list}>
+        <FlatList
+          data={friendsList}
+          renderItem={({ item, index }) => {
+            return (
+              <View>
+                <Text>Profile pic</Text>
+                <TouchableOpacity>
+                  <Text style={styles.friend}>
+                    {item.name}     {item.goldStars} gold stars
+                    </Text>
+                </TouchableOpacity>
+              </View>
+            );
+          }}
+          keyExtractor={(friend) => friend.id}
+          keyboardShouldPersistTaps="handled"
+        />
+      </View>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  friendsList: {
-    color: 'black',
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingBottom: '5%',
   },
+  heading: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    marginTop: '5%',
+  },
+  number: {
+    fontSize: 12,
+    paddingBottom: '5%',
+  },
+  search: {
+    borderRadius: 10,
+    fontSize: 14,
+    borderColor: 'black',
+    borderWidth: 1,
+    width: '70%',
+    height: 40,
+    paddingHorizontal: 100,
+  },
+  list: {
+    flex: 1,
+    fontSize: 14,
+    width: '70%',
+  },
+  friend: {
+    padding: 15,
+    fontSize: 14,
+    borderRadius: 20,
+    borderColor: 'black',
+    borderWidth: 1,
+    width: '100%',
+    height: 60,
+    marginTop: 25,
+  }
 });
 
 export default FriendsListContainer;
