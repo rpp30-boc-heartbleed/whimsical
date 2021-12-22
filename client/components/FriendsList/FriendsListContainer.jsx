@@ -33,7 +33,7 @@ const FriendsListContainer = () => {
                 <TouchableOpacity>
                   <Text style={styles.friend}>
                     {item.name}     {item.goldStars} gold stars
-                    </Text>
+                  </Text>
                 </TouchableOpacity>
               </View>
             );
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 60,
     marginTop: 25,
-  }
+  },
 });
 
 export default FriendsListContainer;
