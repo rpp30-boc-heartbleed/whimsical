@@ -9,7 +9,7 @@ import {
   FlatList,
 } from 'react-native';
 
-const FriendScreen = () => {
+const FriendsListContainer = () => {
   const [friendsList, setFriendsList] = useState([{
     id: 1,
     name: 'll cool j',
@@ -54,4 +54,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FriendScreen;
+export default FriendsListContainer;

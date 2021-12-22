@@ -1,5 +1,17 @@
-const example = (req, res) => {
-  console.log(req, res, 'this is an example');
-};
+const login = require('./login');
+const navBar = require('./navBar');
+const dashboard = require('./dashboard');
+const userProfile = require('./userProfile');
+const friendsList = require('./friendsList');
+const map = require('./map');
+const errandTracker = require('./errandTracker');
 
-export default example;
+module.exports = {
+  login,
+  navBar,
+  dashboard,
+  userProfile,
+  friendsList,
+  map,
+  errandTracker,
+};
