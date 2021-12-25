@@ -1,7 +1,7 @@
-const model = require('../models/errand');
+const { Example } = require('../models/errand');
 
 const placeholder = (req, res) => {
-  model.Example.find()
+  Example.find()
     .then(() => {
       res.json({ message: 'this is a placeholder' });
     })
