@@ -1,7 +1,7 @@
-const model = require('../models/login');
+const { Login } = require('../models/login');
 
 const placeholder = (req, res) => {
-  model.Login.find()
+  Login.find()
     .then(() => {
       res.json({ message: 'this is a placeholder' });
     })

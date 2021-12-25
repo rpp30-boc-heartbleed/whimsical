@@ -1,7 +1,7 @@
-const model = require('../models/friendsList');
+const { Friend } = require('../models/friendsList');
 
 const get = (req, res) => {
-  model.Friend.find()
+  Friend.find()
     .then((friends) => {
       res.json({ message: 'you have 1 friend' });
     })
@@ -13,7 +13,7 @@ const get = (req, res) => {
 
 const search = (req, res) => {
   const { searchStr } = req.body || '';
-  model.Friend.find({ name: searchStr })
+  Friend.find({ name: searchStr })
     .then((friend) => {
       res.json({ friend });
     })

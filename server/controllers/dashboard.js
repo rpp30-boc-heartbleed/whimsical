@@ -1,7 +1,7 @@
-const model = require('../models/dashboard');
+const { Dashboard } = require('../models/dashboard');
 
 const placeholder = (req, res) => {
-  model.Dashboard.find()
+  Dashboard.find()
     .then(() => {
       res.json({ message: 'this is a placeholder' });
     })

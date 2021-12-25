@@ -1,0 +1,35 @@
+import React from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  StatusBar,
+  Button,
+} from 'react-native';
+
+const UserProfileContainer = ({ navigation }) => {
+  return (
+    <View style={styles.container}>
+      <Text>This is the User Profile</Text>
+      <Button
+        title="Go to Errand Tracker"
+        onPress={() => navigation.push('ErrandTracker')} // push the name property of the Stack.Screen component as defined in App.jsx
+      />
+      <Button title="Go to Dashboard" onPress={() => navigation.navigate('Dashboard')} />
+      <Button title="Go back" onPress={() => navigation.goBack()} />
+      <StatusBar />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
+
+export default UserProfileContainer;
