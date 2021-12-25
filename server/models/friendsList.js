@@ -5,10 +5,11 @@ const { Schema } = mongoose;
 const friendSchema = new Schema({
   email: String,
   name: String,
-  karma: Number,
+  picture: String,
+  goldStars: Number,
   onErrand: Boolean,
-  pastErrands: Array,
   currentErrand: Object,
+  pastErrands: Array,
 });
 
 const Friend = mongoose.model('Friend', friendSchema, 'friendsCollection');

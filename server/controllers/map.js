@@ -1,7 +1,7 @@
-const model = require('../models/map');
+const { Map } = require('../models/map');
 
 const placeholder = (req, res) => {
-  model.Map.find()
+  Map.find()
     .then(() => {
       res.json({ message: 'this is a placeholder' });
     })

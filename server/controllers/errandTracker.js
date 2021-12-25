@@ -1,7 +1,7 @@
-const model = require('../models/errandTracker');
+const { Example } = require('../models/errandTracker');
 
 const placeholder = (req, res) => {
-  model.Example.find()
+  Example.find()
     .then(() => {
       res.json({ message: 'this is a placeholder' });
     })

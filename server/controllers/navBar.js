@@ -1,7 +1,7 @@
-const model = require('../models/navBar');
+const { NavBar } = require('../models/navBar');
 
 const placeholder = (req, res) => {
-  model.NavBar.find()
+  NavBar.find()
     .then(() => {
       res.json({ message: 'this is a placeholder' });
     })
