@@ -34,21 +34,12 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
     <li>
       <a href="#how-it-works">How it Works</a>
       <ul>
-        <li><a href="#video">Video</a></li>
-      </ul>
-      <ul>
-        <li><a href="#wireframe">Wireframe</a></li>
-      </ul>
-      <ul>
-        <li><a href="#sample">Sample Code</a></li>
+        <li><a href="#demo">Demo</a></li>
       </ul>
     </li>
     <!-- CHALLENGES -->
     <li>
       <a href="#challenges">Challenges</a>
-      <ul>
-        <li><a href="#technical">Technical</a></li>
-      </ul>
     </li>
     <!-- RESEARCH -->
     <li>
@@ -133,9 +124,13 @@ npm test
 
 ## How it Works
 
-<!-- Insert what app looks like visually, diagrams, demo video-->
 
-### API
+### Demo
+
+<!-- Insert video, diagrams, and or graphics here -->
+
+<details>
+<summary> :umbrella: API </summary>
 |Request Type|Endpoint                          |Status |
 |:----------:|----------------------------------|:-----:|
 |    GET     | /qb/something                    |200    |
@@ -146,7 +141,7 @@ npm test
 |    PUT     | /qb/something                    |204    |
 |    PUT     | /qb/something                    |204    |
 |    PUT     | /qb/something                    |204    |
-
+</details>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
