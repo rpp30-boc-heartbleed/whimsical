@@ -144,8 +144,8 @@ npm test
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Challenges :umbrella:
-:memo: Technical Challenges
+## Challenges
+:ocean: Technical Challenges
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
