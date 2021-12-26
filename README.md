@@ -20,77 +20,77 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
   <ol>
   <!-- INTRO/PURPOSE OF APP -->
     <li>
-      <a href="#about-project"> About the App </a>
+      <a href="#about-project">About the App</a>
       <ul>
         <li>
-        <a href="#tech-stack"> Tech Stack </a>
+        <a href="#tech-stack">Tech Stack</a>
         </li>
       </ul>
     </li>
     <!-- SETUP -->
     <li>
-      <a href="getting-started"> Getting Started </a>
+      <a href="getting-started">Getting Started</a>
       <ul>
         <li>
-        <a href="#installation"> Installation </a>
+        <a href="#installation">Installation</a>
         </li>
       </ul>
     </li>
-    <!-- DEMO - VIDEO/SCREENSHOTS/CODE -->
+    <!-- DEMO: VIDEO/SCREENSHOTS/CODE -->
     <li>
-      <a href="#demo"> How it Works </a>
+      <a href="#demo">How it Works</a>
       <ul>
-        <li><a href="#video"> Video </a></li>
+        <li><a href="#video">Video</a></li>
       </ul>
       <ul>
-        <li><a href="#wireframe"> Wireframe </a></li>
+        <li><a href="#wireframe">Wireframe</a></li>
       </ul>
       <ul>
-        <li><a href="#sample"> Sample Code </a></li>
+        <li><a href="#sample">Sample Code</a></li>
       </ul>
     </li>
     <!-- CHALLENGES -->
     <li>
-      <a href="#challenges"> Challenges </a>
+      <a href="#challenges">Challenges</a>
       <ul>
-        <li><a href="#technical"> Technical </a></li>
+        <li><a href="#technical">Technical</a></li>
       </ul>
     </li>
     <!-- RESEARCH -->
     <li>
-      <a href="#research"> Research </a>
+      <a href="#research">Research</a>
       <ul>
         <li>
-        <a href="#user-stories"> User Stories </a>
+        <a href="#user-stories">User Stories</a>
         </li>
       </ul>
       <ul>
         <li>
-        <a href="#project-board"> Project Board </a>
+        <a href="#project-board">Project Board</a>
         </li>
       </ul>
     </li>
      <!-- FEATURES -->
     <li>
-      <a href="#features"> Features </a>
+      <a href="#features">Features</a>
       <ul>
         <li>
-        <a href="#testing"> Testing </a>
+        <a href="#testing">Testing</a>
         </li>
       </ul>
     </li>
      <!-- TEAM -->
     <li>
-      <a href="#team"> Team </a>
+      <a href="#team">Team</a>
     </li>
      <!-- RESOURCES -->
     <li>
-      <a href="#resources"> Resources </a>
+      <a href="#resources">Resources</a>
     </li>
 </ol>
 </details> <!-- END OF TABLE OF CONTENTS DROP DOWN -->
 
-# About the App
+## About the App
 
 * What does the app do & why did we build it?
 
