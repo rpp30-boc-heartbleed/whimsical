@@ -28,7 +28,7 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
     </li>
     <!-- SETUP -->
     <li>
-      :zap:<a href="#getting-started">Getting Started</a>
+      <a href="#getting-started">Getting Started</a>
     </li>
     <!-- DEMO: VIDEO/SCREENSHOTS/CODE -->
     <li>
@@ -55,7 +55,7 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
       <a href="#features">Features</a>
       <ul>
         <li>
-        <a href="#testing">Testing</a>
+        :clipboard:<a href="#testing">Testing</a>
         </li>
       </ul>
     </li>
