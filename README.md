@@ -83,10 +83,6 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
     <li>
       <a href="#team">Team</a>
     </li>
-     <!-- RESOURCES -->
-    <li>
-      <a href="#resources">Resources</a>
-    </li>
 </ol>
 </details> <!-- END OF TABLE OF CONTENTS DROP DOWN -->
 
@@ -124,6 +120,7 @@ expo start
 <a href='https://reactnative.dev/'>
 <img src="https://raw.githubusercontent.com/kristerkari/react-native-svg-transformer/HEAD/images/react-native-logo.png" width="60" height="70">
 </a>
+
 
 <a href='https://recoiljs.org/'>
 <img src="https://recoiljs.org/img/logo.svg"
@@ -184,9 +181,5 @@ width="70" height="70">
 <a href="https://github.com/Laweeza">
   <img src="https://github.com/Laweeza.png?size=50">
 </a>
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-## Resources
 
 <p align="right">(<a href="#top">back to top</a>)</p>
