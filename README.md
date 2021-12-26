@@ -20,7 +20,7 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
   <ol>
   <!-- INTRO/PURPOSE OF APP -->
     <li>
-      <a href="#about-project">About the App</a>
+      <a href="#about-the-app">About the App</a>
       <ul>
         <li>
         <a href="#tech-stack">Tech Stack</a>
@@ -38,7 +38,7 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
     </li>
     <!-- DEMO: VIDEO/SCREENSHOTS/CODE -->
     <li>
-      <a href="#demo">How it Works</a>
+      <a href="#how-it-works">How it Works</a>
       <ul>
         <li><a href="#video">Video</a></li>
       </ul>
