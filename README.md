@@ -144,6 +144,8 @@ width="70" height="70">
 
 ## How it Works
 
+<!-- Insert what app looks like visually, diagrams, demo video-->
+
 ### API
 |Request Type|Endpoint                          |Status |
 |:----------:|----------------------------------|:-----:|
