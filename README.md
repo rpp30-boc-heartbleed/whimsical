@@ -27,7 +27,7 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
         </li>
       </ul>
     </li>
-    <!-- QUICK START/SETUP -->
+    <!-- SETUP -->
     <li>
       <a href="getting-started"> Getting Started </a>
       <ul>
@@ -36,7 +36,7 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
         </li>
       </ul>
     </li>
-    <!-- DEMO - VIDEO/SCREENSHOTS -->
+    <!-- DEMO - VIDEO/SCREENSHOTS/CODE -->
     <li>
       <a href="#demo"> How it Works </a>
       <ul>
@@ -69,15 +69,15 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
         <a href="#project-board"> Project Board </a>
         </li>
       </ul>
+    </li>
+     <!-- FEATURES -->
+    <li>
+      <a href="#features"> Features </a>
       <ul>
         <li>
         <a href="#testing"> Testing </a>
         </li>
       </ul>
-    </li>
-     <!-- FEATURES -->
-    <li>
-      <a href="#features"> Features </a>
     </li>
      <!-- TEAM -->
     <li>
@@ -90,12 +90,12 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
 </ol>
 </details> <!-- END OF TABLE OF CONTENTS DROP DOWN -->
 
-### About the App
+# About the App
 
 * What does the app do & why did we build it?
 
 
-### Installation
+## Installation
 
 1. Clone the repo
 ```
@@ -106,7 +106,7 @@ git clone https://github.com/rpp30-boc-heartbleed/whimsical.git
 npm install
 ```
 
-### Getting Started
+## Getting Started
 
 1. Start the server from the root directory and confirm connection to database.
 ```
@@ -118,32 +118,43 @@ expo start
 ```
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-### Tech Stack
+## Tech Stack
 
-#### Frontend <a name="frontend"></a>
-* <a href='https://reactnative.dev/'><img src="https://d33wubrfki0l68.cloudfront.net/554c3b0e09cf167f0281fda839a5433f2040b349/ecfc9/img/header_logo.svg" width="40" height="40"/>React Native</a>
+### Frontend
+<a href='https://reactnative.dev/'>
+<img src="https://raw.githubusercontent.com/kristerkari/react-native-svg-transformer/HEAD/images/react-native-logo.png" width="60" height="70">
+</a>
+
+<a href='https://recoiljs.org/'>
+<img src="https://recoiljs.org/img/logo.svg"
+width="70" height="70">
+</a>
 
 
-#### Backend <a name="backend"> </a>
-* <a href='https://expressjs.com/'><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Expressjs.png/330px-Expressjs.png" width="60" height="20"/>Express</a>
-*  <a href="https://nodejs.org/en/"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" width="60" height="20"/>Node.js</a>
+### Backend
+
+<a href='https://expressjs.com/'><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Expressjs.png/330px-Expressjs.png" width="70" height="25">
+</a>
+<a href="https://nodejs.org/en/"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" width="70" height="30">
+ </a>
 
 
-#### Database <a name="database"></a>
-* <a href='https://www.mongodb.com/'> ![MongoDB](https://raw.githubusercontent.com/mongodb/mongo/master/docs/leaf.svg)MongoDB<a href='https://www.mongodb.com/'></a>
+### Database
+<a href='https://www.mongodb.com/'><img src="https://cacm.acm.org/system/assets/0002/7119/042117_Theodo_MongoDB.large.jpg?1492791427&1492791427" width="70" height="70">
+</a>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-### How it Works
+## How it Works
 
 ### API
 |Request Type|Endpoint                          |Status |
 |:----------:|----------------------------------|:-----:|
-|    GET     | /qb/:something                   |200    |
-|    GET     | /qb/:something                   |200    |
-|    POST    | /qb/:something                   |201    |
-|    POST    | /qb/:something                   |201    |
+|    GET     | /qb/something                    |200    |
+|    GET     | /qb/something                    |200    |
+|    POST    | /qb/something                    |201    |
+|    POST    | /qb/something                    |201    |
 |    PUT     | /qb/something                    |204    |
 |    PUT     | /qb/something                    |204    |
 |    PUT     | /qb/something                    |204    |
@@ -152,9 +163,9 @@ expo start
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-### Features
+## Features
 
-### Team
+## Team
 <a href="https://github.com/ryhorowitz">
   <img src="https://github.com/ryhorowitz.png?size=50?">
 </a>
@@ -176,6 +187,6 @@ expo start
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-### Resources
+## Resources
 
 <p align="right">(<a href="#top">back to top</a>)</p>
