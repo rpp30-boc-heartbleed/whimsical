@@ -1,13 +1,13 @@
-const userLocation = {
-  streetName: '1234 Test Street',
-  zip: 68576,
-  location: {
-    latitude: -12345,
-    longitude: 36,
-  },
-};
+// const userLocation = {
+//   streetName: '1234 Test Street',
+//   zip: 68576,
+//   location: {
+//     latitude: -12345,
+//     longitude: 36,
+//   },
+// };
 
-const errands = [
+const mockErrandsData = [
   {
     id: 1,
     errandName: 'Impromptu Bagel Run',
@@ -23,7 +23,4 @@ const errands = [
   }, // end of errand obj
 ];
 
-export default {
-  userLocation,
-  errands,
-};
+export default mockErrandsData;

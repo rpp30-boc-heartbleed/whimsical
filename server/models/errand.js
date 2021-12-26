@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 const errandSchema = new Schema({
   _id: Schema.Types.ObjectId,
   requestorId: { type: Schema.Types.ObjectId, ref: 'User', default: null }, // Errand requester - Should come from User Schema/Profile
-  placeId: { type: Schema.Types.ObjectId, ref: 'Places', default: null }, // Errand location(s) - Should come from User Schema/Map?
+  placeId: { type: Schema.Types.ObjectId, ref: 'Places', default: null }, // Errand location(s) - Should come from Map Schema
   runnerId: { type: Schema.Types.ObjectId, ref: 'User', default: null }, // Errand runner - Should come from User Schema/Profile
   errands: { type: Array, default: [] }, // Empty list if no errands
   time: { type: Date, required: true }, // new Date().toLocaleString();
