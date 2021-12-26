@@ -103,7 +103,7 @@ git clone https://github.com/rpp30-boc-heartbleed/whimsical.git
 ```
 2. Install NPM packages from the root directory and from the client directory.
 ```
-npm install
+npm **install**
 ```
 
 ## :zap: Getting Started
