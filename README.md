@@ -190,10 +190,9 @@ npm test
 ## Resources
 * [Recoil](https://recoiljs.org/docs/introduction/installation)
 * [React Native](https://reactnative.dev/docs/getting-started)
-* [React-Native-Paper](https://callstack.github.io/react-native-paper/getting-started.html)
-* [React-Native-Geolocation](https://github.com/Agontuk/react-native-geolocation-service)
 * [Expo](https://docs.expo.dev/)
 * [Shields](https://shields.io)
 * [Github Markdown Cheatsheet](https://github.com/tchapi/markdown-cheatsheet)
+* [Emoji Cheat Sheet](https://gist.github.com/roachhd/1f029bd4b50b8a524f3c)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
