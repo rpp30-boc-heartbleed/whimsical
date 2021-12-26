@@ -188,7 +188,7 @@ View stories >>
   <img src="https://github.com/ryhorowitz.png?size=50?">
 </a>
 <a href="https://github.com/shabbyblue16">
-  <img src="https://github.com/shabbyblue16.png?height=50" width="50" style="border-radius:50%">
+  <img src="https://github.com/shabbyblue16.png?height=50" width="50">
 </a>
 <a href="https://github.com/OjeikuA">
   <img src="https://github.com/OjeikuA.png?size=50">
