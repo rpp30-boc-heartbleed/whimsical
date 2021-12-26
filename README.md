@@ -5,7 +5,7 @@
 <h1 align="center"> Quick Bagel </h1>
 
 
-> 'This guy keeps taking my bagels' - Tom from Myspace
+>'This guy keeps taking my bagels' - Tom from Myspace
 
 A mobile application for you to <b>streamline</b> errands and pay good deeds forward!
 
@@ -75,4 +75,24 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
 
 ## Contributors <a name="contributors"></a> ##
 ------------------------------------------------------------
-This application was created and built by team members:
+<a href="https://github.com/ryhorowitz">
+  <img src="https://github.com/ryhorowitz.png?size=50" style="border-radius:50%">
+</a>
+<a href="https://github.com/shabbyblue16">
+  <img src="https://github.com/shabbyblue16.png?height=50" width="50" style="border-radius:50%">
+</a>
+<a href="https://github.com/OjeikuA">
+  <img src="https://github.com/OjeikuA.png?size=50" style="border-radius:50%">
+</a>
+<a href="https://github.com/aaronfife">
+  <img src="https://github.com/aaronfife.png?size=50"
+  style="border-radius:50%">
+</a>
+<a href="https://github.com/surekhaw">
+  <img src="https://github.com/surekhaw.png?size=50"
+  style="border-radius:50%">
+</a>
+<a href="https://github.com/Laweeza">
+  <img src="https://github.com/Laweeza.png?size=50"
+  style="border-radius:50%">
+</a>
