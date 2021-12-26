@@ -12,15 +12,34 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
 
 ## Table of Contents ##
 -------------------------------------------------------------
-1. [Installation](#installation)
-2. [Tech Stack](#techstack)
+1. [Introduction](#introduction)
+2. [Installation](#installation)
+3. [Tech Stack](#techstack)
     * [Frontend](#frontend)
     * [Backend](#backend)
     * [Database](#database)
-3. [API](#api)
-4. [Features](#features)
-5. [Credits](#credits)
+4. [API](#api)
+5. [Challenges](#challenges)
+    * [Technical](#technical)
+    * [Unexpected](#unexpected)
+6. [Research](#research)
+    * [Tests](#tests)
+    * [CI/CD](#ci/cd)
+    * [User Stories](#userstories)
+    * [Tickets](#tickets)
+    * [Project Board](#board)
+7. [Demo](#demo)
+    * [How it works](#apphow)
+      * [Screenshots](#screenshots)
+      * [Diagrams](#diagrams)
+8. [Deployment](#deployment)
+9. [Features](#features)
+    * [Future Features](#futures)
+10. [Contributors](#contributors)
 
+## Introduction <a name="introduction"></a> ##
+-------------------------------------------------------------
+* What does the app do & why did we build it?
 
 ## Installation <a name="installation"></a> ##
 -------------------------------------------------------------
@@ -54,6 +73,6 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
 ## Features <a name="features"></a> ##
 -------------------------------------------------------------
 
-## Credits <a name="credits"></a> ##
+## Contributors <a name="contributors"></a> ##
 ------------------------------------------------------------
 This application was created and built by team members:
