@@ -1,12 +1,13 @@
 <!-- PROJECT LOGO -->
 <div align="center">
-<img src="client/assets/bagel.png" alt="Bagel Logo" width="250" height="250">
+<img src="client/assets/mini-bag.png" alt="Bagel Logo" width="250" height="250">
 </div>
 
 <h1 align="center"> Quick Bagel </h1>
 
 <p align="center">
-> This guy keeps taking my bagels. <i> - Tom from Myspace </i>
+> This guy keeps taking my bagels.
+<i> - Tom from Myspace </i>
 <br/>
 A mobile application for you to <b>streamline</b> errands and pay good deeds forward!
 </p>
