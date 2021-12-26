@@ -59,11 +59,6 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
         <a href="#user-stories">User Stories</a>
         </li>
       </ul>
-      <ul>
-        <li>
-        <a href="#project-board">Project Board</a>
-        </li>
-      </ul>
     </li>
      <!-- FEATURES -->
     <li>
@@ -169,6 +164,15 @@ width="70" height="70">
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Research
+<a href="https://trello.com/b/yvrqtpK9/rpp30-boc-heartbleed">
+Project Board
+</a>
+
+### User Stories
+<p>Something about user stories</p>
+<a href="https://docs.google.com/spreadsheets/d/1heVGbScj-MP8areUMJkZk7aNSUPD_GR8Hwmd6uMnrQ8/edit#gid=484004821">
+View stories >>
+</a>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
