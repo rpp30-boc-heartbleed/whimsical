@@ -7,7 +7,7 @@
 <p align="center">
 "This guy <i>keeps</i> forgetting my bagels." <i> - Tom from Myspace </i>
 <br/>
-A mobile application 📱 for you to <b>streamline</b> errands and pay good deeds forward!
+A mobile application 📱 for you to streamline errands and pay good deeds forward!
 </p>
 
 <!--------------------- PROJECT SHIELDS ---------------------------->
