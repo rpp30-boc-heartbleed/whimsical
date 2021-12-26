@@ -174,22 +174,22 @@ View stories >>
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Team
-<a href="https://github.com/ryhorowitz">
+<a href="https://github.com/ryhorowitz?tab=repositories">
   <img src="https://github.com/ryhorowitz.png?size=50?">
 </a>
-<a href="https://github.com/shabbyblue16">
+<a href="https://github.com/shabbyblue16?tab=repositories">
   <img src="https://github.com/shabbyblue16.png?height=50" width="50">
 </a>
-<a href="https://github.com/OjeikuA">
+<a href="https://github.com/OjeikuA?tab=repositories">
   <img src="https://github.com/OjeikuA.png?size=50">
 </a>
-<a href="https://github.com/aaronfife">
+<a href="https://github.com/aaronfife?tab=repositories">
   <img src="https://github.com/aaronfife.png?size=50">
 </a>
-<a href="https://github.com/surekhaw">
+<a href="https://github.com/surekhaw?tab=repositories">
   <img src="https://github.com/surekhaw.png?size=50">
 </a>
-<a href="https://github.com/Laweeza">
+<a href="https://github.com/Laweeza?tab=repositories">
   <img src="https://github.com/Laweeza.png?size=50">
 </a>
 
