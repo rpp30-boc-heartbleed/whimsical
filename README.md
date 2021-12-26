@@ -7,7 +7,7 @@
 <p align="center">
 "This guy <i>keeps</i> forgetting my bagels." <i> - Tom from Myspace </i>
 <br/>
-A mobile application for you to <b>streamline</b> errands and pay good deeds forward!
+A mobile 📱 application for you to <b>streamline</b> errands and pay good deeds forward!
 </p>
 
 <!-- PROJECT SHIELDS -->
@@ -22,7 +22,7 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
       <a href="#about-the-app">About the App</a>
       <ul>
         <li>
-        <a href="#tech-stack">Tech Stack</a>
+         📦 <a href="#tech-stack">Tech Stack</a>
         </li>
       </ul>
     </li>
@@ -34,11 +34,11 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
     <li>
       <a href="#how-it-works">How it Works</a>
       <ul>
-        <li>:bar_chart:<a href="#demo">Demo</a></li>
+        <li>📊 <a href="#demo">Demo</a></li>
       </ul>
       <ul>
         <li>
-        :clipboard:<a href="#testing">Testing</a>
+        📋 <a href="#testing">Testing</a>
         </li>
       </ul>
     </li>
@@ -49,11 +49,6 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
     <!-- RESEARCH -->
     <li>
       <a href="#research">Research</a>
-      <ul>
-        <li>
-        :book:<a href="#user-stories">User Stories</a>
-        </li>
-      </ul>
     </li>
      <!-- FEATURES -->
     <li>
@@ -147,20 +142,18 @@ npm test
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Challenges
-:ocean: Technical Challenges
-
-:bulb: Results Observed
+* 🌊 Technical Challenges
+* 🔨 Actions Taken
+* 💡 Results Observed
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Research
-<a href="https://trello.com/b/yvrqtpK9/rpp30-boc-heartbleed">
-Project Board
+
+### 📂 <a href="https://trello.com/b/yvrqtpK9/rpp30-boc-heartbleed"> Project Board
 </a>
 
-### User Stories
-<a href="https://docs.google.com/spreadsheets/d/1heVGbScj-MP8areUMJkZk7aNSUPD_GR8Hwmd6uMnrQ8/edit#gid=484004821">
-View stories >>
+### 📖   <a href="https://docs.google.com/spreadsheets/d/1heVGbScj-MP8areUMJkZk7aNSUPD_GR8Hwmd6uMnrQ8/edit#gid=484004821">User Stories
 </a>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
