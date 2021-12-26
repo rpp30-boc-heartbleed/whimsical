@@ -86,7 +86,7 @@ git clone https://github.com/rpp30-boc-heartbleed/whimsical.git
 npm install
 ```
 
-## :zap: Getting Started
+## Getting Started
 
 1. Start the server from the root directory and confirm connection to database.
 ```
