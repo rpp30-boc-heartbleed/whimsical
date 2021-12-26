@@ -129,8 +129,7 @@ npm test
 
 <!-- Insert video, diagrams, and or graphics here -->
 
-<details>
-<summary> :umbrella: API </summary>
+ :umbrella: API
 |Request Type|Endpoint                          |Status |
 |:----------:|----------------------------------|:-----:|
 |    GET     | /qb/something                    |200    |
@@ -141,7 +140,7 @@ npm test
 |    PUT     | /qb/something                    |204    |
 |    PUT     | /qb/something                    |204    |
 |    PUT     | /qb/something                    |204    |
-</details>
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
