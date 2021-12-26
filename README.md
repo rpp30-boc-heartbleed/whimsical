@@ -115,28 +115,18 @@ npm test
 ## Tech Stack
 
 ### Frontend
-<a href='https://reactnative.dev/'>
-<img src="https://raw.githubusercontent.com/kristerkari/react-native-svg-transformer/HEAD/images/react-native-logo.png" width="60" height="70">
-</a>
-
-
-<a href='https://recoiljs.org/'>
-<img src="https://recoiljs.org/img/logo.svg"
-width="70" height="70">
-</a>
+* <a href='https://reactnative.dev/'>React Native</a>
+* <a href='https://recoiljs.org/'>Recoil</a>
 
 
 ### Backend
 
-<a href='https://expressjs.com/'><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Expressjs.png/330px-Expressjs.png" width="70" height="25">
-</a>
-<a href="https://nodejs.org/en/"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" width="70" height="30">
- </a>
+* <a href='https://expressjs.com/'>Express</a>
+* <a href="https://nodejs.org/en/">Node.js</a>
 
 
 ### Database
-<a href='https://www.mongodb.com/'><img src="https://cacm.acm.org/system/assets/0002/7119/042117_Theodo_MongoDB.large.jpg?1492791427&1492791427" width="70" height="70">
-</a>
+* <a href='https://www.mongodb.com/'>MongoDB</a>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
