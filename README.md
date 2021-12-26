@@ -128,7 +128,6 @@ expo start
 #### Database <a name="database"></a>
 * <a href='https://www.mongodb.com/'> ![MongoDB](https://raw.githubusercontent.com/mongodb/mongo/master/docs/leaf.svg)MongoDB<a href='https://www.mongodb.com/'></a>
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 ### How it Works
 
@@ -143,6 +142,9 @@ expo start
 |    PUT     | /qb/something                    |204    |
 |    PUT     | /qb/something                    |204    |
 |    PUT     | /qb/something                    |204    |
+
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Features
 
@@ -165,3 +167,5 @@ expo start
 <a href="https://github.com/Laweeza">
   <img src="https://github.com/Laweeza.png?size=50">
 </a>
+
+<p align="right">(<a href="#top">back to top</a>)</p>
