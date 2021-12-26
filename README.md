@@ -1,76 +1,138 @@
-
+<!-- PROJECT LOGO -->
 <div align="center">
-<img width="250" height="250" src="client/assets/bagel.png">
+<img src="client/assets/bagel.png" alt="Bagel Logo" width="250" height="250">
 </div>
+
 <h1 align="center"> Quick Bagel </h1>
 
-
->'This guy keeps taking my bagels' - Tom from Myspace
-
+<p align="center">
+'This guy keeps taking my bagels' - Tom from Myspace
+<br/>
 A mobile application for you to <b>streamline</b> errands and pay good deeds forward!
+</p>
 
+<!-- PROJECT SHIELDS -->
+![license](https://img.shields.io/npm/l/nodemon?style=for-the-badge)
 
-## Table of Contents ##
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary> Table of Contents </summary>
+  <ol>
+  <!-- INTRO/PURPOSE OF APP -->
+    <li>
+      <a href="#about-project"> About the App </a>
+      <ul>
+        <li>
+        <a href="#tech-stack"> Tech Stack </a>
+        </li>
+      </ul>
+    </li>
+    <!-- QUICK START/SETUP -->
+    <li>
+      <a href="getting-started"> Getting Started </a>
+      <ul>
+        <li>
+        <a href="#installation"> Installation </a>
+        </li>
+      </ul>
+    </li>
+    <!-- DEMO - VIDEO/SCREENSHOTS -->
+    <li>
+      <a href="#demo"> How it Works </a>
+      <ul>
+        <li><a href="#video"> Video </a></li>
+      </ul>
+      <ul>
+        <li><a href="#wireframe"> Wireframe </a></li>
+      </ul>
+      <ul>
+        <li><a href="#sample"> Sample Code </a></li>
+      </ul>
+    </li>
+    <!-- CHALLENGES -->
+    <li>
+      <a href="#challenges"> Challenges </a>
+      <ul>
+        <li><a href="#technical"> Technical </a></li>
+      </ul>
+    </li>
+    <!-- RESEARCH -->
+    <li>
+      <a href="#research"> Research </a>
+      <ul>
+        <li>
+        <a href="#user-stories"> User Stories </a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+        <a href="#project-board"> Project Board </a>
+        </li>
+      </ul>
+      <ul>
+        <li>
+        <a href="#testing"> Testing </a>
+        </li>
+      </ul>
+    </li>
+     <!-- FEATURES -->
+    <li>
+      <a href="#features"> Features </a>
+    </li>
+     <!-- TEAM -->
+    <li>
+      <a href="#team"> Team </a>
+    </li>
+</ol>
+</details> <!-- END OF TABLE OF CONTENTS DROP DOWN -->
 
-1. [Introduction](#introduction)
-2. [Installation](#installation)
-3. [Tech Stack](#techstack)
-    * [Frontend](#frontend)
-    * [Backend](#backend)
-    * [Database](#database)
-4. [How it Works](#demo)
-      * [API](#api)
-      * [Screenshots](#screenshots)
-      * [Diagrams](#diagrams)
-5. [Challenges](#challenges)
-    * [Technical](#technical)
-    * [Unexpected](#unexpected)
-6. [Research](#research)
-    * [Tests](#tests)
-    * [CI/CD](#ci/cd)
-      * [Deployment](#deployment)
-    * [User Stories](#userstories)
-    * [Tickets](#tickets)
-    * [Project Board](#board)
-7. [Features](#features)
-    * [Future Features](#futures)
-8. [Team](#team)
-
-## Introduction <a name="introduction"></a> ##
+### About the App
 
 * What does the app do & why did we build it?
 
-## Installation <a name="installation"></a> ##
 
-```
-`npm install` from the root directory and from the client directory.
-```
+### Installation
 
+1. Clone the repo
 ```
-`npm start` from the root directory to start server and confirm connection to database.
+git clone https://github.com/rpp30-boc-heartbleed/whimsical.git
 ```
-
+2. Install NPM packages from the root directory and from the client directory.
 ```
-`expo start` from the client directory.
+npm install
 ```
 
-## Tech Stack <a name="techstack"></a> ##
+### Getting Started
 
-### Frontend <a name="frontend"></a> ###
+1. Start the server from the root directory and confirm connection to database.
+```
+npm start
+```
+2. Start the the application from the client directory.
+```
+expo start
+```
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+### Tech Stack
+
+#### Frontend <a name="frontend"></a>
 * <a href='https://reactnative.dev/'><img src="https://d33wubrfki0l68.cloudfront.net/554c3b0e09cf167f0281fda839a5433f2040b349/ecfc9/img/header_logo.svg" width="40" height="40"/>React Native</a>
 
 
-### Backend <a name="backend"> </a> ###
+#### Backend <a name="backend"> </a>
 * <a href='https://expressjs.com/'><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Expressjs.png/330px-Expressjs.png" width="60" height="20"/>Express</a>
 *  <a href="https://nodejs.org/en/"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" width="60" height="20"/>Node.js</a>
 
 
-### Database <a name="database"></a> ###
+#### Database <a name="database"></a>
 * <a href='https://www.mongodb.com/'> ![MongoDB](https://raw.githubusercontent.com/mongodb/mongo/master/docs/leaf.svg)MongoDB<a href='https://www.mongodb.com/'></a>
 
-## How it Works <a name="demo"></a> ##
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-### API <a name="api"></a> ###
+### How it Works
+
+### API
 |Request Type|Endpoint                          |Status |
 |:----------:|----------------------------------|:-----:|
 |    GET     | /qb/:something                   |200    |
@@ -82,9 +144,9 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
 |    PUT     | /qb/something                    |204    |
 |    PUT     | /qb/something                    |204    |
 
-## Features <a name="features"></a> ##
+### Features
 
-## Team <a name="team"></a> ##
+### Team
 <a href="https://github.com/ryhorowitz">
   <img src="https://github.com/ryhorowitz.png?size=50?">
 </a>
