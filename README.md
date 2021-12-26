@@ -28,7 +28,7 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
     </li>
     <!-- SETUP -->
     <li>
-      <a href="#getting-started">Getting Started</a>
+      <a href="#getting-started"> :zap: Getting Started</a>
     </li>
     <!-- DEMO: VIDEO/SCREENSHOTS/CODE -->
     <li>
@@ -86,7 +86,7 @@ git clone https://github.com/rpp30-boc-heartbleed/whimsical.git
 npm install
 ```
 
-## Getting Started
+## :zap: Getting Started
 
 1. Start the server from the root directory and confirm connection to database.
 ```
