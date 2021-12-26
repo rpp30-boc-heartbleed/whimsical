@@ -6,7 +6,7 @@
 <h1 align="center"> Quick Bagel </h1>
 
 <p align="center">
-'This guy keeps taking my bagels' - Tom from Myspace
+"This guy keeps taking my bagels." - Tom from Myspace
 <br/>
 A mobile application for you to <b>streamline</b> errands and pay good deeds forward!
 </p>
@@ -83,6 +83,10 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
     <li>
       <a href="#team">Team</a>
     </li>
+     <!-- Resources -->
+    <li>
+      <a href="#resources">Resources</a>
+    </li>
 </ol>
 </details> <!-- END OF TABLE OF CONTENTS DROP DOWN -->
 
@@ -111,6 +115,11 @@ npm start
 2. Start the the application from the client directory.
 ```
 expo start
+```
+
+3. To test run:
+```
+npm test
 ```
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -162,6 +171,8 @@ width="70" height="70">
 
 ## Features
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 ## Team
 <a href="https://github.com/ryhorowitz">
   <img src="https://github.com/ryhorowitz.png?size=50?">
@@ -181,5 +192,16 @@ width="70" height="70">
 <a href="https://github.com/Laweeza">
   <img src="https://github.com/Laweeza.png?size=50">
 </a>
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Resources
+* [Shields](https://shields.io)
+* [Recoil](https://recoiljs.org/docs/introduction/installation)
+* [React Native](https://reactnative.dev/docs/getting-started)
+* [React-Native-Paper](https://callstack.github.io/react-native-paper/getting-started.html)
+* [React-Native-Geolocation](https://github.com/Agontuk/react-native-geolocation-service)
+* [Expo](https://docs.expo.dev/)
+* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
