@@ -4,11 +4,9 @@
 </div>
 
 <h1 align="center"> Quick Bagel </h1>
-
-> This guy keeps taking my bagels.
-<i> - Tom from Myspace </i>
-<br/>
 <p align="center">
+"This guy <b>keeps</b> taking my bagels." <i> - Tom from Myspace </i>
+<br/>
 A mobile application for you to <b>streamline</b> errands and pay good deeds forward!
 </p>
 
