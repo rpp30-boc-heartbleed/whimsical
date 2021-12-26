@@ -34,7 +34,7 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
     <li>
       <a href="#how-it-works">How it Works</a>
       <ul>
-        <li><a href="#demo">Demo</a></li>
+        :bar_chart:<li><a href="#demo">Demo</a></li>
       </ul>
       <ul>
         <li>
@@ -141,6 +141,8 @@ npm test
 |    PUT     | /qb/something                    |204    |
 |    PUT     | /qb/something                    |204    |
 
+
+### Testing
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
