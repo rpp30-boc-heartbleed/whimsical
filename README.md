@@ -173,6 +173,9 @@ width="70" height="70">
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Features
+- [ ] Placeholder Feature
+- [ ] Placeholder Feature
+- [x] Feature Implemented
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
