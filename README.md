@@ -18,24 +18,23 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
     * [Frontend](#frontend)
     * [Backend](#backend)
     * [Database](#database)
-4. [API](#api)
+4. [How it Works](#demo)
+      * [API](#api)
+      * [Screenshots](#screenshots)
+      * [Diagrams](#diagrams)
 5. [Challenges](#challenges)
     * [Technical](#technical)
     * [Unexpected](#unexpected)
 6. [Research](#research)
     * [Tests](#tests)
     * [CI/CD](#ci/cd)
+      * [Deployment](#deployment)
     * [User Stories](#userstories)
     * [Tickets](#tickets)
     * [Project Board](#board)
-7. [Demo](#demo)
-    * [How it works](#apphow)
-      * [Screenshots](#screenshots)
-      * [Diagrams](#diagrams)
-8. [Deployment](#deployment)
-9. [Features](#features)
+7. [Features](#features)
     * [Future Features](#futures)
-10. [Team](#team)
+8. [Team](#team)
 
 ## Introduction <a name="introduction"></a> ##
 
@@ -69,8 +68,9 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
 ### Database <a name="database"></a> ###
 * <a href='https://www.mongodb.com/'> ![MongoDB](https://raw.githubusercontent.com/mongodb/mongo/master/docs/leaf.svg)MongoDB<a href='https://www.mongodb.com/'></a>
 
-## API ##
+## How it Works <a name="demo"></a> ##
 
+### API <a name="api"></a> ###
 |Request Type|Endpoint                          |Status |
 |:----------:|----------------------------------|:-----:|
 |    GET     | /qb/:something                   |200    |
