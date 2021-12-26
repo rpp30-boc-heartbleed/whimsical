@@ -58,16 +58,16 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
 ## Tech Stack <a name="techstack"></a> ##
 
 ### Frontend <a name="frontend"></a> ###
-* <img src="https://d33wubrfki0l68.cloudfront.net/554c3b0e09cf167f0281fda839a5433f2040b349/ecfc9/img/header_logo.svg" width="40" height="40"/> | <a href='https://reactnative.dev/'> ```React Native```</a>
+* <a href='https://reactnative.dev/'><img src="https://d33wubrfki0l68.cloudfront.net/554c3b0e09cf167f0281fda839a5433f2040b349/ecfc9/img/header_logo.svg" width="40" height="40"/>React Native</a>
 
 
 ### Backend <a name="backend"> </a> ###
-* <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Expressjs.png/330px-Expressjs.png" width="60" height="20"/>| <a href='https://expressjs.com/'>```Express```</a>
-* <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" width="60" height="20"/>| <a href="https://nodejs.org/en/">```Node.js```</a>
+* <a href='https://expressjs.com/'><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Expressjs.png/330px-Expressjs.png" width="60" height="20"/>Express</a>
+*  <a href="https://nodejs.org/en/"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" width="60" height="20"/>Node.js</a>
 
 
 ### Database <a name="database"></a> ###
-* ![MongoDB](https://raw.githubusercontent.com/mongodb/mongo/master/docs/leaf.svg)| <a href='https://www.mongodb.com/'> ```MongoDB``` </a>
+* <a href='https://www.mongodb.com/'> ![MongoDB](https://raw.githubusercontent.com/mongodb/mongo/master/docs/leaf.svg)MongoDB<a href='https://www.mongodb.com/'></a>
 
 ## Features <a name="features"></a> ##
 
