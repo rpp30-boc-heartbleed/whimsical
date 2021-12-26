@@ -151,10 +151,10 @@ npm test
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Challenges
+:memo:
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-:memo:
 ## Research
 <a href="https://trello.com/b/yvrqtpK9/rpp30-boc-heartbleed">
 Project Board
