@@ -119,7 +119,7 @@ expo start
 
 3. To test run:
 ```
-npm test
+npm `test`
 ```
 <p align="right">(<a href="#top">back to top</a>)</p>
 
