@@ -101,7 +101,7 @@ git clone https://github.com/rpp30-boc-heartbleed/whimsical.git
 npm install
 ```
 
-## Getting Started
+## :zap: Getting Started
 
 1. Start the server from the root directory and confirm connection to database.
 ```
@@ -114,7 +114,7 @@ expo start
 
 3. To test run:
 ```
-npm `test`
+npm test
 ```
 <p align="right">(<a href="#top">back to top</a>)</p>
 
