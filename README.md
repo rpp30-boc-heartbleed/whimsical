@@ -202,6 +202,6 @@ View stories >>
 * [React-Native-Geolocation](https://github.com/Agontuk/react-native-geolocation-service)
 * [Expo](https://docs.expo.dev/)
 * [Shields](https://shields.io)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
+* [Github Markdown Cheatsheet](https://github.com/tchapi/markdown-cheatsheet)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
