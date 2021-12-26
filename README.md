@@ -129,7 +129,7 @@ npm test
 
 <!-- Insert video, diagrams, and or graphics here -->
 
- :umbrella: API
+### API
 |Request Type|Endpoint                          |Status |
 |:----------:|----------------------------------|:-----:|
 |    GET     | /qb/something                    |200    |
@@ -144,7 +144,7 @@ npm test
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
-## Challenges
+## Challenges :umbrella:
 :memo: Technical Challenges
 
 <p align="right">(<a href="#top">back to top</a>)</p>
