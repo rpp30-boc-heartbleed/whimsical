@@ -196,12 +196,12 @@ width="70" height="70">
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Resources
-* [Shields](https://shields.io)
 * [Recoil](https://recoiljs.org/docs/introduction/installation)
 * [React Native](https://reactnative.dev/docs/getting-started)
 * [React-Native-Paper](https://callstack.github.io/react-native-paper/getting-started.html)
 * [React-Native-Geolocation](https://github.com/Agontuk/react-native-geolocation-service)
 * [Expo](https://docs.expo.dev/)
+* [Shields](https://shields.io)
 * [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
