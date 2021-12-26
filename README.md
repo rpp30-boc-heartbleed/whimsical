@@ -46,7 +46,7 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
       <a href="#research">Research</a>
       <ul>
         <li>
-        <a href="#user-stories">User Stories</a>
+        :book:<a href="#user-stories">User Stories</a>
         </li>
       </ul>
     </li>
