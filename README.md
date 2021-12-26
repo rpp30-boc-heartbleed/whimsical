@@ -103,7 +103,7 @@ git clone https://github.com/rpp30-boc-heartbleed/whimsical.git
 ```
 2. Install NPM packages from the root directory and from the client directory.
 ```
-npm **install**
+npm install
 ```
 
 ## :zap: Getting Started
@@ -166,6 +166,14 @@ width="70" height="70">
 |    PUT     | /qb/something                    |204    |
 |    PUT     | /qb/something                    |204    |
 
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Challenges
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+## Research
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
