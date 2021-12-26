@@ -170,7 +170,6 @@ Project Board
 </a>
 
 ### User Stories
-<p>Something about user stories</p>
 <a href="https://docs.google.com/spreadsheets/d/1heVGbScj-MP8areUMJkZk7aNSUPD_GR8Hwmd6uMnrQ8/edit#gid=484004821">
 View stories >>
 </a>
