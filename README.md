@@ -36,6 +36,11 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
       <ul>
         <li><a href="#demo">Demo</a></li>
       </ul>
+      <ul>
+        <li>
+        :clipboard:<a href="#testing">Testing</a>
+        </li>
+      </ul>
     </li>
     <!-- CHALLENGES -->
     <li>
@@ -53,11 +58,6 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
      <!-- FEATURES -->
     <li>
       <a href="#features">Features</a>
-      <ul>
-        <li>
-        :clipboard:<a href="#testing">Testing</a>
-        </li>
-      </ul>
     </li>
      <!-- TEAM -->
     <li>
