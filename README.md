@@ -69,6 +69,19 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
 ### Database <a name="database"></a> ###
 * <a href='https://www.mongodb.com/'> ![MongoDB](https://raw.githubusercontent.com/mongodb/mongo/master/docs/leaf.svg)MongoDB<a href='https://www.mongodb.com/'></a>
 
+## API ##
+
+|Request Type|Endpoint                          |Status |
+|:----------:|----------------------------------|:-----:|
+|    GET     | /qb/:something                   |200    |
+|    GET     | /qb/:something                   |200    |
+|    POST    | /qb/:something                   |201    |
+|    POST    | /qb/:something                   |201    |
+|    PUT     | /qb/something                    |204    |
+|    PUT     | /qb/something                    |204    |
+|    PUT     | /qb/something                    |204    |
+|    PUT     | /qb/something                    |204    |
+
 ## Features <a name="features"></a> ##
 
 ## Team <a name="team"></a> ##
