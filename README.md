@@ -147,6 +147,8 @@ npm test
 ## Challenges
 :ocean: Technical Challenges
 
+:bulb: Results Observed
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Research
