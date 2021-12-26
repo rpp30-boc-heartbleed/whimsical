@@ -12,7 +12,7 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
 </p>
 
 <!-- PROJECT SHIELDS -->
-![license](https://img.shields.io/npm/l/nodemon?style=for-the-badge)
+![license](https://img.shields.io/npm/l/nodemon)
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -106,7 +106,7 @@ git clone https://github.com/rpp30-boc-heartbleed/whimsical.git
 npm install
 ```
 
-## Getting Started
+## :zap: Getting Started
 
 1. Start the server from the root directory and confirm connection to database.
 ```
