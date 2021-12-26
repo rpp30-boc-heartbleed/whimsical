@@ -29,7 +29,7 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
     </li>
     <!-- SETUP -->
     <li>
-      <a href="getting-started">Getting Started</a>
+      <a href="#getting-started">Getting Started</a>
     </li>
     <!-- DEMO: VIDEO/SCREENSHOTS/CODE -->
     <li>
