@@ -86,7 +86,7 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
 
 ## Installation
 
-1. Clone the repo
+1. Fork and then clone the repo.
 ```
 git clone https://github.com/rpp30-boc-heartbleed/whimsical.git
 ```
