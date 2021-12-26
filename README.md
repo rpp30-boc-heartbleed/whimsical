@@ -140,7 +140,7 @@ npm test
 <!-- What were the user stores / what was MVP (mention Minimal Viable Product) -->
 
 <!-- Should provide visuals and writeups on user stories but will leave link as placeholder for now-->
-### 📖   <a href="https://docs.google.com/spreadsheets/d/1heVGbScj-MP8areUMJkZk7aNSUPD_GR8Hwmd6uMnrQ8/edit#gid=484004821">User Stories
+📖   <a href="https://docs.google.com/spreadsheets/d/1heVGbScj-MP8areUMJkZk7aNSUPD_GR8Hwmd6uMnrQ8/edit#gid=484004821">User Stories
 </a>
 
 ### API
@@ -191,7 +191,7 @@ For unexpected Challenges:
 * Link to your project board, discuss completed tickets
 -->
 
-### 📂 <a href="https://trello.com/b/yvrqtpK9/rpp30-boc-heartbleed"> Project Board
+📂 <a href="https://trello.com/b/yvrqtpK9/rpp30-boc-heartbleed"> Project Board
 </a>
 
 <p align="right">(<a href="#top">back to top</a>)</p>
