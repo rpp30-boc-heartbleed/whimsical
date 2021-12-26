@@ -83,6 +83,10 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
     <li>
       <a href="#team"> Team </a>
     </li>
+     <!-- RESOURCES -->
+    <li>
+      <a href="#resources"> Resources </a>
+    </li>
 </ol>
 </details> <!-- END OF TABLE OF CONTENTS DROP DOWN -->
 
@@ -128,6 +132,8 @@ expo start
 #### Database <a name="database"></a>
 * <a href='https://www.mongodb.com/'> ![MongoDB](https://raw.githubusercontent.com/mongodb/mongo/master/docs/leaf.svg)MongoDB<a href='https://www.mongodb.com/'></a>
 
+<p align="right">(<a href="#top">back to top</a>)</p>
+
 
 ### How it Works
 
@@ -167,5 +173,9 @@ expo start
 <a href="https://github.com/Laweeza">
   <img src="https://github.com/Laweeza.png?size=50">
 </a>
+
+<p align="right">(<a href="#top">back to top</a>)</p>
+
+### Resources
 
 <p align="right">(<a href="#top">back to top</a>)</p>
