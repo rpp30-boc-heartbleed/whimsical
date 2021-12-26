@@ -30,11 +30,6 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
     <!-- SETUP -->
     <li>
       <a href="getting-started">Getting Started</a>
-      <ul>
-        <li>
-        <a href="#installation">Installation</a>
-        </li>
-      </ul>
     </li>
     <!-- DEMO: VIDEO/SCREENSHOTS/CODE -->
     <li>
