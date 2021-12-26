@@ -72,26 +72,23 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
 ## Features <a name="features"></a> ##
 
 ## Team <a name="team"></a> ##
-* <a href="https://github.com/ryhorowitz">
+<a href="https://github.com/ryhorowitz">
   <img src="https://github.com/ryhorowitz.png?size=50" style="border-radius:50%"> (Project Manager)
 </a>
-
-* <a href="https://github.com/shabbyblue16">
+<a href="https://github.com/shabbyblue16">
   <img src="https://github.com/shabbyblue16.png?height=50" width="50" style="border-radius:50%"> (Architect Owner)
 </a>
 
-* <a href="https://github.com/OjeikuA">
+<a href="https://github.com/OjeikuA">
   <img src="https://github.com/OjeikuA.png?size=50" style="border-radius:50%"> (Core Developer)
 </a>
-
-* <a href="https://github.com/aaronfife">
+<a href="https://github.com/aaronfife">
   <img src="https://github.com/aaronfife.png?size=50"style="border-radius:50%"> (Core Developer)
 </a>
 
-* <a href="https://github.com/surekhaw">
+<a href="https://github.com/surekhaw">
   <img src="https://github.com/surekhaw.png?size=50" style="border-radius:50%"> (Core Developer)
 </a>
-
-* <a href="https://github.com/Laweeza">
+<a href="https://github.com/Laweeza">
   <img src="https://github.com/Laweeza.png?size=50" style="border-radius:50%"> (UI Owner)
 </a>
