@@ -11,7 +11,7 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
 
 
 ## Table of Contents ##
--------------------------------------------------------------
+
 1. [Introduction](#introduction)
 2. [Installation](#installation)
 3. [Tech Stack](#techstack)
@@ -38,11 +38,11 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
 10. [Contributors](#contributors)
 
 ## Introduction <a name="introduction"></a> ##
--------------------------------------------------------------
+
 * What does the app do & why did we build it?
 
 ## Installation <a name="installation"></a> ##
--------------------------------------------------------------
+
 ```
 `npm install` from the root directory and from the client directory.
 ```
@@ -56,7 +56,6 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
 ```
 
 ## Tech Stack <a name="techstack"></a> ##
--------------------------------------------------------------
 
 ### Frontend <a name="frontend"></a> ###
 * <img src="https://d33wubrfki0l68.cloudfront.net/554c3b0e09cf167f0281fda839a5433f2040b349/ecfc9/img/header_logo.svg" width="40" height="40"/> | <a href='https://reactnative.dev/'> ```React Native```</a>
@@ -71,10 +70,8 @@ A mobile application for you to <b>streamline</b> errands and pay good deeds for
 * ![MongoDB](https://raw.githubusercontent.com/mongodb/mongo/master/docs/leaf.svg)| <a href='https://www.mongodb.com/'> ```MongoDB``` </a>
 
 ## Features <a name="features"></a> ##
--------------------------------------------------------------
 
 ## Contributors <a name="contributors"></a> ##
-------------------------------------------------------------
 <a href="https://github.com/ryhorowitz">
   <img src="https://github.com/ryhorowitz.png?size=50" style="border-radius:50%">
 </a>
