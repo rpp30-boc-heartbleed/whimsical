@@ -1,6 +1,6 @@
 <!-----------------------------PROJECT LOGO ------------------------>
 <div align="center">
-<img src="client/assets/mini-bag.png" alt="Bagel Logo" width="250" height="250">
+<img src="client/assets/mini-bag (1).png" alt="Bagel Logo">
 </div>
 
 <h1 align="center"> Quick Bagel </h1>
@@ -220,12 +220,12 @@ What additional features do you plan to add, how do you plan to implement those 
 <!---------------------------CONTRIBUTORS -------------------------->
 ## Team
 
-[![avatar](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/64623933?v=4&h=50&w=50&fit=cover&mask=circle&maxage=7d)](https://github.com/ryhorowitz)
-[![avatar](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/55521671?v=4&h=50&w=50&fit=cover&mask=circle&maxage=7d)](https://github.com/shabbyblue16)
-[![avatar](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/77039479?v=4&h=50&w=50&fit=cover&mask=circle&maxage=7d)](https://github.com/OjeikuA)
-[![avatar](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/73043618?v=4&h=50&w=50&fit=cover&mask=circle&maxage=7d)](https://github.com/aaronfife)
-[![avatar](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/71471412?v=4&h=50&w=50&fit=cover&mask=circle&maxage=7d)](https://github.com/surekhaw)
-[![avatar](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/56424589?v=4&h=50&w=50&fit=cover&mask=circle&maxage=7d)](https://github.com/Laweeza)
+[![Ryan Avatar](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/64623933?v=4&h=50&w=50&fit=cover&mask=circle&maxage=7d)](https://github.com/ryhorowitz)
+[![Justin Avatar](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/55521671?v=4&h=50&w=50&fit=cover&mask=circle&maxage=7d)](https://github.com/shabbyblue16)
+[![Oje Avatar](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/77039479?v=4&h=50&w=50&fit=cover&mask=circle&maxage=7d)](https://github.com/OjeikuA)
+[![Aaron Avatar](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/73043618?v=4&h=50&w=50&fit=cover&mask=circle&maxage=7d)](https://github.com/aaronfife)
+[![Surekha Avatar](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/71471412?v=4&h=50&w=50&fit=cover&mask=circle&maxage=7d)](https://github.com/surekhaw)
+[![Louisa Avatar](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/56424589?v=4&h=50&w=50&fit=cover&mask=circle&maxage=7d)](https://github.com/Laweeza)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
