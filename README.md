@@ -220,28 +220,20 @@ What additional features do you plan to add, how do you plan to implement those 
 <!---------------------------CONTRIBUTORS -------------------------->
 ## Team
 
-[![Andries Louw Wolthuizen][avatar-author1]][author1] | [![Kleis Auke Wolthuizen][avatar-author2]][author2]
---- | ---
-[Andries Louw Wolthuizen][author1] | [Kleis Auke Wolthuizen][author2]
+![avatar](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/64623933?v=4&h=50&w=50&fit=cover&mask=circle&maxage=7d
+)
+![avatar](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/55521671?v=4&h=50&w=50&fit=cover&mask=circle&maxage=7d
+)
+![avatar](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/77039479?v=4&h=50&w=50&fit=cover&mask=circle&maxage=7d
+)
+![avatar](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/73043618?v=4&h=50&w=50&fit=cover&mask=circle&maxage=7d
+)
+![avatar](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/71471412?v=4&h=50&w=50&fit=cover&mask=circle&maxage=7d
+)
+![avatar](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/56424589?v=4&h=50&w=50&fit=cover&mask=circle&maxage=7d
+)
 
-<a href="https://github.com/ryhorowitz">
-  <img src="https://github.com/ryhorowitz.png?size=50?">
-</a>
-<a href="https://github.com/shabbyblue16">
-  <img src="https://github.com/shabbyblue16.png?height=50" width="50">
-</a>
-<a href="https://github.com/OjeikuA">
-  <img src="https://github.com/OjeikuA.png?size=50">
-</a>
-<a href="https://github.com/aaronfife">
-  <img src="https://github.com/aaronfife.png?size=50">
-</a>
-<a href="https://github.com/surekhaw">
-  <img src="https://github.com/surekhaw.png?size=50">
-</a>
-<a href="https://github.com/Laweeza">
-  <img src="https://github.com/Laweeza.png?size=50">
-</a>
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
