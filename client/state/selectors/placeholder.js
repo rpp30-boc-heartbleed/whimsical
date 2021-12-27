@@ -3,7 +3,7 @@ import friendsListState from '../atoms/friendsList';
 import friendsListFilterState from '../atoms/friendsListFilter';
 
 const filteredListState = selector({
-  key: 'filteredTodoListState',
+  key: 'filteredListState',
   get: ({ get }) => {
     const list = get(friendsListState);
     const filter = get(friendsListFilterState);
