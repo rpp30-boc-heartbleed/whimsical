@@ -6,8 +6,8 @@
 <h1 align="center"> Quick Bagel </h1>
 <p align="center">
 "This guy <i>keeps</i> forgetting my bagels."  - <b>Tom from Myspace </b>
-<br/>
 
+<p align="center">
 <b>Quick Bagel</b> is a mobile application for you to streamline errands and pay good deeds forward!
 </p>
 
