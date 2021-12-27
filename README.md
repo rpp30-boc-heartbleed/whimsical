@@ -219,6 +219,11 @@ What additional features do you plan to add, how do you plan to implement those 
 
 <!---------------------------CONTRIBUTORS -------------------------->
 ## Team
+
+[![Andries Louw Wolthuizen][avatar-author1]][author1] | [![Kleis Auke Wolthuizen][avatar-author2]][author2]
+--- | ---
+[Andries Louw Wolthuizen][author1] | [Kleis Auke Wolthuizen][author2]
+
 <a href="https://github.com/ryhorowitz">
   <img src="https://github.com/ryhorowitz.png?size=50?">
 </a>
