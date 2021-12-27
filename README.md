@@ -4,8 +4,11 @@
 </div>
 
 <h1 align="center"> Quick Bagel </h1>
+
 <p align="center">
-"This guy <i>keeps</i> forgetting my bagels."  - <b>Tom from Myspace </b>
+"This guy <i>keeps</i> forgetting my bagels."
+- <b>Tom from Myspace </b>
+</p>
 
 <p align="center">
 <b>Quick Bagel</b> is a mobile application for you to streamline errands and pay good deeds forward!
@@ -217,6 +220,8 @@ What additional features do you plan to add, how do you plan to implement those 
 * Future refactoring?
 * Additional dev ops considerations?
 * UI/UX additions? -->
+
+<!-- Examples: websockets (socket.io) -->
 
 - [ ] Future Feature
 - [ ] Optimization Goals
