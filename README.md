@@ -11,7 +11,9 @@
 </p>
 
 <!--------------------- PROJECT SHIELDS ---------------------------->
-![license](https://img.shields.io/npm/l/nodemon)
+![NPM](https://img.shields.io/npm/l/nodemon?style=for-the-badge)
+
+
 
 <!------------------------ TABLE OF CONTENTS ----------------------->
 <details>
@@ -76,22 +78,22 @@
 
 ## Installation
 
-1. Fork and then clone the repo.
+1. Fork and clone the repo:
 ```
 git clone https://github.com/rpp30-boc-heartbleed/whimsical.git
 ```
-2. Install NPM packages from the root directory and from the client directory.
+2. Install NPM packages from both the root and client directories:
 ```
 npm install
 ```
 
 ## Getting Started
 
-1. Start the server from the root directory and confirm connection to database.
+1. Start the server from the root directory and confirm connection to database:
 ```
 npm start
 ```
-2. Start the the application from the client directory.
+2. Start the the application from the client directory:
 ```
 expo start
 ```
