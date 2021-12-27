@@ -223,9 +223,9 @@ What additional features do you plan to add, how do you plan to implement those 
 
 <!-- Examples: websockets (socket.io) -->
 
-- [ ] Future Feature
-- [ ] Optimization Goals
-- [x] Feature Implemented
+- [ ] Future Features
+- [ ] Future Features
+- [ ] Future Features
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
