@@ -121,6 +121,7 @@ $ npm test
 ### Frontend
 * <a href='https://reactnative.dev/'>React Native</a>
 * <a href='https://recoiljs.org/'>Recoil</a>
+* <a href='https://docs.expo.dev/'>Expo</a>
 
 
 ### Backend
