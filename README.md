@@ -7,7 +7,8 @@
 <p align="center">
 "This guy <i>keeps</i> forgetting my bagels."  - <b>Tom from Myspace </b>
 <br/>
-📱 Mobile application for you to streamline errands and pay good deeds forward!
+
+<b>Quick Bagel</b> is a mobile application for you to streamline errands and pay good deeds forward!
 </p>
 
 <!--------------------- PROJECT SHIELDS ---------------------------->
@@ -84,27 +85,27 @@
 
 1. Fork and clone the repo:
 ```
-git clone https://github.com/rpp30-boc-heartbleed/whimsical.git
+$ git clone https://github.com/rpp30-boc-heartbleed/whimsical.git
 ```
 2. Install NPM packages from both the root and client directories:
 ```
-npm install
+$ npm install
 ```
 
 ## Getting Started
 
 1. Start the server from the root directory and confirm connection to database:
 ```
-npm start
+$ npm start
 ```
 2. Start the the application from the client directory:
 ```
-expo start
+$ expo start
 ```
 
 3. To test run:
 ```
-npm test
+$ npm test
 ```
 <p align="right">(<a href="#top">back to top</a>)</p>
 
