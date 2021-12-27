@@ -11,7 +11,11 @@
 </p>
 
 <!--------------------- PROJECT SHIELDS ---------------------------->
-![NPM](https://img.shields.io/npm/l/nodemon?style=for-the-badge)
+<div align='center'>
+<a href="https://github.com/git/git-scm.com/blob/main/MIT-LICENSE.txt">
+<img alt="NPM" src="https://img.shields.io/npm/l/nodemon?style=for-the-badge">
+</a>
+</div>
 
 
 
