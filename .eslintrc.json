@@ -3,7 +3,10 @@
     "airbnb",
     "airbnb/hooks"
   ],
-  "plugins": ["react"],
+  "env": {
+    "jest/globals": true
+  },
+  "plugins": ["react", "jest"],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
