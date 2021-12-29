@@ -1,0 +1,23 @@
+name: Continuous Integration
+
+on:
+  pull_request:
+    branches: [ dev ]
+
+jobs:
+  test:
+    name: Test with Jest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - name: Install Packages
+        run: npm install
+        # run: cd client
+        # run: expo install
+      - name: Run CI environment
+        run: npm ci
+      - name: Test
+        run: npx jest --ci
