@@ -48,4 +48,4 @@ const mockErrandsData = [
   },
 ];
 
-export default { testUser, mockErrandsData };
+export default mockErrandsData;
