@@ -10,38 +10,56 @@ import {
 
 const DashboardHeader = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.profilePic}>AA</Text>
-      <Text style={styles.searchBar}>Search Bar Here</Text>
-      <Text style={styles.logout}>logout</Text>
+    <View style={styles.outercontainer}>
+      <View style={styles.container}>
+        <Text style={styles.profilePic}>AA</Text>
+        <TextInput style={styles.searchBar}>Search Bar Here</TextInput>
+        <Text style={styles.logout}>logout</Text>
+      </View>
+      <View style={styles.filter}>
+        <Text style={styles.filterText}>Current Filter: Most Recent ▼</Text>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  outercontainer: {
+    borderWidth: 1,
+    alignItems: 'center',
+  },
   container: {
     // flex: 1,
-    // alignItems: 'center',
+    alignItems: 'center',
     backgroundColor: '#fff',
     flexDirection: 'row',
-    borderWidth: 1,
     paddingLeft: 25,
     paddingRight: 25,
-    paddingTop: 5,
-    paddingBottom: 5,
+    paddingTop: 15,
   },
   profilePic: {
     borderWidth: 1,
     borderRadius: 10,
     marginRight: 75,
+    marginBottom: 5,
   },
   searchBar: {
     borderWidth: 1,
+    marginBottom: 5,
   },
   logout: {
     borderWidth: 1,
     borderRadius: 10,
     marginLeft: 75,
+    marginBottom: 5,
+  },
+  filter: {
+    borderBottomWidth: 1,
+    marginBottom: 10,
+  },
+  filterText: {
+    fontSize: 8,
+    color: 'darkblue',
   },
 });
 

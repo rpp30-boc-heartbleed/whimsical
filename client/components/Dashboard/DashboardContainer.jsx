@@ -8,11 +8,16 @@ import {
   Button,
 } from 'react-native';
 import DashboardHeader from './DashboardHeader';
+import DashboardStats from './DashboardStats';
+import DashboardBody from './DashboardBody';
 
 const DashboardContainer = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <DashboardHeader />
+      <DashboardStats />
+      <DashboardBody />
+
       <View style={styles.links}>
         <Button title="Go to Errand Tracker" onPress={() => navigation.push('ErrandTracker')} />
       </View>
@@ -28,7 +33,7 @@ const styles = StyleSheet.create({
     // justifyContent: 'center',
   },
   links: {
-    paddingTop: 500,
+    paddingTop: 20,
   },
 });
 
