@@ -39,8 +39,8 @@ const mockErrandsData = [
       avatar: 'https://via.placeholder.com/50',
       name: 'bob',
       location: {
-        latitude: -12345,
-        longitude: 36,
+        latitude: 42.2966481,
+        longitude: -85.6436558,
       },
       starRating: 5,
     },
