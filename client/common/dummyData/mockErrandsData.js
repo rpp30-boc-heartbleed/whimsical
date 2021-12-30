@@ -34,7 +34,7 @@ const mockErrandsData = [
       latitude: 42.2966481,
       longitude: -85.6436558,
     },
-    requestor: userLocation,
+    requestor: testUser,
     errandRunner: {
       avatar: 'https://via.placeholder.com/50',
       name: 'bob',

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import {
   View,
   Text,
@@ -7,8 +8,10 @@ import {
   StatusBar,
   Button,
 } from 'react-native';
+import errandState from '../../state/atoms/errands'
 
-const ErrrandTrackerContainer = ({ navigation }) => {
+const ErrandTrackerContainer = ({ navigation }) => {
+  const [errands, setErrands] = useRecoilState(errandState);
   return (
     <View style={styles.container}>
       <Text>This is the Errand Tracker Component</Text>
@@ -32,4 +35,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default ErrrandTrackerContainer;
+export default ErrandTrackerContainer;
