@@ -12,32 +12,79 @@ import {
 import NavBarContainer from '../NavBar/NavBarContainer';
 
 const LoginContainer = ({ navigation }) => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
+  const [authenticationInfo, setAuthenticationInfo] = useState({
+    email: '',
+    password: '',
+  });
+  const { email, password } = authenticationInfo;
+  const [error, setError] = useState('');
+
+  const handleOnChangeText = (value, fieldName) => {
+    console.log('form fields', fieldName, value);
+    setAuthenticationInfo({...authenticationInfo, [fieldName]: value});
+  };
+  const isValidField = (obj) => {
+    // is field empty?
+    return Object.values(obj).every((value) => value.trim());
+  }
+  const isValidEmail = (str) => {
+    const regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    return regex.test(str);
+  }
+  const isValidForm = () => {
+    // all fields must have value
+    if(!isValidField(authenticationInfo)) {
+      return setError('All fields are required');
+    }
+    // check if email is valid
+    if (!isValidEmail(email)) {
+      return setError('Invalid email address');
+    }
+    return true;
+  }
+  const submitForm = () => {
+    if(isValidForm()) {
+      // submit form
+      console.log('form info', authenticationInfo);
+      // if authenticated, navigate to Dashboard
+       // navigation.navigate('Dashboard');
+      // clear form
+      setAuthenticationInfo({
+        email: '',
+        password: '',
+      });
+      setError('');
+    }
+  }
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to Quick Bagel!</Text>
       <KeyboardAvoidingView style={styles.container}>
         <View style={styles.inputContainer}>
+          {error ? <Text style={styles.error}>{error}</Text> : null}
           <TextInput
             style={styles.input}
             placeholder='email'
+            autoCapitalize='none'
             value={email}
-            onChangeText={(text) => setEmail(text)}
+            onChangeText={(value) => handleOnChangeText(value, 'email')}
           />
           <TextInput
             style={styles.input}
             placeholder='password'
+            autoCapitalize='none'
             value={password}
-            onChangeText={(text) => setPassword(text)}
+            onChangeText={(value) => handleOnChangeText(value, 'password')}
             secureTextEntry
           />
         </View>
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             style={[styles.button, styles.buttonOutline]}
-            onPress={() => {}}
+            onPress={submitForm}
           >
             <Text style={[styles.buttonText, styles.buttonOutlineText]}>Login</Text>
           </TouchableOpacity>
@@ -66,6 +113,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     alignSelf: 'center',
     marginTop: 15,
+  },
+  error: {
+    color: 'red',
+    fontSize: 16,
+    fontWeight: '700',
+    alignSelf: 'center',
   },
   inputContainer: {
     width: '80%',
