@@ -10,9 +10,13 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-const LoginContainer = ({ navigation }) => {
+const RegisterContainer = ({ navigation }) => {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [location, setLocation] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   return (
     <KeyboardAvoidingView style={styles.container} behavior='padding'>
@@ -28,6 +32,24 @@ const LoginContainer = ({ navigation }) => {
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
+          placeholder='first name'
+          value={firstName}
+          onChangeText={(text) => setFirstName(text)}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder='last name'
+          value={lastName}
+          onChangeText={(text) => setLastName(text)}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder='address'
+          value={location}
+          onChangeText={(text) => setLocation(text)}
+        />
+        <TextInput
+          style={styles.input}
           placeholder='email'
           value={email}
           onChangeText={(text) => setEmail(text)}
@@ -39,19 +61,25 @@ const LoginContainer = ({ navigation }) => {
           onChangeText={(text) => setPassword(text)}
           secureTextEntry
         />
+        <TextInput
+          style={styles.input}
+          placeholder='confirm password'
+          value={confirmPassword}
+          onChangeText={(text) => setConfirmPassword(text)}
+          secureTextEntry
+        />
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={[styles.button, styles.buttonOutline]}
           onPress={() => {}}
         >
-          <Text style={styles.buttonOutlineText}>Login</Text>
+          <Text style={styles.buttonOutlineText}>Create Account</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.registerContainer}>
-        <Text style={styles.registerText}>Don&apos;t have an acccount?</Text>
-        <Button title='Register' onPress={() => navigation.push('Register')} />
-        <Text style={styles.registerText}>now.</Text>
+      <View style={styles.loginContainer}>
+        <Text style={styles.loginText}>Have an acccount already?</Text>
+        <Button title='Login' onPress={() => navigation.navigate('Login')} />
       </View>
     </KeyboardAvoidingView>
   );
@@ -102,14 +130,14 @@ const styles = StyleSheet.create({
   buttonOutlineText: {
     color: '#0782F9',
   },
-  registerContainer: {
+  loginContainer: {
     flexDirection: 'row',
     marginTop: 15,
   },
-  registerText: {
+  loginText: {
     fontSize: 16,
     marginTop: 9,
   },
 });
 
-export default LoginContainer;
+export default RegisterContainer;

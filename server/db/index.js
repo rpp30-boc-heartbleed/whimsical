@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const connectDb = () => mongoose.connect(process.env.DB_URI, {
+const connectDb = () => mongoose.connect('mongodb://localhost:27017/quick-bagel', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })

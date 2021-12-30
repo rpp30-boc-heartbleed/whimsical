@@ -27,7 +27,8 @@
     "react-native-screens": "~3.8.0",
     "react-native-web": "0.17.1",
     "recoil": "^0.5.2",
-    "watchman": "^1.0.0"
+    "watchman": "^1.0.0",
+    "jest-expo": "~43.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
