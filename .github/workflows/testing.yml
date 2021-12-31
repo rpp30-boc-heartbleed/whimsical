@@ -43,8 +43,8 @@ jobs:
           node-version: 16
       - uses: expo/expo-github-action@v5
         with:
-          expo-packager: npm
-          expo-token: ${{ secrets.EXPO_TOKEN }}
+          packager: npm
+          token: ${{ secrets.EXPO_TOKEN }}
           expo-cache: true
       - name: Cache node_modules
         uses: actions/cache@v2

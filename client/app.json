@@ -2,7 +2,7 @@
   "expo": {
     "name": "Quick Bagel",
     "slug": "quick-bagel",
-    "owner": "access-bot",
+    "owner": "heartbleed",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
