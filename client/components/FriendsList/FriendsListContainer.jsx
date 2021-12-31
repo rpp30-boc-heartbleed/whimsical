@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
 import {
@@ -10,40 +10,48 @@ import {
   TextInput,
   FlatList,
 } from 'react-native';
+
+import NavBar from '../NavBar/NavBarContainer';
+
 import friendsListState from '../../state/atoms/friendsList';
+import friendsListQuery from '../../state/selectors/friendsListQuery';
 
 const FriendsListContainer = () => {
   const [friendsList, setFriendsList] = useRecoilState(friendsListState);
+  const friends = useRecoilValue(friendsListQuery);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.heading}>Buddies</Text>
-      <Text style={styles.number}>{friendsList.length} friends</Text>
-      <TextInput
-        style={styles.search}
-        placeholder='SEARCH'
-      />
-      <View style={styles.list}>
-        <FlatList
-          data={friendsList}
-          renderItem={({ item, index }) => {
-            return (
-              <View>
-                <Text>Profile pic</Text>
-                <TouchableOpacity>
-                  <Text style={styles.friend}>
-                    {item.name}     {item.goldStars} gold stars
-                  </Text>
-                </TouchableOpacity>
-              </View>
-            );
-          }}
-          keyExtractor={(friend) => friend.id}
-          keyboardShouldPersistTaps="handled"
+    <Suspense fallback={<View>Loading...</View>}>
+
+      <View style={styles.container}>
+        <Text style={styles.heading}>Buddies</Text>
+        <Text style={styles.number}>{friends.length} friends</Text>
+        <TextInput
+          style={styles.search}
+          placeholder='SEARCH'
         />
+        <View style={styles.list}>
+          <FlatList
+            data={friends}
+            renderItem={({ item, index }) => {
+              return (
+                <View>
+                  <Text>Profile pic</Text>
+                  <TouchableOpacity>
+                    <Text style={styles.friend}>
+                      {item.name}     {item.email}     {item.goldStars} gold stars
+                    </Text>
+                  </TouchableOpacity>
+                </View>
+              );
+            }}
+            keyExtractor={(friend) => friend.id}
+            keyboardShouldPersistTaps="handled"
+          />
+        </View>
+        <NavBar />
       </View>
-      <Text style={styles.navbar}>NAV BAR</Text>
-    </View>
+    </Suspense>
   );
 };
 
