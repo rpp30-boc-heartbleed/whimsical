@@ -5,21 +5,23 @@ create new errand with
 3. radius
 ***/
 
-const testUser = {
+// 1227 Jefferson Ave Kalamazoo, MI 49006
+export const testUser = {
   name: 'requestor',
   address: {
-    street: '123 Main Street',
+    street: '1227 Jefferson Ave',
     city: 'Kalamazoo',
     state: 'MI',
     zip: '49006',
   },
-  location: {
-    latitude: 40,
-    longitude: -80,
+  gps: {
+    latitude: 42.295906,
+    longitude: -85.601778
   },
 };
 
-const mockErrandsData = [
+
+export const mockErrandsData = [
   {
     id: 1,
     errandName: 'Impromptu Bagel Run',
@@ -30,7 +32,7 @@ const mockErrandsData = [
       state: 'MI',
       zip: '49006',
     },
-    location: {
+    gps: {
       latitude: 42.2966481,
       longitude: -85.6436558,
     },
@@ -38,7 +40,7 @@ const mockErrandsData = [
     errandRunner: {
       avatar: 'https://via.placeholder.com/50',
       name: 'bob',
-      location: {
+      gps: {
         latitude: 42.2966481,
         longitude: -85.6436558,
       },
@@ -47,5 +49,3 @@ const mockErrandsData = [
     status: 'Pending',
   },
 ];
-
-export default mockErrandsData;
