@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import {
   View,
   Text,
@@ -6,9 +7,13 @@ import {
   TextInput,
   StatusBar,
   Button,
+  FlatList,
 } from 'react-native';
+import friendsListState from '../../state/atoms/friendsList';
 
-const DashboardBody = ({ navigation }) => {
+const DashboardBody = () => {
+  const [friendsList, setFriendsList] = useRecoilState(friendsListState);
+
   return (
     <View>
       <View style={styles.container}>
@@ -20,6 +25,18 @@ const DashboardBody = ({ navigation }) => {
       <View style={styles.container}>
         <Text style={styles.body}>a friends post here</Text>
       </View>
+      {/* <FlatList
+        data={friendsList}
+        renderItem={({ item, index }) => {
+          return (
+            <View>
+              <Text>{item.name}</Text>
+            </View>
+          );
+        }}
+        keyExtractor={(friend) => friend.id}
+        keyboardShouldPersistTaps="handled"
+      /> */}
     </View>
   );
 };
