@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { Modal, Portal, Text, Button, Provider } from 'react-native-paper';
+import { Modal, Portal, Provider, ProgressBar, Colors } from 'react-native-paper';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
 import {
@@ -15,39 +15,15 @@ import {
 } from 'react-native';
 import errandState from '../../state/atoms/errands'
 const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
-console.log(GOOGLE_MAPS_API_KEY)
+// console.log(GOOGLE_MAPS_API_KEY)
+import MapContainer from '../Map/MapContainer.jsx';
+//my component will have to be imported from dashboard
 
 const ErrandTrackerContainer = ({ route, navigation }) => {
-  // const [errands, setErrands] = useRecoilState(errandState);
-
-  //Big Apple Bagels & Random For Rent House in Kalamazoo, MI
-  // const coordinates = [
-  //   {
-  //     latitude: 42.2966481,
-  //     longitude: -85.6436558,
-  //   },
-  //   {
-  //     latitude: 42.295906,
-  //     longitude: -85.601778
-  //   }
-  // ];
-
-  function renderHeader() {
-    return
-    <HEADER
-      title="DELIVERY STATUS"
-    />
-  }
+  const [errands, setErrands] = useRecoilState(errandState);
 
   return (
     <View style={styles.container}>
-
-      {/** HEADER*/}
-
-      {/**MAP */}
-      {/**Info */}
-      {/**Deliverer*/}
-      <Text>Errand Status</Text>
       <Button
         title="Go to Map"
         onPress={() => navigation.push('Map')} // push the name property of the Stack.Screen component as defined in App.jsx
@@ -65,6 +41,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    borderWidth: 1,
+    borderRadius: 5,
+    paddingLeft: 120,
+    paddingRight: 120,
+    marginBottom: 10
   },
 });
 

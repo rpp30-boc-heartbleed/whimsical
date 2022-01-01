@@ -25,6 +25,7 @@ export const mockErrandsData = [
   {
     id: 1,
     errandName: 'Impromptu Bagel Run',
+    time: '45 minutes',
     addressName: 'Big Apple Bagels',
     address: {
       street: '4408 W Main St',
