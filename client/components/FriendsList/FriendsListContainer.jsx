@@ -26,14 +26,13 @@ const FriendsListContainer = ({ navigation }) => {
   const filteredByName = useRecoilValue(filteredByNameSelector);
   // const friends = useRecoilValue(friendsListQuery);
 
-  const onChange = (e) => {
-    const { value } = e.target;
-    setInput(value);
+  const onChange = (value) => {
+    setNameFilter(value);
   };
 
-  const onPress = () => {
-    setNameFilter(input);
-  };
+  // const onPress = () => {
+  //   setNameFilter(input);
+  // };
 
   return (
     <>
@@ -44,13 +43,13 @@ const FriendsListContainer = ({ navigation }) => {
           <TextInput
             style={styles.search}
             placeholder='SEARCH'
-            onChange={onChange}
+            onChangeText={onChange}
           />
-          <Button title='Search' onPress={onPress} />
+          {/* <Button title='Search' onPress={onPress} /> */}
         </View>
         <View style={styles.list}>
           <FlatList
-            data={friendsList}
+            data={filteredByName}
             renderItem={({ item, index }) => {
               return (
                 <View>
