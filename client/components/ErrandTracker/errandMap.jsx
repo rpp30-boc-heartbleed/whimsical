@@ -9,12 +9,12 @@ import Loading from './../Shared/Loading.jsx';
 import Avatar from './../Shared/Avatar.jsx';
 import Header from './../Shared/Header.jsx';
 import TestModal from './../Modals/TestModal.jsx';
+import AccordianList from './../Shared/AccordianList.jsx';
 const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
 
 const ErrandMap = ({ streetName, duration }) => {
   return (
     <>
-      <TestModal />
       <View
         style={{
           position: 'absolute',
