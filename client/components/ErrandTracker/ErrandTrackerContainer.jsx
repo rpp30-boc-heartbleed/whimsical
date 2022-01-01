@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { Modal, Portal, Provider, ProgressBar, Colors } from 'react-native-paper';
+import { Headline, Colors } from 'react-native-paper';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
 import {
@@ -14,20 +14,17 @@ import {
   TouchableOpacity
 } from 'react-native';
 import errandState from '../../state/atoms/errands'
-const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
+// const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
 // console.log(GOOGLE_MAPS_API_KEY)
 import ErrandMap from './ErrandMap.jsx';
-import Loading from './../Shared/Loading.jsx';
-
 
 const ErrandTrackerContainer = ({ route, navigation }) => {
   const [errands, setErrands] = useRecoilState(errandState);
 
   return (
     <View style={styles.container}>
-      <ErrandMap
-      />
-
+      <Header>what is this</Header>
+      <ErrandMap />
       <Button
         title="Go to Map"
         onPress={() => navigation.push('Map')} // push the name property of the Stack.Screen component as defined in App.jsx
