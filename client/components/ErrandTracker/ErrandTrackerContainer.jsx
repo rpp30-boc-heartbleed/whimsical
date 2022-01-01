@@ -14,14 +14,14 @@ import {
   TouchableOpacity
 } from 'react-native';
 import errandState from '../../state/atoms/errands'
-import ErrandMap from './ErrandMap.jsx';
+// import ErrandMap from './ErrandMap.jsx';
 
 const ErrandTrackerContainer = ({ route, navigation }) => {
   const [errands, setErrands] = useRecoilState(errandState);
 
   return (
     <View style={styles.container}>
-      <ErrandMap />
+      {/* <ErrandMap /> */}
       <Button
         title="Go to Map"
         onPress={() => navigation.push('Map')} // push the name property of the Stack.Screen component as defined in App.jsx
