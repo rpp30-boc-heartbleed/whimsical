@@ -3,7 +3,7 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { Modal, Portal, Provider, Headline, Colors } from 'react-native-paper';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import MapViewDirection from 'react-native-maps-directions';
-import { COLORS, SIZES, icons } from '../../constants';
+import { COLORS, SIZES, icons, images } from '../../constants';
 import errandState from '../../state/atoms/errands'
 import Loading from './../Shared/Loading.jsx';
 import Avatar from './../Shared/Avatar.jsx';
@@ -103,7 +103,7 @@ const ErrandMap = ({ streetName, duration, errandLocation, navigation }) => {
                   alignItems: 'center',
                 }}>
                 <Image
-                  source={icons.cat}
+                  source={images.cat}
                   style={{
                     width: 50,
                     height: 50,
