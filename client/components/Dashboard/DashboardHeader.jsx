@@ -25,7 +25,7 @@ const DashboardHeader = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   outercontainer: {
-    borderWidth: 1,
+    borderBottomWidth: 1,
     alignItems: 'center',
   },
   container: {

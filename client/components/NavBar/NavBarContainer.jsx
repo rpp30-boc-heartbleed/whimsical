@@ -22,9 +22,9 @@ const NavBarContainer = ({ navigation }) => {
         title="Go to User Profile"
         onPress={() => navigation.push('UserProfile')} // push the name property of the Stack.Screen component as defined in App.jsx
       /> */}
-      {/* Add */}
+      {/* Add Errand*/}
       <TouchableOpacity>
-        <Icon size={30} name='plus-circle'></Icon>
+        <Icon size={30} name='plus-circle' onPress={() => navigation.push('NewErrand')}></Icon>
       </TouchableOpacity>
       {/* FriendsList */}
       <TouchableOpacity>

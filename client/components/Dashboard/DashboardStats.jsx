@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
     flexDirection: 'row',
+    justifyContent: 'center',
     marginTop: 5,
     marginBottom: 5,
   },
