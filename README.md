@@ -1,6 +1,6 @@
 <!-----------------------------PROJECT LOGO ------------------------>
 <div align="center">
-<img src="client/assets/bagel-icon.png" alt="Bagel Logo">
+<img src="client/assets/icons/bagel-icon.png" alt="Bagel Logo">
 </div>
 
 <h1 align="center"> Quick Bagel </h1>

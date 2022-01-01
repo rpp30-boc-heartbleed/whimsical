@@ -29,7 +29,7 @@ const ErrandMap = ({ streetName, duration }) => {
           backgroundColor: COLORS.white,
         }}>
         <Image
-          // source={icons.redPin}
+          source={icons.redPin}
           style={{
             width: 25,
             height: 25,
