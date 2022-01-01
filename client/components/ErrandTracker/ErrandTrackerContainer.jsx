@@ -17,6 +17,7 @@ import errandState from '../../state/atoms/errands'
 const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
 // console.log(GOOGLE_MAPS_API_KEY)
 import ErrandMap from './ErrandMap.jsx';
+import Loading from './../Shared/Loading.jsx';
 
 
 const ErrandTrackerContainer = ({ route, navigation }) => {
