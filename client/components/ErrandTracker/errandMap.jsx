@@ -13,8 +13,23 @@ import AccordianList from './../Shared/AccordianList.jsx';
 const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
 
 const ErrandMap = ({ streetName, duration, errandLocation, navigation }) => {
+  let location = {
+    latitude: 42.2966481,
+    longitude: -85.6436558,
+    latitudeDelta: 0.009,
+    longitudeDelta: 0.009,
+  }
   return (
     <>
+      <MapView
+        provider={PROVIDER_GOOGLE}
+        apiKey={GOOGLE_MAPS_API_KEY}
+        region={location}
+        style={{ flex: 1 }}>
+        <MapViewDirection
+          strokeColor={COLORS.primary}
+        />
+      </MapView>
       <View
         style={{
           position: 'absolute',
