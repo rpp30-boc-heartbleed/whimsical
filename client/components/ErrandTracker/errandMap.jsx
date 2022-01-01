@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
-import { Headline, Colors } from 'react-native-paper';
+import { Modal, Portal, Provider, Headline, Colors } from 'react-native-paper';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import MapViewDirection from 'react-native-maps-directions';
 import { COLORS, SIZES, icons } from '../../constants';
@@ -8,11 +8,13 @@ import errandState from '../../state/atoms/errands'
 import Loading from './../Shared/Loading.jsx';
 import Avatar from './../Shared/Avatar.jsx';
 import Header from './../Shared/Header.jsx';
+import TestModal from './../Modals/TestModal.jsx';
 const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
 
 const ErrandMap = ({ streetName, duration }) => {
   return (
     <>
+      <TestModal />
       <View
         style={{
           position: 'absolute',

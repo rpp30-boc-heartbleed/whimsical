@@ -14,8 +14,6 @@ import {
   TouchableOpacity
 } from 'react-native';
 import errandState from '../../state/atoms/errands'
-// const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
-// console.log(GOOGLE_MAPS_API_KEY)
 import ErrandMap from './ErrandMap.jsx';
 
 const ErrandTrackerContainer = ({ route, navigation }) => {
@@ -23,7 +21,6 @@ const ErrandTrackerContainer = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Header>what is this</Header>
       <ErrandMap />
       <Button
         title="Go to Map"
