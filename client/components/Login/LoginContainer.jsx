@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
   navbar: {
     justifyContent: 'flex-end',
     alignContent: 'space-between',
-  }
+  },
 });
 
 export default LoginContainer;

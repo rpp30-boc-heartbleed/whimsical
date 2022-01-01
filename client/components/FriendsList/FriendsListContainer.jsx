@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from 'react';
+import React from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
 import {
@@ -11,28 +11,27 @@ import {
   FlatList,
 } from 'react-native';
 
-import NavBar from '../NavBar/NavBarContainer';
+import NavBarContainer from '../NavBar/NavBarContainer';
 
 import friendsListState from '../../state/atoms/friendsList';
 import friendsListQuery from '../../state/selectors/friendsListQuery';
 
-const FriendsListContainer = () => {
+const FriendsListContainer = ({ navigation }) => {
   const [friendsList, setFriendsList] = useRecoilState(friendsListState);
-  const friends = useRecoilValue(friendsListQuery);
+  // const friends = useRecoilValue(friendsListQuery);
 
   return (
-    <Suspense fallback={<View>Loading...</View>}>
-
+    <>
       <View style={styles.container}>
         <Text style={styles.heading}>Buddies</Text>
-        <Text style={styles.number}>{friends.length} friends</Text>
+        <Text style={styles.number}>{friendsList.length} friends</Text>
         <TextInput
           style={styles.search}
           placeholder='SEARCH'
         />
         <View style={styles.list}>
           <FlatList
-            data={friends}
+            data={friendsList}
             renderItem={({ item, index }) => {
               return (
                 <View>
@@ -49,9 +48,12 @@ const FriendsListContainer = () => {
             keyboardShouldPersistTaps="handled"
           />
         </View>
-        <NavBar />
       </View>
-    </Suspense>
+      <View>
+        <NavBarContainer navigation={navigation} />
+      </View>
+
+    </>
   );
 };
 
@@ -70,6 +72,7 @@ const styles = StyleSheet.create({
   number: {
     fontSize: 12,
     paddingBottom: '5%',
+    color: '#0782F9',
   },
   search: {
     borderRadius: 10,
