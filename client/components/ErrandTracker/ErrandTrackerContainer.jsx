@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import MapView from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
 import {
   View,
@@ -9,12 +9,13 @@ import {
   TextInput,
   StatusBar,
   Button,
+  TouchableOpacity
 } from 'react-native';
 import errandState from '../../state/atoms/errands'
 const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
 console.log(GOOGLE_MAPS_API_KEY)
 
-const ErrandTrackerContainer = ({ navigation }) => {
+const ErrandTrackerContainer = ({ route, navigation }) => {
   // const [errands, setErrands] = useRecoilState(errandState);
 
   //Big Apple Bagels & Random For Rent House in Kalamazoo, MI
@@ -29,9 +30,22 @@ const ErrandTrackerContainer = ({ navigation }) => {
   //   }
   // ];
 
+  function renderHeader() {
+    return
+    <HEADER
+      title="DELIVERY STATUS"
+    />
+  }
+
   return (
     <View style={styles.container}>
-      <Text>This is the Errand Tracker Component</Text>
+
+      {/** HEADER*/}
+
+      {/**MAP */}
+      {/**Info */}
+      {/**Deliverer*/}
+      <Text>Errand Status</Text>
       <Button
         title="Go to Map"
         onPress={() => navigation.push('Map')} // push the name property of the Stack.Screen component as defined in App.jsx
