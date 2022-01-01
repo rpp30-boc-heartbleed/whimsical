@@ -12,7 +12,7 @@ import TestModal from './../Modals/TestModal.jsx';
 import AccordianList from './../Shared/AccordianList.jsx';
 const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
 
-const ErrandMap = ({ streetName, duration }) => {
+const ErrandMap = ({ streetName, duration, errandLocation, navigation }) => {
   return (
     <>
       <View
@@ -52,8 +52,66 @@ const ErrandMap = ({ streetName, duration }) => {
           <Text>{Math.ceil(10)} mins</Text>
         </View>
       </View>
+      <View
+        style={{
+          position: 'absolute',
+          bottom: 50,
+          left: 0,
+          right: 0,
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}>
+        <View
+          style={{
+            width: SIZES.width * 0.9,
+            paddingVertical: SIZES.padding * 3,
+            paddingHorizontal: SIZES.padding * 2,
+            borderRadius: SIZES.radius,
+            backgroundColor: COLORS.white,
+          }}>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+            }}>
+            <View
+              style={{
+                width: SIZES.width * 0.9,
+                paddingVertical: SIZES.padding * 3,
+                paddingHorizontal: SIZES.padding * 2,
+                borderRadius: SIZES.radius,
+                backgroundColor: COLORS.white,
+              }}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  alignItems: 'center',
+                }}>
+                <Image
+                  source={icons.cat}
+                  style={{
+                    width: 50,
+                    height: 50,
+                    marginRight: SIZES.padding,
+                  }} />
+                <Text>Cat</Text>
+                <View style={{ flexDirection: 'row' }}>
+                  <Image
+                    source={icons.star}
+                    style={{
+                      width: 30,
+                      height: 30,
+                      marginRight: SIZES.padding,
+                    }} />
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
     </>
   );
 };
 
 export default ErrandMap;
+

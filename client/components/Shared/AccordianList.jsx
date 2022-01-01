@@ -9,7 +9,7 @@ const AccordianList = () => {
   return (
     <List.Section title="Accordion List Sample">
       <List.Accordion
-        title="Controlled Accordion"
+        title="Controlled Accordion List"
         left={props => <List.Icon {...props} icon="equal" />}
         expanded={expanded}
         onPress={handlePress}>
