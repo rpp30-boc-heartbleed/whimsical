@@ -16,14 +16,17 @@ import {
 import errandState from '../../state/atoms/errands'
 const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
 // console.log(GOOGLE_MAPS_API_KEY)
-import MapContainer from '../Map/MapContainer.jsx';
-//my component will have to be imported from dashboard
+import ErrandMap from './ErrandMap.jsx';
+
 
 const ErrandTrackerContainer = ({ route, navigation }) => {
   const [errands, setErrands] = useRecoilState(errandState);
 
   return (
     <View style={styles.container}>
+      <ErrandMap
+      />
+
       <Button
         title="Go to Map"
         onPress={() => navigation.push('Map')} // push the name property of the Stack.Screen component as defined in App.jsx

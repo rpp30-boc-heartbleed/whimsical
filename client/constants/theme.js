@@ -5,8 +5,8 @@ const {width, height} = Dimensions.get('window');
 export const COLORS = {
 
 // PRIMARY & SECONDARY COLORS
-primary: '#1E1F20'; //black
-secondary: '#CDCDD2'; //gray
+primary: '#1E1F20', //black
+secondary: '#CDCDD2', //gray
 
 // COLORS
 black: '#1E1F20',
@@ -31,7 +31,7 @@ h3: 20,
 h4: 18,
 body1: 30,
 body2: 20,
-body3: 16
+body3: 16,
 
 // Dimension of App
 width,
