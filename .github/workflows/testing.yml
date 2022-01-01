@@ -8,6 +8,9 @@ jobs:
   test:
     name: Test with Jest
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        app: [ managed ]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -43,8 +46,8 @@ jobs:
           node-version: 16
       - uses: expo/expo-github-action@v5
         with:
-          packager: npm
-          token: ${{ secrets.EXPO_TOKEN }}
+          expo-packager: npm
+          expo-token: ${{ secrets.EXPO_TOKEN }}
           expo-cache: true
       - name: Cache node_modules
         uses: actions/cache@v2
