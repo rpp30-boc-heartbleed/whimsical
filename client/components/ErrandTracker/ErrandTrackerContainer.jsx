@@ -1,5 +1,6 @@
 import React from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
+import { Modal, Portal, Text, Button, Provider } from 'react-native-paper';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
 import {
@@ -9,6 +10,7 @@ import {
   TextInput,
   StatusBar,
   Button,
+  Dimensions,
   TouchableOpacity
 } from 'react-native';
 import errandState from '../../state/atoms/errands'
