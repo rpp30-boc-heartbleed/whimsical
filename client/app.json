@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Quick Bagel",
+    "name": "whimsical",
     "owner": "heartbleed",
-    "slug": "quick-bagel",
+    "slug": "whimsical",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/favicon.png",
@@ -18,7 +18,10 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "config": {
+        "googleMapsApiKey": "AIzaSyCfs9-NoMSC1HooTgUS8wtbd4c7nACgf20"
+      }
     },
     "android": {
       "adaptiveIcon": {
