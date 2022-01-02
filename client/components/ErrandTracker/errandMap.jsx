@@ -17,7 +17,8 @@ import {
 } from 'react-native';
 import errandState from '../../state/atoms/errands'
 const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
-console.log(GOOGLE_MAPS_API_KEY)
+// import Courier from './BottomSheet/Courier.jsx';
+
 
 const ErrandMap = ({ streetName, duration, errandLocation, navigation }) => {
 
@@ -29,18 +30,18 @@ const ErrandMap = ({ streetName, duration, errandLocation, navigation }) => {
   }
   return (
     <>
-      <MapView
+      < MapView
         provider={PROVIDER_GOOGLE}
         apikey={GOOGLE_MAPS_API_KEY}
         region={location}
         style={{ height: 400, width: Dimensions.get('window').width }}
-        />
-        <MapViewDirection
-          apikey={GOOGLE_MAPS_API_KEY}
-          strokeColor={COLORS.primary}
-        />
-        <View
-          yle={{
+      />
+      <MapViewDirection
+        apikey={GOOGLE_MAPS_API_KEY}
+        strokeColor={COLORS.primary}
+      />
+      {/* <View
+        style={{
           position: 'absolute',
           top: 50,
           left: 0,
@@ -48,7 +49,7 @@ const ErrandMap = ({ streetName, duration, errandLocation, navigation }) => {
           height: 50,
           alignItems: 'center',
           justifyContent: 'center',
-          }}>
+        }}>
         <View
           style={{
             flexDirection: 'row',
@@ -75,8 +76,8 @@ const ErrandMap = ({ streetName, duration, errandLocation, navigation }) => {
           </View>
           <Text>{Math.ceil(10)} mins</Text>
         </View>
-      </View>
-      <View
+      </View > */}
+      {/* <View
         style={{
           position: 'absolute',
           bottom: 50,
@@ -110,29 +111,30 @@ const ErrandMap = ({ streetName, duration, errandLocation, navigation }) => {
                 style={{
                   flexDirection: 'row',
                   alignItems: 'center',
-                }}>
-                <Image
-                  source={images.cat}
-                  style={{
-                    width: 50,
-                    height: 50,
-                    marginRight: SIZES.padding,
-                  }} />
-                <Text>Cat</Text>
-                <View style={{ flexDirection: 'row' }}>
-                  <Image
-                    source={icons.star}
-                    style={{
-                      width: 30,
-                      height: 30,
-                      marginRight: SIZES.padding,
-                    }} />
-                </View>
-              </View>
+                }}> */}
+      {/* <Image
+              source={images.cat}
+              style={{
+                width: 50,
+                height: 50,
+                marginRight: SIZES.padding,
+              }} />
+            <Text>Cat</Text>
+            <View style={{ flexDirection: 'row' }}>
+              <Image
+                source={icons.star}
+                style={{
+                  width: 30,
+                  height: 30,
+                  marginRight: SIZES.padding,
+                }} /> */}
+      {/* </View> */}
+      {/* </View>
             </View>
           </View>
         </View>
-      </View>
+      </View> */}
+
     </>
   );
 };
