@@ -19,6 +19,9 @@ const router = express.Router();
 // FEED
 
 // USER PROFILE
+router.get('/userProfile/get', userProfile.get);
+router.post('/userProfile/edit', userProfile.post);
+router.post('/userProfile/image', userProfile.image);
 
 // FRIENDS
 router.get('/friends/get', friendsList.get);
