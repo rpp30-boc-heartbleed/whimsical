@@ -14,6 +14,7 @@ import {
 
 import NavBarContainer from '../NavBar/NavBarContainer';
 import Search from './Search';
+import List from './List';
 
 import friendsListState from '../../state/atoms/friendsList';
 import friendsByNameState from '../../state/atoms/friendsByName';
@@ -36,32 +37,7 @@ const FriendsListContainer = ({ navigation }) => {
         <Text style={styles.heading}>Buddies</Text>
         <Text style={styles.number}>{friendsList.length} friends</Text>
         <Search />
-        {/* <View>
-          <TextInput
-            style={styles.search}
-            placeholder='SEARCH'
-            onChangeText={onChange}
-          />
-        </View> */}
-        <View style={styles.list}>
-          <FlatList
-            data={filteredByName}
-            renderItem={({ item, index }) => {
-              return (
-                <View>
-                  <Text>Profile pic</Text>
-                  <TouchableOpacity>
-                    <Text style={styles.friend}>
-                      {item.name}     {item.email}     {item.goldStars} gold stars
-                    </Text>
-                  </TouchableOpacity>
-                </View>
-              );
-            }}
-            keyExtractor={(friend) => friend.id}
-            keyboardShouldPersistTaps="handled"
-          />
-        </View>
+        <List />
       </View>
       <View>
         <NavBarContainer navigation={navigation} />
