@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { Title, Colors } from 'react-native-paper';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
-import MapViewDirection from 'react-native-maps-directions';
+import MapViewDirections from 'react-native-maps-directions';
 import { COLORS, SIZES, icons, images } from '../../constants';
 import {
   View,
@@ -27,21 +27,42 @@ const ErrandMap = ({ streetName, duration, errandLocation, navigation }) => {
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   }
+
+  let destination = {
+    latitude: 42.295906,
+    longitude: -85.601778
+  }
+
+  //house
+
+
+
+  //bagel latitude: 42.2966481,
+  // longitude: -85.6436558,
   return (
     <>
-      < MapView
+      <MapView
         provider={PROVIDER_GOOGLE}
         apikey={GOOGLE_MAPS_API_KEY}
         region={location}
         style={{ height: 400, width: Dimensions.get('window').width }}
-      />
-      <MapViewDirection
-        apikey={GOOGLE_MAPS_API_KEY}
-        strokeColor={COLORS.primary}
-      />
+      >
+        <Marker coordinate={location} title='Marker' />
+        <Marker coordinate={destination} title='Marker' />
+
+        <MapViewDirections
+          lineDashPattern={[0]}
+          origin={location}
+          destination={destination}
+          apikey={GOOGLE_MAPS_API_KEY}
+          strokeWidth={7}
+          strokeColor='#669df6'
+        />
+      </MapView >
     </>
   );
-};
+
+}
 
 export default ErrandMap;
 
