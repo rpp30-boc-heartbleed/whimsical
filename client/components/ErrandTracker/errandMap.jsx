@@ -1,37 +1,46 @@
-import React from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
-import { Modal, Portal, Provider, Headline, Colors } from 'react-native-paper';
+import React, { useState, useEffect } from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import { Title, Colors } from 'react-native-paper';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import MapViewDirection from 'react-native-maps-directions';
 import { COLORS, SIZES, icons, images } from '../../constants';
+import {
+  View,
+  Image,
+  Text,
+  StyleSheet,
+  TextInput,
+  StatusBar,
+  Button,
+  Dimensions,
+  TouchableOpacity
+} from 'react-native';
 import errandState from '../../state/atoms/errands'
-import Loading from './../Shared/Loading.jsx';
-import Avatar from './../Shared/Avatar.jsx';
-import Header from './../Shared/Header.jsx';
-import TestModal from './../Modals/TestModal.jsx';
-import AccordianList from './../Shared/AccordianList.jsx';
 const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
+console.log(GOOGLE_MAPS_API_KEY)
 
 const ErrandMap = ({ streetName, duration, errandLocation, navigation }) => {
+
   let location = {
     latitude: 42.2966481,
     longitude: -85.6436558,
-    latitudeDelta: 0.009,
-    longitudeDelta: 0.009,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
   }
   return (
     <>
       <MapView
         provider={PROVIDER_GOOGLE}
-        apiKey={GOOGLE_MAPS_API_KEY}
+        apikey={GOOGLE_MAPS_API_KEY}
         region={location}
-        style={{ flex: 1 }}>
+        style={{ height: 400, width: 300 }}
+        />
         <MapViewDirection
+          apikey={GOOGLE_MAPS_API_KEY}
           strokeColor={COLORS.primary}
         />
-      </MapView>
-      <View
-        style={{
+        <View
+          yle={{
           position: 'absolute',
           top: 50,
           left: 0,
@@ -39,7 +48,7 @@ const ErrandMap = ({ streetName, duration, errandLocation, navigation }) => {
           height: 50,
           alignItems: 'center',
           justifyContent: 'center',
-        }}>
+          }}>
         <View
           style={{
             flexDirection: 'row',

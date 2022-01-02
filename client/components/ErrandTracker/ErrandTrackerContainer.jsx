@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { Headline, Colors } from 'react-native-paper';
+import { Title, Colors } from 'react-native-paper';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
-import MapViewDirections from 'react-native-maps-directions';
+import MapViewDirection from 'react-native-maps-directions';
+import { COLORS, SIZES, icons, images } from '../../constants';
 import {
   View,
   Text,
@@ -14,11 +15,11 @@ import {
   TouchableOpacity
 } from 'react-native';
 import errandState from '../../state/atoms/errands'
+const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
+console.log(GOOGLE_MAPS_API_KEY)
 import ErrandMap from './ErrandMap.jsx';
 
 const ErrandTrackerContainer = ({ route, navigation }) => {
-  const [errands, setErrands] = useRecoilState(errandState);
-
   return (
     <View style={styles.container}>
       <ErrandMap />
@@ -39,11 +40,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    borderWidth: 1,
     borderRadius: 5,
     paddingLeft: 120,
     paddingRight: 120,
-    marginBottom: 10
+    marginBottom: 10,
   },
 });
 
