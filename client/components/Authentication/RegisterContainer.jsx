@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { atom, useRecoilState } from 'recoil';
 import {
   KeyboardAvoidingView,
   View,
@@ -9,34 +10,64 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
+import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+// import { AuthenticatedUserContext } from '../navigation/AuthenticatedUserProvider';
+import auth from '../../config/firebase';
 
 const RegisterContainer = ({ navigation }) => {
   const [userInfo, setUserInfo] = useState({
-    firstName: '',
-    lastName: '',
-    location: '',
+    name: '',
+    streetAddress: '',
+    zipCode: '',
+    imageURL: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
   });
-  const { firstName, lastName, location, email, password, confirmPassword } = userInfo;
+  const {
+    name,
+    streetAddress,
+    zipCode,
+    imageURL,
+    email,
+    password,
+    confirmPassword,
+  } = userInfo;
   const [error, setError] = useState('');
 
-  const handleOnChangeText = (value, fieldName) => {
-    console.log('form fields', fieldName, value);
-    setUserInfo({...userInfo, [fieldName]: value});
+  // Set an initializing state whilst Firebase connects
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
+  // Handle user state changes
+  const onAuthStateChanged = (user) => {
+    setUser(user);
+    if (initializing) setInitializing(false);
   };
+
+  // useEffect(() => {
+  //   const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
+  //   console.log('cxn detected');
+  //   return subscriber; // unsubscribe on unmount
+  // });
+
+  const handleOnChangeText = (value, fieldName) => {
+    // console.log('form fields', fieldName, value);
+    setUserInfo({ ...userInfo, [fieldName]: value });
+  };
+
+  // form validation
   const isValidField = (obj) => {
     // is field empty?
     return Object.values(obj).every((value) => value.trim());
-  }
+  };
   const isValidEmail = (str) => {
+    // eslint-disable-next-line no-useless-escape
     const regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(str);
-  }
+  };
   const isValidForm = () => {
     // all fields must have value
-    if(!isValidField(userInfo)) {
+    if (!isValidField(userInfo)) {
       return setError('All fields are required');
     }
     // check if email is valid
@@ -52,56 +83,80 @@ const RegisterContainer = ({ navigation }) => {
       return setError('Passwords must match!');
     }
     return true;
-  }
+  };
+
+  // create user authentication account in firebase
+  const handleSignUp = (auth, email, password) => {
+    console.log('hit sign up');
+    createUserWithEmailAndPassword(auth.auth, email, password)
+      .then((userCredentials) => {
+        const { user } = userCredentials;
+        console.log('registered', user.email, user.uid);
+        // navigation.navigate('Dashboard');
+        navigation.replace('Dashboard');
+      })
+      .catch((err) => {
+        console.error('error', err.code);
+        if (err.code === 'auth/invalid-value-(email),-starting-an-object-on-a-scalar-field') {
+          setError('Please enter a valid email address');
+        }
+      });
+  };
+
+  // submit form to db and firebase auth -> auto login user
   const submitForm = () => {
-    if(isValidForm()) {
-      // submit form
-      console.log('form info', userInfo);
-      // if authenticated, navigate to Dashboard
-       // navigation.navigate('Dashboard');
+    if (isValidForm()) {
+      // add user data to mongoDB
+      // add email and password to firebase authentication
+      handleSignUp(auth, email, password);
       // clear form
       setUserInfo({
-        firstName: '',
-        lastName: '',
-        location: '',
+        name: '',
+        streetAddress: '',
+        zipCode: '',
+        imageURL: '',
         email: '',
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
       });
       setError('');
     }
-  }
+  };
+
   return (
     <KeyboardAvoidingView style={styles.container} behavior='padding'>
       <View>
         <Text>Welcome to Quick Bagel!</Text>
-        <Button
-          title="Go to FriendsList"
-          onPress={() => navigation.push('FriendsList')} // push the name property of the Stack.Screen component as defined in App.jsx
-        />
-        <Button title="Go to Dashboard" onPress={() => navigation.navigate('Dashboard')} />
-        <StatusBar />
+        {/* <StatusBar /> */}
       </View>
       <View style={styles.inputContainer}>
         {error ? <Text style={styles.error}>{error}</Text> : null}
         <TextInput
           style={styles.input}
-          placeholder='first name'
-          value={firstName}
-          onChangeText={(value) => handleOnChangeText(value, 'firstName')}
+          placeholder='name'
+          value={name}
+          onChangeText={(value) => handleOnChangeText(value, 'name')}
         />
         <TextInput
           style={styles.input}
-          placeholder='last name'
-          value={lastName}
-          onChangeText={(value) => handleOnChangeText(value, 'lastName')}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder='address'
+          placeholder='street address'
           autoCapitalize='none'
-          value={location}
-          onChangeText={(value) => handleOnChangeText(value, 'location')}
+          value={streetAddress}
+          onChangeText={(value) => handleOnChangeText(value, 'streetAddress')}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder='zip code'
+          autoCapitalize='none'
+          value={zipCode}
+          onChangeText={(value) => handleOnChangeText(value, 'zipCode')}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder='image url'
+          autoCapitalize='none'
+          value={imageURL}
+          onChangeText={(value) => handleOnChangeText(value, 'imageURL')}
         />
         <TextInput
           style={styles.input}
