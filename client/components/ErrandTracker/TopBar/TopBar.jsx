@@ -5,7 +5,7 @@ import { COLORS, SIZES, icons, images } from '../../../constants';
 const TopBar = () => (
   <>
     <View style={styles.container}>
-      <Text>ETA: 45 MINUTES </Text>
+      <Text>ETA: 5 MINUTES </Text>
       <Image
         source={icons.redPin}
         style={{
