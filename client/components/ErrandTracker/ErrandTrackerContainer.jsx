@@ -11,10 +11,10 @@ import {
   StatusBar,
   Button,
   Dimensions,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
-import errandState from '../../state/atoms/errands'
-import ErrandMap from './ErrandMap.jsx';
+import errandState from '../../state/atoms/errands';
+import ErrandMap from './ErrandMap';
 
 const ErrandTrackerContainer = ({ route, navigation }) => {
   const [errands, setErrands] = useRecoilState(errandState);
@@ -28,8 +28,8 @@ const ErrandTrackerContainer = ({ route, navigation }) => {
       />
       <Button title="Go to Dashboard" onPress={() => navigation.navigate('Dashboard')} />
       <Button title="Go back" onPress={() => navigation.goBack()} />
-      <StatusBar style="auto" />
-    </View >
+      {/* <StatusBar style="auto" /> */}
+    </View>
   );
 };
 
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingLeft: 120,
     paddingRight: 120,
-    marginBottom: 10
+    marginBottom: 10,
   },
 });
 

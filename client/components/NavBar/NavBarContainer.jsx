@@ -18,8 +18,9 @@ const NavBarContainer = ({ navigation }) => {
       <TouchableOpacity>
         <Icon size={30} name='user' onPress={() => navigation.push('UserProfile')} />
       </TouchableOpacity>
+      {/* Add Errand */}
       <TouchableOpacity>
-        <Icon size={30} name='plus-circle' />
+        <Icon size={30} name='plus-circle' onPress={() => ''} />
       </TouchableOpacity>
       {/* FriendsList */}
       <TouchableOpacity>
