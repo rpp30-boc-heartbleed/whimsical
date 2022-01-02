@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 
 import {
@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 
 import NavBarContainer from '../NavBar/NavBarContainer';
+import Search from './Search';
 
 import friendsListState from '../../state/atoms/friendsList';
 import friendsByNameState from '../../state/atoms/friendsByName';
@@ -20,7 +21,6 @@ import filteredByNameSelector from '../../state/selectors/filterFriendsByName';
 import friendsListQuery from '../../state/selectors/friendsListQuery';
 
 const FriendsListContainer = ({ navigation }) => {
-  const [input, setInput] = useState('');
   const [friendsList, setFriendsList] = useRecoilState(friendsListState);
   const setNameFilter = useSetRecoilState(friendsByNameState);
   const filteredByName = useRecoilValue(filteredByNameSelector);
@@ -30,23 +30,19 @@ const FriendsListContainer = ({ navigation }) => {
     setNameFilter(value);
   };
 
-  // const onPress = () => {
-  //   setNameFilter(input);
-  // };
-
   return (
     <>
       <View style={styles.container}>
         <Text style={styles.heading}>Buddies</Text>
         <Text style={styles.number}>{friendsList.length} friends</Text>
-        <View>
+        <Search />
+        {/* <View>
           <TextInput
             style={styles.search}
             placeholder='SEARCH'
             onChangeText={onChange}
           />
-          {/* <Button title='Search' onPress={onPress} /> */}
-        </View>
+        </View> */}
         <View style={styles.list}>
           <FlatList
             data={filteredByName}

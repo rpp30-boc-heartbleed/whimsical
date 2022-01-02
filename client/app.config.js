@@ -22,7 +22,7 @@ export default {
     ios: {
       supportsTablet: true,
       config: {
-        googleMapsApiKey: 'AIzaSyCfs9-NoMSC1HooTgUS8wtbd4c7nACgf20'
+        googleMapsApiKey: 'AIzaSyCfs9-NoMSC1HooTgUS8wtbd4c7nACgf20',
       },
     },
     android: {
