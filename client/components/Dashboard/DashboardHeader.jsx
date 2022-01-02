@@ -7,14 +7,26 @@ import {
   StatusBar,
   Button,
 } from 'react-native';
+import { signOut } from 'firebase/auth';
+import auth from '../../config/firebase';
 
 const DashboardHeader = ({ navigation }) => {
+  const handleSignOut = (auth) => {
+    signOut(auth.auth)
+      .then(() => {
+        navigation.replace('Login');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <View style={styles.outercontainer}>
       <View style={styles.container}>
         <Text style={styles.profilePic}>AA</Text>
         <TextInput style={styles.searchBar}>Search Bar Here</TextInput>
-        <Text style={styles.logout}>logout</Text>
+        {/* <Text style={styles.logout}>logout</Text> */}
+        <Button title='sign out' onPress={() => handleSignOut(auth)} />
       </View>
       <View style={styles.filter}>
         <Text style={styles.filterText}>Current Filter: Most Recent ▼</Text>

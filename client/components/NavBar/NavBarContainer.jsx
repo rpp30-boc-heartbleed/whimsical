@@ -16,27 +16,23 @@ const NavBarContainer = ({ navigation }) => {
       {/* <Text>This is the NavBar Component</Text> */}
       {/* Profile */}
       <TouchableOpacity>
-        <Icon size={30} name='user' onPress={() => navigation.push('UserProfile')}></Icon>
+        <Icon size={30} name='user' onPress={() => navigation.push('UserProfile')} />
       </TouchableOpacity>
-      {/* <Button
-        title="Go to User Profile"
-        onPress={() => navigation.push('UserProfile')} // push the name property of the Stack.Screen component as defined in App.jsx
-      /> */}
-      {/* Add */}
+      {/* Add Errand */}
       <TouchableOpacity>
-        <Icon size={30} name='plus-circle'></Icon>
+        <Icon size={30} name='plus-circle' onPress={() => ''} />
       </TouchableOpacity>
       {/* FriendsList */}
       <TouchableOpacity>
-        <Icon size={30} name='users' onPress={() => navigation.push('FriendsList')}></Icon>
+        <Icon size={30} name='users' onPress={() => navigation.push('FriendsList')} />
       </TouchableOpacity>
       {/* Map */}
       <TouchableOpacity>
-        <Icon size={30} name='map-marker'></Icon>
+        <Icon size={30} name='map-marker' />
       </TouchableOpacity>
       {/* Dashboard */}
       <TouchableOpacity>
-        <Icon size={30} name='home' onPress={() => navigation.navigate('Dashboard')}></Icon>
+        <Icon size={30} name='home' onPress={() => navigation.navigate('Dashboard')} />
       </TouchableOpacity>
       {/* <Button title="Go to Dashboard" onPress={() => navigation.navigate('Dashboard')} /> */}
       {/* <Button title="Go back" onPress={() => navigation.goBack()} /> */}

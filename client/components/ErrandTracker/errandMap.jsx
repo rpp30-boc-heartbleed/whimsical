@@ -65,4 +65,3 @@ const ErrandMap = ({ streetName, duration, errandLocation, navigation }) => {
 }
 
 export default ErrandMap;
-
