@@ -1,9 +1,7 @@
-/***
-create new errand with
-1. name of errand
-2. store location
-3. radius
-***/
+// create new errand with
+// 1. name of errand
+// 2. store location
+// 3. radius
 
 // 1227 Jefferson Ave Kalamazoo, MI 49006
 export const testUser = {
@@ -16,10 +14,9 @@ export const testUser = {
   },
   gps: {
     latitude: 42.295906,
-    longitude: -85.601778
+    longitude: -85.601778,
   },
 };
-
 
 export const mockErrandsData = [
   {

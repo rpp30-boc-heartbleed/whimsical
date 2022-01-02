@@ -1,3 +1,4 @@
+/* eslint-disable react/style-prop-object */
 import React, { useState, useEffect } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { Headline, Colors } from 'react-native-paper';
@@ -29,7 +30,7 @@ const ErrandTrackerContainer = ({ route, navigation }) => {
       <Button title="Go to Dashboard" onPress={() => navigation.navigate('Dashboard')} />
       <Button title="Go back" onPress={() => navigation.goBack()} />
       <StatusBar style="auto" />
-    </View >
+    </View>
   );
 };
 
@@ -43,7 +44,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingLeft: 120,
     paddingRight: 120,
-    marginBottom: 10
+    marginBottom: 10,
   },
 });
 

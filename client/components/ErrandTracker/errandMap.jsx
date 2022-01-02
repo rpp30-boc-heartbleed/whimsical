@@ -1,24 +1,27 @@
+/* eslint-disable object-curly-newline */
+/* eslint-disable react/jsx-closing-bracket-location */
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { Modal, Portal, Provider, Headline, Colors } from 'react-native-paper';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
-import { GOOGLE_MAPS_API_KEY } from '@env';
 import { COLORS, SIZES, icons, images } from '../../constants';
 import errandState from '../../state/atoms/errands';
-import Loading from './../Shared/Loading.jsx';
-import Avatar from './../Shared/Avatar.jsx';
-import Header from './../Shared/Header.jsx';
-import TestModal from './../Modals/TestModal.jsx';
-import AccordianList from './../Shared/AccordianList.jsx';
+import Loading from '../Shared/Loading';
+import Avatar from '../Shared/Avatar';
+import Header from '../Shared/Header';
+import TestModal from '../Modals/TestModal';
+import AccordianList from '../Shared/AccordianList';
+
+const { GOOGLE_MAPS_API_KEY } = process.env;
 
 const ErrandMap = ({ streetName, duration, errandLocation, navigation }) => {
-  let location = {
+  const location = {
     latitude: 42.2966481,
     longitude: -85.6436558,
     latitudeDelta: 0.009,
     longitudeDelta: 0.009,
-  }
+  };
   return (
     <>
       <MapView
@@ -130,4 +133,3 @@ const ErrandMap = ({ streetName, duration, errandLocation, navigation }) => {
 };
 
 export default ErrandMap;
-
