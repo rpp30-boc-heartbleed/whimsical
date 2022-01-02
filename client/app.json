@@ -17,9 +17,18 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.BlueOcean.quickBagel",
+      "config": {
+        "googleMapsApiKey": "<ios maps api key>"
+      },
       "supportsTablet": true
     },
     "android": {
+      "config": {
+        "googleMaps": {
+          "apiKey": "<android maps key>"
+        }
+      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/favicon.png",
         "backgroundColor": "#FFFFFF"
