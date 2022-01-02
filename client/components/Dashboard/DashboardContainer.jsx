@@ -6,34 +6,22 @@ import {
   TextInput,
   StatusBar,
   Button,
+  ScrollView,
 } from 'react-native';
-import { signOut } from 'firebase/auth';
-import auth from '../../config/firebase';
 import DashboardHeader from './DashboardHeader';
 import DashboardStats from './DashboardStats';
 import DashboardBody from './DashboardBody';
+import NavBar from '../NavBar/NavBarContainer';
 
 const DashboardContainer = ({ navigation }) => {
-  const handleSignOut = (auth) => {
-    console.log('auth', auth);
-    signOut(auth.auth)
-      .then(() => {
-        navigation.replace('Login');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
   return (
     <View style={styles.container}>
       <DashboardHeader />
-      <DashboardStats />
-      <DashboardBody />
-
-      <View style={styles.links}>
-        <Button title="Go to Errand Tracker" onPress={() => navigation.push('ErrandTracker')} />
-        <Button title='sign out' onPress={() => handleSignOut(auth)} />
-      </View>
+      <ScrollView style={styles.scrollview}>
+        <DashboardStats />
+        <DashboardBody />
+      </ScrollView>
+      <NavBar navigation={navigation} style={styles.navbar} />
     </View>
   );
 };
@@ -42,11 +30,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    // justifyContent: 'center',
   },
-  links: {
-    paddingTop: 20,
+  scrollview: {
+    marginBottom: -53,
+  },
+  navbar: {
+    backgroundColor: 'yellow',
+    justifyContent: 'flex-end',
   },
 });
 
