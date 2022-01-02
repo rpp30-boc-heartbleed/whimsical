@@ -14,7 +14,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import errandState from '../../state/atoms/errands';
-import ErrandMap from './ErrandMap';
+import ErrandMap from './errandMap';
 
 const ErrandTrackerContainer = ({ route, navigation }) => {
   const [errands, setErrands] = useRecoilState(errandState);
