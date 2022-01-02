@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, Image, Text } from 'react-native';
 import { Title, Colors } from 'react-native-paper';
 import { COLORS, SIZES, icons, images } from '../../../constants';
@@ -6,16 +6,19 @@ import ProfilePhoto from '../../Shared/Avatar.jsx';
 
 //Click Avatar Picture to go to User profile
 
-const Courier = () => (
-  <View style={styles.container}>
-    <ProfilePhoto style={styles.image} />
-    <Text style={styles.profileName}> Lady Beth </Text>
-    <View style={styles.container2}>
-      <Image source={icons.star} style={styles.starImage} />
-      <Text style={styles.starCount}>9000</Text>
+const Courier = () => {
+  const [count, setCount] = useState(9000)
+  return (
+    <View style={styles.container}>
+      <ProfilePhoto style={styles.image} />
+      <Text style={styles.profileName}> Lady Beth </Text>
+      <View style={styles.container2}>
+        <Image source={icons.star} style={styles.starImage} />
+        <Text style={styles.starCount} onPress={() => setCount(count + 1)}>{count}</Text>
+      </View>
     </View>
-  </View>
-);
+  )
+};
 
 
 const styles = StyleSheet.create({
