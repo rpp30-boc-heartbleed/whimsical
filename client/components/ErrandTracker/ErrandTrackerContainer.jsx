@@ -29,7 +29,7 @@ const ErrandTrackerContainer = ({ route, navigation }) => {
       <Button title="Go to Dashboard" onPress={() => navigation.navigate('Dashboard')} />
       <Button title="Go back" onPress={() => navigation.goBack()} />
       <StatusBar style="auto" />
-    </View >
+    </View>
   );
 };
 
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingLeft: 120,
     paddingRight: 120,
-    marginBottom: 10
+    marginBottom: 10,
   },
 });
 

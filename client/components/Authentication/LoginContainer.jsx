@@ -37,11 +37,7 @@ const LoginContainer = ({ navigation }) => {
   const [error, setError] = useState('');
 
   const handleOnChangeText = (value, fieldName) => {
-<<<<<<< HEAD:client/components/Login/LoginContainer.jsx
-    console.log('form fields', fieldName, value);
-=======
     // console.log('form fields', fieldName, value);
->>>>>>> 88eaa3e32161b222f57420ea1acdc67ae7c9b1d8:client/components/Authentication/LoginContainer.jsx
     setAuthenticationInfo({ ...authenticationInfo, [fieldName]: value });
   };
 
@@ -66,8 +62,6 @@ const LoginContainer = ({ navigation }) => {
     }
     return true;
   };
-<<<<<<< HEAD:client/components/Login/LoginContainer.jsx
-=======
 
   // authenticate user in firebase
   const handleLogin = (auth, email, password) => {
@@ -95,17 +89,12 @@ const LoginContainer = ({ navigation }) => {
   };
 
   // submit form -> authenticate and login user
->>>>>>> 88eaa3e32161b222f57420ea1acdc67ae7c9b1d8:client/components/Authentication/LoginContainer.jsx
   const submitForm = () => {
     if (isValidForm()) {
       // submit form
       console.log('form info', authenticationInfo);
       // if authenticated, navigate to Dashboard
-<<<<<<< HEAD:client/components/Login/LoginContainer.jsx
-      // navigation.navigate('Dashboard');
-=======
       handleLogin(auth, email, password);
->>>>>>> 88eaa3e32161b222f57420ea1acdc67ae7c9b1d8:client/components/Authentication/LoginContainer.jsx
       // clear form
       setAuthenticationInfo({
         email: '',

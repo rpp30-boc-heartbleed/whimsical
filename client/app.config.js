@@ -7,9 +7,9 @@ export default {
     slug: 'whimsical',
     version: '1.0.0',
     orientation: 'portrait',
-    icon: './assets/icon.png',
+    icon: './assets/favicon.png',
     splash: {
-      image: './assets/splash.png',
+      image: './assets/icons/bagel-icon.png',
       resizeMode: 'contain',
       backgroundColor: '#ffffff',
     },
@@ -21,10 +21,13 @@ export default {
     ],
     ios: {
       supportsTablet: true,
+      config: {
+        googleMapsApiKey: 'AIzaSyCfs9-NoMSC1HooTgUS8wtbd4c7nACgf20'
+      },
     },
     android: {
       adaptiveIcon: {
-        foregroundImage: './assets/adaptive-icon.png',
+        foregroundImage: './assets/favicon.png',
         backgroundColor: '#FFFFFF',
       },
     },

@@ -3,7 +3,6 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { Modal, Portal, Provider, Headline, Colors } from 'react-native-paper';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
-import { GOOGLE_MAPS_API_KEY } from '@env';
 import { COLORS, SIZES, icons, images } from '../../constants';
 import errandState from '../../state/atoms/errands';
 import Loading from './../Shared/Loading.jsx';
@@ -11,6 +10,7 @@ import Avatar from './../Shared/Avatar.jsx';
 import Header from './../Shared/Header.jsx';
 import TestModal from './../Modals/TestModal.jsx';
 import AccordianList from './../Shared/AccordianList.jsx';
+const { GOOGLE_MAPS_API_KEY } = process.env;
 
 const ErrandMap = ({ streetName, duration, errandLocation, navigation }) => {
   let location = {
@@ -130,4 +130,3 @@ const ErrandMap = ({ streetName, duration, errandLocation, navigation }) => {
 };
 
 export default ErrandMap;
-
