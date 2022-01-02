@@ -6,6 +6,7 @@ module.exports = function (api) {
       'babel-preset-expo',
     ],
     plugins: [
+<<<<<<< HEAD
       [
         'module:react-native-dotenv',
         // {
@@ -17,6 +18,9 @@ module.exports = function (api) {
         //   allowUndefined: true,
         // },
       ],
+=======
+      ["module:react-native-dotenv"]
+>>>>>>> dev
     ],
     env: {
       production: {
