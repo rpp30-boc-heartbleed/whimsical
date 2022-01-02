@@ -1,10 +1,6 @@
 {
   "expo": {
-<<<<<<< HEAD
     "name": "Quick Bagel",
-=======
-    "name": "quick-bagel",
->>>>>>> dev
     "owner": "heartbleed",
     "slug": "quick-bagel",
     "version": "1.0.0",
