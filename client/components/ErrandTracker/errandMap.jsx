@@ -2,15 +2,15 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { Modal, Portal, Provider, Headline, Colors } from 'react-native-paper';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
-import MapViewDirection from 'react-native-maps-directions';
+import MapViewDirections from 'react-native-maps-directions';
+import { GOOGLE_MAPS_API_KEY } from '@env';
 import { COLORS, SIZES, icons, images } from '../../constants';
-import errandState from '../../state/atoms/errands'
+import errandState from '../../state/atoms/errands';
 import Loading from './../Shared/Loading.jsx';
 import Avatar from './../Shared/Avatar.jsx';
 import Header from './../Shared/Header.jsx';
 import TestModal from './../Modals/TestModal.jsx';
 import AccordianList from './../Shared/AccordianList.jsx';
-const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
 
 const ErrandMap = ({ streetName, duration, errandLocation, navigation }) => {
   let location = {
@@ -26,7 +26,8 @@ const ErrandMap = ({ streetName, duration, errandLocation, navigation }) => {
         apiKey={GOOGLE_MAPS_API_KEY}
         region={location}
         style={{ flex: 1 }}>
-        <MapViewDirection
+        <MapViewDirections
+          apiKey={GOOGLE_MAPS_API_KEY}
           strokeColor={COLORS.primary}
         />
       </MapView>

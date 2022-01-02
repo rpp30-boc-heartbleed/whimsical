@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 import React, { useState } from 'react';
 import {
   KeyboardAvoidingView,
@@ -23,19 +24,19 @@ const LoginContainer = ({ navigation }) => {
 
   const handleOnChangeText = (value, fieldName) => {
     console.log('form fields', fieldName, value);
-    setAuthenticationInfo({...authenticationInfo, [fieldName]: value});
+    setAuthenticationInfo({ ...authenticationInfo, [fieldName]: value });
   };
   const isValidField = (obj) => {
     // is field empty?
     return Object.values(obj).every((value) => value.trim());
-  }
+  };
   const isValidEmail = (str) => {
     const regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(str);
-  }
+  };
   const isValidForm = () => {
     // all fields must have value
-    if(!isValidField(authenticationInfo)) {
+    if (!isValidField(authenticationInfo)) {
       return setError('All fields are required');
     }
     // check if email is valid
@@ -43,13 +44,13 @@ const LoginContainer = ({ navigation }) => {
       return setError('Invalid email address');
     }
     return true;
-  }
+  };
   const submitForm = () => {
-    if(isValidForm()) {
+    if (isValidForm()) {
       // submit form
       console.log('form info', authenticationInfo);
       // if authenticated, navigate to Dashboard
-       // navigation.navigate('Dashboard');
+      // navigation.navigate('Dashboard');
       // clear form
       setAuthenticationInfo({
         email: '',
@@ -172,7 +173,7 @@ const styles = StyleSheet.create({
   navbar: {
     justifyContent: 'flex-end',
     alignContent: 'space-between',
-  }
+  },
 });
 
 export default LoginContainer;

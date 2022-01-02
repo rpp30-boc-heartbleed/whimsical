@@ -11,10 +11,10 @@ import {
   StatusBar,
   Button,
   Dimensions,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
-import errandState from '../../state/atoms/errands'
-import ErrandMap from './ErrandMap.jsx';
+import errandState from '../../state/atoms/errands';
+import ErrandMap from './errandMap';
 
 const ErrandTrackerContainer = ({ route, navigation }) => {
   const [errands, setErrands] = useRecoilState(errandState);
