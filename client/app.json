@@ -21,6 +21,13 @@
       "config": {
         "googleMapsApiKey": "<ios maps api key>"
       },
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "track app user",
+        "UIBackgroundModes": [
+          "location",
+          "fetch"
+        ]
+      },
       "supportsTablet": true
     },
     "android": {

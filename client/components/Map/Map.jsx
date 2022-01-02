@@ -1,43 +1,42 @@
 import React, { useState } from 'react';
+import {
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from 'recoil';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import { StyleSheet, Dimensions } from 'react-native';
+import userLocationState from '../../state/atoms/userLocation';
+import initLocationState from '../../state/atoms/initLocation';
 
 const { height, width } = Dimensions.get('window');
 
 const Map = () => {
-  const [location, setLocation] = useState('');
-
-  // const getInitialState = () => {
-  //   return {
-  //     region: {
-  //       latitude: 42.29171,
-  //       longitude: -85.58723,
-  //       latitudeDelta: 0.015,
-  //       longitudeDelta: 0.0121,
-  //     }
-  // }
-  // const onRegionChange = (region) => {
-  //   this.setState({ region });
-  // }
-
-  const initialRegion = {
-    latitude: 42.29171,
-    longitude: -85.58723,
-    latitudeDelta: 0.015,
-    longitudeDelta: 0.0121,
-  };
+  const initLocation = useRecoilValue(initLocationState);
+  const userLocation = useRecoilValue(userLocationState);
 
   return (
     <MapView
       style={styles.map}
       provider={PROVIDER_GOOGLE}
-      initialRegion={initialRegion}
+      initialRegion={initLocation}
       showsUserLocation
+      showsMyLocationButton
+      showsScale
       showsPointsOfInterest
       loadingEnabled
-    />
+    >
+      <Marker
+        title='user'
+        coordinate={userLocation}
+      />
+    </MapView>
   );
 };
+
+// need to make an API call to google.
+// I need to make some kind of mapping function that returns points of interest.
 
 const styles = StyleSheet.create({
   map: {

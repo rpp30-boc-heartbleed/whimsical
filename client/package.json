@@ -38,7 +38,9 @@
     "react-native-web": "0.17.1",
     "react-navigation": "^4.4.4",
     "recoil": "^0.5.2",
-    "watchman": "^1.0.0"
+    "watchman": "^1.0.0",
+    "expo-location": "~13.0.4",
+    "expo-permissions": "~13.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
