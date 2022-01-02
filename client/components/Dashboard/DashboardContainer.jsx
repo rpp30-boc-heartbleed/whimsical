@@ -16,7 +16,7 @@ import NavBar from '../NavBar/NavBarContainer';
 const DashboardContainer = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <DashboardHeader />
+      <DashboardHeader navigation={navigation} />
       <ScrollView style={styles.scrollview}>
         <DashboardStats />
         <DashboardBody />
