@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   KeyboardAvoidingView,
   View,
@@ -9,11 +9,26 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
+import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import auth from '../../config/firebase';
 import NavBarContainer from '../NavBar/NavBarContainer';
 
 const LoginContainer = ({ navigation }) => {
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
+  // Set an initializing state whilst Firebase connects
+  const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
+
+  // Handle user state changes
+  const onAuthStateChanged = (user) => {
+    setUser(user);
+    if (initializing) setInitializing(false);
+  };
+
+  // useEffect(() => {
+  //   const subscriber = auth.onAuthStateChanged(onAuthStateChanged);
+  //   return subscriber; // unsubscribe on unmount
+  // });
+
   const [authenticationInfo, setAuthenticationInfo] = useState({
     email: '',
     password: '',
@@ -22,20 +37,23 @@ const LoginContainer = ({ navigation }) => {
   const [error, setError] = useState('');
 
   const handleOnChangeText = (value, fieldName) => {
-    console.log('form fields', fieldName, value);
-    setAuthenticationInfo({...authenticationInfo, [fieldName]: value});
+    // console.log('form fields', fieldName, value);
+    setAuthenticationInfo({ ...authenticationInfo, [fieldName]: value });
   };
+
+  // form validation
   const isValidField = (obj) => {
     // is field empty?
     return Object.values(obj).every((value) => value.trim());
-  }
+  };
   const isValidEmail = (str) => {
+    // eslint-disable-next-line no-useless-escape
     const regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(str);
-  }
+  };
   const isValidForm = () => {
     // all fields must have value
-    if(!isValidField(authenticationInfo)) {
+    if (!isValidField(authenticationInfo)) {
       return setError('All fields are required');
     }
     // check if email is valid
@@ -43,13 +61,40 @@ const LoginContainer = ({ navigation }) => {
       return setError('Invalid email address');
     }
     return true;
-  }
+  };
+
+  // authenticate user in firebase
+  const handleLogin = (auth, email, password) => {
+    signInWithEmailAndPassword(auth.auth, email, password)
+      .then((userCredentials) => {
+        setUser(userCredentials.user);
+        console.log('logged in with', user.email, user.uid);
+        // navigation.navigate('Dashboard');
+        navigation.replace('Dashboard');
+      })
+      .catch((err) => {
+        console.log('error', err);
+        console.log('err code', err.code);
+        if (err.code === 'auth/invalid-value-(email),-starting-an-object-on-a-scalar-field') {
+          setError('Please enter a valid email address');
+        }
+        if (err.code === 'auth/wrong-password') {
+          setError('Please enter a valid password');
+        }
+        if (err.code === 'auth/user-not-found') {
+          setError('Please check the email address and try again');
+        }
+        setError("We're sorry. We're experiencing some technical difficulties. Please try again.");
+      });
+  };
+
+  // submit form -> authenticate and login user
   const submitForm = () => {
-    if(isValidForm()) {
+    if (isValidForm()) {
       // submit form
       console.log('form info', authenticationInfo);
       // if authenticated, navigate to Dashboard
-       // navigation.navigate('Dashboard');
+      handleLogin(auth, email, password);
       // clear form
       setAuthenticationInfo({
         email: '',
@@ -57,8 +102,10 @@ const LoginContainer = ({ navigation }) => {
       });
       setError('');
     }
-  }
-
+  };
+  // if (initializing) {
+  //   return null;
+  // }
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to Quick Bagel!</Text>
@@ -172,7 +219,7 @@ const styles = StyleSheet.create({
   navbar: {
     justifyContent: 'flex-end',
     alignContent: 'space-between',
-  }
+  },
 });
 
 export default LoginContainer;

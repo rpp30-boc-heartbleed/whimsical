@@ -7,8 +7,21 @@ import {
   StatusBar,
   Button,
 } from 'react-native';
+import { signOut } from 'firebase/auth';
+import auth from '../../config/firebase';
+// const auth = getAuth();
 
 const DashboardContainer = ({ navigation }) => {
+  const handleSignOut = (auth) => {
+    console.log('auth', auth);
+    signOut(auth.auth)
+      .then(() => {
+        navigation.replace('Login');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <View style={styles.container}>
       <Text>This is the Dashboard Component</Text>
@@ -18,6 +31,7 @@ const DashboardContainer = ({ navigation }) => {
       />
       <Button title="Go to Dashboard" onPress={() => navigation.navigate('Dashboard')} />
       <Button title="Go back" onPress={() => navigation.goBack()} />
+      <Button title='sign out' onPress={() => handleSignOut(auth)} />
       <StatusBar />
     </View>
   );
