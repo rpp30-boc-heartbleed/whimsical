@@ -33,7 +33,7 @@ const ErrandMap = ({ streetName, duration, errandLocation, navigation }) => {
         provider={PROVIDER_GOOGLE}
         apikey={GOOGLE_MAPS_API_KEY}
         region={location}
-        style={{ height: 400, width: 300 }}
+        style={{ height: 400, width: Dimensions.get('window').width }}
         />
         <MapViewDirection
           apikey={GOOGLE_MAPS_API_KEY}
