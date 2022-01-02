@@ -13,7 +13,7 @@ const DashboardHeader = ({ navigation }) => {
     <View style={styles.outercontainer}>
       <View style={styles.container}>
         <Text style={styles.profilePic}>AA</Text>
-        <TextInput style={styles.searchBar}>Search Bar Here</TextInput>
+        <TextInput style={styles.searchBar} placeholder="Search Bar Here" />
         <Text style={styles.logout}>logout</Text>
       </View>
       <View style={styles.filter}>
@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   container: {
-    // flex: 1,
     alignItems: 'center',
     backgroundColor: '#fff',
     flexDirection: 'row',
