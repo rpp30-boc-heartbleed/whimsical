@@ -15,7 +15,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import errandState from '../../state/atoms/errands'
-const GOOGLE_MAPS_API_KEY = process.env.GOOGLE_MAPS_API_KEY;
+import { GOOGLE_MAPS_API_KEY } from '@env';
 console.log(GOOGLE_MAPS_API_KEY)
 import TopBar from './TopBar/TopBar.jsx';
 import ErrandMap from './ErrandMap.jsx';
