@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-filename-extension */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   RecoilRoot,
   atom,
@@ -7,7 +7,8 @@ import {
   useRecoilState,
   useRecoilValue,
 } from 'recoil';
-
+import * as Location from 'expo-location';
+import * as Permissions from 'expo-permissions';
 import Navigation from './navigation/Navigation';
 
 function App() {
