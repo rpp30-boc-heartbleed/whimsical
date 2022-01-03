@@ -3,7 +3,8 @@ const { Friend } = require('../models/friendsList');
 const get = (req, res) => {
   Friend.find()
     .then((friends) => {
-      res.json({ message: 'you have 1 friend' });
+      console.log(friends);
+      res.json(friends);
     })
     .catch((err) => {
       console.log(err);

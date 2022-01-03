@@ -1,4 +1,5 @@
 module.exports = function (api) {
+  // eslint-disable-next-line react/destructuring-assignment
   api.cache(true);
   return {
     presets: [

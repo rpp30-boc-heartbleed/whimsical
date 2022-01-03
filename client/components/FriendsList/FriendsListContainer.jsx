@@ -1,49 +1,59 @@
-import React, { useState } from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import React from 'react';
+import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 
 import {
   View,
   Text,
-  Image,
   StyleSheet,
-  TouchableOpacity,
-  TextInput,
-  FlatList,
 } from 'react-native';
-import friendsListState from '../../state/atoms/friendsList';
 
-const FriendsListContainer = () => {
+// Components
+import {
+  AddFriend,
+  List,
+  Search,
+  Title,
+  Toggle,
+} from './SubComponents';
+import NavBarContainer from '../NavBar/NavBarContainer';
+import TestModal from '../Modals/TestModal';
+// State
+import friendsListState from '../../state/atoms/friendsList';
+import friendsByNameState from '../../state/atoms/friendsByName';
+import filteredByNameSelector from '../../state/selectors/filterFriendsByName';
+import friendsListQuery from '../../state/selectors/friendsListQuery';
+// Assets
+
+// Style
+import { SIZES } from '../../constants/theme';
+
+const { width } = SIZES;
+
+const FriendsListContainer = ({ navigation }) => {
   const [friendsList, setFriendsList] = useRecoilState(friendsListState);
+  const setNameFilter = useSetRecoilState(friendsByNameState);
+  const filteredByName = useRecoilValue(filteredByNameSelector);
+  // const friends = useRecoilValue(friendsListQuery);
+
+  const onChange = (value) => {
+    setNameFilter(value);
+  };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.heading}>Buddies</Text>
-      <Text style={styles.number}>{friendsList.length} friends</Text>
-      <TextInput
-        style={styles.search}
-        placeholder='SEARCH'
-      />
-      <View style={styles.list}>
-        <FlatList
-          data={friendsList}
-          renderItem={({ item, index }) => {
-            return (
-              <View>
-                <Text>Profile pic</Text>
-                <TouchableOpacity>
-                  <Text style={styles.friend}>
-                    {item.name}     {item.goldStars} gold stars
-                  </Text>
-                </TouchableOpacity>
-              </View>
-            );
-          }}
-          keyExtractor={(friend) => friend.id}
-          keyboardShouldPersistTaps="handled"
-        />
+    <>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Toggle style={styles.toggle} />
+          <Title style={styles.title} />
+          <AddFriend style={styles.addButton} />
+        </View>
+        <Search style={styles.search} />
+        <List style={styles.list} />
       </View>
-      <Text style={styles.navbar}>NAV BAR</Text>
-    </View>
+      <View>
+        <NavBarContainer navigation={navigation} />
+      </View>
+    </>
   );
 };
 
@@ -52,29 +62,34 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingBottom: '5%',
   },
-  heading: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    marginTop: '5%',
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '90%',
   },
-  number: {
-    fontSize: 12,
-    paddingBottom: '5%',
-  },
+  // toggle: {
+  //   flex: 1,
+  // },
+  // title: {
+  //   flex: 1,
+  // },
+  // addButton: {
+  //   flex: 1,
+  // },
   search: {
-    borderRadius: 10,
+    borderRadius: 30,
     fontSize: 14,
     borderColor: 'black',
     borderWidth: 1,
-    width: '70%',
-    height: 40,
-    paddingHorizontal: 100,
+    height: 50,
+    width: (width * 0.8),
+    textAlign: 'center',
   },
   list: {
     flex: 1,
-    width: '70%',
+    width: '100%',
   },
   friend: {
     padding: 15,
@@ -85,16 +100,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 60,
     marginTop: 25,
-  },
-  navbar: {
-    borderRadius: 10,
-    fontSize: 14,
-    borderColor: 'black',
-    borderWidth: 1,
-    width: '60%',
-    height: 40,
-    paddingHorizontal: 75,
-    paddingTop: 10,
   },
 });
 
