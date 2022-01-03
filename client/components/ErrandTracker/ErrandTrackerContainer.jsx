@@ -14,17 +14,12 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-<<<<<<< HEAD
-import errandState from '../../state/atoms/errands';
-import ErrandMap from './errandMap';
-=======
 import errandState from '../../state/atoms/errands'
 import { GOOGLE_MAPS_API_KEY } from '@env';
 console.log(GOOGLE_MAPS_API_KEY)
 import TopBar from './TopBar/TopBar.jsx';
-import ErrandMap from './ErrandMap.jsx';
+import ErrandMap from './errandMap.jsx';
 import BottomSheet from './BottomSheet/BottomSheet.jsx';
->>>>>>> 7df4ab6e22d05f405f0c16af0eca4fbaab7ef52d
 
 const ErrandTrackerContainer = ({ route, navigation }) => {
   return (

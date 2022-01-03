@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
-import { updatePassword } from "firebase/auth";
+import { getAuth, updatePassword } from "firebase/auth";
 import auth from '../../config/firebase';
 // import storage from '../../config/firebase';
 import 'firebase/storage';
@@ -187,11 +187,13 @@ const UserProfileContainer = ({ navigation }) => {
         <TextInput
           onSubmitEditing={handlePass}
           placeholder='Password'
+          autoCapitalize='none'
+          secureTextEntry
         />
-        <TextInput
+        {/* <TextInput
           onSubmitEditing={handlePass}
           placeholder='Confirm Password'
-        />
+        /> */}
         <TextInput
           // style={styles.editForm}
           onSubmitEditing={handleSubmitEmail}
