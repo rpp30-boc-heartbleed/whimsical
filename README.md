@@ -75,8 +75,7 @@
 ## About the App
 <!-- Add any additional content here pertaining to timeline, personal goals, etc-->
 
-* What does the app do & why did we build it?
-
+This application will allow the community to save time while running errands for one another. 
 <!--
 * What problem does it solve? Who uses it?
 * Why was it built?
@@ -224,10 +223,14 @@ What additional features do you plan to add, how do you plan to implement those 
 * UI/UX additions? -->
 
 <!-- Examples: websockets (socket.io) -->
+- [x] Login & Registration with Authentication
+- [ ] Real Time Geolocation Tracking 
+- [ ] Chat Functionality
+- [ ] Active Errand List
+- [ ] Post-Errand Rating Form 
 
-- [ ] Future Features
-- [ ] Future Features
-- [ ] Future Features
+
+ 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
