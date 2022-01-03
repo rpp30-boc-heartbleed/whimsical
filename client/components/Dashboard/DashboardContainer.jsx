@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
     marginBottom: -53,
   },
   navbar: {
-    backgroundColor: 'yellow',
     justifyContent: 'flex-end',
   },
 });
