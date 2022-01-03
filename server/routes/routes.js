@@ -2,7 +2,7 @@ const express = require('express');
 const multer = require('multer');
 const path = require('path');
 multer({
-  limits: { fieldSize: 10000000000000 * 10000000000000 * 10000000000000 }
+  limits: { fieldSize: 25 * 1024 * 1024 }
 })
 const storage = multer.diskStorage({
   destination: './public/uploads/images',

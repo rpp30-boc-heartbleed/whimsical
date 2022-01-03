@@ -26,10 +26,10 @@ app.use(express.json());
 const bucket = storage.bucket(process.env.GCLOUD_STORAGE_BUCKET);
 
 const get = (req, res) => {
-  console.log('query', req.query);
-  Profile.findOne()
+  console.log('query', req.query.email);
+  Profile.find({ email: req.query.email })
     .then((data) => {
-      console.log(data);
+      console.log('result', data);
       res.json(data);
     })
     .catch((err) => {

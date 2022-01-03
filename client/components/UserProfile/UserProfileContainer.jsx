@@ -13,25 +13,27 @@ import {
 } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
+import { updatePassword } from "firebase/auth";
+import auth from '../../config/firebase';
 // import storage from '../../config/firebase';
 import 'firebase/storage';
 
 import userProfileState from '../../state/atoms/userProfile';
-
+// console.log(auth);
 const UserProfileContainer = ({ navigation }) => {
   const [user, setUser] = useRecoilState(userProfileState);
   useEffect(() => {
-    axios.get('http://localhost:3000/userProfile/get') // add '?name=Ojeiku' to queryString
+    axios.get(`http://localhost:3000/userProfile/get?email=${auth.auth.currentUser.email}`) // add '?name=Ojeiku' to queryString
       .then((data) => {
-        console.log('loaded profile', data.data);
-        setUser(data.data);
+        // console.log('loaded profile', data.data);
+        setUser(data.data[0]);
       })
       .catch((err) => console.error(err));
   }, [setUser]);
   const handleSubmitUsername = (e) => {
     e.preventDefault();
     const value = e.nativeEvent.text;
-    console.log('old', user, 'target', e.target.value, e.nativeEvent.text);
+    // console.log('old', user, 'target', e.target.value, e.nativeEvent.text);
     const newUser = {
       name: value,
       email: user.email,
@@ -45,7 +47,7 @@ const UserProfileContainer = ({ navigation }) => {
       updatedUser: newUser,
     })
       .then(() => {
-        console.log('refreshing...', value);
+        // console.log('refreshing...', value);
         setUser(newUser);
       })
       .catch((err) => console.error(err));
@@ -53,7 +55,7 @@ const UserProfileContainer = ({ navigation }) => {
   const handleSubmitEmail = (e) => {
     e.preventDefault();
     const value = e.nativeEvent.text;
-    console.log('old', user, 'target', e.target.value, e.nativeEvent.text);
+    // console.log('old', user, 'target', e.target.value, e.nativeEvent.text);
     const newUser = {
       name: user.name,
       email: value,
@@ -67,7 +69,7 @@ const UserProfileContainer = ({ navigation }) => {
       updatedUser: newUser,
     })
       .then(() => {
-        console.log('refreshing...', value);
+        // console.log('refreshing...', value);
         setUser(newUser);
       })
       .catch((err) => console.error(err));
@@ -75,7 +77,7 @@ const UserProfileContainer = ({ navigation }) => {
   const handleSubmitLocation = (e) => {
     e.preventDefault();
     const value = e.nativeEvent.text;
-    console.log('old', user, 'target', e.target.value, e.nativeEvent.text);
+    // console.log('old', user, 'target', e.target.value, e.nativeEvent.text);
     const newUser = {
       name: user.name,
       email: user.email,
@@ -89,7 +91,7 @@ const UserProfileContainer = ({ navigation }) => {
       updatedUser: newUser,
     })
       .then(() => {
-        console.log('refreshing...', value);
+        // console.log('refreshing...', value);
         setUser(newUser);
       })
       .catch((err) => console.error(err));
@@ -129,13 +131,29 @@ const UserProfileContainer = ({ navigation }) => {
         }
       })
         .then((data) => {
-          console.log(data);
+          console.log('Image Saved!');
         })
         .catch((err) => {
           console.error(err);
         });
     }
   };
+  const handlePass = (e) => {
+    e.preventDefault();
+    const user = auth.auth.currentUser;
+    // console.log('user', user)
+    const newPassword = e.nativeEvent.text;
+
+    updatePassword(user, newPassword)
+      .then((data) => {
+      // If update is successful.
+        console.log('update successfull!', data);
+      })
+      .catch((err) => {
+        // If an error occurred
+        console.error(err);
+  });
+  }
 
   return (
     <>
@@ -167,9 +185,12 @@ const UserProfileContainer = ({ navigation }) => {
           placeholder='Username'
         />
         <TextInput
-          // style={styles.editForm}
-          // onSubmitEditing={handleSubmit}
+          onSubmitEditing={handlePass}
           placeholder='Password'
+        />
+        <TextInput
+          onSubmitEditing={handlePass}
+          placeholder='Confirm Password'
         />
         <TextInput
           // style={styles.editForm}
@@ -203,8 +224,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   tinyLogo: {
-    width: 100,
-    height: 100,
+    width: 150,
+    height: 150,
     margin: 10,
   },
   editForm: {
