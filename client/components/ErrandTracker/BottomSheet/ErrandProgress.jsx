@@ -1,14 +1,15 @@
 import * as React from 'react';
-import { ProgressBar, Colors } from 'react-native-paper';
+import { ProgressBar } from 'react-native-paper';
 import { StyleSheet } from 'react-native';
 
 const ErrandProgress = () => (
-  <ErrandProgress progress={0.5} color={Colors.red800} style={styles.bar} />
+  <ErrandProgress progress={0.5} color="#00BCD4" style={styles.bar} />
 );
 
 const styles = StyleSheet.create({
   bar: {
-    height: 10,
+    marginTop: 30,
+    width: 20,
   }
 })
 
