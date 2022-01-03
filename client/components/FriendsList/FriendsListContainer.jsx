@@ -4,22 +4,26 @@ import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 import {
   View,
   Text,
-  Image,
   StyleSheet,
-  TouchableOpacity,
-  TextInput,
-  FlatList,
-  Button,
 } from 'react-native';
 
+// Components
 import NavBarContainer from '../NavBar/NavBarContainer';
 import Search from './Search';
 import List from './List';
 
+// State
 import friendsListState from '../../state/atoms/friendsList';
 import friendsByNameState from '../../state/atoms/friendsByName';
 import filteredByNameSelector from '../../state/selectors/filterFriendsByName';
 import friendsListQuery from '../../state/selectors/friendsListQuery';
+
+// Assets
+
+// Style
+import { SIZES } from '../../constants/theme';
+
+const { width } = SIZES;
 
 const FriendsListContainer = ({ navigation }) => {
   const [friendsList, setFriendsList] = useRecoilState(friendsListState);
@@ -34,15 +38,18 @@ const FriendsListContainer = ({ navigation }) => {
   return (
     <>
       <View style={styles.container}>
-        <Text style={styles.heading}>Buddies</Text>
-        <Text style={styles.number}>{friendsList.length} friends</Text>
-        <Search />
-        <List />
+        <View style={styles.header}>
+          <View style={styles.title}>
+            <Text style={styles.heading}>Buddies</Text>
+            <Text style={styles.number}>{friendsList.length} friends</Text>
+          </View>
+        </View>
+        <Search style={styles.search} />
+        <List style={styles.list} />
       </View>
       <View>
         <NavBarContainer navigation={navigation} />
       </View>
-
     </>
   );
 };
@@ -52,7 +59,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingBottom: '5%',
+    // paddingBottom: '5%',
   },
   heading: {
     fontSize: 30,
@@ -65,17 +72,17 @@ const styles = StyleSheet.create({
     color: '#0782F9',
   },
   search: {
-    borderRadius: 10,
+    borderRadius: 30,
     fontSize: 14,
     borderColor: 'black',
     borderWidth: 1,
-    width: '70%',
-    height: 40,
-    paddingHorizontal: 100,
+    height: 50,
+    width: (width * 0.8),
+    textAlign: 'center',
   },
   list: {
     flex: 1,
-    width: '70%',
+    width: '100%',
   },
   friend: {
     padding: 15,
@@ -87,16 +94,16 @@ const styles = StyleSheet.create({
     height: 60,
     marginTop: 25,
   },
-  navbar: {
-    borderRadius: 10,
-    fontSize: 14,
-    borderColor: 'black',
-    borderWidth: 1,
-    width: '60%',
-    height: 40,
-    paddingHorizontal: 75,
-    paddingTop: 10,
-  },
+  // navbar: {
+  //   borderRadius: 10,
+  //   fontSize: 14,
+  //   borderColor: 'black',
+  //   borderWidth: 1,
+  //   width: '60%',
+  //   height: 40,
+  //   paddingHorizontal: 75,
+  //   paddingTop: 10,
+  // },
 });
 
 export default FriendsListContainer;

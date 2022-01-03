@@ -4,14 +4,15 @@ import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 
 import {
   View,
-  StyleSheet,
   TextInput,
+  Image,
+  StyleSheet,
 } from 'react-native';
 
 import friendsByNameState from '../../state/atoms/friendsByName';
 import filteredByNameSelector from '../../state/selectors/filterFriendsByName';
 
-const Search = () => {
+const Search = ({ style }) => {
   const setNameFilter = useSetRecoilState(friendsByNameState);
 
   const onChange = (value) => {
@@ -21,7 +22,7 @@ const Search = () => {
   return (
     <View>
       <TextInput
-        style={styles.search}
+        style={style}
         placeholder='SEARCH'
         onChangeText={onChange}
       />
@@ -30,15 +31,15 @@ const Search = () => {
 };
 
 const styles = StyleSheet.create({
-  search: {
-    borderRadius: 10,
-    fontSize: 14,
-    borderColor: 'black',
-    borderWidth: 1,
-    width: '70%',
-    height: 40,
-    paddingHorizontal: 100,
-  },
+  // search: {
+  //   borderRadius: 10,
+  //   fontSize: 14,
+  //   borderColor: 'black',
+  //   borderWidth: 1,
+  //   width: '70%',
+  //   height: 40,
+  //   paddingHorizontal: 100,
+  // },
 });
 
 export default Search;

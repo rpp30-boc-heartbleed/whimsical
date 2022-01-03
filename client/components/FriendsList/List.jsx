@@ -9,25 +9,37 @@ import {
   TouchableOpacity,
   FlatList,
 } from 'react-native';
+import { Avatar, Badge, IconButton } from 'react-native-paper';
 
+// Components
+
+// State
 import filteredByNameSelector from '../../state/selectors/filterFriendsByName';
 
-const List = () => {
+// Assets
+import { cat, dog } from '../../constants/images';
+
+const List = ({ style }) => {
   const filteredByName = useRecoilValue(filteredByNameSelector);
 
   return (
-    <View style={styles.list}>
+    <View style={style}>
       <FlatList
         data={filteredByName}
         renderItem={({ item, index }) => {
           return (
-            <View>
-              <Text>Profile pic</Text>
+            <View style={styles.friend}>
               <TouchableOpacity>
-                <Text style={styles.friend}>
-                  {item.name}     {item.email}     {item.goldStars} gold stars
-                </Text>
+                <Avatar.Image size={50} source={cat} style={styles.avatar} />
               </TouchableOpacity>
+              <Text style={styles.text}>
+                {item.name}     {item.email}     {item.goldStars}
+              </Text>
+              <IconButton
+                icon='chat-outline'
+                size={50}
+                style={styles.chat}
+              />
             </View>
           );
         }}
@@ -39,19 +51,33 @@ const List = () => {
 };
 
 const styles = StyleSheet.create({
-  list: {
-    flex: 1,
-    width: '70%',
-  },
+  // list: {
+  //   flex: 1,
+  //   width: '80%',
+  // },
   friend: {
+    flexDirection: 'row',
     padding: 15,
+    width: '100%',
+    height: 80,
+    marginTop: 15,
+  },
+  avatar: {
+    flex: 1,
+    marginRight: 20,
+  },
+  text: {
+    flex: 4,
     fontSize: 14,
     borderRadius: 20,
     borderColor: 'black',
     borderWidth: 1,
-    width: '100%',
     height: 60,
-    marginTop: 25,
+    // width: '50%',
+  },
+  chat: {
+    flex: 1,
+    marginLeft: 20,
   },
 });
 
