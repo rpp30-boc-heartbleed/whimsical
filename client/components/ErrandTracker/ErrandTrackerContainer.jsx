@@ -40,9 +40,9 @@ const ErrandTrackerContainer = ({ route, navigation }) => {
         title="Go to Map"
         onPress={() => navigation.push('Map')} // push the name property of the Stack.Screen component as defined in App.jsx
       />
-      <Button title="Go to Dashboard" onPress={() => navigation.navigate('Dashboard')} />
+      {/* <Button title="Go to Dashboard" onPress={() => navigation.navigate('Dashboard')} />
       <Button title="Go back" onPress={() => navigation.goBack()} />
-      <StatusBar style="auto" />
+      <StatusBar style="auto" /> */}
     </ >
   );
 };

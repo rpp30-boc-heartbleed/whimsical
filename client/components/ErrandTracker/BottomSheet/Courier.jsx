@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Image, Text } from 'react-native';
+import { StyleSheet, View, Image, Text, Alert } from 'react-native';
 import { Title, Colors } from 'react-native-paper';
 import { COLORS, SIZES, icons, images } from '../../../constants';
 import ProfilePhoto from '../../Shared/Avatar.jsx';
