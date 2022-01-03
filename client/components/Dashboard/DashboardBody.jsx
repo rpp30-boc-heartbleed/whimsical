@@ -17,7 +17,7 @@ const DashboardBody = () => {
   return (
     <View>
       <View style={styles.container}>
-        <Text style={styles.body}>a freinds post here</Text>
+        <Text style={styles.body}>a friends post here</Text>
       </View>
       <View style={styles.container}>
         <Text style={styles.body}>a friends post here</Text>
