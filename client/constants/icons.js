@@ -9,9 +9,5 @@ export default {
   redPin,
   pin,
   star,
-<<<<<<< HEAD
   refresh,
-}
-=======
 };
->>>>>>> 382c38c6d55398c7e2c68c08802b3bf4f9822bd6
