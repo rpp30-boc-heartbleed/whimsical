@@ -4,7 +4,6 @@ const { Schema } = mongoose;
 
 const ProfileSchema = new Schema({
   name: String,
-  password: String,
   email: String,
   stars: Number,
   picture: String,
