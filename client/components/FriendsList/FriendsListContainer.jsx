@@ -11,6 +11,7 @@ import {
 import NavBarContainer from '../NavBar/NavBarContainer';
 import Search from './Search';
 import List from './List';
+import TestModal from '../Modals/TestModal';
 
 // State
 import friendsListState from '../../state/atoms/friendsList';
@@ -70,6 +71,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     paddingBottom: '5%',
     color: '#0782F9',
+    textAlign: 'center',
   },
   search: {
     borderRadius: 30,

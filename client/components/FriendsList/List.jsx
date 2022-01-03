@@ -12,7 +12,7 @@ import {
 import { Avatar, Badge, IconButton } from 'react-native-paper';
 
 // Components
-
+import IconModal from '../Modals/IconModal';
 // State
 import filteredByNameSelector from '../../state/selectors/filterFriendsByName';
 
@@ -29,17 +29,19 @@ const List = ({ style }) => {
         renderItem={({ item, index }) => {
           return (
             <View style={styles.friend}>
-              <TouchableOpacity>
-                <Avatar.Image size={50} source={cat} style={styles.avatar} />
+              <TouchableOpacity style={styles.avatar}>
+                <Avatar.Image size={50} source={cat} />
               </TouchableOpacity>
               <Text style={styles.text}>
                 {item.name}     {item.email}     {item.goldStars}
               </Text>
-              <IconButton
-                icon='chat-outline'
-                size={50}
-                style={styles.chat}
-              />
+              <TouchableOpacity style={styles.chat}>
+                <IconModal
+                  icon='chat-outline'
+                  size={50}
+                  style={styles.chatIcon}
+                />
+              </TouchableOpacity>
             </View>
           );
         }}
@@ -51,10 +53,6 @@ const List = ({ style }) => {
 };
 
 const styles = StyleSheet.create({
-  // list: {
-  //   flex: 1,
-  //   width: '80%',
-  // },
   friend: {
     flexDirection: 'row',
     padding: 15,
@@ -65,6 +63,7 @@ const styles = StyleSheet.create({
   avatar: {
     flex: 1,
     marginRight: 20,
+    marginLeft: 10,
   },
   text: {
     flex: 4,
@@ -73,11 +72,13 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     borderWidth: 1,
     height: 60,
-    // width: '50%',
   },
   chat: {
     flex: 1,
-    marginLeft: 20,
+    marginRight: 20,
+  },
+  chatIcon: {
+    paddingBottom: 20,
   },
 });
 
