@@ -1,6 +1,5 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-// import { getStorage, ref, uploadBytes } from 'firebase/storage';
 // import Constants from 'expo-constants';
 
 import {
@@ -14,14 +13,14 @@ import {
 
 // Initialize Firebase
 const firebaseConfig = {
-  apiKey: 'AIzaSyDD-PYOTGedfXBwUJY5OVM5mjVsQtUnPYE',
-  authDomain: 'whimsical-99334.firebaseapp.com',
-  projectId: 'whimsical-99334',
-  storageBucket: 'whimsical-99334.appspot.com',
-  messagingSenderId: '191471855398',
-  appId: '1:191471855398:web:42c10c9cd944201d5ac3e7',
+  apiKey: FIREBASE_API_KEY,
+  authDomain: FIREBASE_AUTH_DOMAIN,
+  projectId: FIREBASE_PROJECT_ID,
+  storageBucket: FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: FIREBASE_MESSAGING_SENDER_ID,
+  appId: FIREBASE_APP_ID,
 };
-console.log('firebase config', firebaseConfig);
+console.log(firebaseConfig);
 initializeApp(firebaseConfig);
 const auth = getAuth();
 
