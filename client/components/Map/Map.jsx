@@ -50,7 +50,6 @@ const Map = () => {
         // console.log(region);
         setCurrentMapView(() => region);
         // console.log('currentMAPVIEW', currentView);
-        MapView.setMapBoundaries();
       }}
     >
       <Marker
