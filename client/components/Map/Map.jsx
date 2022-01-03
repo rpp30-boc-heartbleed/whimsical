@@ -4,28 +4,35 @@ import {
   selector,
   useRecoilState,
   useRecoilValue,
+  useSetRecoilState,
 } from 'recoil';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import { StyleSheet, Dimensions } from 'react-native';
 import userLocationState from '../../state/atoms/userLocation';
-import initLocationState from '../../state/atoms/initLocation';
+import currentMapView from '../../state/atoms/currentMapView';
 
 const { height, width } = Dimensions.get('window');
 
 const Map = () => {
-  const initLocation = useRecoilValue(initLocationState);
+  const currentView = useRecoilValue(currentMapView);
   const userLocation = useRecoilValue(userLocationState);
+  const setCurrentMapView = useSetRecoilState(currentMapView);
 
   return (
     <MapView
       style={styles.map}
       provider={PROVIDER_GOOGLE}
-      initialRegion={initLocation}
+      initialRegion={currentView}
       showsUserLocation
       showsMyLocationButton
       showsScale
       showsPointsOfInterest
       loadingEnabled
+      onRegionChange={(region) => {
+        // console.log(region);
+        setCurrentMapView(() => region);
+        // console.log('currentMAPVIEW', currentView);
+      }}
     >
       <Marker
         title='user'

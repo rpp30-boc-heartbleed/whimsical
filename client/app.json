@@ -19,7 +19,7 @@
     "ios": {
       "bundleIdentifier": "com.BlueOcean.quickBagel",
       "config": {
-        "googleMapsApiKey": "<ios maps api key>"
+        "googleMapsApiKey": "AIzaSyCFEG5h8aGsI9lRDweVdVPnu6NAmRTg0FA"
       },
       "infoPlist": {
         "NSLocationWhenInUseUsageDescription": "track app user",
@@ -30,10 +30,12 @@
       },
       "supportsTablet": true
     },
+
+
     "android": {
       "config": {
         "googleMaps": {
-          "apiKey": "<android maps key>"
+          "apiKey": "AIzaSyBV2CQqEy7Na1eU0CdPVVoXtCbSYE8pb6w"
         }
       },
       "adaptiveIcon": {
