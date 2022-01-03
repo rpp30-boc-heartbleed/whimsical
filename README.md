@@ -75,9 +75,7 @@
 ## About the App
 <!-- Add any additional content here pertaining to timeline, personal goals, etc-->
 
-This application will allow the community to save time while running errands for one another. Think of it like Doordash, but for your neighbours and friends.
- 
-
+This application will allow the community to save time while running errands for one another. 
 <!--
 * What problem does it solve? Who uses it?
 * Why was it built?
