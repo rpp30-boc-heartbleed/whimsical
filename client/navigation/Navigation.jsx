@@ -6,6 +6,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import {
   DashboardContainer,
+  NewErrandContainer,
   ErrandTrackerContainer,
   FriendsListContainer,
   LoginContainer,
@@ -24,6 +25,7 @@ const Navigation = () => {
         <Stack.Screen name='Login' component={LoginContainer} />
         <Stack.Screen name='Register' component={RegisterContainer} />
         <Stack.Screen name='Dashboard' component={DashboardContainer} />
+        <Stack.Screen name='NewErrand' component={NewErrandContainer} />
         <Stack.Screen name='ErrandTracker' component={ErrandTrackerContainer} />
         <Stack.Screen name='Map' component={MapContainer} />
         <Stack.Screen name='NavBar' component={NavBarContainer} />

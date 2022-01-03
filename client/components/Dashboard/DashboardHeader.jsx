@@ -25,7 +25,6 @@ const DashboardHeader = ({ navigation }) => {
       <View style={styles.container}>
         <Text style={styles.profilePic}>AA</Text>
         <TextInput style={styles.searchBar}>Search Bar Here</TextInput>
-        {/* <Text style={styles.logout}>logout</Text> */}
         <Button title='sign out' onPress={() => handleSignOut(auth)} />
       </View>
       <View style={styles.filter}>
@@ -37,7 +36,7 @@ const DashboardHeader = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   outercontainer: {
-    borderWidth: 1,
+    borderBottomWidth: 1,
     alignItems: 'center',
   },
   container: {
@@ -60,12 +59,6 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     paddingLeft: 35,
     paddingRight: 35,
-  },
-  logout: {
-    borderWidth: 1,
-    borderRadius: 10,
-    marginBottom: 5,
-    marginLeft: 25,
   },
   filter: {
     borderBottomWidth: 1,
