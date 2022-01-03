@@ -12,12 +12,15 @@ import {
 import { Avatar, Badge, IconButton } from 'react-native-paper';
 
 // Components
-import IconModal from '../Modals/IconModal';
+import IconModal from '../../Modals/IconModal';
 // State
-import filteredByNameSelector from '../../state/selectors/filterFriendsByName';
+import filteredByNameSelector from '../../../state/selectors/filterFriendsByName';
 
 // Assets
-import { cat, dog } from '../../constants/images';
+import { images, icons, SIZES } from '../../../constants';
+
+const { cat, dog } = images;
+const { star } = icons;
 
 const List = ({ style }) => {
   const filteredByName = useRecoilValue(filteredByNameSelector);
@@ -32,11 +35,14 @@ const List = ({ style }) => {
               <TouchableOpacity style={styles.avatar}>
                 <Avatar.Image size={50} source={cat} />
               </TouchableOpacity>
-              <Text style={styles.text}>
-                {item.name}     {item.email}     {item.goldStars}
-              </Text>
+              <View style={styles.text}>
+                <Text>
+                  {item.name}
+                </Text>
+                <Text>{item.goldStars}<Image style={styles.star} source={star} /></Text>
+              </View>
               <TouchableOpacity style={styles.chat}>
-                <IconModal
+                <IconButton
                   icon='chat-outline'
                   size={50}
                   style={styles.chatIcon}
@@ -62,20 +68,26 @@ const styles = StyleSheet.create({
   },
   avatar: {
     flex: 1,
-    marginRight: 20,
+    marginRight: 30,
     marginLeft: 10,
   },
   text: {
     flex: 4,
+    // flexDirection: 'row',
     fontSize: 14,
-    borderRadius: 20,
+    borderRadius: 30,
     borderColor: 'black',
     borderWidth: 1,
     height: 60,
+    padding: 10,
+  },
+  star: {
+    width: 15,
+    height: 15,
   },
   chat: {
     flex: 1,
-    marginRight: 20,
+    marginRight: 30,
   },
   chatIcon: {
     paddingBottom: 20,

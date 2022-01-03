@@ -9,8 +9,8 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import friendsByNameState from '../../state/atoms/friendsByName';
-import filteredByNameSelector from '../../state/selectors/filterFriendsByName';
+import friendsByNameState from '../../../state/atoms/friendsByName';
+import filteredByNameSelector from '../../../state/selectors/filterFriendsByName';
 
 const Search = ({ style }) => {
   const setNameFilter = useSetRecoilState(friendsByNameState);

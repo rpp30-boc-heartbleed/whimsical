@@ -8,9 +8,12 @@ import {
 } from 'react-native';
 
 // Components
+import {
+  Search,
+  List,
+  Title,
+} from './SubComponents';
 import NavBarContainer from '../NavBar/NavBarContainer';
-import Search from './Search';
-import List from './List';
 import TestModal from '../Modals/TestModal';
 
 // State
@@ -40,10 +43,7 @@ const FriendsListContainer = ({ navigation }) => {
     <>
       <View style={styles.container}>
         <View style={styles.header}>
-          <View style={styles.title}>
-            <Text style={styles.heading}>Buddies</Text>
-            <Text style={styles.number}>{friendsList.length} friends</Text>
-          </View>
+          <Title style={styles.title} />
         </View>
         <Search style={styles.search} />
         <List style={styles.list} />
@@ -61,17 +61,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     // paddingBottom: '5%',
-  },
-  heading: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    marginTop: '5%',
-  },
-  number: {
-    fontSize: 12,
-    paddingBottom: '5%',
-    color: '#0782F9',
-    textAlign: 'center',
   },
   search: {
     borderRadius: 30,
