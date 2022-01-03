@@ -4,7 +4,7 @@ import { Avatar } from 'react-native-paper';
 
 // Text Avatar Placeholder
 const ProfilePhoto = () => (
-  <Avatar.Text size={64} label='XD' />
+  <Avatar.Text size={64} label='LB' />
 );
 
 export default ProfilePhoto;
