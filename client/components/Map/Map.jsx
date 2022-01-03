@@ -8,8 +8,12 @@ import {
 } from 'recoil';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import { StyleSheet, Dimensions } from 'react-native';
+
+import axios from 'axios';
+
 import userLocationState from '../../state/atoms/userLocation';
 import currentMapView from '../../state/atoms/currentMapView';
+const { GOOGLE_MAPS_API_KEY_IOS } = process.env;
 
 const { height, width } = Dimensions.get('window');
 
@@ -17,6 +21,20 @@ const Map = () => {
   const currentView = useRecoilValue(currentMapView);
   const userLocation = useRecoilValue(userLocationState);
   const setCurrentMapView = useSetRecoilState(currentMapView);
+
+  // const getShops = async (currentView) => {
+  //   try {
+  //     const KEY = GOOGLE_MAPS_API_KEY_IOS;
+  //     const res = await fetch(
+  //       `https://maps.googleapis.com/maps/api/js?key=${KEY}&libraries=places&callback=initMap`,
+  //     );
+  //     const resJson = await res.json();
+  //     console.log(resJson);
+  //     return resJson;
+  //   } catch (error) {
+  //     return error;
+  //   }
+  // };
 
   return (
     <MapView
@@ -28,10 +46,11 @@ const Map = () => {
       showsScale
       showsPointsOfInterest
       loadingEnabled
-      onRegionChange={(region) => {
+      onRegionChangeComplete={(region) => {
         // console.log(region);
         setCurrentMapView(() => region);
         // console.log('currentMAPVIEW', currentView);
+        MapView.setMapBoundaries();
       }}
     >
       <Marker
