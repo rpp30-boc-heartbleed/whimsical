@@ -46,12 +46,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     flexDirection: 'row',
     borderWidth: 1,
-    paddingLeft: 120,
-    paddingRight: 120,
+    paddingLeft: 110,
+    paddingRight: 110,
     paddingTop: 60,
     paddingBottom: 60,
     borderRadius: 5,
     marginBottom: 10,
+    marginLeft: 5,
+    marginRight: 5,
   },
 });
 
