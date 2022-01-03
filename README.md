@@ -224,7 +224,6 @@ What additional features do you plan to add, how do you plan to implement those 
 
 <!-- Examples: websockets (socket.io) -->
 - [x] Login & Registration with Authentication
-- [ ] Continuous Deployment
 - [ ] Real Time Geolocation Tracking 
 - [ ] Chat Functionality
 - [ ] Active Errand List
