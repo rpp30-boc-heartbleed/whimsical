@@ -30,16 +30,4 @@ const Search = ({ style }) => {
   );
 };
 
-const styles = StyleSheet.create({
-  // search: {
-  //   borderRadius: 10,
-  //   fontSize: 14,
-  //   borderColor: 'black',
-  //   borderWidth: 1,
-  //   width: '70%',
-  //   height: 40,
-  //   paddingHorizontal: 100,
-  // },
-});
-
 export default Search;

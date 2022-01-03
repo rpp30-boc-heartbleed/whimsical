@@ -9,12 +9,8 @@ import {
 
 // State
 import friendsOnErrandState from '../../../state/atoms/friendsOnErrand';
-// import friendsByNameState from '../../state/atoms/friendsByName';
-// import filteredByNameSelector from '../../state/selectors/filterFriendsByName';
-// import friendsListQuery from '../../state/selectors/friendsListQuery';
 
 const Toggle = ({ style }) => {
-  // const [isEnabled, setIsEnabled] = useState(false);
   const [statusFilter, setStatusFilter] = useRecoilState(friendsOnErrandState);
 
   const toggleSwitch = () => {

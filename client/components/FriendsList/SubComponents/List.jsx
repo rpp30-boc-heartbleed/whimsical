@@ -15,7 +15,6 @@ import { Avatar, Badge, IconButton } from 'react-native-paper';
 import IconModal from '../../Modals/IconModal';
 // State
 import filteredByNameSelector from '../../../state/selectors/filterFriendsByName';
-
 // Assets
 import { images, icons, SIZES } from '../../../constants';
 

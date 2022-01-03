@@ -9,20 +9,19 @@ import {
 
 // Components
 import {
-  Search,
+  AddFriend,
   List,
+  Search,
   Title,
   Toggle,
 } from './SubComponents';
 import NavBarContainer from '../NavBar/NavBarContainer';
 import TestModal from '../Modals/TestModal';
-
 // State
 import friendsListState from '../../state/atoms/friendsList';
 import friendsByNameState from '../../state/atoms/friendsByName';
 import filteredByNameSelector from '../../state/selectors/filterFriendsByName';
 import friendsListQuery from '../../state/selectors/friendsListQuery';
-
 // Assets
 
 // Style
@@ -46,6 +45,7 @@ const FriendsListContainer = ({ navigation }) => {
         <View style={styles.header}>
           <Toggle style={styles.toggle} />
           <Title style={styles.title} />
+          <AddFriend style={styles.addButton} />
         </View>
         <Search style={styles.search} />
         <List style={styles.list} />
@@ -62,15 +62,22 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    // paddingBottom: '5%',
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '80%',
-    paddingTop: 15,
-    paddingBottom: 15,
+    alignItems: 'center',
+    width: '90%',
   },
+  // toggle: {
+  //   flex: 1,
+  // },
+  // title: {
+  //   flex: 1,
+  // },
+  // addButton: {
+  //   flex: 1,
+  // },
   search: {
     borderRadius: 30,
     fontSize: 14,
@@ -94,16 +101,6 @@ const styles = StyleSheet.create({
     height: 60,
     marginTop: 25,
   },
-  // navbar: {
-  //   borderRadius: 10,
-  //   fontSize: 14,
-  //   borderColor: 'black',
-  //   borderWidth: 1,
-  //   width: '60%',
-  //   height: 40,
-  //   paddingHorizontal: 75,
-  //   paddingTop: 10,
-  // },
 });
 
 export default FriendsListContainer;
