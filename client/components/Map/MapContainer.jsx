@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -6,19 +6,21 @@ import {
   TextInput,
   StatusBar,
   Button,
+  Dimensions,
 } from 'react-native';
+import { SafeAreaView } from 'react-navigation';
+import NavBarContainer from '../NavBar/NavBarContainer';
+import Map from './Map';
+
+const { height, width } = Dimensions.get('window');
 
 const MapContainer = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text>This is the Map Component</Text>
-      <Button
-        title="Go to Nav Bar"
-        onPress={() => navigation.push('NavBar')} // push the name property of the Stack.Screen component as defined in App.jsx
-      />
-      <Button title="Go to Dashboard" onPress={() => navigation.navigate('Dashboard')} />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
-      <StatusBar />
+      <Map />
+      <View style={styles.navbar}>
+        <NavBarContainer navigation={navigation} />
+      </View>
     </View>
   );
 };
@@ -29,6 +31,11 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  navbar: {
+    justifyContent: 'flex-end',
+    alignContent: 'space-between',
+    width,
   },
 });
 

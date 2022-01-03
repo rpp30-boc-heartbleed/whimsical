@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "whimsical",
+    "owner": "heartbleed",
     "slug": "whimsical",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -17,9 +18,27 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.BlueOcean.quickBagel",
+      "config": {
+        "googleMapsApiKey": "AIzaSyCFEG5h8aGsI9lRDweVdVPnu6NAmRTg0FA"
+      },
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "track app user",
+        "UIBackgroundModes": [
+          "location",
+          "fetch"
+        ]
+      },
       "supportsTablet": true
     },
+
+
     "android": {
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyBV2CQqEy7Na1eU0CdPVVoXtCbSYE8pb6w"
+        }
+      },
       "adaptiveIcon": {
         "foregroundImage": "./assets/favicon.png",
         "backgroundColor": "#FFFFFF"

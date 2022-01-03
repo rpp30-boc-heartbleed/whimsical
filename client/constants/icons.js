@@ -4,7 +4,6 @@ export const redPin = require('../assets/icons/red-pin.png');
 export const pin = require('../assets/icons/pin.png');
 export const refresh = require('../assets/icons/refresh.png');
 
-
 export default {
   bagelCar,
   redPin,
