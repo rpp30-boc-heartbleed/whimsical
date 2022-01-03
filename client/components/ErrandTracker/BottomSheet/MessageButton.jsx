@@ -30,6 +30,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginHorizontal: '10 %',
     marginBottom: 10,
+    borderRadius: 3,
   },
   text: {
     fontSize: 12,
