@@ -1,12 +1,14 @@
 import { selector } from 'recoil';
 import friendsListState from '../atoms/friendsList';
 import friendsByNameState from '../atoms/friendsByName';
+import friendsOnErrandState from '../atoms/friendsOnErrand';
 
 const filteredFriendsNameSelector = selector({
   key: 'filteredListSelector',
   get: ({ get }) => {
-    const list = get(friendsListState);
+    let list = get(friendsListState);
     const filter = get(friendsByNameState);
+    const onErrand = get(friendsOnErrandState);
 
     const check = function (name, input) {
       if (input === '') {
@@ -16,6 +18,9 @@ const filteredFriendsNameSelector = selector({
       const start = name.slice(0, length);
       return start === input;
     };
+    if (onErrand) {
+      list = list.filter((item) => item.status);
+    }
     const filtered = list.filter((item) => check(item.name, filter));
     return filtered;
   },

@@ -68,6 +68,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '80%',
+    paddingTop: 15,
+    paddingBottom: 15,
   },
   search: {
     borderRadius: 30,
