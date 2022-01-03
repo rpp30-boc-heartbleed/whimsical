@@ -22,24 +22,11 @@ const Map = () => {
   const userLocation = useRecoilValue(userLocationState);
   const setCurrentMapView = useSetRecoilState(currentMapView);
 
-  // const getShops = async (currentView) => {
-  //   try {
-  //     const KEY = GOOGLE_MAPS_API_KEY_IOS;
-  //     const res = await fetch(
-  //       `https://maps.googleapis.com/maps/api/js?key=${KEY}&libraries=places&callback=initMap`,
-  //     );
-  //     const resJson = await res.json();
-  //     console.log(resJson);
-  //     return resJson;
-  //   } catch (error) {
-  //     return error;
-  //   }
-  // };
 
   return (
     <MapView
-      style={styles.map}
-      provider={PROVIDER_GOOGLE}
+    style={styles.map}
+    provider={PROVIDER_GOOGLE}
       initialRegion={currentView}
       showsUserLocation
       showsMyLocationButton
@@ -51,11 +38,11 @@ const Map = () => {
         setCurrentMapView(() => region);
         // console.log('currentMAPVIEW', currentView);
       }}
-    >
+      >
       <Marker
         title='user'
         coordinate={userLocation}
-      />
+        />
     </MapView>
   );
 };
@@ -71,3 +58,17 @@ const styles = StyleSheet.create({
 });
 
 export default Map;
+
+// const getShops = async (currentView) => {
+//   try {
+//     const KEY = GOOGLE_MAPS_API_KEY_IOS;
+//     const res = await fetch(
+//       `https://maps.googleapis.com/maps/api/js?key=${KEY}&libraries=places&callback=initMap`,
+//     );
+//     const resJson = await res.json();
+//     console.log(resJson);
+//     return resJson;
+//   } catch (error) {
+//     return error;
+//   }
+// };
