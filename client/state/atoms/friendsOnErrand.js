@@ -2,7 +2,7 @@ import { atom } from 'recoil';
 
 const friendsOnErrandState = atom({
   key: 'friendsOnErrandState',
-  default: 'Show All',
+  default: false,
 });
 
 export default friendsOnErrandState;

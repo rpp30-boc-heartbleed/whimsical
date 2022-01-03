@@ -9,7 +9,7 @@ const filteredFriendsStatusSelector = selector({
     const filter = get(friendsOnErrandState);
 
     switch (filter) {
-      case 'Show On Errand':
+      case true:
         return list.filter((item) => item.status);
       // case 'Show Offline':
       //   return list.filter((item) => !item.status);

@@ -12,6 +12,7 @@ import {
   Search,
   List,
   Title,
+  Toggle,
 } from './SubComponents';
 import NavBarContainer from '../NavBar/NavBarContainer';
 import TestModal from '../Modals/TestModal';
@@ -43,6 +44,7 @@ const FriendsListContainer = ({ navigation }) => {
     <>
       <View style={styles.container}>
         <View style={styles.header}>
+          <Toggle style={styles.toggle} />
           <Title style={styles.title} />
         </View>
         <Search style={styles.search} />
@@ -61,6 +63,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     // paddingBottom: '5%',
+  },
+  header: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: '80%',
   },
   search: {
     borderRadius: 30,
