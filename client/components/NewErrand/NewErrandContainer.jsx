@@ -61,6 +61,9 @@ const styles = StyleSheet.create({
     marginTop: 2,
     marginBottom: -20,
   },
+  navbar: {
+    justifyContent: 'flex-end',
+  },
 });
 
 export default NewErrandContainer;
