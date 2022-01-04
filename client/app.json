@@ -31,8 +31,6 @@
       },
       "supportsTablet": true
     },
-
-
     "android": {
       "config": {
         "googleMaps": {

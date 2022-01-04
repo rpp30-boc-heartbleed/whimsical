@@ -18,6 +18,8 @@ const RegisterContainer = ({ navigation }) => {
   const [userInfo, setUserInfo] = useState({
     name: '',
     streetAddress: '',
+    city: '',
+    state: '',
     zipCode: '',
     imageURL: '',
     email: '',
@@ -27,6 +29,8 @@ const RegisterContainer = ({ navigation }) => {
   const {
     name,
     streetAddress,
+    city,
+    state,
     zipCode,
     imageURL,
     email,
@@ -85,6 +89,20 @@ const RegisterContainer = ({ navigation }) => {
     return true;
   };
 
+  // post registration info to server
+  async function postUserData(url = '', data = {}) {
+    // Default options are marked with *
+    // eslint-disable-next-line no-undef
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data), // body data type must match "Content-Type" header
+    });
+    return response.json(); // parses JSON response into native JavaScript objects
+  }
+
   // create user authentication account in firebase
   const handleSignUp = (auth, email, password) => {
     console.log('hit sign up');
@@ -107,12 +125,33 @@ const RegisterContainer = ({ navigation }) => {
   const submitForm = () => {
     if (isValidForm()) {
       // add user data to mongoDB
-      // add email and password to firebase authentication
-      handleSignUp(auth, email, password);
+      postUserData(
+        // 'http://localhost:3000/register',
+        'http://ec2-34-239-133-230.compute-1.amazonaws.com',
+        {
+          name,
+          streetAddress,
+          city,
+          state,
+          zipCode,
+          imageURL,
+          email,
+        },
+      )
+        .then((data) => {
+          console.log(data);
+          // add email and password to firebase authentication
+          handleSignUp(auth, email, password);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       // clear form
       setUserInfo({
         name: '',
         streetAddress: '',
+        city: '',
+        state: '',
         zipCode: '',
         imageURL: '',
         email: '',
@@ -143,6 +182,20 @@ const RegisterContainer = ({ navigation }) => {
           autoCapitalize='none'
           value={streetAddress}
           onChangeText={(value) => handleOnChangeText(value, 'streetAddress')}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder='city'
+          autoCapitalize='none'
+          value={city}
+          onChangeText={(value) => handleOnChangeText(value, 'city')}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder='state'
+          autoCapitalize='none'
+          value={state}
+          onChangeText={(value) => handleOnChangeText(value, 'state')}
         />
         <TextInput
           style={styles.input}
