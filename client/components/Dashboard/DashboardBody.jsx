@@ -21,7 +21,6 @@ const DashboardBody = ({ navigation }) => {
                   source={{ uri: item.errandRunner.avatar }}
                   style={styles.avatar}
                 />
-                {/* <Text style={styles.avatar}>AVATAR</Text> */}
                 <View style={styles.container4}>
                   <View style={styles.container5}>
                     <Text style={styles.username}>{item.errandRunner.name}</Text>

@@ -27,8 +27,12 @@ const NewErrandContainer = ({ navigation }) => (
         <TextInput style={styles.textInputs} placeholder="bagel time!!!" />
 
         <View style={styles.buttons}>
-          <Button title="Cancel" style={styles.cancel} />
-          <Button title="Submit" style={styles.submit} />
+          <View style={styles.cancel}>
+            <Button title="Cancel" />
+          </View>
+          <View style={styles.submit}>
+            <Button title="Submit" />
+          </View>
         </View>
       </View>
     </ScrollView>
@@ -46,7 +50,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textfields: {
-    marginTop: 20,
+    marginTop: 50,
     fontSize: 20,
     fontWeight: 'bold',
   },
@@ -62,8 +66,19 @@ const styles = StyleSheet.create({
   },
   buttons: {
     flexDirection: 'row',
-    marginTop: 2,
+    marginTop: 50,
     marginBottom: -20,
+  },
+  cancel: {
+    borderWidth: 2,
+    borderRadius: 5,
+    borderColor: 'red',
+    marginRight: 70,
+  },
+  submit: {
+    borderWidth: 2,
+    borderRadius: 5,
+    borderColor: '#0782F9',
   },
 });
 
