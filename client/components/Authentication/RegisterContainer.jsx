@@ -18,6 +18,8 @@ const RegisterContainer = ({ navigation }) => {
   const [userInfo, setUserInfo] = useState({
     name: '',
     streetAddress: '',
+    city: '',
+    state: '',
     zipCode: '',
     imageURL: '',
     email: '',
@@ -27,6 +29,8 @@ const RegisterContainer = ({ navigation }) => {
   const {
     name,
     streetAddress,
+    city,
+    state,
     zipCode,
     imageURL,
     email,
@@ -126,6 +130,8 @@ const RegisterContainer = ({ navigation }) => {
         {
           name,
           streetAddress,
+          city,
+          state,
           zipCode,
           imageURL,
           email,
@@ -143,6 +149,8 @@ const RegisterContainer = ({ navigation }) => {
       setUserInfo({
         name: '',
         streetAddress: '',
+        city: '',
+        state: '',
         zipCode: '',
         imageURL: '',
         email: '',
@@ -173,6 +181,20 @@ const RegisterContainer = ({ navigation }) => {
           autoCapitalize='none'
           value={streetAddress}
           onChangeText={(value) => handleOnChangeText(value, 'streetAddress')}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder='city'
+          autoCapitalize='none'
+          value={city}
+          onChangeText={(value) => handleOnChangeText(value, 'city')}
+        />
+        <TextInput
+          style={styles.input}
+          placeholder='state'
+          autoCapitalize='none'
+          value={state}
+          onChangeText={(value) => handleOnChangeText(value, 'state')}
         />
         <TextInput
           style={styles.input}
