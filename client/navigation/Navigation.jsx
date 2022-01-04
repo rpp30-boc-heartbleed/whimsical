@@ -14,6 +14,7 @@ import {
   NavBarContainer,
   RegisterContainer,
   UserProfileContainer,
+  Chat,
 } from '../components';
 
 const Stack = createNativeStackNavigator();
@@ -31,6 +32,7 @@ const Navigation = () => {
         <Stack.Screen name='NavBar' component={NavBarContainer} />
         <Stack.Screen name='UserProfile' component={UserProfileContainer} />
         <Stack.Screen name='FriendsList' component={FriendsListContainer} />
+        <Stack.Screen name='Chat' component={Chat} />
       </Stack.Navigator>
     </NavigationContainer>
   );

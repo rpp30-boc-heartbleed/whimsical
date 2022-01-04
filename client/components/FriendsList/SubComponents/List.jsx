@@ -21,7 +21,7 @@ import { images, icons, SIZES } from '../../../constants';
 const { cat, dog } = images;
 const { star } = icons;
 
-const List = ({ style }) => {
+const List = ({ style, navigation }) => {
   const filteredByName = useRecoilValue(filteredByNameSelector);
 
   return (
@@ -45,6 +45,7 @@ const List = ({ style }) => {
                   icon='chat-outline'
                   size={50}
                   style={styles.chatIcon}
+                  onPress={() => navigation.push('Chat')}
                 />
               </TouchableOpacity>
             </View>

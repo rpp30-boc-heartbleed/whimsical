@@ -1,15 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useRecoilState } from 'recoil';
 import { GiftedChat } from 'react-native-gifted-chat';
 import {
   View,
   StyleSheet,
 } from 'react-native';
+import ChatState from '../../../state/atoms/errandChat';
 
-const Chat = () => {
-  const [messages, setMessages] = useState([]);
+const Chat = ({ navigation }) => {
+  const [messages, setMessages] = useRecoilState(ChatState);
+
   return (
     <View style={styles.chat}>
-      <GiftedChat messages={messages} />
+      <GiftedChat
+        messages={messages}
+        user='jbel'
+      />
     </View>
   );
 };
