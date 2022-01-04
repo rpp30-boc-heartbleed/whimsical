@@ -1,9 +1,10 @@
+/* eslint-disable react/style-prop-object */
 import React, { useState, useEffect } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { Title, Colors } from 'react-native-paper';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import MapViewDirection from 'react-native-maps-directions';
-import { COLORS, SIZES, icons, images } from '../../constants';
+import { GOOGLE_MAPS_API_KEY } from '@env';
 import {
   View,
   Text,
@@ -14,11 +15,12 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import errandState from '../../state/atoms/errands'
-import { GOOGLE_MAPS_API_KEY } from '@env';
+import { COLORS, SIZES, icons, images } from '../../constants';
+import errandState from '../../state/atoms/errands';
+
 console.log(GOOGLE_MAPS_API_KEY)
 import TopBar from './TopBar/TopBar.jsx';
-import ErrandMap from './errandMap.jsx';
+import ErrandMap from './ErrandMap.jsx';
 import BottomSheet from './BottomSheet/BottomSheet.jsx';
 
 const ErrandTrackerContainer = ({ route, navigation }) => {

@@ -9,5 +9,4 @@ export default {
   redPin,
   pin,
   star,
-  refresh,
-}
+};

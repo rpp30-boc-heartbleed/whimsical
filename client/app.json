@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "whimsical",
+    "owner": "heartbleed",
     "slug": "whimsical",
     "version": "1.0.0",
     "orientation": "portrait",

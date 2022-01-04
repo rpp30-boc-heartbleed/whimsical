@@ -13,6 +13,7 @@ import axios from 'axios';
 
 import userLocationState from '../../state/atoms/userLocation';
 import currentMapView from '../../state/atoms/currentMapView';
+
 const { GOOGLE_MAPS_API_KEY_IOS } = process.env;
 
 const { height, width } = Dimensions.get('window');

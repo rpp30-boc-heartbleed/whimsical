@@ -18,7 +18,6 @@ import {
 import errandState from '../../state/atoms/errands'
 import { GOOGLE_MAPS_API_KEY } from '@env';
 
-
 const ErrandMap = ({ streetName, duration, errandLocation, navigation }) => {
 
   let location = {
