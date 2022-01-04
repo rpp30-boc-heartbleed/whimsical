@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import {
-  View, Text, StyleSheet, TextInput, StatusBar, Button, FlatList, Image,
+  View, Text, StyleSheet, TextInput, StatusBar, Button, FlatList, Image, Avatar,
 } from 'react-native';
 import errandState from '../../state/atoms/errands';
 
@@ -13,12 +13,15 @@ const DashboardBody = ({ navigation }) => {
       <FlatList
         style={styles.container0}
         data={errandsList}
-        renderItem={({ item }) => (
+        renderItem={({ item, index }) => (
           <View style={styles.container}>
             <View style={styles.container2}>
-              {/* <Image source={{ uri: item.errandRunner.avatar }} /> */}
               <View style={styles.container3}>
-                <Text style={styles.avatar}>AVATAR</Text>
+                <Image
+                  source={{ uri: item.errandRunner.avatar }}
+                  style={styles.avatar}
+                />
+                {/* <Text style={styles.avatar}>AVATAR</Text> */}
                 <View style={styles.container4}>
                   <View style={styles.container5}>
                     <Text style={styles.username}>{item.errandRunner.name}</Text>
@@ -28,14 +31,14 @@ const DashboardBody = ({ navigation }) => {
                   <View style={styles.container6}>
                     <Text style={[styles.cont6, styles.store]}>{item.addressName}</Text>
                     <Text style={[styles.cont6, styles.breakbar]}>|</Text>
-                    <Text style={[styles.cont6, styles.body]}>{item.errandName}</Text>
+                    <Text style={[styles.cont6, styles.errandname]}>{item.errandName}</Text>
                   </View>
                 </View>
               </View>
 
               <View style={styles.container7}>
-                <Text style={styles.body}>Address: {item.address.street}</Text>
-                <Text style={styles.body}>ETA: {item.time}</Text>
+                <Text style={styles.cont7}>Address: {item.address.street}</Text>
+                <Text style={styles.cont7}>ETA: {item.time}</Text>
               </View>
 
               <View style={styles.buttons}>
@@ -53,13 +56,13 @@ const DashboardBody = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container0: {
-    height: 625,
+    height: 610,
   },
   container: {
     flex: 1,
     backgroundColor: '#fff',
     flexDirection: 'row',
-    borderWidth: 2,
+    borderWidth: 1,
     borderColor: '#0782F9',
     borderRadius: 5,
     marginTop: 10,
@@ -78,6 +81,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     paddingTop: 18,
+    width: 60,
+    resizeMode: 'contain',
   },
   container4: {
     flex: 1,
@@ -96,23 +101,31 @@ const styles = StyleSheet.create({
   },
   container6: {
     flexDirection: 'row',
-    // justifyContent: 'center',
+    justifyContent: 'center',
   },
   cont6: {
-    paddingVertical: 10,
     fontSize: 15,
     fontWeight: 'bold',
   },
   store: {
-    marginLeft: 20,
+    marginLeft: -20,
+    paddingTop: 13,
+  },
+  errandname: {
+    paddingTop: 13,
   },
   breakbar: {
-    marginHorizontal: 5,
+    fontWeight: '200',
+    marginHorizontal: 10,
+    fontSize: 35,
   },
   container7: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     paddingVertical: 10,
+  },
+  cont7: {
+    fontSize: 13,
   },
   buttons: {
     flexDirection: 'row',
