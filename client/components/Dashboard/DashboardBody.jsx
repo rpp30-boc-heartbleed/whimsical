@@ -10,6 +10,7 @@ import {
   FlatList,
 } from 'react-native';
 import friendsListState from '../../state/atoms/friendsList';
+// import ErrandTracker from '../ErrandTracker/ErrandTrackerContainer.jsx';
 
 const DashboardBody = () => {
   const [friendsList, setFriendsList] = useRecoilState(friendsListState);
