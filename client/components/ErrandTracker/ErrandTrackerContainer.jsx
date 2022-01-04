@@ -24,11 +24,11 @@ import NavBarContainer from '../NavBar/NavBarContainer';
 const ErrandTrackerContainer = ({ route, navigation }) => {
   return (
     <>
-      <View style={styles.container1}>
+      <View style={styles.map}>
         <ErrandMap />
       </View >
 
-      <View style={styles.container2}>
+      <View style={styles.details}>
         <BottomSheet />
       </View>
       <View>
@@ -41,25 +41,20 @@ const ErrandTrackerContainer = ({ route, navigation }) => {
 };
 
 const styles = StyleSheet.create({
-  container1: {
+  map: {
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    // borderRadius: 5,
     height: 175,
     paddingLeft: 120,
     paddingRight: 120,
-    marginBottom: 5,
-    // width: Dimensions.get('window').width,
   },
-  container2: {
-    height: 175,
-    paddingLeft: 1,
-    paddingRight: 1,
-    flex: 0.5,
+  details: {
+    paddingLeft: 0.5,
+    paddingRight: 0.5,
+    flex: 0.44,
     width: Dimensions.get('window').width,
-    marginTop: 10,
   }
 });
 

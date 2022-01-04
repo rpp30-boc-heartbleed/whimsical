@@ -44,7 +44,7 @@ const ErrandMap = ({ streetName, duration, errandLocation, navigation }) => {
     provider={PROVIDER_GOOGLE}
     apikey={GOOGLE_MAPS_API_KEY}
     region={location}
-    style={{ height: 300, width: Dimensions.get('window').width }}
+    style={{ height: 325, width: Dimensions.get('window').width }}
   >
     <Marker coordinate={location} title='Marker' />
     <Marker coordinate={destination} title='Marker' />
