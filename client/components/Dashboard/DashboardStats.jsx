@@ -24,6 +24,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 5,
     marginBottom: 5,
+    justifyContent: 'center',
   },
   stats: {
     borderWidth: 1,
