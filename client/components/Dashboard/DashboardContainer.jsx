@@ -6,19 +6,22 @@ import {
   TextInput,
   StatusBar,
   Button,
+  ScrollView,
 } from 'react-native';
+import DashboardHeader from './DashboardHeader';
+import DashboardStats from './DashboardStats';
+import DashboardBody from './DashboardBody';
+import NavBar from '../NavBar/NavBarContainer';
 
 const DashboardContainer = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Text>This is the Dashboard Component</Text>
-      <Button
-        title="Go to Errand Tracker"
-        onPress={() => navigation.push('ErrandTracker')} // push the name property of the Stack.Screen component as defined in App.jsx
-      />
-      <Button title="Go to Dashboard" onPress={() => navigation.navigate('Dashboard')} />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
-      <StatusBar />
+      <DashboardHeader navigation={navigation} />
+      <ScrollView style={styles.scrollview}>
+        <DashboardStats />
+        <DashboardBody />
+      </ScrollView>
+      <NavBar navigation={navigation} style={styles.navbar} />
     </View>
   );
 };
@@ -27,8 +30,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  },
+  scrollview: {
+    marginBottom: -53,
+  },
+  navbar: {
+    justifyContent: 'flex-end',
   },
 });
 
