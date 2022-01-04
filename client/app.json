@@ -1,13 +1,13 @@
 {
   "expo": {
-    "name": "Quick Bagel",
-    "slug": "quick-bagel",
+    "name": "whimsical",
     "owner": "heartbleed",
+    "slug": "whimsical",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/favicon.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/icons/bagel-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -18,16 +18,34 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "com.BlueOcean.quickBagel",
+      "config": {
+        "googleMapsApiKey": "AIzaSyCFEG5h8aGsI9lRDweVdVPnu6NAmRTg0FA"
+      },
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "track app user",
+        "UIBackgroundModes": [
+          "location",
+          "fetch"
+        ]
+      },
       "supportsTablet": true
     },
     "android": {
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyBV2CQqEy7Na1eU0CdPVVoXtCbSYE8pb6w"
+        }
+      },
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/favicon.png",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "",
+    "githubUrl": "https://github.com/rpp30-boc-heartbleed/whimsical"
   }
 }
