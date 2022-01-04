@@ -9,14 +9,15 @@ import {
   Button,
   FlatList,
 } from 'react-native';
-import friendsListState from '../../state/atoms/friendsList';
+import mockErrandState from '../../state/atoms/errands';
 
 const DashboardBody = () => {
-  const [friendsList, setFriendsList] = useRecoilState(friendsListState);
+  const [errandList] = useRecoilState(mockErrandState);
+  console.log(errandList, 'el');
 
   return (
     <View>
-      <View style={styles.container}>
+      {/* <View style={styles.container}>
         <Text style={styles.body}>a friends post here</Text>
       </View>
       <View style={styles.container}>
@@ -24,19 +25,19 @@ const DashboardBody = () => {
       </View>
       <View style={styles.container}>
         <Text style={styles.body}>a friends post here</Text>
-      </View>
-      {/* <FlatList
-        data={friendsList}
+      </View> */}
+      <FlatList
+        data={errandList}
         renderItem={({ item, index }) => {
           return (
             <View>
-              <Text>{item.name}</Text>
+              <Text>{item.errandName} {item.time}</Text>
             </View>
           );
         }}
         keyExtractor={(friend) => friend.id}
         keyboardShouldPersistTaps="handled"
-      /> */}
+      />
     </View>
   );
 };

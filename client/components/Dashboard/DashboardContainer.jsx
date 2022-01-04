@@ -17,10 +17,10 @@ const DashboardContainer = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <DashboardHeader navigation={navigation} />
-      <ScrollView style={styles.scrollview}>
+      <View style={styles.scrollview}>
         <DashboardStats />
         <DashboardBody />
-      </ScrollView>
+      </View>
       <NavBar navigation={navigation} style={styles.navbar} />
     </View>
   );
