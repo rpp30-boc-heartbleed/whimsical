@@ -1,6 +1,18 @@
+require('dotenv').config();
 const mongoose = require('mongoose');
 
-const connectDb = () => mongoose.connect('mongodb://localhost:27017/quick-bagel', {
+const {
+  USERNAME,
+  PASSWORD,
+  SERVER,
+} = process.env;
+
+// const connectDb = () => mongoose.connect('mongodb://localhost:27017/quick-bagel', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// })
+
+const connectDb = () => mongoose.connect('mongodb://USERNAME:PASSWORD@SERVER/quick-bagel', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })

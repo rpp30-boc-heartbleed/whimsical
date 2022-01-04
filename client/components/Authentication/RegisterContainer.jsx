@@ -85,6 +85,20 @@ const RegisterContainer = ({ navigation }) => {
     return true;
   };
 
+  // post registration info to server
+  async function postUserData(url = '', data = {}) {
+    // Default options are marked with *
+    // eslint-disable-next-line no-undef
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data), // body data type must match "Content-Type" header
+    });
+    return response.json(); // parses JSON response into native JavaScript objects
+  }
+
   // create user authentication account in firebase
   const handleSignUp = (auth, email, password) => {
     console.log('hit sign up');
@@ -107,8 +121,24 @@ const RegisterContainer = ({ navigation }) => {
   const submitForm = () => {
     if (isValidForm()) {
       // add user data to mongoDB
-      // add email and password to firebase authentication
-      handleSignUp(auth, email, password);
+      postUserData(
+        'http://localhost:3000/register',
+        {
+          name,
+          streetAddress,
+          zipCode,
+          imageURL,
+          email,
+        },
+      )
+        .then((data) => {
+          console.log(data);
+          // add email and password to firebase authentication
+          handleSignUp(auth, email, password);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
       // clear form
       setUserInfo({
         name: '',
