@@ -38,26 +38,26 @@ const ErrandMap = ({ streetName, duration, errandLocation, navigation }) => {
 
   //bagel latitude: 42.2966481,
   // longitude: -85.6436558,
-  return (
+  return(
     <>
-      <MapView
-        provider={PROVIDER_GOOGLE}
-        apikey={GOOGLE_MAPS_API_KEY}
-        region={location}
-        style={{ height: 400, width: Dimensions.get('window').width }}
-      >
-        <Marker coordinate={location} title='Marker' />
-        <Marker coordinate={destination} title='Marker' />
+  <MapView
+    provider={PROVIDER_GOOGLE}
+    apikey={GOOGLE_MAPS_API_KEY}
+    region={location}
+    style={{ height: 300, width: Dimensions.get('window').width }}
+  >
+    <Marker coordinate={location} title='Marker' />
+    <Marker coordinate={destination} title='Marker' />
 
-        <MapViewDirections
-          lineDashPattern={[0]}
-          origin={location}
-          destination={destination}
-          apikey={GOOGLE_MAPS_API_KEY}
-          strokeWidth={7}
-          strokeColor='#669df6'
-        />
-      </MapView >
+    <MapViewDirections
+      lineDashPattern={[0]}
+      origin={location}
+      destination={destination}
+      apikey={GOOGLE_MAPS_API_KEY}
+      strokeWidth={7}
+      strokeColor='#669df6'
+    />
+  </MapView >
     </>
   );
 

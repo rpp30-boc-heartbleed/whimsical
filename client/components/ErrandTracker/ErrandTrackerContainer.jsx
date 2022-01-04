@@ -17,56 +17,49 @@ import {
 } from 'react-native';
 import { COLORS, SIZES, icons, images } from '../../constants';
 import errandState from '../../state/atoms/errands';
-
-console.log(GOOGLE_MAPS_API_KEY)
-import TopBar from './TopBar/TopBar.jsx';
 import ErrandMap from './errandMap.jsx';
 import BottomSheet from './BottomSheet/BottomSheet.jsx';
+import NavBarContainer from '../NavBar/NavBarContainer';
 
 const ErrandTrackerContainer = ({ route, navigation }) => {
   return (
     <>
       <View style={styles.container1}>
-        <TopBar />
-      </View>
-
-      <View style={styles.container2}>
         <ErrandMap />
       </View >
 
-      <View style={styles.container3}>
+      <View style={styles.container2}>
         <BottomSheet />
       </View>
+      <View>
+        <NavBarContainer navigation={navigation} />
+      </View>
 
-      <Button
-        title="Go to Map"
-        onPress={() => navigation.push('Map')} // push the name property of the Stack.Screen component as defined in App.jsx
-      />
-      {/* <Button title="Go to Dashboard" onPress={() => navigation.navigate('Dashboard')} />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
-      <StatusBar style="auto" /> */}
     </ >
+
   );
 };
 
 const styles = StyleSheet.create({
   container1: {
-    height: 200,
-    width: Dimensions.get('window').width,
-  },
-  container2: {
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 5,
+    // borderRadius: 5,
+    height: 175,
     paddingLeft: 120,
     paddingRight: 120,
-    marginBottom: 10,
+    marginBottom: 5,
+    // width: Dimensions.get('window').width,
   },
-  container3: {
-    height: 150,
+  container2: {
+    height: 175,
+    paddingLeft: 1,
+    paddingRight: 1,
+    flex: 0.5,
     width: Dimensions.get('window').width,
+    marginTop: 10,
   }
 });
 
