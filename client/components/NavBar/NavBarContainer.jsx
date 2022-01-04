@@ -20,7 +20,7 @@ const NavBarContainer = ({ navigation }) => {
       </TouchableOpacity>
       {/* Add Errand */}
       <TouchableOpacity>
-        <Icon size={30} name='plus-circle' onPress={() => ''} />
+        <Icon size={30} name='plus-circle' onPress={() => navigation.push('NewErrand')} />
       </TouchableOpacity>
       {/* FriendsList */}
       <TouchableOpacity>
