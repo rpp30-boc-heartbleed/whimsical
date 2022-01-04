@@ -1,6 +1,9 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
-const connectDb = () => mongoose.connect('mongodb://localhost:27017/quick-bagel', {
+const { DEPLOYED_DATABASE_URL } = process.env;
+
+const connectDb = () => mongoose.connect(DEPLOYED_DATABASE_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
