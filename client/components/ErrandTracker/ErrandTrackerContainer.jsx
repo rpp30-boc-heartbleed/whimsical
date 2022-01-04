@@ -20,7 +20,7 @@ import errandState from '../../state/atoms/errands';
 
 console.log(GOOGLE_MAPS_API_KEY)
 import TopBar from './TopBar/TopBar.jsx';
-import ErrandMap from './ErrandMap.jsx';
+import ErrandMap from './errandMap.jsx';
 import BottomSheet from './BottomSheet/BottomSheet.jsx';
 
 const ErrandTrackerContainer = ({ route, navigation }) => {
