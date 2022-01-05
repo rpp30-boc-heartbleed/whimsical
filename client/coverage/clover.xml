@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1641357649941" clover="3.2.0">
-  <project timestamp="1641357649941" name="All files">
+<coverage generated="1641360458136" clover="3.2.0">
+  <project timestamp="1641360458136" name="All files">
     <metrics statements="122" coveredstatements="82" conditionals="38" coveredconditionals="13" methods="45" coveredmethods="30" elements="205" coveredelements="125" complexity="0" loc="122" ncloc="122" packages="4" files="5" classes="5"/>
     <package name="client">
       <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
-      <file name="formatAddress.js" path="/Users/surekha/Desktop/HR/whimsical/client/formatAddress.js">
+      <file name="formatAddress.js" path="/home/j/Desktop/hr/whimsical/client/formatAddress.js">
         <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
@@ -16,7 +16,7 @@
     </package>
     <package name="client.components.Authentication">
       <metrics statements="104" coveredstatements="69" conditionals="36" coveredconditionals="12" methods="38" coveredmethods="28"/>
-      <file name="LoginContainer.jsx" path="/Users/surekha/Desktop/HR/whimsical/client/components/Authentication/LoginContainer.jsx">
+      <file name="LoginContainer.jsx" path="/home/j/Desktop/hr/whimsical/client/components/Authentication/LoginContainer.jsx">
         <metrics statements="47" coveredstatements="30" conditionals="16" coveredconditionals="4" methods="14" coveredmethods="10"/>
         <line num="16" count="1" type="stmt"/>
         <line num="18" count="5" type="stmt"/>
@@ -66,7 +66,7 @@
         <line num="144" count="0" type="stmt"/>
         <line num="156" count="1" type="stmt"/>
       </file>
-      <file name="RegisterContainer.jsx" path="/Users/surekha/Desktop/HR/whimsical/client/components/Authentication/RegisterContainer.jsx">
+      <file name="RegisterContainer.jsx" path="/home/j/Desktop/hr/whimsical/client/components/Authentication/RegisterContainer.jsx">
         <metrics statements="57" coveredstatements="39" conditionals="20" coveredconditionals="8" methods="24" coveredmethods="18"/>
         <line num="17" count="1" type="stmt"/>
         <line num="18" count="12" type="stmt"/>
@@ -129,7 +129,7 @@
     </package>
     <package name="client.components.NavBar">
       <metrics statements="8" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="1"/>
-      <file name="NavBarContainer.jsx" path="/Users/surekha/Desktop/HR/whimsical/client/components/NavBar/NavBarContainer.jsx">
+      <file name="NavBarContainer.jsx" path="/home/j/Desktop/hr/whimsical/client/components/NavBar/NavBarContainer.jsx">
         <metrics statements="8" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="1"/>
         <line num="13" count="1" type="stmt"/>
         <line num="14" count="5" type="stmt"/>
@@ -143,7 +143,7 @@
     </package>
     <package name="client.config">
       <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="firebase.js" path="/Users/surekha/Desktop/HR/whimsical/client/config/firebase.js">
+      <file name="firebase.js" path="/home/j/Desktop/hr/whimsical/client/config/firebase.js">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="16" count="2" type="stmt"/>
         <line num="24" count="2" type="stmt"/>
