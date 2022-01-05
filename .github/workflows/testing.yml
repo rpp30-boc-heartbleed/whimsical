@@ -32,7 +32,7 @@ jobs:
       - name: Cd Into Client
         run: cd client
       - name: Install Client Packages
-        run: expo install
+        run: npm install
       - name: Cd Into Root
         run: cd ..
       - name: Run CI environment
@@ -69,7 +69,7 @@ jobs:
       - name: Cd into /client
         run: cd client
       - name: Install Client Packages
-        run: expo install
+        run: npm install
       - name: Expo Publish
         run: expo publish --non-interactive --release-channel pr${{ github.event.number }}
       - name: Add QR to PR
