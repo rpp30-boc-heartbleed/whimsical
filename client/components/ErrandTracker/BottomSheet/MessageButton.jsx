@@ -23,14 +23,10 @@ const MessageButton = () => {
 
 const styles = StyleSheet.create({
   parent: {
-    width: 120,
-    height: 100,
+    height: 40,
     flexDirection: 'row',
-    alignSelf: 'flex-end',
+    alignSelf: 'center',
     paddingHorizontal: 10,
-    marginHorizontal: '10 %',
-    marginBottom: 10,
-    borderRadius: 3,
   },
   text: {
     fontSize: 12,

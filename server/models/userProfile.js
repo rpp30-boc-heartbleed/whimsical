@@ -4,7 +4,7 @@ const { Schema } = mongoose;
 
 const ProfileSchema = new Schema({
   name: String,
-  email: String,
+  email: { type: String, unique: true },
   stars: Number,
   picture: String,
   errandsCompleted: Number,
