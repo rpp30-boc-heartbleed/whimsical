@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 // import { useRecoilState, useRecoilValue } from 'recoil';
-import MapView, { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE, Marker, Callout, installWebGeolocationPolyfill, Polyline } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
 // import Geolocation from 'react-native-geolocation-service';
 import * as Location from 'expo-location';
@@ -45,22 +45,19 @@ const ErrandMap = () => {
     },
   });
 
+  const [driver, setDriver] = useState({
+    latitude: 42.2966481,
+    longitude: -85.6436558,
+  });
 
-  // const mapRef = useRef(null);
-
-  // let markerCord = {
-  //   latitude: 42.2966481,
-  //   longitude: -85.6436558,
-  // };
-
-  let destination = {
+  const [destination, setDestination] = useState({
     latitude: 42.295906,
     longitude: -85.601778,
-  };
+  });
 
   const onHandlePress = (e) => {
     setMarker({
-      marker: e.nativeEvent.coordinate,
+      makrer: e.nativeEvent.coordinate,
     });
   };
 
@@ -72,21 +69,39 @@ const ErrandMap = () => {
         initialRegion={region}
         onPress={(e) => onHandlePress(e)}
       >
-        {/* {
-          marker && <Marker coordinate={marker} />
-        } */}
         <Marker
           draggable
-          coordinate={marker.coordinate}
-        // onDragEnd={(e) => setRegion(e.native.region)}
+          title='Bagel Shop'
+          description='Best Bagels in Town'
+          coordinate={{
+            latitude: 42.2966481,
+            longitude: -85.6436558,
+          }}
         />
-        <MapViewDirections
-          lineDashPattern={[0]}
-          origin={region}
-          destination={destination}
-          apikey={GOOGLE_MAPS_API_KEY}
-          strokeWidth={7}
-          strokeColor='#669df6'
+        <Marker
+          draggable
+          description='He running'
+          title='Errand Runner'
+          coordinate={{
+            latitude: 42.2966481,
+            longitude: -85.6436558,
+          }}
+        >
+          <Image
+            draggable
+            source={require('../../assets/icons/Icon.png')}
+            style={{ width: 35, height: 45 }}
+            resizeMode='center'
+            resizeMethod='resize'
+          />
+        </Marker>
+        <Marker
+          title='The House'
+          draggable
+          coordinate={{
+            latitude: 42.295906,
+            longitude: -85.601778,
+          }}
         />
       </MapView>
     </SafeAreaView>
@@ -109,7 +124,15 @@ const styles = StyleSheet.create({
 
 export default ErrandMap;
 
-///Geolocation
+{/* <MapViewDirections
+  lineDashPattern={[0]}
+  origin={marker.coordinate}
+  destination={destination}
+  apikey={GOOGLE_MAPS_API_KEY}
+  strokeWidth={7}
+  strokeColor='#669df6'
+  /> */}
+  ///Geolocation
 
 // useEffect(() => {
 //   Location.installWebGeolocationPolyfill();
