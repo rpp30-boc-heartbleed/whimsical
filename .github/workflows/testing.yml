@@ -26,8 +26,12 @@ jobs:
             ${{ runner.os }}-
       - name: Install Packages
         run: npm install
-        # run: cd client
-        # run: expo install
+      - name: Cd Into client
+        run: cd client
+      - name : Install Client Packages
+        run: npm install
+      - name: Cd Into Root
+        run: cd ..
       - name: Run CI environment
         run: npm ci
       - name: Test
