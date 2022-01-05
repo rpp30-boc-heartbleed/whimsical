@@ -1,10 +1,8 @@
-require('dotenv').config()
-const { Profile } = require('../models/userProfile');
+require('dotenv').config();
 const { format } = require('util');
 const express = require('express');
 const multer = require('multer');
-const { createWriteStream } = require("fs");
-
+const { createWriteStream } = require('fs');
 
 // By default, the client will authenticate using the service account file
 // specified by the GOOGLE_APPLICATION_CREDENTIALS environment variable and use
@@ -12,7 +10,7 @@ const { createWriteStream } = require("fs");
 // https://github.com/GoogleCloudPlatform/google-cloud-node/blob/master/docs/authentication.md
 // These environment variables are set automatically on Google App Engine
 const { Storage } = require('@google-cloud/storage');
-
+const { Profile } = require('../models/userProfile');
 // Instantiate a storage client
 const storage = new Storage();
 

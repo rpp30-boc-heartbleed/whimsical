@@ -1,21 +1,20 @@
 const express = require('express');
 const multer = require('multer');
 const path = require('path');
+
 multer({
-  limits: { fieldSize: 25 * 1024 * 1024 }
-})
+  limits: { fieldSize: 25 * 1024 * 1024 },
+});
 const storage = multer.diskStorage({
   destination: './public/uploads/images',
-  filename: function (req, file, cb) {
-      cb(null, file.fieldname + '-' + Date.now() +
-  path.extname(file.originalname));
-  }
+  filename(req, file, cb) {
+    cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
+  },
 });
-const upload = multer({storage: storage});
+const upload = multer({ storage });
 
 const {
-  login,
-  navBar,
+  register,
   dashboard,
   userProfile,
   friendsList,
@@ -25,9 +24,8 @@ const {
 
 const router = express.Router();
 
-// LOGIN/REGISTRATION
-
-// NAVBAR
+// REGISTRATION
+router.post('/register', register.addNewUser);
 
 // FEED
 
