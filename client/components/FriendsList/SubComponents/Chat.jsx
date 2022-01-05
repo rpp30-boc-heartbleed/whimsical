@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from 'react';
 import io from 'socket.io-client';
-import { v4 as uuidv4 } from 'uuid';
 import { useRecoilState } from 'recoil';
 import { GiftedChat } from 'react-native-gifted-chat';
 import {
@@ -19,21 +18,21 @@ const Chat = ({ navigation }) => {
   // const [message, setMessage] = useState('');
   // const [msgs, setMsgs] = useState([]);
   const socket = io(LOCAL_IP);
-  socket.on('chat message', (msg) => {
-    console.log('client', msg);
-    setMessages([...messages, msg]);
-  });
+  // socket.on('chat message', (msg) => {
+  //   console.log('client', msg);
+  //   setMessages([...messages, msg]);
+  // });
 
-  const submitMessage = useCallback((message) => {
+  const submitMessage = (message) => {
     socket.emit('chat message', message);
-  }, [socket]);
+  };
 
-  const onSend = useCallback((message) => {
+  const onSend = (message) => {
     console.log(message);
-    submitMessage(message[0]);
+    // submitMessage(message[0]);
     // setMessages([...messages, message]);
-    // setMessages((previousMsgs) => GiftedChat.append(previousMsgs, message[0]));
-  }, [submitMessage]);
+    setMessages((previousMsgs) => GiftedChat.append(previousMsgs, message[0]));
+  };
 
   return (
     <View style={styles.chat}>
@@ -45,6 +44,10 @@ const Chat = ({ navigation }) => {
           name: 'cat',
           avatar: cat,
         }}
+        isTyping
+        infiniteScroll
+        loadEarlier
+        inverted={false}
       />
     </View>
   );
