@@ -1,19 +1,47 @@
+import { images } from '../../constants';
+
+const { cat, dog } = images;
+
 const mockMessages = [
   {
-    text: 'hello',
-    user: 'jbel',
+    _id: 1,
+    text: 'meow',
+    createdAt: new Date(),
+    user: {
+      _id: 1,
+      name: 'Cat',
+      avatar: cat,
+    },
   },
   {
-    text: 'hi',
-    user: 'leo',
+    _id: 2,
+    text: 'woof',
+    createdAt: new Date(),
+    user: {
+      _id: 2,
+      name: 'Dog',
+      avatar: dog,
+    },
   },
   {
-    text: 'what do you want',
-    user: 'jbel',
+    _id: 3,
+    text: 'purr',
+    createdAt: new Date(),
+    user: {
+      _id: 1,
+      name: 'Cat',
+      avatar: cat,
+    },
   },
   {
-    text: 'to lose my damn mind',
-    user: 'leo',
+    _id: 4,
+    text: 'bark',
+    createdAt: new Date(),
+    user: {
+      _id: 2,
+      name: 'Dog',
+      avatar: dog,
+    },
   },
 ];
 
