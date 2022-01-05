@@ -6,14 +6,9 @@ describe('Login text', () => {
   it('renders a welcome message', () => {
     // eslint-disable-next-line react/jsx-filename-extension
     const { queryByText } = render(<LoginContainer />);
+
     expect(queryByText('Welcome to Quick Bagel!')).not.toBeNull();
   });
-  // it('renders an option to register message', () => {
-  //   // eslint-disable-next-line react/jsx-filename-extension
-  //   const { queryByText } = render(<LoginContainer />);
-  //   expect(queryByText('have an acccount?!')).not.toBeNull();
-  //   expect(queryByText('now')).not.toBeNull();
-  // });
 });
 
 describe('Login form', () => {
@@ -29,5 +24,3 @@ describe('Login form', () => {
     });
   });
 });
-
-// register

@@ -174,6 +174,7 @@ const RegisterContainer = ({ navigation }) => {
           style={styles.input}
           placeholder='name'
           value={name}
+          testID='name'
           onChangeText={(value) => handleOnChangeText(value, 'name')}
         />
         <TextInput
@@ -181,6 +182,7 @@ const RegisterContainer = ({ navigation }) => {
           placeholder='street address'
           autoCapitalize='none'
           value={streetAddress}
+          testID='streetAddress'
           onChangeText={(value) => handleOnChangeText(value, 'streetAddress')}
         />
         <TextInput
@@ -188,6 +190,7 @@ const RegisterContainer = ({ navigation }) => {
           placeholder='city'
           autoCapitalize='none'
           value={city}
+          testID='city'
           onChangeText={(value) => handleOnChangeText(value, 'city')}
         />
         <TextInput
@@ -195,6 +198,7 @@ const RegisterContainer = ({ navigation }) => {
           placeholder='state'
           autoCapitalize='none'
           value={state}
+          testID='state'
           onChangeText={(value) => handleOnChangeText(value, 'state')}
         />
         <TextInput
@@ -202,6 +206,7 @@ const RegisterContainer = ({ navigation }) => {
           placeholder='zip code'
           autoCapitalize='none'
           value={zipCode}
+          testID='zipCode'
           onChangeText={(value) => handleOnChangeText(value, 'zipCode')}
         />
         <TextInput
@@ -209,6 +214,7 @@ const RegisterContainer = ({ navigation }) => {
           placeholder='image url'
           autoCapitalize='none'
           value={imageURL}
+          testID='imageURL'
           onChangeText={(value) => handleOnChangeText(value, 'imageURL')}
         />
         <TextInput
@@ -216,6 +222,7 @@ const RegisterContainer = ({ navigation }) => {
           placeholder='email'
           autoCapitalize='none'
           value={email}
+          testID='email'
           onChangeText={(value) => handleOnChangeText(value, 'email')}
         />
         <TextInput
@@ -223,6 +230,7 @@ const RegisterContainer = ({ navigation }) => {
           placeholder='password'
           autoCapitalize='none'
           value={password}
+          testID='password'
           onChangeText={(value) => handleOnChangeText(value, 'password')}
           secureTextEntry
         />
@@ -231,6 +239,7 @@ const RegisterContainer = ({ navigation }) => {
           placeholder='confirm password'
           value={confirmPassword}
           autoCapitalize='none'
+          testID='confirmPassword'
           onChangeText={(value) => handleOnChangeText(value, 'confirmPassword')}
           secureTextEntry
         />
@@ -238,6 +247,7 @@ const RegisterContainer = ({ navigation }) => {
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={[styles.button, styles.buttonOutline]}
+          testID='submitRegister'
           onPress={submitForm}
         >
           <Text style={styles.buttonOutlineText}>Create Account</Text>
