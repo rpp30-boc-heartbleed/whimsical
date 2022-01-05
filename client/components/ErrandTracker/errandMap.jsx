@@ -23,14 +23,13 @@ import {
 import { GOOGLE_MAPS_API_KEY } from '@env';
 
 const ErrandMap = () => {
-
   const [coordinates, setCoordinates] = useState([
     { name: 'Big Apple Bagels', latitide: 42.253502, longitude: -85.5893426 },
     { name: 'Panda Express', latitide: 42.2334426951981, longitude: -85.58900073414098 },
     { name: 'D&W Fresh Market', latitude: 42.26027544435399, longitude: -85.61472073607013 },
     { name: 'YMCA of Greater Kalamazoo', latitide: 42.272923910906655, longitude: -85.59756323495016 },
-    { name: 'FedEx Ground', latitude: 42.26536715984338, longitude: -85.51540124023748 }
-  ])
+    { name: 'FedEx Ground', latitude: 42.26536715984338, longitude: -85.51540124023748 },
+  ]);
 
   const [region, setRegion] = useState({
     latitude: 42.2966481,
@@ -39,76 +38,48 @@ const ErrandMap = () => {
     longitudeDelta: 0.0421,
   });
 
-  // const [markers, setMarkers] = useState([42.2966481, -85.6436558]);
+  const [marker, setMarker] = useState({
+    coordinate: {
+      latitude: 42.2966481,
+      longitude: -85.6436558,
+    },
+  });
+
 
   // const mapRef = useRef(null);
 
-  let markerCord = {
-    latitude: 42.2966481,
-    longitude: -85.6436558,
-  };
+  // let markerCord = {
+  //   latitude: 42.2966481,
+  //   longitude: -85.6436558,
+  // };
 
   let destination = {
     latitude: 42.295906,
     longitude: -85.601778,
   };
 
-  //   const onMapPress = e => {
-  //     setMarkers({
-  //       {
-  //         coordinate: e.nativeEvent.coordinate,
-  //         key: id++
-  //       }
-  //     }),
-  // };
-
-  // let urlFetchDistance = https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins='+lat1+','+lng1+'&destinations='+lat2+'%2C'+lng2+'&key=' + "YOUR_GOOGLE_DIRECTIONS_API_KEY";
-
-  // useEffect(() => {
-  //   if (mapRef.current) {
-  //     mapRef.current.animateCamera(
-  //       {
-  //         center: {
-  //           latitude: 40.342,
-  //           longitude: -85.234,
-  //         },
-  //         zoom: 15,
-  //       },
-  //       5000,
-  //     );
-  //   }
-  // }, []);
-
-  // const handleRegionChange = region => {
-  //   coordinate = region;
-  //   console.log(region);
-  // };
+  const onHandlePress = (e) => {
+    setMarker({
+      marker: e.nativeEvent.coordinate,
+    });
+  };
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar barStyle='dark-content' />
       <MapView
         style={styles.map}
         provider={PROVIDER_GOOGLE}
         initialRegion={region}
+        onPress={(e) => onHandlePress(e)}
       >
-        <View style={styles.container2}>
-          <Marker
-            draggable
-            coordinate={markerCord}
-          >
-            <Callout>
-              <Text>A Bagel Place </Text>
-            </Callout>
-          </Marker>
-          <Marker
-            coordinate={destination}
-          >
-            <Callout>
-              <Text>Some House </Text>
-            </Callout>
-          </Marker>
-        </View>
+        {/* {
+          marker && <Marker coordinate={marker} />
+        } */}
+        <Marker
+          draggable
+          coordinate={marker.coordinate}
+        // onDragEnd={(e) => setRegion(e.native.region)}
+        />
         <MapViewDirections
           lineDashPattern={[0]}
           origin={region}
