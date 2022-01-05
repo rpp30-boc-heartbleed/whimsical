@@ -1,5 +1,4 @@
-const login = require('./login');
-const navBar = require('./navBar');
+const register = require('./register');
 const dashboard = require('./dashboard');
 const userProfile = require('./userProfile');
 const friendsList = require('./friendsList');
@@ -7,8 +6,7 @@ const map = require('./map');
 const errandTracker = require('./errandTracker');
 
 module.exports = {
-  login,
-  navBar,
+  register,
   dashboard,
   userProfile,
   friendsList,

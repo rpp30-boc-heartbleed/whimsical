@@ -23,7 +23,7 @@ import userProfileState from '../../state/atoms/userProfile';
 const UserProfileContainer = ({ navigation }) => {
   const [user, setUser] = useRecoilState(userProfileState);
   useEffect(() => {
-    axios.get(`http://localhost:3000/userProfile/get?email=${auth.auth.currentUser.email}`) // add '?name=Ojeiku' to queryString
+    axios.get(`http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/get?email=${auth.auth.currentUser.email}`) // add '?name=Ojeiku' to queryString
       .then((data) => {
         // console.log('loaded profile', data.data);
         setUser(data.data[0]);
@@ -42,7 +42,7 @@ const UserProfileContainer = ({ navigation }) => {
       stars: user.stars,
       location: user.location,
     };
-    axios.post('http://localhost:3000/userProfile/edit', {
+    axios.post('http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/edit', {
       formerUser: user,
       updatedUser: newUser,
     })
@@ -64,7 +64,7 @@ const UserProfileContainer = ({ navigation }) => {
       stars: user.stars,
       location: user.location,
     };
-    axios.post('http://localhost:3000/userProfile/edit', {
+    axios.post('http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/edit', {
       formerUser: user,
       updatedUser: newUser,
     })
@@ -86,7 +86,7 @@ const UserProfileContainer = ({ navigation }) => {
       stars: user.stars,
       location: value,
     };
-    axios.post('http://localhost:3000/userProfile/edit', {
+    axios.post('http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/edit', {
       formerUser: user,
       updatedUser: newUser,
     })
@@ -125,7 +125,7 @@ const UserProfileContainer = ({ navigation }) => {
       // const blob = URL.createObjectURL(image.uri);
       console.log('blob', image);
       console.log('data', data);
-      axios.post('http://localhost:3000/userProfile/image', data, {
+      axios.post('http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/image', data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         }
