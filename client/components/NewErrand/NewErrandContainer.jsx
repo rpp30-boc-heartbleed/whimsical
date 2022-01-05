@@ -35,7 +35,7 @@ const NewErrandContainer = ({ navigation }) => {
             style={styles.textInputs}
             placeholder="Bagelmart"
             onChangeText={(text) => {
-              newErrandObj.store = text;
+              newErrandObj.storeName = text;
             }}
           />
 
@@ -44,7 +44,7 @@ const NewErrandContainer = ({ navigation }) => {
             style={styles.textInputs}
             placeholder="231 Bagel Hole Circle"
             onChangeText={(text) => {
-              newErrandObj.address = text;
+              newErrandObj.streetName = text;
             }}
           />
 
@@ -53,7 +53,7 @@ const NewErrandContainer = ({ navigation }) => {
             style={styles.textInputs}
             placeholder="5:45pm"
             onChangeText={(text) => {
-              newErrandObj.time = text;
+              newErrandObj.storeETA = text;
             }}
           />
 

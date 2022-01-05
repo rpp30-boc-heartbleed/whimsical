@@ -18,7 +18,7 @@ export const testUser = {
   },
 };
 
-export const mockErrandsData = [
+export const mockErrandsData1 = [
   {
     id: 1,
     timeOfPost: '3:30pm',
@@ -272,3 +272,121 @@ export const mockErrandsData = [
     status: 'Pending',
   },
 ];
+
+export const mockErrandsData = [
+  {
+    id: 1,
+    storeName: 'Walmart',
+    storeAddress: {
+      streetName: '501 N 9th St',
+      cityName: 'Kalamzoo',
+      state: 'Michigan',
+      zipCode: 49009,
+    },
+    storeETA: '1:45 pm',
+    errandName: 'Watermelon Walmart Run!',
+    timeOfPost: '1:00 pm',
+    username: 'Willy Wonka',
+    userAvatar: 'https://i.pinimg.com/originals/23/df/84/23df84f7150c9b456787e0174a840808.png',
+    status: 'Pending',
+  },
+  {
+    id: 2,
+    storeName: 'Trader Joes',
+    storeAddress: {
+      streetName: '5099 Century Ave',
+      cityName: 'Kalamzoo',
+      state: 'Michigan',
+      zipCode: 49009,
+    },
+    storeETA: '2:45 pm',
+    errandName: 'Tomato Trader Joes Run!',
+    timeOfPost: '2:00 pm',
+    username: 'Joey Trayduh',
+    userAvatar: 'https://freesvg.org/img/Comic-Hand-Peace-Sign.png',
+    status: 'Pending',
+  },
+  {
+    id: 3,
+    storeName: 'MOMA',
+    storeAddress: {
+      streetName: '119 E Michigan Ave',
+      cityName: 'Kalamazoo',
+      state: 'Michigan',
+      zipCode: 49007,
+    },
+    storeETA: '3:45 pm',
+    errandName: 'Munster Cheese MOMA Run!',
+    timeOfPost: '3:00 pm',
+    username: 'Morgan Stanley',
+    userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emoji_u1f9c0.svg/1200px-Emoji_u1f9c0.svg.png',
+    status: 'Pending',
+  },
+  {
+    id: 4,
+    storeName: 'MOMA',
+    storeAddress: {
+      streetName: '119 E Michigan Ave',
+      cityName: 'Kalamazoo',
+      state: 'Michigan',
+      zipCode: 49007,
+    },
+    storeETA: '4:45 pm',
+    errandName: 'Munster Cheese MOMA Run!',
+    timeOfPost: '4:00 pm',
+    username: 'Morgan Stanley',
+    userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emoji_u1f9c0.svg/1200px-Emoji_u1f9c0.svg.png',
+    status: 'Pending',
+  },
+  {
+    id: 5,
+    storeName: 'MOMA',
+    storeAddress: {
+      streetName: '119 E Michigan Ave',
+      cityName: 'Kalamazoo',
+      state: 'Michigan',
+      zipCode: 49007,
+    },
+    storeETA: '4:45 pm',
+    errandName: 'Munster Cheese MOMA Run!',
+    timeOfPost: '4:00 pm',
+    username: 'Morgan Stanley',
+    userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emoji_u1f9c0.svg/1200px-Emoji_u1f9c0.svg.png',
+    status: 'Pending',
+  },
+  {
+    id: 6,
+    storeName: 'MOMA',
+    storeAddress: {
+      streetName: '119 E Michigan Ave',
+      cityName: 'Kalamazoo',
+      state: 'Michigan',
+      zipCode: 49007,
+    },
+    storeETA: '4:45 pm',
+    errandName: 'Munster Cheese MOMA Run!',
+    timeOfPost: '4:00 pm',
+    username: 'Morgan Stanley',
+    userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emoji_u1f9c0.svg/1200px-Emoji_u1f9c0.svg.png',
+    status: 'Pending',
+  },
+];
+
+/*
+{
+  id: NUMBER,
+  storeName: STRING,
+  storeAddress: {
+    streetName: STRING,
+    cityName: STRING,
+    state: STRING,
+    zipCode: NUMBER,
+  },
+  storeETA: STRING,
+  errandName: STRING,
+  timeOfPost: STRING,
+  username: STRING,
+  userAvatar: STRING,
+  status: STRING
+}
+ */

@@ -18,17 +18,17 @@ const DashboardBody = ({ navigation }) => {
             <View style={styles.container2}>
               <View style={styles.container3}>
                 <Image
-                  source={{ uri: item.errandRunner.avatar }}
+                  source={{ uri: item.userAvatar }}
                   style={styles.avatar}
                 />
                 <View style={styles.container4}>
                   <View style={styles.container5}>
-                    <Text style={styles.username}>{item.errandRunner.name}</Text>
-                    <Text style={styles.minutesago}>minutes ago posted</Text>
+                    <Text style={styles.username}>{item.username}</Text>
+                    <Text style={styles.timeOfPost}>minutes ago posted</Text>
                   </View>
 
                   <View style={styles.container6}>
-                    <Text style={[styles.cont6, styles.store]}>{item.addressName}</Text>
+                    <Text style={[styles.cont6, styles.store]}>{item.storeName}</Text>
                     <Text style={[styles.cont6, styles.breakbar]}>|</Text>
                     <Text style={[styles.cont6, styles.errandname]}>{item.errandName}</Text>
                   </View>
@@ -36,8 +36,8 @@ const DashboardBody = ({ navigation }) => {
               </View>
 
               <View style={styles.container7}>
-                <Text style={styles.cont7}>Address: {item.address.street}</Text>
-                <Text style={styles.cont7}>ETA: {item.time}</Text>
+                <Text style={styles.cont7}>Address: {item.storeAddress.streetName}</Text>
+                <Text style={styles.cont7}>ETA: {item.storeETA}</Text>
               </View>
 
               <View style={styles.buttons}>
