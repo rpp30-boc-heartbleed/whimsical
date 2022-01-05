@@ -28,6 +28,7 @@ const router = express.Router();
 router.post('/register', register.addNewUser);
 
 // FEED
+router.post('/newErrand', dashboard.addNewErrand);
 
 // USER PROFILE
 router.get('/userProfile/get', userProfile.get);

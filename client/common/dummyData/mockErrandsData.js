@@ -23,8 +23,8 @@ export const mockErrandsData = [
     id: 1,
     timeOfPost: '3:30pm',
     errandName: 'Impromptu Bagel Run',
-    time: '45 minutes',
-    addressName: 'Big Apple Bagels',
+    time: '1:45pm',
+    addressName: 'Einsteins',
     address: {
       street: '4408 W Main St',
       city: 'Kalamazoo',
@@ -51,8 +51,8 @@ export const mockErrandsData = [
     id: 2,
     timeOfPost: '3:30pm',
     errandName: 'Bacon Run',
-    time: '9:45',
-    addressName: 'Big Bacon',
+    time: '9:45pm',
+    addressName: 'Walmart',
     address: {
       street: '602 S Main St',
       city: 'Kalamazoo',
@@ -80,7 +80,7 @@ export const mockErrandsData = [
     timeOfPost: '3:30pm',
     errandName: 'Biscuit Run',
     time: '3:45',
-    addressName: 'Biscuit drive',
+    addressName: 'Target',
     address: {
       street: '4408 W Main St',
       city: 'Kalamazoo',
@@ -106,9 +106,9 @@ export const mockErrandsData = [
   {
     id: 4,
     timeOfPost: '3:30pm',
-    errandName: 'Impromptu Bagel Run',
-    time: '45 minutes',
-    addressName: 'Big Apple Bagels',
+    errandName: 'Banana Run',
+    time: '8:45pm',
+    addressName: 'Whole Foods',
     address: {
       street: '4408 W Main St',
       city: 'Kalamazoo',
@@ -134,9 +134,9 @@ export const mockErrandsData = [
   {
     id: 5,
     timeOfPost: '3:30pm',
-    errandName: 'Bacon Run',
+    errandName: 'Butter Run',
     time: '9:45',
-    addressName: 'Big Bacon',
+    addressName: 'HEB',
     address: {
       street: '602 S Main St',
       city: 'Kalamazoo',
@@ -162,9 +162,9 @@ export const mockErrandsData = [
   {
     id: 6,
     timeOfPost: '3:30pm',
-    errandName: 'Biscuit Run',
+    errandName: 'Donut Run',
     time: '3:45',
-    addressName: 'Biscuit drive',
+    addressName: 'Shipleys',
     address: {
       street: '4408 W Main St',
       city: 'Kalamazoo',

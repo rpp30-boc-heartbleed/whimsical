@@ -1,45 +1,99 @@
 import React from 'react';
+import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  StatusBar,
-  Button,
-  ScrollView,
+  View, Text, StyleSheet, TextInput, StatusBar, Button, ScrollView,
 } from 'react-native';
 import NavBar from '../NavBar/NavBarContainer';
+import newErrandState from '../../state/atoms/newErrand';
+import newErrandSelector from '../../state/selectors/newErrandSelector';
 
-const NewErrandContainer = ({ navigation }) => (
-  <View style={styles.container}>
-    <ScrollView>
-      <View style={styles.container2}>
-        <Text style={styles.textfields}>Store:</Text>
-        <TextInput style={styles.textInputs} placeholder="Bagelmart" />
+const NewErrandContainer = ({ navigation }) => {
+  const setNewErrand = useSetRecoilState(newErrandState);
+  const newErrandView = useRecoilValue(newErrandSelector);
+  // const url = 'http://ec2-34-239-133-230.compute-1.amazonaws.com/newErrand';
+  const url = 'http://localhost:3000/newErrand';
+  const newErrandObj = {};
 
-        <Text style={styles.textfields}>Address:</Text>
-        <TextInput style={styles.textInputs} placeholder="231 Bagel Hole Circle" />
+  async function addToMongo(data) {
+    // eslint-disable-next-line no-undef
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    return response.json();
+  }
 
-        <Text style={styles.textfields}>Time:</Text>
-        <TextInput style={styles.textInputs} placeholder="5:45pm" />
+  return (
+    <View style={styles.container}>
+      <ScrollView>
+        <View style={styles.container2}>
+          <Text style={styles.textfields}>Store:</Text>
+          <TextInput
+            style={styles.textInputs}
+            placeholder="Bagelmart"
+            onChangeText={(text) => {
+              newErrandObj.store = text;
+            }}
+          />
 
-        <Text style={styles.textfields}>Errand Name:</Text>
-        <TextInput style={styles.textInputs} placeholder="bagel time!!!" />
+          <Text style={styles.textfields}>Address:</Text>
+          <TextInput
+            style={styles.textInputs}
+            placeholder="231 Bagel Hole Circle"
+            onChangeText={(text) => {
+              newErrandObj.address = text;
+            }}
+          />
 
-        <View style={styles.buttons}>
-          <View style={styles.cancel}>
-            <Button title="Cancel" />
-          </View>
-          <View style={styles.submit}>
-            <Button title="Submit" />
+          <Text style={styles.textfields}>Time:</Text>
+          <TextInput
+            style={styles.textInputs}
+            placeholder="5:45pm"
+            onChangeText={(text) => {
+              newErrandObj.time = text;
+            }}
+          />
+
+          <Text style={styles.textfields}>Errand Name:</Text>
+          <TextInput
+            style={styles.textInputs}
+            placeholder="bagel time!!!"
+            onChangeText={(text) => {
+              newErrandObj.errandName = text;
+            }}
+          />
+
+          <View style={styles.buttons}>
+            <View style={styles.cancel}>
+              <Button title="Cancel" />
+            </View>
+            <View style={styles.submit}>
+              <Button
+                title="Submit"
+                onPress={(e) => {
+                  setNewErrand(newErrandObj);
+                  addToMongo(newErrandObj)
+                    .then((data) => {
+                      console.log('addToMongo data post successful');
+                      navigation.navigate('Dashboard');
+                    })
+                    .catch((err) => {
+                      console.log(err);
+                    });
+                }}
+              />
+            </View>
           </View>
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
 
-    <NavBar navigation={navigation} />
-  </View>
-);
+      <NavBar navigation={navigation} />
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -78,7 +132,7 @@ const styles = StyleSheet.create({
   submit: {
     borderWidth: 2,
     borderRadius: 5,
-    borderColor: '#0782F9',
+    borderColor: 'green',
   },
 });
 

@@ -1,13 +1,13 @@
 const { Dashboard } = require('../models/dashboard');
 
-const placeholder = (req, res) => {
+const addNewErrand = (req, res) => {
   Dashboard.find()
     .then(() => {
-      res.json({ message: 'this is a placeholder' });
+      res.json({ message: 'this is a addNewErrand' });
     })
     .catch((err) => {
       console.log(err);
     });
 };
 
-module.exports = { placeholder };
+module.exports = { addNewErrand };
