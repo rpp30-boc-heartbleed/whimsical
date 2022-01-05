@@ -6,37 +6,41 @@ import {
   TextInput,
   StatusBar,
   Button,
+  ScrollView,
 } from 'react-native';
 import NavBar from '../NavBar/NavBarContainer';
 
 const NewErrandContainer = ({ navigation }) => (
   <View style={styles.container}>
-    <View style={styles.container2}>
-      <Text style={styles.textfields}>Store:</Text>
-      <TextInput style={styles.textInputs} placeholder="Bagelmart" />
+    <ScrollView>
+      <View style={styles.container2}>
+        <Text style={styles.textfields}>Store:</Text>
+        <TextInput style={styles.textInputs} placeholder="Bagelmart" />
 
-      <Text style={styles.textfields}>Address:</Text>
-      <TextInput style={styles.textInputs} placeholder="231 Bagel Hole Circle" />
+        <Text style={styles.textfields}>Address:</Text>
+        <TextInput style={styles.textInputs} placeholder="231 Bagel Hole Circle" />
 
-      <Text style={styles.textfields}>Time:</Text>
-      <TextInput style={styles.textInputs} placeholder="5:45pm" />
+        <Text style={styles.textfields}>Time:</Text>
+        <TextInput style={styles.textInputs} placeholder="5:45pm" />
 
-      <Text style={styles.textfields}>Errand Name:</Text>
-      <TextInput style={styles.textInputs} placeholder="bagel time!!!" />
+        <Text style={styles.textfields}>Errand Name:</Text>
+        <TextInput style={styles.textInputs} placeholder="bagel time!!!" />
 
-      <View style={styles.buttons}>
-        <Button title="Cancel" style={styles.cancel} />
-        <Button title="Submit" style={styles.submit} />
+        <View style={styles.buttons}>
+          <Button title="Cancel" style={styles.cancel} />
+          <Button title="Submit" style={styles.submit} />
+        </View>
       </View>
-    </View>
+    </ScrollView>
 
-    <NavBar navigation={navigation} style={styles.navbar} />
+    <NavBar navigation={navigation} />
   </View>
 );
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#fff',
+    flex: 1,
   },
   container2: {
     alignItems: 'center',
@@ -60,9 +64,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginTop: 2,
     marginBottom: -20,
-  },
-  navbar: {
-    justifyContent: 'flex-end',
   },
 });
 
