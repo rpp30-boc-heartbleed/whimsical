@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import io from 'socket.io-client';
+import { v4 as uuidv4 } from 'uuid';
 import { useRecoilState } from 'recoil';
 import { GiftedChat } from 'react-native-gifted-chat';
 import {
@@ -7,7 +8,11 @@ import {
   StyleSheet,
 } from 'react-native';
 import { LOCAL_IP } from '@env';
+
+import { images } from '../../../constants';
 import ChatState from '../../../state/atoms/errandChat';
+
+const { cat } = images;
 
 const Chat = ({ navigation }) => {
   const [messages, setMessages] = useRecoilState(ChatState);
@@ -23,9 +28,11 @@ const Chat = ({ navigation }) => {
     socket.emit('chat message', message);
   }, [socket]);
 
-  const onSend = useCallback((message = []) => {
-    submitMessage(message);
-    setMessages((previousMsgs) => GiftedChat.append(previousMsgs, message));
+  const onSend = useCallback((message) => {
+    console.log(message);
+    submitMessage(message[0]);
+    // setMessages([...messages, message]);
+    setMessages((previousMsgs) => GiftedChat.append(previousMsgs, message[0]));
   }, [submitMessage, setMessages]);
 
   return (
@@ -35,6 +42,8 @@ const Chat = ({ navigation }) => {
         onSend={(message) => onSend(message)}
         user={{
           _id: 1,
+          name: 'cat',
+          avatar: cat,
         }}
       />
     </View>
