@@ -127,7 +127,7 @@ const RegisterContainer = ({ navigation }) => {
       // add user data to mongoDB
       postUserData(
         // 'http://localhost:3000/register',
-        'http://ec2-34-239-133-230.compute-1.amazonaws.com',
+        'http://ec2-34-239-133-230.compute-1.amazonaws.com/register',
         {
           name,
           streetAddress,
