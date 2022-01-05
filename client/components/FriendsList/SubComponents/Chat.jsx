@@ -32,8 +32,8 @@ const Chat = ({ navigation }) => {
     console.log(message);
     submitMessage(message[0]);
     // setMessages([...messages, message]);
-    setMessages((previousMsgs) => GiftedChat.append(previousMsgs, message[0]));
-  }, [submitMessage, setMessages]);
+    // setMessages((previousMsgs) => GiftedChat.append(previousMsgs, message[0]));
+  }, [submitMessage]);
 
   return (
     <View style={styles.chat}>
