@@ -9,6 +9,7 @@ module.exports = function (api) {
           targets: { node: 'current' },
         },
       ],
+      '@babel/preset-react',
     ],
     plugins: [
       ['module:react-native-dotenv',
