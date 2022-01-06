@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-// import { useRecoilState } from 'recoil';
 import MapView, { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
 import * as Location from 'expo-location';
@@ -17,7 +16,6 @@ import {
   PermissionsAndroid,
   Platform,
 } from 'react-native';
-// import errandState from '../../state/atoms/errands';
 import { GOOGLE_MAPS_API_KEY } from '@env';
 import {
   COLORS, SIZES, icons, images,
@@ -97,6 +95,7 @@ const ErrandMap = ({ setEta, errand }) => {
         >
           <Image
             draggable
+            // eslint-disable-next-line global-require
             source={require('../../assets/icons/Icon.png')}
             style={{ width: 35, height: 45 }}
             resizeMode='center'
@@ -134,45 +133,3 @@ const styles = StyleSheet.create({
 });
 
 export default ErrandMap;
-
-  ///Geolocation
-
-// useEffect(() => {
-//   Location.installWebGeolocationPolyfill();
-//   navigator.geolocation.getCurrentPosition(
-//     position => {
-//       console.log(position);
-//       const { latitude, longitude } = position.coords;
-//       setLocation(
-//         {
-//           latitude,
-//           longitude,
-//         },
-//       );
-//     },
-//     (error) => {
-//       console.log(error.code, error.message);
-//     },
-//     { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 },
-//   );
-// }, []);
-
-// return (
-//   <SafeAreaView style={styles.container}>
-//     <StatusBar barStyle='dark-content' />
-//     {location && (
-//       <MapView
-//         style={styles.map}
-//         provider={PROVIDER_GOOGLE}
-//         initialRegion={{
-//           latitude: location.latitude,
-//           longitude: location.longitude,
-//           latitudeDelta: 0.0922,
-//           longitudeDelta: 0.0421,
-//         }}
-//         showsUserLocation={true}
-//       />
-//     )}
-//   </SafeAreaView>
-// );
-// };

@@ -15,7 +15,7 @@ const ErrandRequests = ({ navigation }) => {
   const errands = useRecoilValue(filteredErrandsState);
   const refresh = useRecoilValue(refreshErrandsState);
 
-  console.log('========================= errands length:', errands.length, '===========================================')
+  console.log('========================= errands length:', errands.length, '===========================================');
 
   return (
     <View style={styles.container}>

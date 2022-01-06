@@ -1,10 +1,12 @@
 import React from 'react';
-import { Dimensions, StyleSheet, View, Text } from 'react-native';
-import MessageButton from './MessageButton.jsx';
-import Courier from './Courier.jsx';
-// import ErrandProgress from './ErrandProgress.jsx';
-
-
+import {
+  Dimensions,
+  StyleSheet,
+  View,
+  Text,
+} from 'react-native';
+import MessageButton from './MessageButton';
+import Courier from './Courier';
 
 const BottomSheet = ({ eta, errandRunner, errandName }) => (
   <View style={styles.container}>

@@ -15,7 +15,12 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import { COLORS, SIZES, icons, images } from '../../constants';
+import {
+  COLORS,
+  SIZES,
+  icons,
+  images,
+} from '../../constants';
 import errandState, { refreshErrandsState } from '../../state/atoms/errands';
 import ErrandMap from './ErrandMap';
 import BottomSheet from './BottomSheet/BottomSheet';
