@@ -1,16 +1,26 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
+import {
+  FlatList,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { useRecoilValue } from 'recoil';
-import { Text, View, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 import filteredErrandsState from '../../state/selectors/filterErrandsByRequestor';
-import NavBarContainer from '../NavBar/NavBarContainer';
+import { refreshErrandsState } from '../../state/atoms/errands';
 
 const ErrandRequests = ({ navigation }) => {
   const errands = useRecoilValue(filteredErrandsState);
+  const refresh = useRecoilValue(refreshErrandsState);
 
   return (
     <View style={styles.container}>
       <FlatList
         data={errands}
+        keyExtractor={(item, index) => index}
+        extraData={errands}
         renderItem={({ item, index }) => {
           return (
             <TouchableOpacity style={styles.friend} onPress={() => navigation.navigate('ErrandTracker', { errand: item })}>
@@ -18,7 +28,7 @@ const ErrandRequests = ({ navigation }) => {
                 <Text>
                   {item.errandName}
                 </Text>
-                <Text>{item.id}</Text>
+                <Text>{item.id}{item.status === 'Delivered' && <Icon size={25} name='check' />}</Text>
               </View>
             </TouchableOpacity>
           );

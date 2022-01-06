@@ -74,7 +74,7 @@ const ErrandMap = ({ setEta, errand }) => {
         console.log('count', count);
         setDriverPosition(path[count]);
       }
-    }, 1000);
+    }, 500);
     return () => {
       console.log('cleared');
       clearInterval(timer);

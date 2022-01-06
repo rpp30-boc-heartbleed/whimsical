@@ -23,7 +23,7 @@ export const mockErrandsData = [
     id: 1,
     timeOfPost: '3:30pm',
     errandName: 'Impromptu Bagel Run',
-    eta: 0,
+    eta: null,
     addressName: 'Big Apple Bagels',
     address: {
       street: '4408 W Main St',
@@ -50,8 +50,8 @@ export const mockErrandsData = [
   {
     id: 2,
     timeOfPost: '5:00pm',
-    errandName: ':(',
-    eta: 0,
+    errandName: 'Pick up my yeezy\'s',
+    eta: null,
     addressName: 'Harper Funeral Home',
     address: {
       street: '521 Douglas Ave',
@@ -79,7 +79,7 @@ export const mockErrandsData = [
     id: 3,
     timeOfPost: '7:00pm',
     errandName: 'Biscuit Run',
-    eta: 0,
+    eta: null,
     addressName: 'Daysha\'s Convenient Store',
     address: {
       street: '715 Douglas Ave',
@@ -135,7 +135,7 @@ export const mockErrandsData = [
     id: 5,
     timeOfPost: '7:45pm',
     errandName: 'Pick up my dog',
-    eta: 0,
+    eta: null,
     addressName: 'Henderson Park',
     address: {
       street: '1300 Grand Ave',
@@ -163,7 +163,7 @@ export const mockErrandsData = [
     id: 6,
     timeOfPost: '8:00pm',
     errandName: 'Forgot my college papers',
-    eta: 0,
+    eta: null,
     addressName: 'Biscuit drive',
     address: {
       street: '106 Thompson St',
@@ -191,7 +191,7 @@ export const mockErrandsData = [
     id: 7,
     timeOfPost: '8:30pm',
     errandName: 'It\'s steak night',
-    eta: 0,
+    eta: null,
     addressName: 'H Prime Chop House Seafood and Steakhouse',
     address: {
       street: '101 Monroe St',
@@ -219,7 +219,7 @@ export const mockErrandsData = [
     id: 8,
     timeOfPost: '9:30pm',
     errandName: 'I forgot my hair',
-    eta: 0,
+    eta: null,
     addressName: 'Ultima Hair Salon',
     address: {
       street: '1604 W Main St',
@@ -247,7 +247,7 @@ export const mockErrandsData = [
     id: 9,
     timeOfPost: '10:30pm',
     errandName: 'Can you check out the apartment?',
-    eta: 0,
+    eta: null,
     addressName: 'Biscuit drive',
     address: {
       street: '735 Summit Ave',
