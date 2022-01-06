@@ -5,7 +5,7 @@
 
 // 1227 Jefferson Ave Kalamazoo, MI 49006
 export const testUser = {
-  name: 'requestor',
+  name: 'Rex Grossman',
   address: {
     street: '1227 Jefferson Ave',
     city: 'Kalamazoo',

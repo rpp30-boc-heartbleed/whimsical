@@ -28,7 +28,7 @@ const NavBarContainer = ({ navigation }) => {
       </TouchableOpacity>
       {/* Map */}
       <TouchableOpacity>
-        <Icon size={30} name='map-marker' onPress={() => navigation.push('Map')} />
+        <Icon size={30} name='map-marker' onPress={() => navigation.push('ErrandList')} />
       </TouchableOpacity>
       {/* Dashboard */}
       <TouchableOpacity>

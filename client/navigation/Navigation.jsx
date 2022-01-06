@@ -11,6 +11,7 @@ import {
   FriendsListContainer,
   LoginContainer,
   MapContainer,
+  ErrandListContainer,
   NavBarContainer,
   RegisterContainer,
   UserProfileContainer,
@@ -28,6 +29,7 @@ const Navigation = () => {
         <Stack.Screen name='NewErrand' component={NewErrandContainer} />
         <Stack.Screen name='ErrandTracker' component={ErrandTrackerContainer} />
         <Stack.Screen name='Map' component={MapContainer} />
+        <Stack.Screen name='ErrandList' component={ErrandListContainer} />
         <Stack.Screen name='NavBar' component={NavBarContainer} />
         <Stack.Screen name='UserProfile' component={UserProfileContainer} />
         <Stack.Screen name='FriendsList' component={FriendsListContainer} />

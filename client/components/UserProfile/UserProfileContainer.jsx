@@ -146,13 +146,13 @@ const UserProfileContainer = ({ navigation }) => {
 
     updatePassword(user, newPassword)
       .then((data) => {
-      // If update is successful.
+        // If update is successful.
         console.log('update successfull!', data);
       })
       .catch((err) => {
         // If an error occurred
         console.error(err);
-  });
+      });
   }
 
   return (
@@ -206,10 +206,10 @@ const UserProfileContainer = ({ navigation }) => {
         />
       </View>
       <View>
-        <Button
+        {/* <Button
           title="Go to Errand Tracker"
           onPress={() => navigation.push('ErrandTracker')} // push the name property of the Stack.Screen component as defined in App.jsx
-        />
+        /> */}
         <Button title="Go to Dashboard" onPress={() => navigation.navigate('Dashboard')} />
         <Button title="Go back" onPress={() => navigation.goBack()} />
         <StatusBar />

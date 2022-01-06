@@ -19,6 +19,7 @@ import { COLORS, SIZES, icons, images } from '../../constants';
 import errandState from '../../state/atoms/errands';
 import ErrandMap from './ErrandMap';
 import BottomSheet from './BottomSheet/BottomSheet';
+// import ErrandList from './ErrandList';
 import NavBarContainer from '../NavBar/NavBarContainer';
 
 const ErrandTrackerContainer = ({ route, navigation }) => {
@@ -29,16 +30,13 @@ const ErrandTrackerContainer = ({ route, navigation }) => {
       <View style={styles.map}>
         <ErrandMap setEta={setEta} />
       </View>
-
       <View style={styles.details}>
         <BottomSheet eta={eta} />
       </View>
       <View>
         <NavBarContainer navigation={navigation} />
       </View>
-
-    </ >
-
+    </>
   );
 };
 
@@ -57,7 +55,11 @@ const styles = StyleSheet.create({
     paddingRight: 0.5,
     flex: 0.44,
     width: Dimensions.get('window').width,
-  }
+  },
+  container: {
+    flex: 1,
+    paddingTop: 22,
+  },
 });
 
 export default ErrandTrackerContainer;

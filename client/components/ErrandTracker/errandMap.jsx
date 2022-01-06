@@ -1,9 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useIsFocused } from '@react-navigation/native';
-// import { useRecoilState, useRecoilValue } from 'recoil';
+// import { useRecoilState } from 'recoil';
 import MapView, { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
-// import Geolocation from 'react-native-geolocation-service';
 import * as Location from 'expo-location';
 import {
   View,
@@ -19,7 +17,7 @@ import {
   PermissionsAndroid,
   Platform,
 } from 'react-native';
-// port errandState from '../../state/atoms/errands'
+// import errandState from '../../state/atoms/errands';
 import { GOOGLE_MAPS_API_KEY } from '@env';
 import {
   COLORS, SIZES, icons, images,
@@ -56,13 +54,7 @@ const ErrandMap = ({ setEta }) => {
   const mapRef = useRef();
   const markerRef = useRef();
 
-  const [coordinates, setCoordinates] = useState([
-    { name: 'Big Apple Bagels', latitide: 42.253502, longitude: -85.5893426 },
-    { name: 'Panda Express', latitide: 42.2334426951981, longitude: -85.58900073414098 },
-    { name: 'D&W Fresh Market', latitude: 42.26027544435399, longitude: -85.61472073607013 },
-    { name: 'YMCA of Greater Kalamazoo', latitide: 42.272923910906655, longitude: -85.59756323495016 },
-    { name: 'FedEx Ground', latitude: 42.26536715984338, longitude: -85.51540124023748 },
-  ]);
+  // const [errands, setErrands] = useRecoilState(errandState);
 
   const [region, setRegion] = useState({
     latitude: 42.2966481,
