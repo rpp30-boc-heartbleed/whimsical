@@ -108,9 +108,8 @@ const ErrandMap = ({ setEta, errand }) => {
           coordinate={destination}
         />
         <MapViewDirections
-          lineDashPattern={[1]}
+          lineDashPattern={[0]}
           apikey={GOOGLE_MAPS_API_KEY}
-          // coordinates={coordinates.map(cord => ({ latitide: cord[0], longitude: cord[1] }))}
           origin={driverPosition}
           destination={destination}
           strokeWidth={7}
