@@ -7,7 +7,7 @@ require('dotenv').config();
 
 // CONTROLLERS
 // const { createChat } = require('./controllers/chat');
-const { findChat } = require('./controllers/chat');
+const { findChat, postMessage } = require('./controllers/chat');
 
 const app = express();
 const server = http.createServer(app);
@@ -33,11 +33,22 @@ app.use(router);
 
 io.on('connection', (socket) => {
   console.log('user connected');
+
   socket.on('joinChat', (chatId, user) => {
     mobileSockets[user._id] = socket.id;
-    findChat(chatId)
+    findChat(chatId, user._id)
       .then((chat) => {
         socket.emit('priorMessages', chat.messages);
+      });
+  });
+
+  socket.on('newMessage', (message, chatId) => {
+    postMessage(message, chatId)
+      .then((chat) => {
+        chat.users.forEach((user) => {
+          const userSocketId = mobileSockets[user];
+          socket.to(userSocketId).emit('incomingMessage', message);
+        });
       });
   });
 });

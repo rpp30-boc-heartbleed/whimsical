@@ -15,31 +15,32 @@ const createChat = (errand, callback) => {
     });
 };
 
-const postMessage = (req, res) => {
-  const {
-    _id,
-    createdAt,
-    text,
-    user,
-  } = req;
-  const message = {
-    _id,
-    createdAt,
-    text,
-    user,
-  };
+const findChat = (chatId, userId) => {
   Chat.findByIdAndUpdate(
-    _id,
+    chatId,
+    { $push: { $user: userId } },
+    { new: true, upsert: true },
+  )
+    .then((chat) => {
+      return chat;
+    })
+    .catch((err) => {
+      return err;
+    });
+};
+
+const postMessage = (message, chatId) => {
+  Chat.findByIdAndUpdate(
+    chatId,
     { $push: { $message: message } },
     { new: true, upsert: true },
   )
     .then((chat) => {
-      res.status(200).send(chat);
+      return chat;
     })
     .catch((err) => {
-      console.log(err);
-      res.status(500).json({ msg: 'controller error' });
+      return err;
     });
 };
 
-export { createChat, postMessage };
+export { createChat, findChat, postMessage };
