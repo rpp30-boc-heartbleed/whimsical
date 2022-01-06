@@ -44,8 +44,8 @@ jobs:
         run: cd client
       - name : Install Client Packages
         run: npm install
-      - name: Cd Into Root
-        run: cd ..
+      # - name: Cd Into Root
+      #   run: cd ..
       - name: Run CI environment
         run: npm ci
       - name: Test
