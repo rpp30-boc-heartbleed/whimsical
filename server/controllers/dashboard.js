@@ -38,4 +38,14 @@ const addNewErrand = (req, res) => {
   }
 };
 
-module.exports = { addNewErrand };
+const getErrandData = (req, res) => {
+  Dashboard.find()
+    .then((data) => {
+      res.status(201).send(data);
+    })
+    .catch((err) => {
+      res.status(400);
+    });
+};
+
+module.exports = { addNewErrand, getErrandData };

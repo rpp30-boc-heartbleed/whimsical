@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
+import axios from 'axios';
 import {
   View, Text, StyleSheet, TextInput, StatusBar, Button, FlatList, Image, Avatar,
 } from 'react-native';
@@ -7,12 +8,19 @@ import errandState from '../../state/atoms/errands';
 
 const DashboardBody = ({ navigation }) => {
   const [errandsList] = useRecoilState(errandState);
+  let newDataFromMongo = [];
 
+  axios
+    .get('http://localhost:3000/getErrandData')
+    .then((data) => { newDataFromMongo = data.data; })
+    .catch((err) => console.log('error', err));
+
+  console.log(newDataFromMongo);
   return (
     <View>
       <FlatList
         style={styles.container0}
-        data={errandsList}
+        data={newDataFromMongo}
         renderItem={({ item, index }) => (
           <View style={styles.container}>
             <View style={styles.container2}>
