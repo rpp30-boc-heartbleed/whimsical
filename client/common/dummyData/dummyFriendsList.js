@@ -1,7 +1,11 @@
+import { images } from '../../constants';
+
+const { cat, dog } = images;
+
 const dummyFriendsList = [{
   id: 1,
   name: 'Sam Jackson',
-  avatar: 'https://via.placeholder.com/50',
+  avatar: cat,
   goldStars: 9000,
   status: true,
   currentErrands: [],
@@ -11,7 +15,7 @@ const dummyFriendsList = [{
 {
   id: 5,
   name: 'aaron',
-  avatar: 'https://via.placeholder.com/50',
+  avatar: dog,
   gps: {
     latitude: 42.2966481,
     longitude: -85.6436558,
@@ -21,13 +25,13 @@ const dummyFriendsList = [{
   currentErrands: [{
     id: 1,
     name: 'Impromptu Bagel Run',
-    chat: 1,
+    chatId: 1,
   }],
 },
 {
   id: 2,
   name: 'LL Cool J',
-  avatar: 'https://via.placeholder.com/50',
+  avatar: cat,
   goldStars: 9001,
   status: false,
   currentErrands: [],
@@ -37,7 +41,7 @@ const dummyFriendsList = [{
 {
   id: 3,
   name: 'The shark',
-  avatar: 'https://via.placeholder.com/50',
+  avatar: cat,
   goldStars: 0,
   status: true,
   currentErrands: [],

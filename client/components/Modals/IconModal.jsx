@@ -17,21 +17,28 @@ const IconModal = ({
   return (
     <Provider>
       <Portal>
-        <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={styles.modal}>
-          <FlatList
-            data={currentErrands}
-            renderItem={({ item, index }) => {
-              return (
-                <View style={styles.friend}>
-                  <TouchableOpacity style={styles.avatar}>
-                    <Text onPress={() => navigation.push('Chat', { errand: item })}>{item.name}</Text>
-                  </TouchableOpacity>
-                </View>
-              );
-            }}
-            keyExtractor={(item) => item.id}
-            keyboardShouldPersistTaps="handled"
-          />
+        <Modal
+          animation='slide'
+          visible={visible}
+          onDismiss={hideModal}
+          contentContainerStyle={styles.container}
+        >
+          <View style={styles.modalView}>
+            <FlatList
+              data={currentErrands}
+              renderItem={({ item, index }) => {
+                return (
+                  <View style={styles.friend}>
+                    <TouchableOpacity style={styles.avatar}>
+                      <Text onPress={() => navigation.push('Chat', { errand: item })}>{item.name}</Text>
+                    </TouchableOpacity>
+                  </View>
+                );
+              }}
+              keyExtractor={(item) => item.id}
+              keyboardShouldPersistTaps="handled"
+            />
+          </View>
         </Modal>
       </Portal>
       <IconButton
@@ -45,9 +52,28 @@ const IconModal = ({
 };
 
 const styles = StyleSheet.create({
-  modal: {
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    width: 300,
+    height: 300,
     backgroundColor: 'white',
-    padding: 20,
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
   },
 });
 

@@ -45,4 +45,8 @@ const mockMessages = [
   },
 ];
 
-export default mockMessages;
+const mockChats = {
+  1: mockMessages, // 1 being the id of the chat
+};
+
+export default mockChats;

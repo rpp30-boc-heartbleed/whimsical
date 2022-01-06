@@ -54,6 +54,7 @@ const List = ({ style, navigation }) => {
                   size={50}
                   style={styles.chatIcon}
                   currentErrands={item.currentErrands}
+                  navigation={navigation}
                   // onPress={() => navigation.push('Chat', {
                   //   currentErrands: item.currentErrands,
                   // })}

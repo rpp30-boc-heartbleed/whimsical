@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 // import io from 'socket.io-client';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { GiftedChat } from 'react-native-gifted-chat';
 import {
   View,
@@ -15,9 +15,9 @@ const { cat } = images;
 
 const Chat = ({ route, navigation }) => {
   const { errand } = route.params;
-
+  const chat = useRecoilValue(findChat(errand.chatId));
+  const [messages, setMessages] = useState(chat);
   // const [messages, setMessages] = useRecoilState(chatState);
-  // const [message, setMessage] = useState('');
   // const [msgs, setMsgs] = useState([]);
   // const socket = io(LOCAL_IP);
   // socket.on('chat message', (msg) => {
