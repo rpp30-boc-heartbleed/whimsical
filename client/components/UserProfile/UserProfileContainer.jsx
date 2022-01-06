@@ -13,13 +13,14 @@ import {
 } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
-import { getAuth, updatePassword } from "firebase/auth";
+import { getAuth, updatePassword } from 'firebase/auth';
 import auth from '../../config/firebase';
 // import storage from '../../config/firebase';
 import 'firebase/storage';
-
 import userProfileState from '../../state/atoms/userProfile';
 // console.log(auth);
+import NavBarContainer from '../NavBar/NavBarContainer';
+
 const UserProfileContainer = ({ navigation }) => {
   const [user, setUser] = useRecoilState(userProfileState);
   useEffect(() => {
@@ -128,7 +129,7 @@ const UserProfileContainer = ({ navigation }) => {
       axios.post('http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/image', data, {
         headers: {
           'Content-Type': 'multipart/form-data',
-        }
+        },
       })
         .then((data) => {
           console.log('Image Saved!');
@@ -146,14 +147,14 @@ const UserProfileContainer = ({ navigation }) => {
 
     updatePassword(user, newPassword)
       .then((data) => {
-      // If update is successful.
+        // If update is successful.
         console.log('update successfull!', data);
       })
       .catch((err) => {
         // If an error occurred
         console.error(err);
-  });
-  }
+      });
+  };
 
   return (
     <>
@@ -206,13 +207,7 @@ const UserProfileContainer = ({ navigation }) => {
         />
       </View>
       <View>
-        <Button
-          title="Go to Errand Tracker"
-          onPress={() => navigation.push('ErrandTracker')} // push the name property of the Stack.Screen component as defined in App.jsx
-        />
-        <Button title="Go to Dashboard" onPress={() => navigation.navigate('Dashboard')} />
-        <Button title="Go back" onPress={() => navigation.goBack()} />
-        <StatusBar />
+        <NavBarContainer navigation={navigation} />
       </View>
     </>
   );

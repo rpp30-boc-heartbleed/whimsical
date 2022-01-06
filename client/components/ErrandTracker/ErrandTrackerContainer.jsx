@@ -1,6 +1,6 @@
 /* eslint-disable react/style-prop-object */
 import React, { useState, useEffect } from 'react';
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import { Title, Colors } from 'react-native-paper';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import MapViewDirection from 'react-native-maps-directions';
@@ -15,30 +15,57 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import { COLORS, SIZES, icons, images } from '../../constants';
-import errandState from '../../state/atoms/errands';
-import ErrandMap from './ErrandMap.jsx';
-import BottomSheet from './BottomSheet/BottomSheet.jsx';
+import {
+  COLORS,
+  SIZES,
+  icons,
+  images,
+} from '../../constants';
+import errandState, { refreshErrandsState } from '../../state/atoms/errands';
+import ErrandMap from './ErrandMap';
+import BottomSheet from './BottomSheet/BottomSheet';
 import NavBarContainer from '../NavBar/NavBarContainer';
 
 const ErrandTrackerContainer = ({ route, navigation }) => {
+  const [eta, setEta] = useState(0);
+  const { errand } = route.params;
+  const { errandRunner, errandName } = errand;
+  const [errands, setErrands] = useRecoilState(errandState);
+  const [refresh, setRefresh] = useRecoilState(refreshErrandsState);
+  const index = errands.findIndex((errandItem) => errandItem.errandName === errand.errandName);
+
+  useEffect(() => {
+    if (eta === 0) {
+      const newList = replaceItemAtIndex(errands, index, {
+        ...errand,
+        status: 'Delivered',
+      });
+
+      setErrands(newList);
+      setRefresh(!refresh);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [eta]);
+  console.log(errand);
+
   return (
     <>
       <View style={styles.map}>
-        <ErrandMap />
-      </View >
-
+        <ErrandMap setEta={setEta} errand={errand} />
+      </View>
       <View style={styles.details}>
-        <BottomSheet />
+        <BottomSheet errandRunner={errandRunner} eta={eta} errandName={errandName} />
       </View>
       <View>
         <NavBarContainer navigation={navigation} />
       </View>
-
-    </ >
-
+    </>
   );
 };
+
+function replaceItemAtIndex(arr, index, newValue) {
+  return [...arr.slice(0, index), newValue, ...arr.slice(index + 1)];
+}
 
 const styles = StyleSheet.create({
   map: {
@@ -55,7 +82,11 @@ const styles = StyleSheet.create({
     paddingRight: 0.5,
     flex: 0.44,
     width: Dimensions.get('window').width,
-  }
+  },
+  container: {
+    flex: 1,
+    paddingTop: 22,
+  },
 });
 
 export default ErrandTrackerContainer;
