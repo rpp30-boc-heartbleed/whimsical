@@ -24,7 +24,7 @@ const DashboardHeader = ({ navigation }) => {
     <View style={styles.outercontainer}>
       <View style={styles.container}>
         <Text style={styles.profilePic}>AA</Text>
-        <TextInput style={styles.searchBar}>Search Bar Here</TextInput>
+        <TextInput style={styles.searchBar} placeholder='Search' />
         <Button title='sign out' onPress={() => handleSignOut(auth)} />
       </View>
       <View style={styles.filter}>
@@ -50,15 +50,20 @@ const styles = StyleSheet.create({
   },
   profilePic: {
     borderWidth: 1,
-    borderRadius: 10,
+    borderRadius: 25,
+    borderColor: 'green',
     marginBottom: 5,
     marginRight: 25,
+    padding: 15,
   },
   searchBar: {
     borderWidth: 1,
+    borderColor: '#0782F9',
+    borderRadius: 10,
     marginBottom: 5,
-    paddingLeft: 35,
-    paddingRight: 35,
+    width: 225,
+    paddingHorizontal: 10,
+    paddingVertical: 3,
   },
   filter: {
     borderBottomWidth: 1,
