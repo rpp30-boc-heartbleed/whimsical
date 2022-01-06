@@ -43,12 +43,15 @@ jobs:
       - name: Cd Into client
         run: cd client
       - name : Install Client Packages
+        working-directory: ./client
         run: npm install
       # - name: Cd Into Root
       #   run: cd ..
       - name: Run CI environment
+        working-directory: ./client
         run: npm ci
       - name: Test
+        working-directory: ./client
         run: npx jest --ci
   # deploy_preview:
   #   name: Deploy Preview
