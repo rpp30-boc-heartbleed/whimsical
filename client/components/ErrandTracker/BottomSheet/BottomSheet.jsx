@@ -6,8 +6,9 @@ import Courier from './Courier.jsx';
 
 
 
-const BottomSheet = ({ eta }) => (
+const BottomSheet = ({ eta, errandRunner, errandName }) => (
   <View style={styles.container}>
+    <Text>{errandName}</Text>
     <Text>ETA: {Math.floor(eta)} MINUTES </Text>
     <Courier />
     <MessageButton />

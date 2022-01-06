@@ -50,9 +50,10 @@ const destination = {
   longitude: -85.601778,
 };
 
-const ErrandMap = ({ setEta }) => {
+const ErrandMap = ({ setEta, errand }) => {
   const mapRef = useRef();
   const markerRef = useRef();
+  const { errandRunner } = errand;
 
   // const [errands, setErrands] = useRecoilState(errandState);
 
@@ -63,7 +64,7 @@ const ErrandMap = ({ setEta }) => {
     longitudeDelta: 0.0421,
   });
 
-  const [driverPosition, setDriverPosition] = useState(path[0]);
+  const [driverPosition, setDriverPosition] = useState(errandRunner.gps);
 
   useEffect(() => {
     let count = 0;

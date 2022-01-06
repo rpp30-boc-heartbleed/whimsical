@@ -19,19 +19,21 @@ import { COLORS, SIZES, icons, images } from '../../constants';
 import errandState from '../../state/atoms/errands';
 import ErrandMap from './ErrandMap';
 import BottomSheet from './BottomSheet/BottomSheet';
-// import ErrandList from './ErrandList';
 import NavBarContainer from '../NavBar/NavBarContainer';
 
 const ErrandTrackerContainer = ({ route, navigation }) => {
   const [eta, setEta] = useState(0);
+  const { errand } = route.params;
+  const { errandRunner, errandName } = errand;
+  console.log(errand);
 
   return (
     <>
       <View style={styles.map}>
-        <ErrandMap setEta={setEta} />
+        <ErrandMap setEta={setEta} errand={errand} />
       </View>
       <View style={styles.details}>
-        <BottomSheet eta={eta} />
+        <BottomSheet errandRunner={errandRunner} eta={eta} errandName={errandName} />
       </View>
       <View>
         <NavBarContainer navigation={navigation} />

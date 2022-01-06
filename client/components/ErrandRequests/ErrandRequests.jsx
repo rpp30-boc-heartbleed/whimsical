@@ -4,7 +4,7 @@ import { Text, View, FlatList, StyleSheet, TouchableOpacity } from 'react-native
 import filteredErrandsState from '../../state/selectors/filterErrandsByRequestor';
 import NavBarContainer from '../NavBar/NavBarContainer';
 
-const ErrandList = ({ navigation }) => {
+const ErrandRequests = ({ navigation }) => {
   const errands = useRecoilValue(filteredErrandsState);
 
   return (
@@ -13,7 +13,7 @@ const ErrandList = ({ navigation }) => {
         data={errands}
         renderItem={({ item, index }) => {
           return (
-            <TouchableOpacity style={styles.friend} onPress={() => navigation.navigate('ErrandTracker')}>
+            <TouchableOpacity style={styles.friend} onPress={() => navigation.navigate('ErrandTracker', { errand: item })}>
               <View style={styles.text}>
                 <Text>
                   {item.errandName}
@@ -28,7 +28,7 @@ const ErrandList = ({ navigation }) => {
   );
 };
 
-export default ErrandList;
+export default ErrandRequests;
 
 const styles = StyleSheet.create({
   container: {

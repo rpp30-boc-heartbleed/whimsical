@@ -2,15 +2,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useRecoilValue } from 'recoil';
 import { Text, View, FlatList, StyleSheet } from 'react-native';
 import filteredErrandsState from '../../state/selectors/filterErrandsByRequestor';
-import ErrandList from './ErrandList';
+import ErrandRequests from './ErrandRequests';
 import NavBarContainer from '../NavBar/NavBarContainer';
 
-const ErrandListContainer = ({ navigation }) => {
+const ErrandRequestsContainer = ({ navigation }) => {
   const errands = useRecoilValue(filteredErrandsState);
 
   return (
     <>
-      <ErrandList navigation={navigation} />
+      <ErrandRequests navigation={navigation} />
       <View>
         <NavBarContainer navigation={navigation} />
       </View>
@@ -18,4 +18,4 @@ const ErrandListContainer = ({ navigation }) => {
   );
 };
 
-export default ErrandListContainer;
+export default ErrandRequestsContainer;
