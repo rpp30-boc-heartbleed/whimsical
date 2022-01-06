@@ -9,12 +9,14 @@ import {
 // import { LOCAL_IP } from '@env';
 
 import { images } from '../../../constants';
-import chatState from '../../../state/atoms/errandChat';
+import findChat from '../../../state/selectors/findChat';
 
 const { cat } = images;
 
-const Chat = ({ navigation }) => {
-  const [messages, setMessages] = useRecoilState(chatState);
+const Chat = ({ route, navigation }) => {
+  const { errand } = route.params;
+
+  // const [messages, setMessages] = useRecoilState(chatState);
   // const [message, setMessage] = useState('');
   // const [msgs, setMsgs] = useState([]);
   // const socket = io(LOCAL_IP);
@@ -23,13 +25,13 @@ const Chat = ({ navigation }) => {
   //   setMessages([...messages, msg]);
   // });
 
-  const submitMessage = (message) => {
-    // socket.emit('chat message', message);
-  };
+  // const submitMessage = (message) => {
+  //   socket.emit('chat message', message);
+  // };
 
   const onSend = (message) => {
     console.log(message);
-    submitMessage(message[0]);
+    // submitMessage(message[0]);
     // setMessages([...messages, message]);
     setMessages((previousMsgs) => GiftedChat.append(previousMsgs, message[0]));
   };
