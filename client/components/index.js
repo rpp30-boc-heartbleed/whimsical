@@ -7,7 +7,6 @@ import MapContainer from './Map/MapContainer';
 import NavBarContainer from './NavBar/NavBarContainer';
 import RegisterContainer from './Authentication/RegisterContainer';
 import UserProfileContainer from './UserProfile/UserProfileContainer';
-import Hello from './Hello';
 
 export {
   DashboardContainer,
@@ -19,5 +18,4 @@ export {
   NavBarContainer,
   RegisterContainer,
   UserProfileContainer,
-  Hello,
 };

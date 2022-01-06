@@ -16,13 +16,13 @@ import NavBarContainer from '../NavBar/NavBarContainer';
 const LoginContainer = ({ navigation }) => {
   // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
-  const [user, setUser] = useState();
+  // const [user, setUser] = useState();
 
   // Handle user state changes
-  const onAuthStateChanged = (user) => {
-    setUser(user);
-    if (initializing) setInitializing(false);
-  };
+  // const onAuthStateChanged = (user) => {
+  //   setUser(user);
+  //   if (initializing) setInitializing(false);
+  // };
 
   // useEffect(() => {
   //   const subscriber = auth.onAuthStateChanged(onAuthStateChanged);
@@ -67,7 +67,7 @@ const LoginContainer = ({ navigation }) => {
   const handleLogin = (auth, email, password) => {
     signInWithEmailAndPassword(auth.auth, email, password)
       .then((userCredentials) => {
-        setUser(userCredentials.user);
+        const { user } = userCredentials;
         console.log('logged in with', user.email, user.uid);
         // navigation.navigate('Dashboard');
         navigation.replace('Dashboard');
