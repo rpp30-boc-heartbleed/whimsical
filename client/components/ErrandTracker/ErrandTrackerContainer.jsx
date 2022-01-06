@@ -22,14 +22,16 @@ import BottomSheet from './BottomSheet/BottomSheet.jsx';
 import NavBarContainer from '../NavBar/NavBarContainer';
 
 const ErrandTrackerContainer = ({ route, navigation }) => {
+  const [eta, setEta] = useState(0);
+
   return (
     <>
       <View style={styles.map}>
-        <ErrandMap />
-      </View >
+        <ErrandMap setEta={setEta} />
+      </View>
 
       <View style={styles.details}>
-        <BottomSheet />
+        <BottomSheet eta={eta} />
       </View>
       <View>
         <NavBarContainer navigation={navigation} />

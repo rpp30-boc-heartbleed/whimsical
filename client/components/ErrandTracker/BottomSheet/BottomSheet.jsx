@@ -6,10 +6,10 @@ import Courier from './Courier.jsx';
 
 
 
-const BottomSheet = () => (
+const BottomSheet = ({ eta }) => (
   <View style={styles.container}>
-    <Text>ETA: 5 MINUTES </Text>
-    <Text>4408 W Main St</Text>
+    <Text>ETA: {Math.floor(eta)} MINUTES </Text>
+    {/* <Text>4408 W Main St</Text> */}
     {/* <Text>{Math.ceil(10)} mins</Text> */}
     {/* <ErrandProgress /> */}
     <Courier />
@@ -20,8 +20,7 @@ const BottomSheet = () => (
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-  }
-})
-
+  },
+});
 
 export default BottomSheet;

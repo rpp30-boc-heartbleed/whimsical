@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useIsFocused } from '@react-navigation/native';
 // import { useRecoilState, useRecoilValue } from 'recoil';
-import MapView, { PROVIDER_GOOGLE, Marker, Callout, installWebGeolocationPolyfill, Polyline } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
 // import Geolocation from 'react-native-geolocation-service';
 import * as Location from 'expo-location';
-import { COLORS, SIZES, icons, images } from '../../constants';
 import {
   View,
   Image,
@@ -21,8 +21,25 @@ import {
 } from 'react-native';
 // port errandState from '../../state/atoms/errands'
 import { GOOGLE_MAPS_API_KEY } from '@env';
+import { COLORS, SIZES, icons, images } from '../../constants';
 
-const ErrandMap = () => {
+const path = [
+  { latitude: 42.2966481, longitude: -85.6436558 },
+  { latitude: 42.296238, longitude: -85.640326 },
+  { latitude: 42.296230, longitude: -85.638233 },
+  { latitude: 42.296231, longitude: -85.636030 },
+];
+
+const destination = {
+  latitude: 42.295906,
+  longitude: -85.601778,
+};
+
+const ErrandMap = ({ setEta }) => {
+  const mapRef = useRef();
+  const markerRef = useRef();
+  const isFocused = useIsFocused();
+
   const [coordinates, setCoordinates] = useState([
     { name: 'Big Apple Bagels', latitide: 42.253502, longitude: -85.5893426 },
     { name: 'Panda Express', latitide: 42.2334426951981, longitude: -85.58900073414098 },
@@ -38,28 +55,23 @@ const ErrandMap = () => {
     longitudeDelta: 0.0421,
   });
 
-  const [marker, setMarker] = useState({
-    coordinate: {
-      latitude: 42.2966481,
-      longitude: -85.6436558,
-    },
-  });
+  const [driverPosition, setDriverPosition] = useState(path[0]);
 
-  const [driver, setDriver] = useState({
-    latitude: 42.2966481,
-    longitude: -85.6436558,
-  });
-
-  const [destination, setDestination] = useState({
-    latitude: 42.295906,
-    longitude: -85.601778,
-  });
-
-  const onHandlePress = (e) => {
-    setMarker({
-      makrer: e.nativeEvent.coordinate,
-    });
-  };
+  useEffect(() => {
+    let count = 0;
+    const timer = setInterval(() => {
+      count += 1;
+      if (count < path.length) {
+        console.log('count', count);
+        setDriverPosition(path[count]);
+      }
+    }, 1000);
+    return () => {
+      console.log('cleared');
+      clearInterval(timer);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -67,25 +79,12 @@ const ErrandMap = () => {
         style={styles.map}
         provider={PROVIDER_GOOGLE}
         initialRegion={region}
-        onPress={(e) => onHandlePress(e)}
       >
-        <Marker
-          draggable
-          title='Bagel Shop'
-          description='Best Bagels in Town'
-          coordinate={{
-            latitude: 42.2966481,
-            longitude: -85.6436558,
-          }}
-        />
         <Marker
           draggable
           description='He running'
           title='Errand Runner'
-          coordinate={{
-            latitude: 42.2966481,
-            longitude: -85.6436558,
-          }}
+          coordinate={driverPosition}
         >
           <Image
             draggable
@@ -98,10 +97,17 @@ const ErrandMap = () => {
         <Marker
           title='The House'
           draggable
-          coordinate={{
-            latitude: 42.295906,
-            longitude: -85.601778,
-          }}
+          coordinate={destination}
+        />
+        <MapViewDirections
+          lineDashPattern={[1]}
+          apikey={GOOGLE_MAPS_API_KEY}
+          // coordinates={coordinates.map(cord => ({ latitide: cord[0], longitude: cord[1] }))}
+          origin={driverPosition}
+          destination={destination}
+          strokeWidth={7}
+          strokeColor='#669df6'
+          onReady={({ duration }) => setEta(duration)}
         />
       </MapView>
     </SafeAreaView>
@@ -124,14 +130,6 @@ const styles = StyleSheet.create({
 
 export default ErrandMap;
 
-{/* <MapViewDirections
-  lineDashPattern={[0]}
-  origin={marker.coordinate}
-  destination={destination}
-  apikey={GOOGLE_MAPS_API_KEY}
-  strokeWidth={7}
-  strokeColor='#669df6'
-  /> */}
   ///Geolocation
 
 // useEffect(() => {
