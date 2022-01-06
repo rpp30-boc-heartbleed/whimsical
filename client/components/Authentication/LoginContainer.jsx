@@ -16,13 +16,13 @@ import NavBarContainer from '../NavBar/NavBarContainer';
 const LoginContainer = ({ navigation }) => {
   // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
-  const [user, setUser] = useState();
+  // const [user, setUser] = useState();
 
   // Handle user state changes
-  const onAuthStateChanged = (user) => {
-    setUser(user);
-    if (initializing) setInitializing(false);
-  };
+  // const onAuthStateChanged = (user) => {
+  //   setUser(user);
+  //   if (initializing) setInitializing(false);
+  // };
 
   // useEffect(() => {
   //   const subscriber = auth.onAuthStateChanged(onAuthStateChanged);
@@ -67,7 +67,7 @@ const LoginContainer = ({ navigation }) => {
   const handleLogin = (auth, email, password) => {
     signInWithEmailAndPassword(auth.auth, email, password)
       .then((userCredentials) => {
-        setUser(userCredentials.user);
+        const { user } = userCredentials;
         console.log('logged in with', user.email, user.uid);
         // navigation.navigate('Dashboard');
         navigation.replace('Dashboard');
@@ -117,6 +117,7 @@ const LoginContainer = ({ navigation }) => {
             placeholder='email'
             autoCapitalize='none'
             value={email}
+            testID='email'
             onChangeText={(value) => handleOnChangeText(value, 'email')}
           />
           <TextInput
@@ -124,6 +125,7 @@ const LoginContainer = ({ navigation }) => {
             placeholder='password'
             autoCapitalize='none'
             value={password}
+            testID='password'
             onChangeText={(value) => handleOnChangeText(value, 'password')}
             secureTextEntry
           />
@@ -132,13 +134,14 @@ const LoginContainer = ({ navigation }) => {
           <TouchableOpacity
             style={[styles.button, styles.buttonOutline]}
             onPress={submitForm}
+            testID='submitLogin'
           >
             <Text style={[styles.buttonText, styles.buttonOutlineText]}>Login</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.registerContainer}>
           <Text style={styles.registerText}>Don&apos;t have an acccount?</Text>
-          <Button title='Register' onPress={() => navigation.push('Register')} />
+          <Button title='Register' testID='register' onPress={() => navigation.push('Register')} />
           <Text style={styles.registerText}>now.</Text>
         </View>
       </KeyboardAvoidingView>

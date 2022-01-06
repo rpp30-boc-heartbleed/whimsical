@@ -44,6 +44,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "",
+    "githubUrl": "https://github.com/rpp30-boc-heartbleed/whimsical"
   }
 }
