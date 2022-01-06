@@ -17,11 +17,10 @@ const DashboardContainer = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <DashboardHeader navigation={navigation} />
-      <View style={styles.scrollview}>
-        <DashboardStats />
-        <DashboardBody />
-      </View>
-      <NavBar navigation={navigation} style={styles.navbar} />
+      {/* <DashboardStats /> */}
+      <DashboardBody />
+      <ScrollView />
+      <NavBar navigation={navigation} />
     </View>
   );
 };
@@ -30,12 +29,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-  },
-  scrollview: {
-    marginBottom: -53,
-  },
-  navbar: {
-    justifyContent: 'flex-end',
   },
 });
 
