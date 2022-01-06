@@ -20,6 +20,7 @@ const {
   friendsList,
   map,
   errandTracker,
+  chat,
 } = require('../controllers');
 
 const router = express.Router();
@@ -37,7 +38,7 @@ router.post('/userProfile/image', upload.any('photoData'), userProfile.image);
 // FRIENDS
 router.get('/friends/get', friendsList.get);
 router.get('/friends/search', friendsList.search);
-
+router.post('/chat/post', chat.postMessage);
 // MAP
 
 // ERRAND TRACKER

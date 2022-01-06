@@ -18,10 +18,10 @@ const Chat = ({ navigation }) => {
   // const [message, setMessage] = useState('');
   // const [msgs, setMsgs] = useState([]);
   const socket = io(LOCAL_IP);
-  // socket.on('chat message', (msg) => {
-  //   console.log('client', msg);
-  //   setMessages([...messages, msg]);
-  // });
+  socket.on('chat message', (msg) => {
+    console.log('client', msg);
+    setMessages([...messages, msg]);
+  });
 
   const submitMessage = (message) => {
     socket.emit('chat message', message);
@@ -29,7 +29,7 @@ const Chat = ({ navigation }) => {
 
   const onSend = (message) => {
     console.log(message);
-    // submitMessage(message[0]);
+    submitMessage(message[0]);
     // setMessages([...messages, message]);
     setMessages((previousMsgs) => GiftedChat.append(previousMsgs, message[0]));
   };
@@ -44,10 +44,10 @@ const Chat = ({ navigation }) => {
           name: 'cat',
           avatar: cat,
         }}
-        isTyping
-        infiniteScroll
-        loadEarlier
-        inverted={false}
+        // isTyping
+        // infiniteScroll
+        // loadEarlier
+        // inverted={false}
       />
     </View>
   );

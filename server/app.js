@@ -5,6 +5,10 @@ const router = require('./routes/routes');
 const db = require('./db');
 require('dotenv').config();
 
+// CONTROLLERS
+// const { createChat } = require('./controllers/chat');
+const { findChat } = require('./controllers/chat');
+
 const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
@@ -13,6 +17,7 @@ const io = new Server(server, {
     methods: ['GET', 'POST'],
   },
 });
+const mobileSockets = {};
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -28,9 +33,12 @@ app.use(router);
 
 io.on('connection', (socket) => {
   console.log('user connected');
-  socket.on('chat message', (msg) => {
-    console.log('server', msg);
-    io.emit('chat message', msg);
+  socket.on('joinChat', (chatId, user) => {
+    mobileSockets[user._id] = socket.id;
+    findChat(chatId)
+      .then((chat) => {
+        socket.emit('priorMessages', chat.messages);
+      });
   });
 });
 

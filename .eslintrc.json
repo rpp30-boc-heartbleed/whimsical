@@ -28,6 +28,7 @@
     "no-unused-vars": 0,
     "jsx-quotes": 0,
     "func-names": 0,
-    "react/jsx-one-expression-per-line": 0
+    "react/jsx-one-expression-per-line": 0,
+    "no-underscore-dangle": 0
   }
 }
