@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
-import { getAuth, updatePassword } from "firebase/auth";
+import { getAuth, updatePassword } from 'firebase/auth';
 import auth from '../../config/firebase';
 // import storage from '../../config/firebase';
 import 'firebase/storage';
@@ -129,7 +129,7 @@ const UserProfileContainer = ({ navigation }) => {
       axios.post('http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/image', data, {
         headers: {
           'Content-Type': 'multipart/form-data',
-        }
+        },
       })
         .then((data) => {
           console.log('Image Saved!');
@@ -154,7 +154,7 @@ const UserProfileContainer = ({ navigation }) => {
         // If an error occurred
         console.error(err);
       });
-  }
+  };
 
   return (
     <>
