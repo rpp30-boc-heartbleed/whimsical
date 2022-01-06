@@ -4,6 +4,7 @@ module.exports = function (api) {
   return {
     presets: [
       'babel-preset-expo',
+      '@babel/preset-react',
       ['@babel/preset-env',
         {
           targets: { node: 'current' },

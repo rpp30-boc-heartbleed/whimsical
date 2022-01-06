@@ -10,4 +10,4 @@ export default {
   pin,
   star,
   refresh,
-}
+};
