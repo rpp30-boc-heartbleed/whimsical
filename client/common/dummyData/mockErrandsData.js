@@ -4,6 +4,7 @@
 // 3. radius
 
 // 1227 Jefferson Ave Kalamazoo, MI 49006
+/*
 export const testUser = {
   name: 'requestor',
   address: {
@@ -272,8 +273,9 @@ export const mockErrandsData1 = [
     status: 'Pending',
   },
 ];
+*/
 
-export const mockErrandsData = [
+const mockErrandsData = [
   {
     id: 1,
     storeName: 'Walmart',
@@ -371,6 +373,8 @@ export const mockErrandsData = [
     status: 'Pending',
   },
 ];
+
+module.exports = { mockErrandsData };
 
 /*
 {
