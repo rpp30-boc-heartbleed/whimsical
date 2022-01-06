@@ -1,30 +1,30 @@
 import React, { useState, useCallback } from 'react';
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 import { useRecoilState } from 'recoil';
 import { GiftedChat } from 'react-native-gifted-chat';
 import {
   View,
   StyleSheet,
 } from 'react-native';
-import { LOCAL_IP } from '@env';
+// import { LOCAL_IP } from '@env';
 
 import { images } from '../../../constants';
-import ChatState from '../../../state/atoms/errandChat';
+import chatState from '../../../state/atoms/errandChat';
 
 const { cat } = images;
 
 const Chat = ({ navigation }) => {
-  const [messages, setMessages] = useRecoilState(ChatState);
+  const [messages, setMessages] = useRecoilState(chatState);
   // const [message, setMessage] = useState('');
   // const [msgs, setMsgs] = useState([]);
-  const socket = io(LOCAL_IP);
-  socket.on('chat message', (msg) => {
-    console.log('client', msg);
-    setMessages([...messages, msg]);
-  });
+  // const socket = io(LOCAL_IP);
+  // socket.on('chat message', (msg) => {
+  //   console.log('client', msg);
+  //   setMessages([...messages, msg]);
+  // });
 
   const submitMessage = (message) => {
-    socket.emit('chat message', message);
+    // socket.emit('chat message', message);
   };
 
   const onSend = (message) => {

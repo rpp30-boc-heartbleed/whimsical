@@ -43,4 +43,4 @@ const postMessage = (message, chatId) => {
     });
 };
 
-export { createChat, findChat, postMessage };
+module.exports = { createChat, findChat, postMessage };

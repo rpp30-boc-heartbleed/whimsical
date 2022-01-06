@@ -1,20 +1,37 @@
 import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import {
+  StyleSheet, View, FlatList, TouchableOpacity,
+} from 'react-native';
 import {
   Modal, Portal, Text, IconButton, Provider,
 } from 'react-native-paper';
 
-const IconModal = ({ icon, size, style }) => {
+const IconModal = ({
+  icon, size, style, currentErrands, navigation,
+}) => {
   const [visible, setVisible] = useState(false);
 
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
-  const containerStyle = { backgroundColor: 'white', padding: 20 };
+  // const containerStyle = { backgroundColor: 'white', padding: 20 };
   return (
     <Provider>
       <Portal>
-        <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={containerStyle}>
-          <Text>Modal Template.  Click outside this area to close.</Text>
+        <Modal visible={visible} onDismiss={hideModal} contentContainerStyle={styles.modal}>
+          <FlatList
+            data={currentErrands}
+            renderItem={({ item, index }) => {
+              return (
+                <View style={styles.friend}>
+                  <TouchableOpacity style={styles.avatar}>
+                    <Text onPress={() => navigation.push('Chat', { errand: item })}>{item.name}</Text>
+                  </TouchableOpacity>
+                </View>
+              );
+            }}
+            keyExtractor={(item) => item.id}
+            keyboardShouldPersistTaps="handled"
+          />
         </Modal>
       </Portal>
       <IconButton
@@ -26,5 +43,12 @@ const IconModal = ({ icon, size, style }) => {
     </Provider>
   );
 };
+
+const styles = StyleSheet.create({
+  modal: {
+    backgroundColor: 'white',
+    padding: 20,
+  },
+});
 
 export default IconModal;

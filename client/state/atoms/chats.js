@@ -1,9 +1,9 @@
 import { atom } from 'recoil';
-import mockMessages from '../../common/dummyData/mockMessages';
+import mockChats from '../../common/dummyData/mockChats';
 
 const chatState = atom({
   key: 'errandState',
-  default: mockMessages, // []
+  default: mockChats, // {}
 });
 
 export default chatState;
