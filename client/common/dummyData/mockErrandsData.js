@@ -68,8 +68,8 @@ export const mockErrandsData = [
       avatar: 'https://via.placeholder.com/50',
       name: 'billy',
       gps: {
-        latitude: 42.29692846729353,
-        longitude: -85.60200795213825,
+        latitude: 42.2966481,
+        longitude: -85.6436558,
       },
       starRating: 20,
     },

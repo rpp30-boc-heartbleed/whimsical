@@ -27,7 +27,7 @@ const ErrandTrackerContainer = ({ route, navigation }) => {
   const { errandRunner, errandName } = errand;
   const [errands, setErrands] = useRecoilState(errandState);
   const [refresh, setRefresh] = useRecoilState(refreshErrandsState);
-  const index = errands.findIndex((errandItem) => errandItem === errand);
+  const index = errands.findIndex((errandItem) => errandItem.errandName === errand.errandName);
 
   useEffect(() => {
     if (eta === 0) {
