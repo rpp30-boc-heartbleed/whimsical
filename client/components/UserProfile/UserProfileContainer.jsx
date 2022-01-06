@@ -17,9 +17,10 @@ import { getAuth, updatePassword } from "firebase/auth";
 import auth from '../../config/firebase';
 // import storage from '../../config/firebase';
 import 'firebase/storage';
-
 import userProfileState from '../../state/atoms/userProfile';
 // console.log(auth);
+import NavBarContainer from '../NavBar/NavBarContainer';
+
 const UserProfileContainer = ({ navigation }) => {
   const [user, setUser] = useRecoilState(userProfileState);
   useEffect(() => {
@@ -206,13 +207,7 @@ const UserProfileContainer = ({ navigation }) => {
         />
       </View>
       <View>
-        {/* <Button
-          title="Go to Errand Tracker"
-          onPress={() => navigation.push('ErrandTracker')} // push the name property of the Stack.Screen component as defined in App.jsx
-        /> */}
-        <Button title="Go to Dashboard" onPress={() => navigation.navigate('Dashboard')} />
-        <Button title="Go back" onPress={() => navigation.goBack()} />
-        <StatusBar />
+        <NavBarContainer navigation={navigation} />
       </View>
     </>
   );
