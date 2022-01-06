@@ -65,16 +65,20 @@ const ErrandMap = ({ setEta, errand }) => {
   const [driverPosition, setDriverPosition] = useState(errandRunner.gps);
 
   useEffect(() => {
+    let isMounted = true;
     let count = 0;
     const timer = setInterval(() => {
       count += 1;
       if (count < path.length) {
         console.log('count', count);
-        setDriverPosition(path[count]);
+        if (isMounted) {
+          setDriverPosition(path[count]);
+        }
       }
     }, 500);
     return () => {
       console.log('cleared');
+      isMounted = false;
       clearInterval(timer);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
