@@ -28,6 +28,10 @@ const path = [
   { latitude: 42.296238, longitude: -85.640326 },
   { latitude: 42.296230, longitude: -85.638233 },
   { latitude: 42.296231, longitude: -85.636030 },
+  { latitude: 42.296203, longitude: -85.634026 },
+  { latitude: 42.296185, longitude: -85.632176 },
+  { latitude: 42.296169, longitude: -85.630604 },
+  { latitude: 42.296165, longitude: -85.629510 },
 ];
 
 const destination = {
@@ -38,7 +42,6 @@ const destination = {
 const ErrandMap = ({ setEta }) => {
   const mapRef = useRef();
   const markerRef = useRef();
-  const isFocused = useIsFocused();
 
   const [coordinates, setCoordinates] = useState([
     { name: 'Big Apple Bagels', latitide: 42.253502, longitude: -85.5893426 },
