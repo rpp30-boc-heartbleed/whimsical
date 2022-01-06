@@ -17,8 +17,8 @@ import {
 } from 'react-native';
 import { COLORS, SIZES, icons, images } from '../../constants';
 import errandState from '../../state/atoms/errands';
-import ErrandMap from './ErrandMap.jsx';
-import BottomSheet from './BottomSheet/BottomSheet.jsx';
+import ErrandMap from './ErrandMap';
+import BottomSheet from './BottomSheet/BottomSheet';
 import NavBarContainer from '../NavBar/NavBarContainer';
 
 const ErrandTrackerContainer = ({ route, navigation }) => {

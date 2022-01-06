@@ -9,9 +9,6 @@ import Courier from './Courier.jsx';
 const BottomSheet = ({ eta }) => (
   <View style={styles.container}>
     <Text>ETA: {Math.floor(eta)} MINUTES </Text>
-    {/* <Text>4408 W Main St</Text> */}
-    {/* <Text>{Math.ceil(10)} mins</Text> */}
-    {/* <ErrandProgress /> */}
     <Courier />
     <MessageButton />
   </View>

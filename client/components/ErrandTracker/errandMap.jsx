@@ -21,7 +21,9 @@ import {
 } from 'react-native';
 // port errandState from '../../state/atoms/errands'
 import { GOOGLE_MAPS_API_KEY } from '@env';
-import { COLORS, SIZES, icons, images } from '../../constants';
+import {
+  COLORS, SIZES, icons, images,
+} from '../../constants';
 
 const path = [
   { latitude: 42.2966481, longitude: -85.6436558 },
@@ -32,6 +34,17 @@ const path = [
   { latitude: 42.296185, longitude: -85.632176 },
   { latitude: 42.296169, longitude: -85.630604 },
   { latitude: 42.296165, longitude: -85.629510 },
+  { latitude: 42.296127, longitude: -85.629007 },
+  { latitude: 42.295663, longitude: -85.626279 },
+  { latitude: 42.295092, longitude: -85.622729 },
+  { latitude: 42.294902, longitude: -85.619229 },
+  { latitude: 42.294727, longitude: -85.613744 },
+  { latitude: 42.293905, longitude: -85.607059 },
+  { latitude: 42.295546, longitude: -85.607007 },
+  { latitude: 42.295547, longitude: -85.604431 },
+  { latitude: 42.296051, longitude: -85.604390 },
+  { latitude: 42.296043, longitude: -85.601783 },
+  { latitude: 42.295906, longitude: -85.601778 },
 ];
 
 const destination = {
@@ -125,10 +138,6 @@ const styles = StyleSheet.create({
   map: {
     ...StyleSheet.absoluteFillObject,
   },
-  // container2: {
-  //   height: 20,
-  //   width: 20,
-  // },
 });
 
 export default ErrandMap;
