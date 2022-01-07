@@ -15,14 +15,14 @@ import {
 } from '../../../socket/connect';
 import { images } from '../../../constants';
 import userProfileState from '../../../state/atoms/userProfile';
-import findChat from '../../../state/selectors/findChat';
+// import findChat from '../../../state/selectors/findChat';
 
 const { cat } = images;
 
 const Chat = ({ route, navigation }) => {
   const { chatId } = route.params;
   const [user] = useRecoilState(userProfileState);
-  const chat = useRecoilValue(findChat(chatId));
+  // const chat = useRecoilValue(findChat(chatId));
   const [messages, setMessages] = useState([]);
 
   const onSend = (message) => {

@@ -7,7 +7,6 @@ import { errandState } from '../../state/atoms/errands';
 
 const DashboardBody = ({ navigation }) => {
   const [errandsList, setErrandsList] = useRecoilState(errandState);
-  console.log(errandsList);
 
   return (
     <View>
