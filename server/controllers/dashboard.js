@@ -14,7 +14,7 @@ const addNewErrand = (req, res) => {
         console.log(error);
       });
   } else {
-    Profile.findOne({email: req.body.email}).then((runner) => {
+    Profile.findOne({ email: req.body.email }).then((runner) => {
       const newErrand = new Errand({
         storeName: req.body.storeName,
         storeAddress: {
@@ -42,7 +42,7 @@ const addNewErrand = (req, res) => {
           console.log(err);
           res.status(500).send({ err, msg: 'sorry. data was not added' });
         });
-    })
+    });
   }
 };
 

@@ -7,6 +7,7 @@ const {
   getRequestedErrands,
   requestErrand,
   getRunningErrands,
+  completeErrand,
 } = require('./errands');
 const { updateRating } = require('./stars');
 
@@ -20,4 +21,5 @@ module.exports = {
   getRequestedErrands,
   requestErrand,
   getRunningErrands,
+  completeErrand,
 };

@@ -5,9 +5,9 @@ const { Schema } = mongoose;
 const ProfileSchema = new Schema({
   name: String,
   email: { type: String, unique: true },
-  stars: Number,
+  stars: { type: Number, default: 0 },
   picture: String,
-  errandsCompleted: Number,
+  errandsCompleted: { type: Number, default: 0 },
   location: String,
 }, { timestamps: true });
 
