@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
+const { ProfileSchema } = require('./userProfile');
 
 const { Schema } = mongoose;
 
 const errandSchema = new Schema(
-
   {
     errandName: { type: String, default: null },
     storeETA: { type: String, default: null }, // time for delivery
@@ -13,7 +13,7 @@ const errandSchema = new Schema(
       default: 'Pending',
     },
     // Requester,
-    requestor: { type: Schema.Types.ObjectId, ref: 'Profile', default: null },
+    requestor: ProfileSchema,
     deliveryLocation: {
       latitude: Number,
       longitude: Number,
@@ -24,7 +24,7 @@ const errandSchema = new Schema(
       longitude: Number,
     },
     // Runner
-    runner: { type: Schema.Types.ObjectId, ref: 'Profile', default: null },
+    runner: ProfileSchema,
     runnerLocation: {
       latitude: Number,
       longitude: Number,

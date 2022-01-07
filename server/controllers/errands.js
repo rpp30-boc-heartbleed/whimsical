@@ -1,49 +1,45 @@
 /* eslint-disable no-param-reassign */
 const { Errand } = require('../models/errand');
+const { Profile } = require('../models/userProfile');
 
-async function requestedErrands(req, res) {
+async function requestErrand(req, res) {
+  const { email, errandId } = req.body;
+
   try {
-    console.log('?', req.body);
-    const response = await Errand.find().where({}).exec();
-    return res.status(201).send(response);
+    const requestor = await Profile.findOne({ email });
+
+    console.log('requestor.name', requestor.name);
+    const errand = await Errand.findOne({ id: errandId });
+    errand.requestor = requestor;
+    await errand.save();
+
+    return res.status(201).send(errand);
   } catch (err) {
     return res.status(500).send(err);
   }
 }
 
-async function runningErrands(req, res) {
+async function getRequestedErrands(req, res) {
+  const { email } = req.query;
+
   try {
-    console.log('?', req.body);
-    const response = await Errand.find().where({}).exec();
-    return res.status(201).send(response);
+    const errands = await Errand.find({ 'requestor.email': email });
+
+    return res.status(201).send(errands);
   } catch (err) {
     return res.status(500).send(err);
   }
 }
 
-// const { user } = req.params; // user name
-// const {errandname } = req.params;
-// const userProfile = await Profile.find({ name: user });
+async function getRunningErrands(req, res) {
+  const { email } = req.query;
 
-// await Errand.find()
-//   .populate('requested errands')
-//   .exec((err, errands) => {
-//     return res.status(200).send(errands);
-//   });
+  try {
+    const errands = await Errand.find({ 'requestor.email': email });
+    return res.status(201).send(errands);
+  } catch (err) {
+    return res.status(500).send(err);
+  }
+}
 
-// Now client side filter un-matched results
-// errands.forEach((errand) => {
-//   console.log(errand.requestor);
-// });
-// WorksnapsTimeEntry.find().populate({
-//   "path": "student",
-//   "match": { "status": "student" }
-// }).exec(function(err,entries) {
-//  // Now client side filter un-matched results
-//  entries = entries.filter(function(entry) {
-//      return entry.student != null;
-//  });
-//  // Anything not populated by the query condition is now removed
-// });
-
-module.exports = { requestedErrands, runningErrands };
+module.exports = { getRequestedErrands, getRunningErrands, requestErrand };

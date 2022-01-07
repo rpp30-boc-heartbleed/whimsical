@@ -19,8 +19,9 @@ const {
   userProfile,
   friendsList,
   updateRating,
-  requestedErrands,
-  runningErrands,
+  getRequestedErrands,
+  requestErrand,
+  getRunningErrands,
 } = require('../controllers');
 
 const router = express.Router();
@@ -45,7 +46,7 @@ router.get('/friends/search', friendsList.search);
 router.put('/userProfile/stars', updateRating);
 
 // ERRANDS
-router.post('/:errandId/requests', requestedErrands); // get list of requested errands
-router.get('/:errandId/requests', requestedErrands);
-router.get('/:username/tasks', runningErrands); // get list of errands that the user running
+router.post('/errands/request', requestErrand); // get list of requested errands
+router.get('/errands/requests', getRequestedErrands);
+router.get('/errands/tasks', getRunningErrands); // get list of errands that the user running
 module.exports = router;

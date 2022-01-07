@@ -13,7 +13,7 @@ const ProfileSchema = new Schema({
 
 const Profile = mongoose.model('Profile', ProfileSchema, 'profileCollection');
 
-module.exports = { Profile };
+module.exports = { Profile, ProfileSchema };
 
 // userCoordinates: {
 //   type: {
