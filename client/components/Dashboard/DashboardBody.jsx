@@ -5,7 +5,7 @@ import axios from 'axios';
 import { useIsFocused } from '@react-navigation/native';
 import { HOST_URL } from '@env';
 import {
-  View, Text, StyleSheet, TextInput, StatusBar, Button, FlatList, Image, Avatar,
+  View, Text, StyleSheet, TextInput, StatusBar, Button, FlatList, Image, Avatar, TouchableOpacity,
 } from 'react-native';
 import errandState from '../../state/atoms/errands';
 
@@ -18,7 +18,6 @@ const DashboardBody = ({ navigation }) => {
     axios
       .get(`${HOST_URL}/getErrandData`)
       .then((data) => {
-        console.log('here is the data', data.data);
         const dataArr = [];
         // create new array of only 'Pending' posts (deleting 'Completed' posts)
         // eslint-disable-next-line no-plusplus
@@ -52,7 +51,6 @@ const DashboardBody = ({ navigation }) => {
                 <View style={styles.container4}>
                   <View style={styles.container5}>
                     <Text style={styles.username}>{item.username}</Text>
-                    {/* <Text style={styles.timeOfPost}>minutes ago posted</Text> */}
                     <TimeAgo time={item.timeOfPost} interval={60000} />
                   </View>
 
@@ -76,10 +74,12 @@ const DashboardBody = ({ navigation }) => {
                   style={styles.messagebox}
                 />
                 <Text style={styles.clickable} />
-                <Image
-                  source={{ uri: 'https://www.iconpacks.net/icons/1/free-pin-icon-48-thumb.png' }}
-                  style={styles.status}
-                />
+                <TouchableOpacity style={styles.statustouch} onPress={() => navigation.navigate('ErrandTracker')}>
+                  <Image
+                    source={{ uri: 'https://www.iconpacks.net/icons/1/free-pin-icon-48-thumb.png' }}
+                    style={styles.status}
+                  />
+                </TouchableOpacity>
               </View>
             </View>
           </View>
@@ -178,6 +178,9 @@ const styles = StyleSheet.create({
   status: {
     width: 60,
     resizeMode: 'contain',
+  },
+  statustouch: {
+    borderWidth: 1,
   },
 });
 
