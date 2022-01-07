@@ -27,7 +27,6 @@ const sendMessage = (message, chatId) => {
 
 const receiveNewMessage = (callback) => {
   socket.on('incomingMessage', (message) => {
-    console.log(message);
     return callback(message);
   });
 };

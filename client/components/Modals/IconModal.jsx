@@ -30,7 +30,7 @@ const IconModal = ({
                 return (
                   <View style={styles.friend}>
                     <TouchableOpacity style={styles.avatar}>
-                      <Text onPress={() => navigation.push('Chat', { errand: item })}>{item.name}</Text>
+                      <Text onPress={() => navigation.push('Chat', { errand: item.chatId })}>{item.name}</Text>
                     </TouchableOpacity>
                   </View>
                 );

@@ -20,7 +20,7 @@ import findChat from '../../../state/selectors/findChat';
 const { cat } = images;
 
 const Chat = ({ route, navigation }) => {
-  const { chatId } = route.params.errand;
+  const { chatId } = route.params;
   const [user] = useRecoilState(userProfileState);
   const chat = useRecoilValue(findChat(chatId));
   const [messages, setMessages] = useState([]);

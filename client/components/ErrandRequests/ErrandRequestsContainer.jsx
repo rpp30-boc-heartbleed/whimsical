@@ -11,7 +11,7 @@ import ErrandRequests from './ErrandRequests';
 import NavBarContainer from '../NavBar/NavBarContainer';
 
 const ErrandRequestsContainer = ({ navigation }) => {
-  const errands = useRecoilValue(filteredErrandsState);
+  // const errands = useRecoilValue(filteredErrandsState);
 
   return (
     <>
