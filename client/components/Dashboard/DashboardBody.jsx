@@ -14,9 +14,9 @@ const DashboardBody = ({ navigation }) => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3000/getErrandData')
+      .get('http://10.0.0.237:3000/getErrandData')
       .then((data) => { setNewDataFromMongo(data.data); })
-      .catch((err) => console.log('error', err));
+      .catch((err) => console.log('error', JSON.stringify(err)));
   }, [isFocused]);
 
   return (

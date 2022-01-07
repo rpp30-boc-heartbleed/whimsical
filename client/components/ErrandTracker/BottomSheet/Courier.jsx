@@ -36,7 +36,7 @@ const Courier = () => {
   return (
     <View style={styles.container}>
       {/* <Text>{user.picture}</Text> */}
-      <Text style={styles.profileName}>{user.name} </Text>
+      <Text style={styles.profileName}>{user.name}  </Text>
       <View style={styles.container2}>
         <Image source={icons.star} style={styles.starImage} />
         <Text style={styles.starCount} onPress={(e) => handleOnClick}>{user.stars}</Text>

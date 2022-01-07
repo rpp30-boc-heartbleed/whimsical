@@ -7,7 +7,7 @@ const filteredErrandsState = selector({
   get: ({ get }) => {
     const errands = get(errandState);
     const user = get(userProfileState);
-    return errands.filter((errand) => errand.requestor.name === user.name);
+    return errands.filter((errand) => errand.requestor?.name === user.name);
   },
 });
 

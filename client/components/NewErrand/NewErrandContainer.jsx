@@ -4,15 +4,15 @@ import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 import {
   View, Text, StyleSheet, TextInput, StatusBar, Button, ScrollView,
 } from 'react-native';
+import { HOST_URL } from '@env';
 import NavBar from '../NavBar/NavBarContainer';
-import newErrandState from '../../state/atoms/newErrand';
+import errandState from '../../state/atoms/errands';
 import newErrandSelector from '../../state/selectors/newErrandSelector';
 
 const NewErrandContainer = ({ navigation }) => {
-  const setNewErrand = useSetRecoilState(newErrandState);
+  const setErrands = useSetRecoilState(errandState);
   const newErrandView = useRecoilValue(newErrandSelector);
-  // const url = 'http://ec2-34-239-133-230.compute-1.amazonaws.com/newErrand';
-  const url = 'http://localhost:3000/newErrand';
+  const url = `${HOST_URL}/newErrand`;
   const newErrandObj = {};
 
   async function addToMongo(data) {
@@ -72,7 +72,10 @@ const NewErrandContainer = ({ navigation }) => {
               <Button
                 title="Submit"
                 onPress={() => {
-                  setNewErrand(newErrandObj);
+                  setErrands((oldErrands) => [
+                    ...oldErrands,
+                    newErrandObj,
+                  ]);
                   addToMongo(newErrandObj);
                   // navigation.navigate('Dashboard');
                   // .then(() => {
