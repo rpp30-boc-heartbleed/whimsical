@@ -1,4 +1,4 @@
-const { Map } = require('./map');
+const { Map } = require('../models/map');
 
 const placeholder = (req, res) => {
   Map.find()
@@ -10,4 +10,4 @@ const placeholder = (req, res) => {
     });
 };
 
-module.exports = { Map };
+module.exports = { placeholder };
