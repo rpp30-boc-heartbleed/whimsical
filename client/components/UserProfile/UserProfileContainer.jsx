@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import axios from 'axios';
 import {
@@ -10,6 +10,8 @@ import {
   Button,
   Image,
   TouchableOpacity,
+  Modal,
+  Pressable,
 } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
@@ -23,6 +25,10 @@ import NavBarContainer from '../NavBar/NavBarContainer';
 
 const UserProfileContainer = ({ navigation }) => {
   const [user, setUser] = useRecoilState(userProfileState);
+  const [pass, setPass] = useState('');
+  const [confirmPass, setConfirmPass] = useState('');
+  const [showModal, setShowModal] = useState(false);
+
   useEffect(() => {
     axios.get(`http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/get?email=${auth.auth.currentUser.email}`) // add '?name=Ojeiku' to queryString
       .then((data) => {
@@ -126,6 +132,7 @@ const UserProfileContainer = ({ navigation }) => {
       // const blob = URL.createObjectURL(image.uri);
       console.log('blob', image);
       console.log('data', data);
+      // axios.post('http://localhost:3000/userProfile/image', data, {
       axios.post('http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/image', data, {
         headers: {
           'Content-Type': 'multipart/form-data',
@@ -139,21 +146,27 @@ const UserProfileContainer = ({ navigation }) => {
         });
     }
   };
-  const handlePass = (e) => {
-    e.preventDefault();
-    const user = auth.auth.currentUser;
-    // console.log('user', user)
-    const newPassword = e.nativeEvent.text;
+  const handlePass = () => {
+    console.log('passwords:', pass, confirmPass);
+    if (pass === confirmPass && pass.length >= 8) {
+      const user = auth.auth.currentUser;
+      // console.log('user', user)
+      const newPassword = pass;
 
-    updatePassword(user, newPassword)
-      .then((data) => {
-        // If update is successful.
-        console.log('update successfull!', data);
-      })
-      .catch((err) => {
-        // If an error occurred
-        console.error(err);
-      });
+      updatePassword(user, newPassword)
+        .then((data) => {
+          // If update is successful.
+          console.log('update successfull!', data);
+        })
+        .catch((err) => {
+          // If an error occurred
+          console.error(err);
+        });
+    } else if (pass.length < 8) {
+      alert('The password was too short. Please try again');
+    } else if (pass !== confirmPass) {
+      alert('The passwords do not match. Please try again');
+    }
   };
 
   return (
@@ -186,16 +199,6 @@ const UserProfileContainer = ({ navigation }) => {
           placeholder='Username'
         />
         <TextInput
-          onSubmitEditing={handlePass}
-          placeholder='Password'
-          autoCapitalize='none'
-          secureTextEntry
-        />
-        {/* <TextInput
-          onSubmitEditing={handlePass}
-          placeholder='Confirm Password'
-        /> */}
-        <TextInput
           // style={styles.editForm}
           onSubmitEditing={handleSubmitEmail}
           placeholder='Email'
@@ -205,10 +208,48 @@ const UserProfileContainer = ({ navigation }) => {
           onSubmitEditing={handleSubmitLocation}
           placeholder='Location'
         />
+        <Button
+          onPress={() => { setShowModal(!showModal); }}
+          title="Change Password"
+        />
       </View>
       <View>
         <NavBarContainer navigation={navigation} />
       </View>
+      <Modal
+        animationType="slide"
+        transparent={showModal}
+        visible={showModal}
+        onRequestClose={() => {
+          // Alert.alert("Modal has been closed.");
+          setShowModal(!showModal);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <TextInput
+              onChangeText={(e) => { console.log(e); setPass(e); }}
+              placeholder='Password'
+              autoCapitalize='none'
+              secureTextEntry
+            />
+            <TextInput
+              onChangeText={(e) => { console.log(e); setConfirmPass(e); }}
+              placeholder='Confirm Password'
+              autoCapitalize='none'
+              secureTextEntry
+            />
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => {
+                setShowModal(!showModal); handlePass();
+              }}
+            >
+              <Text style={styles.textStyle}>Change Password</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
     </>
   );
 };
@@ -247,6 +288,52 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     margin: 10,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  buttonOpen: {
+    backgroundColor: "#F194FF",
+  },
+  buttonClose: {
+    backgroundColor: "#2196F3",
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center"
+  },
+  textBox: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
   },
 });
 
