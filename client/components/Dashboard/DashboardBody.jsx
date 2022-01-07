@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Component } from 'react';
+import TimeAgo from 'react-native-timeago';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import axios from 'axios';
 import { useIsFocused } from '@react-navigation/native';
@@ -35,7 +36,8 @@ const DashboardBody = ({ navigation }) => {
                 <View style={styles.container4}>
                   <View style={styles.container5}>
                     <Text style={styles.username}>{item.username}</Text>
-                    <Text style={styles.timeOfPost}>minutes ago posted</Text>
+                    {/* <Text style={styles.timeOfPost}>minutes ago posted</Text> */}
+                    <TimeAgo time={item.timeOfPost} interval={60000} />
                   </View>
 
                   <View style={styles.container6}>
@@ -146,7 +148,7 @@ const styles = StyleSheet.create({
   },
   buttons: {
     flexDirection: 'row',
-    justifyContent: 'center',
+    justifyContent: 'space-around',
   },
   clickable: {
     fontSize: 10,

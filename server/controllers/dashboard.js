@@ -20,7 +20,7 @@ const addNewErrand = (req, res) => {
       },
       storeETA: req.body.storeETA,
       errandName: req.body.errandName,
-      timeOfPost: '1:00 pm',
+      timeOfPost: `${new Date()}`,
       username: 'still working on username',
       userAvatar: 'still working userAvatar',
       status: 'Pending',
