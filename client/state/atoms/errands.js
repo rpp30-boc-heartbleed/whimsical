@@ -6,4 +6,9 @@ const errandState = atom({
   default: mockErrandsData, // []
 });
 
+export const refreshErrandsState = atom({
+  key: 'refreshErrandsState',
+  default: false,
+});
+
 export default errandState;

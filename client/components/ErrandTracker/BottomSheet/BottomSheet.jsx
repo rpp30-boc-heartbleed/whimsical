@@ -1,17 +1,17 @@
 import React from 'react';
-import { Dimensions, StyleSheet, View, Text } from 'react-native';
-import MessageButton from './MessageButton.jsx';
-import Courier from './Courier.jsx';
-// import ErrandProgress from './ErrandProgress.jsx';
+import {
+  Dimensions,
+  StyleSheet,
+  View,
+  Text,
+} from 'react-native';
+import MessageButton from './MessageButton';
+import Courier from './Courier';
 
-
-
-const BottomSheet = () => (
+const BottomSheet = ({ eta, errandRunner, errandName }) => (
   <View style={styles.container}>
-    <Text>ETA: 5 MINUTES </Text>
-    <Text>4408 W Main St</Text>
-    {/* <Text>{Math.ceil(10)} mins</Text> */}
-    {/* <ErrandProgress /> */}
+    <Text>{errandName}</Text>
+    <Text>ETA: {Math.floor(eta)} MINUTES </Text>
     <Courier />
     <MessageButton />
   </View>
@@ -20,8 +20,7 @@ const BottomSheet = () => (
 const styles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
-  }
-})
-
+  },
+});
 
 export default BottomSheet;

@@ -1,10 +1,11 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const { dashboard } = require('../controllers');
 
-// const connectDb = () => mongoose.connect(`mongodb://${process.env.USERNAME}:${process.env.PASS}@3.83.254.62/quick-bagel`, {
-const connectDb = () => mongoose.connect('mongodb://localhost:27017/quick-bagel', {
+const connectDb = () => mongoose.connect(`mongodb://${process.env.USERNAME}:${process.env.PASS}@3.83.254.62/quick-bagel`, {
+// const connectDb = () => mongoose.connect('mongodb://localhost:27017/quick-bagel', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })

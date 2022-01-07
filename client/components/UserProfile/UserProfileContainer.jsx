@@ -13,17 +13,18 @@ import {
 } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
-import { getAuth, updatePassword } from "firebase/auth";
+import { getAuth, updatePassword } from 'firebase/auth';
 import auth from '../../config/firebase';
 // import storage from '../../config/firebase';
 import 'firebase/storage';
-
 import userProfileState from '../../state/atoms/userProfile';
 // console.log(auth);
+import NavBarContainer from '../NavBar/NavBarContainer';
+
 const UserProfileContainer = ({ navigation }) => {
   const [user, setUser] = useRecoilState(userProfileState);
   useEffect(() => {
-    axios.get(`http://localhost:3000/userProfile/get?email=${auth.auth.currentUser.email}`) // add '?name=Ojeiku' to queryString
+    axios.get(`http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/get?email=${auth.auth.currentUser.email}`) // add '?name=Ojeiku' to queryString
       .then((data) => {
         // console.log('loaded profile', data.data);
         setUser(data.data[0]);
@@ -42,7 +43,7 @@ const UserProfileContainer = ({ navigation }) => {
       stars: user.stars,
       location: user.location,
     };
-    axios.post('http://localhost:3000/userProfile/edit', {
+    axios.post('http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/edit', {
       formerUser: user,
       updatedUser: newUser,
     })
@@ -64,7 +65,7 @@ const UserProfileContainer = ({ navigation }) => {
       stars: user.stars,
       location: user.location,
     };
-    axios.post('http://localhost:3000/userProfile/edit', {
+    axios.post('http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/edit', {
       formerUser: user,
       updatedUser: newUser,
     })
@@ -86,7 +87,7 @@ const UserProfileContainer = ({ navigation }) => {
       stars: user.stars,
       location: value,
     };
-    axios.post('http://localhost:3000/userProfile/edit', {
+    axios.post('http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/edit', {
       formerUser: user,
       updatedUser: newUser,
     })
@@ -125,10 +126,10 @@ const UserProfileContainer = ({ navigation }) => {
       // const blob = URL.createObjectURL(image.uri);
       console.log('blob', image);
       console.log('data', data);
-      axios.post('http://localhost:3000/userProfile/image', data, {
+      axios.post('http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/image', data, {
         headers: {
           'Content-Type': 'multipart/form-data',
-        }
+        },
       })
         .then((data) => {
           console.log('Image Saved!');
@@ -146,14 +147,14 @@ const UserProfileContainer = ({ navigation }) => {
 
     updatePassword(user, newPassword)
       .then((data) => {
-      // If update is successful.
+        // If update is successful.
         console.log('update successfull!', data);
       })
       .catch((err) => {
         // If an error occurred
         console.error(err);
-  });
-  }
+      });
+  };
 
   return (
     <>
@@ -206,13 +207,7 @@ const UserProfileContainer = ({ navigation }) => {
         />
       </View>
       <View>
-        <Button
-          title="Go to Errand Tracker"
-          onPress={() => navigation.push('ErrandTracker')} // push the name property of the Stack.Screen component as defined in App.jsx
-        />
-        <Button title="Go to Dashboard" onPress={() => navigation.navigate('Dashboard')} />
-        <Button title="Go back" onPress={() => navigation.goBack()} />
-        <StatusBar />
+        <NavBarContainer navigation={navigation} />
       </View>
     </>
   );
