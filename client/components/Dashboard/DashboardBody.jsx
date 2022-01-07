@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Component } from 'react';
+import TimeAgo from 'react-native-timeago';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import axios from 'axios';
 import { useIsFocused } from '@react-navigation/native';
@@ -14,9 +15,23 @@ const DashboardBody = ({ navigation }) => {
 
   useEffect(() => {
     axios
-      .get('http://10.0.0.237:3000/getErrandData')
-      .then((data) => { setNewDataFromMongo(data.data); })
-      .catch((err) => console.log('error', JSON.stringify(err)));
+      .get('http://localhost:3000/getErrandData')
+      .then((data) => {
+        const dataArr = [];
+        // create new array of only 'Pending' posts (deleting 'Completed' posts)
+        // eslint-disable-next-line no-plusplus
+        for (let i = 0; i < data.data.length; i++) {
+          if (data.data[i].status === 'Pending') {
+            dataArr.push(data.data[i]);
+          }
+        }
+        // sorts posts -> most recent on top
+        dataArr.sort((b, a) => {
+          return a.timeOfPost.localeCompare(b.timeOfPost);
+        });
+        setNewDataFromMongo(dataArr);
+      })
+      .catch((err) => console.log('error', err));
   }, [isFocused]);
 
   return (
@@ -35,7 +50,8 @@ const DashboardBody = ({ navigation }) => {
                 <View style={styles.container4}>
                   <View style={styles.container5}>
                     <Text style={styles.username}>{item.username}</Text>
-                    <Text style={styles.timeOfPost}>minutes ago posted</Text>
+                    {/* <Text style={styles.timeOfPost}>minutes ago posted</Text> */}
+                    <TimeAgo time={item.timeOfPost} interval={60000} />
                   </View>
 
                   <View style={styles.container6}>
@@ -51,10 +67,17 @@ const DashboardBody = ({ navigation }) => {
                 <Text style={styles.cont7}>ETA: {item.storeETA}</Text>
               </View>
 
-              <View style={styles.buttons}>
-                {/* <Text style={styles.clickable}>LIKE</Text> */}
-                <Text style={styles.clickable}>Message</Text>
-                <Text style={styles.clickable}>Status</Text>
+              <View style={[styles.buttons, styles.clickable]}>
+                {/* <Text style={styles.clickable}>Message</Text> */}
+                <Image
+                  source={{ uri: 'https://listimg.pinclipart.com/picdir/s/453-4531079_png-file-svg-message-box-icon-png-clipart.png' }}
+                  style={styles.messagebox}
+                />
+                <Text style={styles.clickable} />
+                <Image
+                  source={{ uri: 'https://www.iconpacks.net/icons/1/free-pin-icon-48-thumb.png' }}
+                  style={styles.status}
+                />
               </View>
             </View>
           </View>
@@ -145,6 +168,14 @@ const styles = StyleSheet.create({
     fontSize: 10,
     color: 'gray',
     marginTop: 5,
+  },
+  messagebox: {
+    width: 60,
+    resizeMode: 'contain',
+  },
+  status: {
+    width: 60,
+    resizeMode: 'contain',
   },
 });
 

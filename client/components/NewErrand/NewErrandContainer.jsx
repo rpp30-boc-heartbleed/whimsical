@@ -66,7 +66,12 @@ const NewErrandContainer = ({ navigation }) => {
 
           <View style={styles.buttons}>
             <View style={styles.cancel}>
-              <Button title="Cancel" />
+              <Button
+                title="Cancel"
+                onPress={() => {
+                  navigation.navigate('Dashboard');
+                }}
+              />
             </View>
             <View style={styles.submit}>
               <Button
@@ -77,13 +82,6 @@ const NewErrandContainer = ({ navigation }) => {
                     newErrandObj,
                   ]);
                   addToMongo(newErrandObj);
-                  // navigation.navigate('Dashboard');
-                  // .then(() => {
-                  //   console.log('addToMongo data post successful');
-                  // })
-                  // .catch((err) => {
-                  //   console.log(err);
-                  // });
                 }}
               />
             </View>
