@@ -51,10 +51,17 @@ const DashboardBody = ({ navigation }) => {
                 <Text style={styles.cont7}>ETA: {item.storeETA}</Text>
               </View>
 
-              <View style={styles.buttons}>
-                {/* <Text style={styles.clickable}>LIKE</Text> */}
-                <Text style={styles.clickable}>Message</Text>
-                <Text style={styles.clickable}>Status</Text>
+              <View style={[styles.buttons, styles.clickable]}>
+                {/* <Text style={styles.clickable}>Message</Text> */}
+                <Image
+                  source={{ uri: 'https://listimg.pinclipart.com/picdir/s/453-4531079_png-file-svg-message-box-icon-png-clipart.png' }}
+                  style={styles.messagebox}
+                />
+                <Text style={styles.clickable} />
+                <Image
+                  source={{ uri: 'https://www.iconpacks.net/icons/1/free-pin-icon-48-thumb.png' }}
+                  style={styles.status}
+                />
               </View>
             </View>
           </View>
@@ -139,12 +146,20 @@ const styles = StyleSheet.create({
   },
   buttons: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'center',
   },
   clickable: {
     fontSize: 10,
     color: 'gray',
     marginTop: 5,
+  },
+  messagebox: {
+    width: 60,
+    resizeMode: 'contain',
+  },
+  status: {
+    width: 60,
+    resizeMode: 'contain',
   },
 });
 
