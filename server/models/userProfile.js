@@ -5,23 +5,24 @@ const { Schema } = mongoose;
 const ProfileSchema = new Schema({
   name: String,
   email: { type: String, unique: true },
-  stars: Number,
+  stars: { type: Number, default: 0 },
   picture: String,
-  errandsCompleted: Number,
+  errandsCompleted: { type: Number, default: 0 },
   location: String,
-  // userCoordinates: {
-  //   type: {
-  //     type: String,
-  //     default: 'Point',
-  //   },
-  //   coordinates: {
-  //     type: [Number],
-  //     default: undefined,
-  //     require: true,
-  //   },
-  // },
 }, { timestamps: true });
 
 const Profile = mongoose.model('Profile', ProfileSchema, 'profileCollection');
 
-module.exports = { Profile };
+module.exports = { Profile, ProfileSchema };
+
+// userCoordinates: {
+//   type: {
+//     type: String,
+//     default: 'Point',
+//   },
+//   coordinates: {
+//     type: [Number],
+//     default: undefined,
+//     require: true,
+//   },
+// },

@@ -6,14 +6,17 @@ import {
 } from 'react-native';
 import { HOST_URL } from '@env';
 import NavBar from '../NavBar/NavBarContainer';
-import errandState from '../../state/atoms/errands';
+import { errandState } from '../../state/atoms/errands';
 import newErrandSelector from '../../state/selectors/newErrandSelector';
+import userProfileState from '../../state/atoms/userProfile';
 
 const NewErrandContainer = ({ navigation }) => {
   const setErrands = useSetRecoilState(errandState);
+  const { email } = useRecoilValue(userProfileState);
+
   const newErrandView = useRecoilValue(newErrandSelector);
   const url = `${HOST_URL}/newErrand`;
-  const newErrandObj = {};
+  const newErrandObj = { email };
 
   async function addToMongo(data) {
     try {
