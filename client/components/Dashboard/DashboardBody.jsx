@@ -1,35 +1,45 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
+import axios from 'axios';
+import { useIsFocused } from '@react-navigation/native';
 import {
   View, Text, StyleSheet, TextInput, StatusBar, Button, FlatList, Image, Avatar,
 } from 'react-native';
 import errandState from '../../state/atoms/errands';
 
 const DashboardBody = ({ navigation }) => {
+  const isFocused = useIsFocused();
   const [errandsList] = useRecoilState(errandState);
+  const [newDataFromMongo, setNewDataFromMongo] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get('http://localhost:3000/getErrandData')
+      .then((data) => { setNewDataFromMongo(data.data); })
+      .catch((err) => console.log('error', err));
+  }, [isFocused]);
 
   return (
     <View>
       <FlatList
         style={styles.container0}
-        data={errandsList}
+        data={newDataFromMongo}
         renderItem={({ item, index }) => (
           <View style={styles.container}>
             <View style={styles.container2}>
               <View style={styles.container3}>
                 <Image
-                  source={{ uri: item.errandRunner.avatar }}
+                  source={{ uri: item.userAvatar }}
                   style={styles.avatar}
                 />
-                {/* <Text style={styles.avatar}>AVATAR</Text> */}
                 <View style={styles.container4}>
                   <View style={styles.container5}>
-                    <Text style={styles.username}>{item.errandRunner.name}</Text>
-                    <Text style={styles.minutesago}>minutes ago posted</Text>
+                    <Text style={styles.username}>{item.username}</Text>
+                    <Text style={styles.timeOfPost}>minutes ago posted</Text>
                   </View>
 
                   <View style={styles.container6}>
-                    <Text style={[styles.cont6, styles.store]}>{item.addressName}</Text>
+                    <Text style={[styles.cont6, styles.store]}>{item.storeName}</Text>
                     <Text style={[styles.cont6, styles.breakbar]}>|</Text>
                     <Text style={[styles.cont6, styles.errandname]}>{item.errandName}</Text>
                   </View>
@@ -37,13 +47,13 @@ const DashboardBody = ({ navigation }) => {
               </View>
 
               <View style={styles.container7}>
-                <Text style={styles.cont7}>Address: {item.address.street}</Text>
-                <Text style={styles.cont7}>ETA: {item.time}</Text>
+                <Text style={styles.cont7}>Address: {item.storeAddress.streetName}</Text>
+                <Text style={styles.cont7}>ETA: {item.storeETA}</Text>
               </View>
 
               <View style={styles.buttons}>
-                <Text style={styles.clickable}>LIKE</Text>
-                <Text style={styles.clickable}>Comment</Text>
+                {/* <Text style={styles.clickable}>LIKE</Text> */}
+                <Text style={styles.clickable}>Message</Text>
                 <Text style={styles.clickable}>Status</Text>
               </View>
             </View>
