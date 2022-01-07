@@ -7,7 +7,7 @@ import { HOST_URL } from '@env';
 import {
   View, Text, StyleSheet, TextInput, StatusBar, Button, FlatList, Image, Avatar, TouchableOpacity,
 } from 'react-native';
-import errandState from '../../state/atoms/errands';
+import { errandState } from '../../state/atoms/errands';
 
 const DashboardBody = ({ navigation }) => {
   const isFocused = useIsFocused();

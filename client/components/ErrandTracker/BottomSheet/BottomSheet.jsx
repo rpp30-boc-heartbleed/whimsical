@@ -8,12 +8,14 @@ import {
 import MessageButton from './MessageButton';
 import Courier from './Courier';
 
-const BottomSheet = ({ eta, errandRunner, errandName }) => (
+const BottomSheet = ({
+  eta, errandRunner, errandName, chatId,
+}) => (
   <View style={styles.container}>
     <Text>{errandName}</Text>
     <Text>ETA: {Math.floor(eta)} MINUTES </Text>
     <Courier />
-    <MessageButton />
+    <MessageButton chatId={chatId} />
   </View>
 );
 

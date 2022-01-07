@@ -9,7 +9,7 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useRecoilValue } from 'recoil';
 import filteredErrandsState from '../../state/selectors/filterErrandsByRequestor';
-import { refreshErrandsState } from '../../state/atoms/errands';
+import refreshErrandsState from '../../state/atoms/errands';
 
 const ErrandRequests = ({ navigation }) => {
   const errands = useRecoilValue(filteredErrandsState);
