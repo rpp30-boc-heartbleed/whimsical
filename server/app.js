@@ -1,9 +1,23 @@
 const express = require('express');
+const http = require('http');
+const { Server } = require('socket.io');
 const router = require('./routes/routes');
 const db = require('./db');
 require('dotenv').config();
 
+// CONTROLLERS
+// const { createChat } = require('./controllers/chat');
+const { findChat, postMessage } = require('./controllers/chat');
+
 const app = express();
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: '*',
+    methods: ['GET', 'POST'],
+  },
+});
+const mobileSockets = {};
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -17,9 +31,41 @@ app.use((req, res, next) => {
 
 app.use(router);
 
+io.on('connection', (socket) => {
+  console.log('user connected');
+
+  socket.on('joinChat', (chatId, userId) => {
+    if (mobileSockets[chatId]) {
+      mobileSockets[chatId].push(socket.id);
+    } else {
+      mobileSockets[chatId] = [socket.id];
+    }
+    // findChat(chatId, userId)
+    //   .then((chat) => {
+    //     socket.emit('priorMessages', chat.messages);
+    //   });
+    socket.emit('priorMessages', []);
+  });
+
+  socket.on('newMessage', (message, chatId) => {
+    // postMessage(message, chatId)
+    //   .then((chat) => {
+    //     chat.users.forEach((user) => {
+    //       const userSocketId = mobileSockets[user];
+    //       socket.to(userSocketId).emit('incomingMessage', message);
+    //     });
+    //   });
+    socket.emit('incomingMessage', message);
+    const userSocketIds = mobileSockets[chatId];
+    userSocketIds.forEach((socketId) => {
+      socket.to(socketId).emit('incomingMessage', message);
+    });
+  });
+});
+
 db()
   .then(() => {
-    app.listen(3000, () => {
+    server.listen(3000, () => {
       console.log('Listening on port 3000');
     });
   });
