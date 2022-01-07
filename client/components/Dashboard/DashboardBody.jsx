@@ -16,7 +16,12 @@ const DashboardBody = ({ navigation }) => {
   useEffect(() => {
     axios
       .get('http://localhost:3000/getErrandData')
-      .then((data) => { setNewDataFromMongo(data.data); })
+      .then((data) => {
+        data.data.sort((b, a) => {
+          return a.timeOfPost.localeCompare(b.timeOfPost);
+        });
+        setNewDataFromMongo(data.data);
+      })
       .catch((err) => console.log('error', err));
   }, [isFocused]);
 
