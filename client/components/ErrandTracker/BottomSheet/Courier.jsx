@@ -1,25 +1,49 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Image, Text, Alert } from 'react-native';
+import { useRecoilState } from 'recoil';
+import axios from 'axios';
+import {
+  StyleSheet,
+  View,
+  Image,
+  Text,
+  Alert,
+} from 'react-native';
 import { Title, Colors } from 'react-native-paper';
-import { COLORS, SIZES, icons, images } from '../../../constants';
-import ProfilePhoto from '../../Shared/Avatar.jsx';
-
-//Click Avatar Picture to go to User profile
+import {
+  COLORS,
+  SIZES,
+  icons,
+  images,
+} from '../../../constants';
+import userProfileState from '../../../state/atoms/userProfile';
 
 const Courier = () => {
-  const [count, setCount] = useState(9000)
+  const [count, setCount] = useState(0);
+  const [user, setUser] = useRecoilState(userProfileState);
+
+  async function handleOnClick(e) {
+    const { stars } = user;
+    console.log(stars);
+    try {
+      const response = await axios.put('/userProfile/stars', setCount(stars + 1));
+      console.log('response', response);
+      return response;
+    } catch (err) {
+      return 'Unable to give gold star';
+    }
+  }
+
   return (
     <View style={styles.container}>
-      <ProfilePhoto style={styles.image} />
-      <Text style={styles.profileName}> Lady Beth </Text>
+      {/* <Text>{user.picture}</Text> */}
+      <Text style={styles.profileName}>{user.name} </Text>
       <View style={styles.container2}>
         <Image source={icons.star} style={styles.starImage} />
-        <Text style={styles.starCount} onPress={() => setCount(count + 1)}>{count}</Text>
+        <Text style={styles.starCount} onPress={(e) => handleOnClick}>{user.stars}</Text>
       </View>
     </View>
-  )
+  );
 };
-
 
 const styles = StyleSheet.create({
   container: {
@@ -43,11 +67,11 @@ const styles = StyleSheet.create({
     paddingLeft: 5,
     width: 30,
     height: 30,
-    marginRight: SIZES.padding
+    marginRight: SIZES.padding,
   },
   starCount: {
     marginTop: 15,
-  }
+  },
 });
 
 export default Courier;

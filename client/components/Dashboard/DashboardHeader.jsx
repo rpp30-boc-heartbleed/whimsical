@@ -23,7 +23,7 @@ const DashboardHeader = ({ navigation }) => {
   return (
     <View style={styles.outercontainer}>
       <View style={styles.container}>
-        <Text style={styles.profilePic}>AA</Text>
+        <Text style={styles.profilePic} onPress={() => navigation.navigate('UserProfile')}>AA</Text>
         <TextInput style={styles.searchBar} placeholder='Search' />
         <Button title='sign out' onPress={() => handleSignOut(auth)} />
       </View>

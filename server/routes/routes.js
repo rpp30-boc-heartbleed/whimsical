@@ -20,7 +20,7 @@ const {
   friendsList,
   map,
   errandTracker,
-  chat,
+  updateRating,
 } = require('../controllers');
 
 const router = express.Router();
@@ -29,6 +29,8 @@ const router = express.Router();
 router.post('/register', register.addNewUser);
 
 // FEED
+router.post('/newErrand', dashboard.addNewErrand);
+router.get('/getErrandData', dashboard.getErrandData);
 
 // USER PROFILE
 router.get('/userProfile/get', userProfile.get);
@@ -38,9 +40,9 @@ router.post('/userProfile/image', upload.any('photoData'), userProfile.image);
 // FRIENDS
 router.get('/friends/get', friendsList.get);
 router.get('/friends/search', friendsList.search);
-router.post('/chat/post', chat.postMessage);
-// MAP
 
-// ERRAND TRACKER
+// RATING
+// router.get('/stars/get', starRating.get);
+router.put('/userProfile/stars', updateRating);
 
 module.exports = router;
