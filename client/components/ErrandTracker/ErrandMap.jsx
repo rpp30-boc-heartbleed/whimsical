@@ -13,8 +13,6 @@ import {
   Dimensions,
   TouchableOpacity,
   SafeAreaView,
-  PermissionsAndroid,
-  Platform,
 } from 'react-native';
 import { GOOGLE_MAPS_API_KEY } from '@env';
 import {
@@ -49,8 +47,8 @@ const destination = {
 };
 
 const ErrandMap = ({ setEta, errand }) => {
-  const mapRef = useRef();
-  const markerRef = useRef();
+  // const mapRef = useRef();
+  // const markerRef = useRef();
   const { errandRunner } = errand;
 
   // const [errands, setErrands] = useRecoilState(errandState);
