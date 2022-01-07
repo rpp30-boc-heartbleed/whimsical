@@ -1,40 +1,46 @@
-import React, { useState, useCallback } from 'react';
-// import io from 'socket.io-client';
+import React, { useState, useEffect } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import { GiftedChat } from 'react-native-gifted-chat';
 import {
   View,
   StyleSheet,
 } from 'react-native';
-// import { LOCAL_IP } from '@env';
 
+import {
+  initiateSocketConnection,
+  disconnectSocket,
+  subscribeToChat,
+  sendMessage,
+  receiveNewMessage,
+} from '../../../socket/connect';
 import { images } from '../../../constants';
+import userProfileState from '../../../state/atoms/userProfile';
 import findChat from '../../../state/selectors/findChat';
 
 const { cat } = images;
 
 const Chat = ({ route, navigation }) => {
-  const { errand } = route.params;
-  const chat = useRecoilValue(findChat(errand.chatId));
-  const [messages, setMessages] = useState(chat);
-  // const [messages, setMessages] = useRecoilState(chatState);
-  // const [msgs, setMsgs] = useState([]);
-  // const socket = io(LOCAL_IP);
-  // socket.on('chat message', (msg) => {
-  //   console.log('client', msg);
-  //   setMessages([...messages, msg]);
-  // });
-
-  // const submitMessage = (message) => {
-  //   socket.emit('chat message', message);
-  // };
+  const { chatId } = route.params.errand;
+  const [user] = useRecoilState(userProfileState);
+  const chat = useRecoilValue(findChat(chatId));
+  const [messages, setMessages] = useState([]);
 
   const onSend = (message) => {
-    console.log(message);
-    // submitMessage(message[0]);
-    // setMessages([...messages, message]);
-    setMessages((previousMsgs) => GiftedChat.append(previousMsgs, message[0]));
+    sendMessage(message, chatId);
   };
+
+  useEffect(() => {
+    initiateSocketConnection();
+    subscribeToChat(chatId, user._id, (msgs) => {
+      setMessages(msgs);
+    });
+    receiveNewMessage((msg) => {
+      setMessages((previousMsgs) => GiftedChat.append(previousMsgs, msg));
+    });
+    return () => {
+      disconnectSocket();
+    };
+  }, [chatId, user]);
 
   return (
     <View style={styles.chat}>

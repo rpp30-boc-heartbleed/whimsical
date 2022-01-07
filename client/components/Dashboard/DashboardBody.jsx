@@ -3,10 +3,10 @@ import { useRecoilState, useRecoilValue } from 'recoil';
 import {
   View, Text, StyleSheet, TextInput, StatusBar, Button, FlatList, Image, Avatar,
 } from 'react-native';
-import errandState from '../../state/atoms/errands';
+import { errandState } from '../../state/atoms/errands';
 
 const DashboardBody = ({ navigation }) => {
-  const [errandsList] = useRecoilState(errandState);
+  const [errandsList, setErrandsList] = useRecoilState(errandState);
 
   return (
     <View>

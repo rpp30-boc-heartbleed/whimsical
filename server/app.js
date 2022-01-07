@@ -34,9 +34,9 @@ app.use(router);
 io.on('connection', (socket) => {
   console.log('user connected');
 
-  socket.on('joinChat', (chatId, user) => {
-    mobileSockets[user._id] = socket.id;
-    findChat(chatId, user._id)
+  socket.on('joinChat', (chatId, userId) => {
+    mobileSockets[userId] = socket.id;
+    findChat(chatId, userId)
       .then((chat) => {
         socket.emit('priorMessages', chat.messages);
       });
