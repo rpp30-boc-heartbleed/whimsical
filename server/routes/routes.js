@@ -18,6 +18,8 @@ const {
   dashboard,
   userProfile,
   friendsList,
+  map,
+  errandTracker,
   updateRating,
   getRequestedErrands,
   requestErrand,

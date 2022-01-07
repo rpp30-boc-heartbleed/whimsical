@@ -48,7 +48,7 @@ const FriendsListContainer = ({ navigation }) => {
           <AddFriend style={styles.addButton} />
         </View>
         <Search style={styles.search} />
-        <List style={styles.list} />
+        <List navigation={navigation} style={styles.list} />
       </View>
       <View>
         <NavBarContainer navigation={navigation} />

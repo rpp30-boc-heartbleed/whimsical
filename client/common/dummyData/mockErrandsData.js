@@ -47,6 +47,7 @@ export const mockErrandsData1 = [
       starRating: 53,
     },
     status: 'Pending',
+    chat: 1,
   },
   {
     id: 2,
@@ -75,6 +76,7 @@ export const mockErrandsData1 = [
       starRating: 20,
     },
     status: 'Pending',
+    chat: 2,
   },
   {
     id: 3,
@@ -103,6 +105,7 @@ export const mockErrandsData1 = [
       starRating: 7,
     },
     status: 'Pending',
+    chat: 3,
   },
   {
     id: 4,
@@ -131,6 +134,7 @@ export const mockErrandsData1 = [
       starRating: 9,
     },
     status: 'Pending',
+    chat: 4,
   },
   {
     id: 5,
@@ -159,6 +163,7 @@ export const mockErrandsData1 = [
       starRating: 5,
     },
     status: 'Pending',
+    chat: 5,
   },
   {
     id: 6,
@@ -187,6 +192,7 @@ export const mockErrandsData1 = [
       starRating: 0,
     },
     status: 'Pending',
+    chat: 6,
   },
   {
     id: 7,
@@ -215,6 +221,7 @@ export const mockErrandsData1 = [
       starRating: 1,
     },
     status: 'Pending',
+    chat: 7,
   },
   {
     id: 8,
@@ -243,6 +250,7 @@ export const mockErrandsData1 = [
       starRating: 3,
     },
     status: 'Pending',
+    chat: 8,
   },
   {
     id: 9,
@@ -271,6 +279,7 @@ export const mockErrandsData1 = [
       starRating: 2,
     },
     status: 'Pending',
+    chat: 9,
   },
 ];
 */

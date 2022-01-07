@@ -29,7 +29,7 @@ import NavBarContainer from '../NavBar/NavBarContainer';
 const ErrandTrackerContainer = ({ route, navigation }) => {
   const [eta, setEta] = useState(0);
   const { errand } = route.params;
-  const { errandRunner, errandName } = errand;
+  const { errandRunner, errandName, chatId } = errand;
   const [errands, setErrands] = useRecoilState(errandState);
   const [refresh, setRefresh] = useRecoilState(refreshErrandsState);
   const index = errands.findIndex((errandItem) => errandItem.errandName === errand.errandName);
@@ -54,7 +54,12 @@ const ErrandTrackerContainer = ({ route, navigation }) => {
         <ErrandMap setEta={setEta} errand={errand} />
       </View>
       <View style={styles.details}>
-        <BottomSheet errandRunner={errandRunner} eta={eta} errandName={errandName} />
+        <BottomSheet
+          errandRunner={errandRunner}
+          eta={eta}
+          errandName={errandName}
+          chatId={chatId}
+        />
       </View>
       <View>
         <NavBarContainer navigation={navigation} />

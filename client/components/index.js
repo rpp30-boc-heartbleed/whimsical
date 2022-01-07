@@ -8,6 +8,7 @@ import ErrandRequestsContainer from './ErrandRequests/ErrandRequestsContainer';
 import NavBarContainer from './NavBar/NavBarContainer';
 import RegisterContainer from './Authentication/RegisterContainer';
 import UserProfileContainer from './UserProfile/UserProfileContainer';
+import { Chat } from './FriendsList/SubComponents';
 
 export {
   DashboardContainer,
@@ -20,4 +21,5 @@ export {
   NavBarContainer,
   RegisterContainer,
   UserProfileContainer,
+  Chat,
 };

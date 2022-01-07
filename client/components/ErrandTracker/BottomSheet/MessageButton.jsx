@@ -7,7 +7,7 @@ import {
   Alert,
 } from 'react-native';
 
-const MessageButton = () => {
+const MessageButton = ({ navigation, chatId }) => {
   return (
     <View style={styles.parent}>
       <Button
@@ -15,7 +15,7 @@ const MessageButton = () => {
         title="Message"
         color='#0782F9'
         mode="contained"
-        onPress={() => Alert.alert('Message Lady Beth')}
+        onPress={() => navigation.push('Chat', { chatId })}
       >
         <Text style={styles.text}>Message</Text>
       </Button>

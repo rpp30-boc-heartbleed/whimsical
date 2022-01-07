@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import { HOST_URL } from '@env';
 import NavBar from '../NavBar/NavBarContainer';
-import errandState from '../../state/atoms/errands';
+import { errandState } from '../../state/atoms/errands';
 import newErrandSelector from '../../state/selectors/newErrandSelector';
 import userProfileState from '../../state/atoms/userProfile';
 

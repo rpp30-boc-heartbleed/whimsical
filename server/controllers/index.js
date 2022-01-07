@@ -9,6 +9,7 @@ const {
   getRunningErrands,
   completeErrand,
 } = require('./errands');
+const chat = require('./chat');
 const { updateRating } = require('./stars');
 
 module.exports = {
@@ -22,4 +23,5 @@ module.exports = {
   requestErrand,
   getRunningErrands,
   completeErrand,
+  chat,
 };
