@@ -1,16 +1,19 @@
-const { Dashboard } = require('../models/dashboard');
-const { mockErrandsData } = require('../../client/common/dummyData/mockErrandsData');
+const { Errand } = require('../models/errand');
+const {
+  mockErrandsData,
+} = require('../../client/common/dummyData/mockErrandsData');
 
 const addNewErrand = (req, res) => {
   if (req === undefined) {
-    Dashboard.insertMany(mockErrandsData)
+    Errand.insertMany(mockErrandsData)
       .then(() => {
         console.log('Data inserted');
-      }).catch((error) => {
+      })
+      .catch((error) => {
         console.log(error);
       });
   } else {
-    const newErrand = new Dashboard({
+    const newErrand = new Errand({
       storeName: req.body.storeName,
       storeAddress: {
         streetName: req.body.streetName,
@@ -26,7 +29,8 @@ const addNewErrand = (req, res) => {
       status: 'Pending',
     });
 
-    newErrand.save()
+    newErrand
+      .save()
       .then((data) => {
         console.log('data added', data);
         res.status(201).end();
@@ -39,7 +43,7 @@ const addNewErrand = (req, res) => {
 };
 
 const getErrandData = (req, res) => {
-  Dashboard.find()
+  Errand.find()
     .then((data) => {
       res.status(201).send(data);
     })

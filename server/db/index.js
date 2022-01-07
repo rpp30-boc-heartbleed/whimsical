@@ -11,7 +11,7 @@ const connectDb = () => mongoose.connect('mongodb://localhost:27017/quick-bagel'
   .then(() => {
     console.log('Connected to MongoDBagel');
     // on connection, drop the data that feeds the dashboard
-    mongoose.connection.db.dropCollection('dashboardCollection', (err, res) => {
+    mongoose.connection.db.dropCollection('errandCollection', (err, res) => {
       if (err) {
         console.log('error with dropping');
       } else {
