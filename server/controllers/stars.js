@@ -6,7 +6,7 @@ async function updateRating(req, res) {
     const query = { name: req.body.name };
     const response = await Profile.findOneAndUpdate(query, { $inc: { stars: 1 } }).exec();
     console.log('response', response);
-    return res.status(200).send(response);
+    return res.status(201).send(response);
   } catch (err) {
     return res.status(500).send(err);
   }

@@ -9,6 +9,11 @@ const ProfileSchema = new Schema({
   picture: String,
   errandsCompleted: Number,
   location: String,
+  role: {
+    type: String,
+    enum: ['requestor', 'runner'],
+    default: 'requestor',
+  },
   // userCoordinates: {
   //   type: {
   //     type: String,

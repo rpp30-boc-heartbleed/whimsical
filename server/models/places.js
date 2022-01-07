@@ -2,8 +2,7 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const mapSchema = new Schema({
-  _id: Schema.Types.ObjectId,
+const PlacesSchema = new Schema({
   user_id: { type: Schema.Types.ObjectId, ref: 'Profile', default: null },
   addressType: {
     type: String,
@@ -15,6 +14,6 @@ const mapSchema = new Schema({
   },
 });
 
-const Map = mongoose.model('Map', mapSchema, 'mapCollection');
+const Places = mongoose.model('Places', PlacesSchema, 'PlacesCollection');
 
-module.exports = { Map };
+module.exports = { Places };
