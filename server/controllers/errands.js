@@ -1,25 +1,40 @@
 /* eslint-disable no-param-reassign */
 const { Errand } = require('../models/errand');
-const { Profile } = require('../models/userProfile');
 
-// Errang requests being done
-const requestedErrands = async (req, res) => {
-  const { user } = req.params;
-  const userProfile = await Profile.find({ name: user });
-  console.log(userProfile);
+async function requestedErrands(req, res) {
+  try {
+    console.log('?', req.body);
+    const response = await Errand.find().where({}).exec();
+    return res.status(201).send(response);
+  } catch (err) {
+    return res.status(500).send(err);
+  }
+}
 
-  await Errand.find()
-    .populate('requestor')
-    .exec((err, errands) => {
-      // Now client side filter un-matched results
-      errands.forEach((errand) => {
-        console.log(errand.requestor);
-      });
-    });
+async function runningErrands(req, res) {
+  try {
+    console.log('?', req.body);
+    const response = await Errand.find().where({}).exec();
+    return res.status(201).send(response);
+  } catch (err) {
+    return res.status(500).send(err);
+  }
+}
 
-  res.send('TODO');
-};
+// const { user } = req.params; // user name
+// const {errandname } = req.params;
+// const userProfile = await Profile.find({ name: user });
 
+// await Errand.find()
+//   .populate('requested errands')
+//   .exec((err, errands) => {
+//     return res.status(200).send(errands);
+//   });
+
+// Now client side filter un-matched results
+// errands.forEach((errand) => {
+//   console.log(errand.requestor);
+// });
 // WorksnapsTimeEntry.find().populate({
 //   "path": "student",
 //   "match": { "status": "student" }
@@ -31,14 +46,4 @@ const requestedErrands = async (req, res) => {
 //  // Anything not populated by the query condition is now removed
 // });
 
-const runningErrands = (req, res) => {
-  Errand.find()
-    .then(() => {
-      res.json({ message: 'this is a placeholder' });
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-};
-
-module.exports = { requestedErrands };
+module.exports = { requestedErrands, runningErrands };

@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const errandSchema = new Schema(
+
   {
     errandName: { type: String, default: null },
     storeETA: { type: String, default: null }, // time for delivery

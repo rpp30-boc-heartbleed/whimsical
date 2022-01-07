@@ -9,19 +9,20 @@ const ProfileSchema = new Schema({
   picture: String,
   errandsCompleted: Number,
   location: String,
-  // userCoordinates: {
-  //   type: {
-  //     type: String,
-  //     default: 'Point',
-  //   },
-  //   coordinates: {
-  //     type: [Number],
-  //     default: undefined,
-  //     require: true,
-  //   },
-  // },
 }, { timestamps: true });
 
 const Profile = mongoose.model('Profile', ProfileSchema, 'profileCollection');
 
 module.exports = { Profile };
+
+// userCoordinates: {
+//   type: {
+//     type: String,
+//     default: 'Point',
+//   },
+//   coordinates: {
+//     type: [Number],
+//     default: undefined,
+//     require: true,
+//   },
+// },
