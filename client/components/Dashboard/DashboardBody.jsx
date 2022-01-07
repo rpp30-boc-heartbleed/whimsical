@@ -17,10 +17,19 @@ const DashboardBody = ({ navigation }) => {
     axios
       .get('http://localhost:3000/getErrandData')
       .then((data) => {
-        data.data.sort((b, a) => {
+        const dataArr = [];
+        // create new array of only 'Pending' posts (deleting 'Completed' posts)
+        // eslint-disable-next-line no-plusplus
+        for (let i = 0; i < data.data.length; i++) {
+          if (data.data[i].status === 'Pending') {
+            dataArr.push(data.data[i]);
+          }
+        }
+        // sorts posts -> most recent on top
+        dataArr.sort((b, a) => {
           return a.timeOfPost.localeCompare(b.timeOfPost);
         });
-        setNewDataFromMongo(data.data);
+        setNewDataFromMongo(dataArr);
       })
       .catch((err) => console.log('error', err));
   }, [isFocused]);
