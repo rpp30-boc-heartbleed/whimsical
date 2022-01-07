@@ -3,6 +3,7 @@ import TimeAgo from 'react-native-timeago';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import axios from 'axios';
 import { useIsFocused } from '@react-navigation/native';
+import { HOST_URL } from '@env';
 import {
   View, Text, StyleSheet, TextInput, StatusBar, Button, FlatList, Image, Avatar,
 } from 'react-native';
@@ -15,7 +16,7 @@ const DashboardBody = ({ navigation }) => {
 
   useEffect(() => {
     axios
-      .get('http://localhost:3000/getErrandData')
+      .get(`${HOST_URL}/getErrandData`)
       .then((data) => {
         const dataArr = [];
         // create new array of only 'Pending' posts (deleting 'Completed' posts)
