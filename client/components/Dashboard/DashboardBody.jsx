@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import axios from 'axios';
+import { useIsFocused } from '@react-navigation/native';
 import {
   View, Text, StyleSheet, TextInput, StatusBar, Button, FlatList, Image, Avatar,
 } from 'react-native';
 import errandState from '../../state/atoms/errands';
 
 const DashboardBody = ({ navigation }) => {
+  const isFocused = useIsFocused();
   const [errandsList] = useRecoilState(errandState);
-  let newDataFromMongo = [];
+  const [newDataFromMongo, setNewDataFromMongo] = useState([]);
 
-  axios
-    .get('http://localhost:3000/getErrandData')
-    .then((data) => { newDataFromMongo = data.data; })
-    .catch((err) => console.log('error', err));
+  useEffect(() => {
+    axios
+      .get('http://localhost:3000/getErrandData')
+      .then((data) => { setNewDataFromMongo(data.data); })
+      .catch((err) => console.log('error', err));
+  }, [isFocused]);
 
-  console.log(newDataFromMongo);
   return (
     <View>
       <FlatList
@@ -49,8 +52,8 @@ const DashboardBody = ({ navigation }) => {
               </View>
 
               <View style={styles.buttons}>
-                <Text style={styles.clickable}>LIKE</Text>
-                <Text style={styles.clickable}>Comment</Text>
+                {/* <Text style={styles.clickable}>LIKE</Text> */}
+                <Text style={styles.clickable}>Message</Text>
                 <Text style={styles.clickable}>Status</Text>
               </View>
             </View>

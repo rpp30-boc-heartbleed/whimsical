@@ -29,7 +29,7 @@ const addNewErrand = (req, res) => {
     newErrand.save()
       .then((data) => {
         console.log('data added', data);
-        res.status(201);
+        res.status(201).end();
       })
       .catch((err) => {
         console.log(err);

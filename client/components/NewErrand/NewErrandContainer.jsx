@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 import {
   View, Text, StyleSheet, TextInput, StatusBar, Button, ScrollView,
@@ -15,15 +16,12 @@ const NewErrandContainer = ({ navigation }) => {
   const newErrandObj = {};
 
   async function addToMongo(data) {
-    // eslint-disable-next-line no-undef
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    });
-    return response.json();
+    try {
+      const res = await axios.post(url, data);
+      navigation.navigate('Dashboard');
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   return (
@@ -73,16 +71,16 @@ const NewErrandContainer = ({ navigation }) => {
             <View style={styles.submit}>
               <Button
                 title="Submit"
-                onPress={(e) => {
+                onPress={() => {
                   setNewErrand(newErrandObj);
-                  addToMongo(newErrandObj)
-                    .then((data) => {
-                      console.log('addToMongo data post successful');
-                      navigation.navigate('Dashboard');
-                    })
-                    .catch((err) => {
-                      console.log(err);
-                    });
+                  addToMongo(newErrandObj);
+                  // navigation.navigate('Dashboard');
+                  // .then(() => {
+                  //   console.log('addToMongo data post successful');
+                  // })
+                  // .catch((err) => {
+                  //   console.log(err);
+                  // });
                 }}
               />
             </View>
