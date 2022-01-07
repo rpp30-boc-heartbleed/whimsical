@@ -1,4 +1,4 @@
-import io from 'socket.io/client';
+import io from 'socket.io-client';
 import { LOCAL_IP } from '@env';
 
 let socket;
@@ -27,6 +27,7 @@ const sendMessage = (message, chatId) => {
 
 const receiveNewMessage = (callback) => {
   socket.on('incomingMessage', (message) => {
+    console.log(message);
     return callback(message);
   });
 };

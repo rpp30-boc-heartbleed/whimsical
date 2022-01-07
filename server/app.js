@@ -35,21 +35,31 @@ io.on('connection', (socket) => {
   console.log('user connected');
 
   socket.on('joinChat', (chatId, userId) => {
-    mobileSockets[userId] = socket.id;
-    findChat(chatId, userId)
-      .then((chat) => {
-        socket.emit('priorMessages', chat.messages);
-      });
+    if (mobileSockets[chatId]) {
+      mobileSockets[chatId].push(socket.id);
+    } else {
+      mobileSockets[chatId] = [socket.id];
+    }
+    // findChat(chatId, userId)
+    //   .then((chat) => {
+    //     socket.emit('priorMessages', chat.messages);
+    //   });
+    socket.emit('priorMessages', []);
   });
 
   socket.on('newMessage', (message, chatId) => {
-    postMessage(message, chatId)
-      .then((chat) => {
-        chat.users.forEach((user) => {
-          const userSocketId = mobileSockets[user];
-          socket.to(userSocketId).emit('incomingMessage', message);
-        });
-      });
+    // postMessage(message, chatId)
+    //   .then((chat) => {
+    //     chat.users.forEach((user) => {
+    //       const userSocketId = mobileSockets[user];
+    //       socket.to(userSocketId).emit('incomingMessage', message);
+    //     });
+    //   });
+    socket.emit('incomingMessage', message);
+    const userSocketIds = mobileSockets[chatId];
+    userSocketIds.forEach((socketId) => {
+      socket.to(socketId).emit('incomingMessage', message);
+    });
   });
 });
 

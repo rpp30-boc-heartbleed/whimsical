@@ -46,7 +46,7 @@ const Chat = ({ route, navigation }) => {
     <View style={styles.chat}>
       <GiftedChat
         messages={messages}
-        onSend={(message) => onSend(message)}
+        onSend={(message) => onSend(message[0])}
         user={{
           _id: 1,
           name: 'cat',
