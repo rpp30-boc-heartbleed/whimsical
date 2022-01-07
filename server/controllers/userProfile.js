@@ -59,7 +59,8 @@ const image = (req, res, next) => {
 
     console.log(publicUrl);
     // res.status(200).send(publicUrl);
-    Profile.findOneAndUpdate(req.body.name, { picture: publicUrl }, (err, rslt) => {
+    Profile.findOneAndUpdate({ name: req.body.name }, { picture: publicUrl }, (err, rslt) => {
+      console.log('new data inserted');
       res.sendStatus(200);
     });
   }
