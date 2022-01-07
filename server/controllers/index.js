@@ -2,7 +2,7 @@ const register = require('./register');
 const dashboard = require('./dashboard');
 const userProfile = require('./userProfile');
 const friendsList = require('./friendsList');
-const Places = require('./places');
+const Map = require('./map');
 const errandTracker = require('./errandTracker');
 const { updateRating } = require('./stars');
 
@@ -12,6 +12,6 @@ module.exports = {
   userProfile,
   friendsList,
   updateRating,
-  Places,
+  Map,
   errandTracker,
 };
