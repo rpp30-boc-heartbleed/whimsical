@@ -3,31 +3,33 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const errandSchema = new Schema({
-  _id: Schema.Types.ObjectId,
-  requestorId: { type: Schema.Types.ObjectId, ref: 'User', default: null }, // Errand requester - Should come from User Schema/Profile
-  placeId: { type: Schema.Types.ObjectId, ref: 'Places', default: null }, // Errand location(s) - Should come from Map Schema
-  runnerId: { type: Schema.Types.ObjectId, ref: 'User', default: null }, // Errand runner - Should come from User Schema/Profile
-  errands: { type: Array, default: [] }, // Empty list if no errands
-  time: { type: Date, required: true }, // new Date().toLocaleString();
+  requestorId: { type: Schema.Types.ObjectId, ref: 'Profile', default: null },
+  placeId: { type: Schema.Types.ObjectId, ref: 'Places', default: null },
+  runnerId: { type: Schema.Types.ObjectId, ref: 'Profile', default: null },
+  errands: { type: Array, default: [] },
+  eta: { type: String, default: null }, // time for delivery
   status: {
     type: String,
-    enum: ['Pending', 'Picked Up', 'Delivered'],
+    enum: ['Pending', 'Delivered'],
     default: 'Pending',
   },
+  // Requester,
   deliveryLoc: { type: [Number] },
   deliveryAddr: { type: String, default: null },
   requestorLoc: { type: [Number] },
-  starRating: {
+  // Runner's Ratings
+  stars: {
     type: Number,
     default: 0,
   },
+  // Errand Places
   placeName: { type: String, default: null },
   placeAddr: { type: String, default: null },
+  // Errand Runner,
   runnerLoc: { type: [Number] },
   runnerName: { type: String, default: null },
   runnerPic: { type: String, default: null },
-  // onErrand: Boolean
-}, { timestamps: true }); // adds a createdAt and updatedAt field
+}, { timestamps: true }); // this would handle time posted
 
 const Errand = mongoose.model('Errand', errandSchema, 'errandCollection');
 

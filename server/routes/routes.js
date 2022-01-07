@@ -18,8 +18,7 @@ const {
   dashboard,
   userProfile,
   friendsList,
-  map,
-  errandTracker,
+  updateRating,
 } = require('../controllers');
 
 const router = express.Router();
@@ -40,8 +39,8 @@ router.post('/userProfile/image', upload.any('photoData'), userProfile.image);
 router.get('/friends/get', friendsList.get);
 router.get('/friends/search', friendsList.search);
 
-// MAP
-
-// ERRAND TRACKER
+// RATING
+// router.get('/stars/get', starRating.get);
+router.put('/userProfile/stars', updateRating);
 
 module.exports = router;
