@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 // import { AuthenticatedUserContext } from '../navigation/AuthenticatedUserProvider';
+import { HOST_URL } from '@env';
 import auth from '../../config/firebase';
 
 const RegisterContainer = ({ navigation }) => {
@@ -127,7 +128,7 @@ const RegisterContainer = ({ navigation }) => {
       // add user data to mongoDB
       postUserData(
         // 'http://localhost:3000/register',
-        'http://ec2-34-239-133-230.compute-1.amazonaws.com/register',
+        `${HOST_URL}/register`,
         {
           name,
           streetAddress,
