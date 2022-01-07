@@ -18,6 +18,7 @@ const DashboardBody = ({ navigation }) => {
     axios
       .get(`${HOST_URL}/getErrandData`)
       .then((data) => {
+        console.log('here is the data', data.data);
         const dataArr = [];
         // create new array of only 'Pending' posts (deleting 'Completed' posts)
         // eslint-disable-next-line no-plusplus

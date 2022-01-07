@@ -1,3 +1,8 @@
+// eslint-disable-next-line import/no-import-module-exports
+const moment = require('moment');
+// require
+moment().format();
+
 // create new errand with
 // 1. name of errand
 // 2. store location
@@ -275,6 +280,12 @@ export const mockErrandsData1 = [
 ];
 */
 
+const dynamicDate = (sub) => {
+  const now = new Date();
+  const olderDate = moment(now).subtract(sub, 'minutes').toDate();
+  return olderDate;
+};
+
 const mockErrandsData = [
   {
     id: 1,
@@ -287,7 +298,8 @@ const mockErrandsData = [
     },
     storeETA: '1:45 pm',
     errandName: 'Watermelon Walmart Run!',
-    timeOfPost: '2022-01-06T06:24:44.124Z',
+    // timeOfPost: '2022-01-06T06:24:44.124Z',
+    timeOfPost: `${dynamicDate(10)}`,
     username: 'Willy Wonka',
     userAvatar: 'https://i.pinimg.com/originals/23/df/84/23df84f7150c9b456787e0174a840808.png',
     status: 'Pending',
@@ -303,7 +315,7 @@ const mockErrandsData = [
     },
     storeETA: '2:45 pm',
     errandName: 'Tomato Trader Joes Run!',
-    timeOfPost: '2022-01-06T05:24:44.124Z',
+    timeOfPost: `${dynamicDate(15)}`,
     username: 'Joey Trayduh',
     userAvatar: 'https://freesvg.org/img/Comic-Hand-Peace-Sign.png',
     status: 'Pending',
@@ -319,7 +331,7 @@ const mockErrandsData = [
     },
     storeETA: '3:45 pm',
     errandName: 'Munster Cheese MOMA Run!',
-    timeOfPost: '2022-01-06T04:04:44.124Z',
+    timeOfPost: `${dynamicDate(17)}`,
     username: 'Morgan Stanley',
     userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emoji_u1f9c0.svg/1200px-Emoji_u1f9c0.svg.png',
     status: 'Pending',
@@ -335,7 +347,7 @@ const mockErrandsData = [
     },
     storeETA: '4:45 pm',
     errandName: 'Munster Cheese MOMA Run!',
-    timeOfPost: '2022-01-06T03:24:44.124Z',
+    timeOfPost: `${dynamicDate(21)}`,
     username: 'Morgan Stanley',
     userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emoji_u1f9c0.svg/1200px-Emoji_u1f9c0.svg.png',
     status: 'Pending',
@@ -351,7 +363,7 @@ const mockErrandsData = [
     },
     storeETA: '4:45 pm',
     errandName: 'Munster Cheese MOMA Run!',
-    timeOfPost: '2022-01-06T02:24:44.124Z',
+    timeOfPost: `${dynamicDate(26)}`,
     username: 'Morgan Stanley',
     userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emoji_u1f9c0.svg/1200px-Emoji_u1f9c0.svg.png',
     status: 'Pending',
@@ -367,7 +379,7 @@ const mockErrandsData = [
     },
     storeETA: '4:45 pm',
     errandName: 'Munster Cheese MOMA Run!',
-    timeOfPost: '2022-01-06T01:24:44.124Z',
+    timeOfPost: `${dynamicDate(30)}`,
     username: 'Morgan Stanley',
     userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emoji_u1f9c0.svg/1200px-Emoji_u1f9c0.svg.png',
     status: 'Pending',

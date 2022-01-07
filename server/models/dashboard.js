@@ -65,5 +65,6 @@ const errandSchema = new Schema(
 
 // const Dashboard = mongoose.model('Dashboard', DashboardSchema, 'dashboardCollection');
 const Dashboard = mongoose.model('Dashboard', errandSchema, 'dashboardCollection');
+// const Errand = mongoose.model('Errand', errandSchema, 'errandCollection');
 
 module.exports = { Dashboard };

@@ -8,6 +8,7 @@ const addNewErrand = (req, res) => {
     Errand.insertMany(mockErrandsData)
       .then(() => {
         console.log('Data inserted');
+        // console.log('mockErrandData', mockErrandsData);
       })
       .catch((error) => {
         console.log(error);
