@@ -5,8 +5,9 @@ const { dashboard } = require('../controllers');
 const { mockRequestors, mockRunners, mockErrands } = require('../../client/common/dummyData/mockErrandsData');
 const { Profile } = require('../models/userProfile');
 const { Errand } = require('../models/errand');
-// const connectDb = () => mongoose.connect(`mongodb://${process.env.USERNAME}:${process.env.PASS}@3.83.254.62/quick-bagel`, {
-const connectDb = () => mongoose.connect('mongodb://localhost:27017/quick-bagel', {
+
+const connectDb = () => mongoose.connect(`mongodb://${process.env.USERNAME}:${process.env.PASS}@3.83.254.62/quick-bagel`, {
+// const connectDb = () => mongoose.connect('mongodb://localhost:27017/quick-bagel', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })

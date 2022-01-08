@@ -25,6 +25,7 @@ const {
   requestErrand,
   getRunningErrands,
   completeErrand,
+  chat,
 } = require('../controllers');
 
 const router = express.Router();
@@ -53,4 +54,8 @@ router.post('/errands/request', requestErrand);
 router.get('/errands/requests', getRequestedErrands);
 router.get('/errands/tasks', getRunningErrands);
 router.post('/errands/complete', completeErrand);
+
+// CHAT
+router.post('/newChatID', chat.createChat);
+
 module.exports = router;
