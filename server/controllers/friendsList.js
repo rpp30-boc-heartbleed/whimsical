@@ -1,10 +1,18 @@
+const { Profile } = require('../models');
 const { Friend } = require('../models/friendsList');
 
 const get = (req, res) => {
-  Friend.find()
-    .then((friends) => {
-      console.log(friends);
-      res.json(friends);
+  const { email } = req.query;
+  Profile.findOne({ email })
+    .then((user) => {
+      const { friends } = user;
+      const friendsList = [];
+      user.forEach((friend) => {
+        friendsList.push(friend);
+      })
+        .then(() => {
+          res.status(200).send(friendsList);
+        });
     })
     .catch((err) => {
       console.log(err);

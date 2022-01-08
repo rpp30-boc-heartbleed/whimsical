@@ -21,8 +21,11 @@ const filteredFriendsNameSelector = selector({
     if (onErrand) {
       list = list.filter((item) => item.currentErrands.length > 0);
     }
-    const filtered = list.filter((item) => check(item.name, filter));
-    return filtered;
+    if (list.length > 0) {
+      const filtered = list.filter((item) => check(item.name, filter));
+      return filtered;
+    }
+    return list;
   },
 });
 

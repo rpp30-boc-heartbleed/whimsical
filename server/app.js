@@ -49,6 +49,7 @@ io.on('connection', (socket) => {
   socket.on('newMessage', (message, errandId) => {
     postMessage(message, errandId)
       .then((chat) => {
+        socket.emit('incomingMessage', message);
         const userSocketIds = mobileSockets[errandId];
         userSocketIds.forEach((userSocketId) => {
           socket.to(userSocketId).emit('incomingMessage', message);

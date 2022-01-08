@@ -41,6 +41,7 @@ const List = ({ style, navigation }) => {
               </View>
               <TouchableOpacity style={styles.chat}>
                 <IconModal
+                  disable={false}
                   icon='chat-outline'
                   size={50}
                   style={styles.chatIcon}

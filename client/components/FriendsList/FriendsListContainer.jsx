@@ -34,9 +34,9 @@ const FriendsListContainer = ({ navigation }) => {
   const [user, setUser] = useRecoilState(userProfileState);
   const getFriends = useRecoilValue(friendsListQuery(user.email));
 
-  useEffect(() => {
-    setFriendsList(getFriends);
-  });
+  // useEffect(() => {
+  //   setFriendsList(getFriends);
+  // });
 
   return (
     <>

@@ -19,31 +19,20 @@ const createChat = (req, res) => {
 };
 
 const findChat = (errandId, userId) => {
-  Chat.findOneAndUpdate(
-    { errandId },
-    { $push: { $user: userId } }, // FIX --- this could cause users to be added multiple times
-    { new: true, upsert: true },
-  )
-    .then((chat) => {
-      return chat;
-    })
-    .catch((err) => {
-      return err;
-    });
+  const newChat = new Chat({
+    errandId,
+    users: [userId],
+    messages: [],
+  });
+  return newChat.save();
 };
 
 const postMessage = (message, errandId) => {
-  Chat.findOneAndUpdate(
+  return Chat.findOneAndUpdate(
     { errandId },
     { $push: { $message: message } },
     { new: true, upsert: true },
-  )
-    .then((chat) => {
-      return chat;
-    })
-    .catch((err) => {
-      return err;
-    });
+  );
 };
 
 module.exports = { createChat, findChat, postMessage };
