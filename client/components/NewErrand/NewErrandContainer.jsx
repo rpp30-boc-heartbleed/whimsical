@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import { HOST_URL } from '@env';
 import NavBar from '../NavBar/NavBarContainer';
-import errandState from '../../state/atoms/errands';
+import { errandState } from '../../state/atoms/errands';
 import newErrandSelector from '../../state/selectors/newErrandSelector';
 
 const NewErrandContainer = ({ navigation }) => {
@@ -15,7 +15,17 @@ const NewErrandContainer = ({ navigation }) => {
   const url = `${HOST_URL}/newErrand`;
   const newErrandObj = {};
 
+  // async function getChatID() {
+  //   try {
+  //     const res = await axios.post(url, data);
+  //     navigation.navigate('Dashboard');
+  //   } catch (err) {
+  //     console.error(err);
+  //   }
+  // }
+
   async function addToMongo(data) {
+    // getChatID();
     try {
       const res = await axios.post(url, data);
       navigation.navigate('Dashboard');

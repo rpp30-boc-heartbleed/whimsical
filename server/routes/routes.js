@@ -22,6 +22,7 @@ const {
   errandTracker,
   updateRating,
   requestedErrands,
+  chat,
 } = require('../controllers');
 
 const router = express.Router();
@@ -48,5 +49,8 @@ router.put('/userProfile/stars', updateRating);
 // ERRANDS
 router.get('/:user/requests', requestedErrands); // get list of requested errands
 // router.get('/errands/tasks', runningErrands); // get list of errands that the user running
+
+// CHAT
+router.get('/newChatID', chat.createChat);
 
 module.exports = router;

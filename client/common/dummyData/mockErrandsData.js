@@ -312,6 +312,7 @@ const mockErrandsData = [
     username: 'Willy Wonka',
     userAvatar: 'https://i.pinimg.com/originals/23/df/84/23df84f7150c9b456787e0174a840808.png',
     status: 'Pending',
+    chat: 1,
   },
   {
     id: 2,
@@ -328,6 +329,7 @@ const mockErrandsData = [
     username: 'Joey Trayduh',
     userAvatar: 'https://freesvg.org/img/Comic-Hand-Peace-Sign.png',
     status: 'Pending',
+    chat: 2,
   },
   {
     id: 3,
@@ -344,6 +346,7 @@ const mockErrandsData = [
     username: 'Morgan Stanley',
     userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emoji_u1f9c0.svg/1200px-Emoji_u1f9c0.svg.png',
     status: 'Pending',
+    chat: 3,
   },
   {
     id: 4,
@@ -360,6 +363,7 @@ const mockErrandsData = [
     username: 'Morgan Stanley',
     userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emoji_u1f9c0.svg/1200px-Emoji_u1f9c0.svg.png',
     status: 'Pending',
+    chat: 4,
   },
   {
     id: 5,
@@ -376,6 +380,7 @@ const mockErrandsData = [
     username: 'Morgan Stanley',
     userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emoji_u1f9c0.svg/1200px-Emoji_u1f9c0.svg.png',
     status: 'Pending',
+    chat: 5,
   },
   {
     id: 6,
@@ -392,6 +397,7 @@ const mockErrandsData = [
     username: 'Morgan Stanley',
     userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emoji_u1f9c0.svg/1200px-Emoji_u1f9c0.svg.png',
     status: 'Pending',
+    chat: 6,
   },
 ];
 

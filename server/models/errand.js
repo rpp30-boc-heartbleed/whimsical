@@ -43,6 +43,7 @@ const errandSchema = new Schema(
     timeOfPost: String,
     username: { type: String, default: null },
     userAvatar: { type: String, default: null },
+    chat: Number,
   },
   { timestamps: true },
 );

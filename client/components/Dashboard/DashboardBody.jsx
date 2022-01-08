@@ -69,10 +69,12 @@ const DashboardBody = ({ navigation }) => {
 
               <View style={[styles.buttons, styles.clickable]}>
                 {/* <Text style={styles.clickable}>Message</Text> */}
-                <Image
-                  source={{ uri: 'https://listimg.pinclipart.com/picdir/s/453-4531079_png-file-svg-message-box-icon-png-clipart.png' }}
-                  style={styles.messagebox}
-                />
+                <TouchableOpacity>
+                  <Image
+                    source={{ uri: 'https://listimg.pinclipart.com/picdir/s/453-4531079_png-file-svg-message-box-icon-png-clipart.png' }}
+                    style={styles.messagebox}
+                  />
+                </TouchableOpacity>
                 <Text style={styles.clickable} />
                 <TouchableOpacity style={styles.statustouch} onPress={() => navigation.navigate('ErrandTracker')}>
                   <Image

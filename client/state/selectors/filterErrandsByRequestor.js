@@ -1,5 +1,5 @@
 import { selector } from 'recoil';
-import errandState from '../atoms/errands';
+import { errandState } from '../atoms/errands';
 import userProfileState from '../atoms/userProfile';
 
 const filteredErrandsState = selector({
