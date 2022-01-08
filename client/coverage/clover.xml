@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1641612598932" clover="3.2.0">
-  <project timestamp="1641612598932" name="All files">
+<coverage generated="1641666636471" clover="3.2.0">
+  <project timestamp="1641666636472" name="All files">
     <metrics statements="120" coveredstatements="80" conditionals="38" coveredconditionals="13" methods="44" coveredmethods="29" elements="202" coveredelements="122" complexity="0" loc="120" ncloc="120" packages="4" files="5" classes="5"/>
     <package name="client">
       <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
@@ -129,14 +129,14 @@
       <metrics statements="8" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="1"/>
       <file name="NavBarContainer.jsx" path="/Users/surekha/Desktop/HR/whimsical/client/components/NavBar/NavBarContainer.jsx">
         <metrics statements="8" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="1"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="14" count="5" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="27" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="44" count="1" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="6" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="40" count="2" type="stmt"/>
       </file>
     </package>
     <package name="client.config">
