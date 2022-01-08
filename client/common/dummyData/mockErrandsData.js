@@ -395,7 +395,7 @@ const mockErrandsData = [
     timeOfPost: '2022-01-06T01:24:44.124Z',
     username: 'Rex Grossman',
     userAvatar: 'https://external-preview.redd.it/bBV7Vv0PM2l8XfkcTVWgHf3l7jq0qQQdKFS5yR3jDWg.jpg?auto=webp&s=8aeb1958a94778aae7d3d1bb566fdbf1ff22b2f9',
-    status: 'Pending',
+    status: 'Delivered',
   },
 ];
 

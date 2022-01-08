@@ -38,7 +38,7 @@ const get = (req, res) => {
       result.email = data[0].email;
       result.picture = data[0].picture;
       result.location = data[0].location;
-      Errand.find({ username: data[0].name })
+      Errand.find({ username: data[0].name, status: 'Delivered' })
         .then((info) => {
           console.log('errands', info);
           res.json({ info: info.length, data: data });
