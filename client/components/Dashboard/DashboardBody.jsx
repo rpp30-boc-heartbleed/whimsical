@@ -8,6 +8,7 @@ import {
   View, Text, StyleSheet, TextInput, StatusBar, Button, FlatList, Image, Avatar, TouchableOpacity,
 } from 'react-native';
 import { errandState } from '../../state/atoms/errands';
+import auth from '../../config/firebase';
 
 const DashboardBody = ({ navigation }) => {
   const isFocused = useIsFocused();
