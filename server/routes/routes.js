@@ -21,7 +21,11 @@ const {
   map,
   errandTracker,
   updateRating,
-  requestedErrands,
+  getRequestedErrands,
+  requestErrand,
+  getRunningErrands,
+  completeErrand,
+  chat,
 } = require('../controllers');
 
 const router = express.Router();
@@ -46,7 +50,12 @@ router.get('/friends/search', friendsList.search);
 router.put('/userProfile/stars', updateRating);
 
 // ERRANDS
-router.get('/:user/requests', requestedErrands); // get list of requested errands
-// router.get('/errands/tasks', runningErrands); // get list of errands that the user running
+router.post('/errands/request', requestErrand);
+router.get('/errands/requests', getRequestedErrands);
+router.get('/errands/tasks', getRunningErrands);
+router.post('/errands/complete', completeErrand);
+
+// CHAT
+router.post('/newChatID', chat.createChat);
 
 module.exports = router;

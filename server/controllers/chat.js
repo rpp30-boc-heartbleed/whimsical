@@ -1,17 +1,19 @@
 const { Chat } = require('../models');
 
-const createChat = (errand, callback) => {
+const createChat = (req, res) => {
   const chat = new Chat({
-    errandId: errand.id,
-    users: [errand.userId],
+    errandId: req.body._id,
+    users: [req.body.username],
     messages: [],
   });
   chat.save()
-    .then((savedChat) => {
-      callback(savedChat);
+    .then((data) => {
+      console.log('data added', data);
+      res.status(201).end();
     })
     .catch((err) => {
-      callback(err);
+      console.log(err);
+      res.status(500).send({ err, msg: 'sorry. data was not added' });
     });
 };
 

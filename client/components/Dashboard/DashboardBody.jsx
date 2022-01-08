@@ -5,13 +5,14 @@ import axios from 'axios';
 import { useIsFocused } from '@react-navigation/native';
 import { HOST_URL } from '@env';
 import {
-  View, Text, StyleSheet, TextInput, StatusBar, Button, FlatList, Image, Avatar,
+  View, Text, StyleSheet, TextInput, StatusBar, Button, FlatList, Image, Avatar, TouchableOpacity,
 } from 'react-native';
 import { errandState } from '../../state/atoms/errands';
+import auth from '../../config/firebase';
 
 const DashboardBody = ({ navigation }) => {
   const isFocused = useIsFocused();
-  const [errandsList] = useRecoilState(errandState);
+  const [errandsList, setErrands] = useRecoilState(errandState);
   const [newDataFromMongo, setNewDataFromMongo] = useState([]);
 
   useEffect(() => {
@@ -31,14 +32,16 @@ const DashboardBody = ({ navigation }) => {
           return a.timeOfPost.localeCompare(b.timeOfPost);
         });
         setNewDataFromMongo(dataArr);
+        // setErrands(data.data);
       })
       .catch((err) => console.log('error', err));
-  }, [isFocused]);
+  }, [isFocused, setErrands]);
 
   return (
     <View>
       <FlatList
         style={styles.container0}
+        // data={errandsList}
         data={newDataFromMongo}
         renderItem={({ item, index }) => (
           <View style={styles.container}>
@@ -51,7 +54,6 @@ const DashboardBody = ({ navigation }) => {
                 <View style={styles.container4}>
                   <View style={styles.container5}>
                     <Text style={styles.username}>{item.username}</Text>
-                    {/* <Text style={styles.timeOfPost}>minutes ago posted</Text> */}
                     <TimeAgo time={item.timeOfPost} interval={60000} />
                   </View>
 
@@ -69,16 +71,30 @@ const DashboardBody = ({ navigation }) => {
               </View>
 
               <View style={[styles.buttons, styles.clickable]}>
-                {/* <Text style={styles.clickable}>Message</Text> */}
-                <Image
-                  source={{ uri: 'https://listimg.pinclipart.com/picdir/s/453-4531079_png-file-svg-message-box-icon-png-clipart.png' }}
-                  style={styles.messagebox}
-                />
+
+                <TouchableOpacity
+                  style={styles.messagetouch}
+                  onPress={() => navigation.push('Chat', {
+                    chatId: item._id,
+                  })}
+                >
+                  <Image
+                    source={{ uri: 'https://listimg.pinclipart.com/picdir/s/453-4531079_png-file-svg-message-box-icon-png-clipart.png' }}
+                    style={styles.messagebox}
+                  />
+                </TouchableOpacity>
+
                 <Text style={styles.clickable} />
-                <Image
-                  source={{ uri: 'https://www.iconpacks.net/icons/1/free-pin-icon-48-thumb.png' }}
-                  style={styles.status}
-                />
+
+                <TouchableOpacity
+                  style={styles.statustouch}
+                  onPress={() => navigation.navigate('ErrandTracker', { errand: item })}
+                >
+                  <Image
+                    source={{ uri: 'https://www.iconpacks.net/icons/1/free-pin-icon-48-thumb.png' }}
+                    style={styles.status}
+                  />
+                </TouchableOpacity>
               </View>
             </View>
           </View>
@@ -163,7 +179,8 @@ const styles = StyleSheet.create({
   },
   buttons: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    // justifyContent: 'space-around',
+    justifyContent: 'center',
   },
   clickable: {
     fontSize: 10,
@@ -171,12 +188,21 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   messagebox: {
-    width: 60,
+    width: 15,
+    height: 15,
     resizeMode: 'contain',
+    marginRight: 100,
+  },
+  messagetouch: {
+    // borderWidth: 1,
   },
   status: {
-    width: 60,
+    width: 15,
+    height: 15,
     resizeMode: 'contain',
+  },
+  statustouch: {
+    // borderWidth: 1,
   },
 });
 
