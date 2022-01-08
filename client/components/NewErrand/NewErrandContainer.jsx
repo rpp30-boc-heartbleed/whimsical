@@ -23,6 +23,8 @@ const NewErrandContainer = ({ navigation }) => {
     try {
       const res = await axios.post(url2, data);
       navigation.navigate('Dashboard');
+      const errandsRes = await axios.get(`${HOST_URL}/getErrandData`);
+      setErrands(errandsRes.data);
     } catch (err) {
       console.error(err);
     }
@@ -91,10 +93,6 @@ const NewErrandContainer = ({ navigation }) => {
               <Button
                 title="Submit"
                 onPress={() => {
-                  setErrands((oldErrands) => [
-                    ...oldErrands,
-                    newErrandObj,
-                  ]);
                   addToMongo(newErrandObj);
                 }}
               />

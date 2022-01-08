@@ -11,7 +11,7 @@ import { errandState } from '../../state/atoms/errands';
 
 const DashboardBody = ({ navigation }) => {
   const isFocused = useIsFocused();
-  const [errandsList] = useRecoilState(errandState);
+  const [errandsList, setErrands] = useRecoilState(errandState);
   const [newDataFromMongo, setNewDataFromMongo] = useState([]);
 
   useEffect(() => {
@@ -31,14 +31,16 @@ const DashboardBody = ({ navigation }) => {
           return a.timeOfPost.localeCompare(b.timeOfPost);
         });
         setNewDataFromMongo(dataArr);
+        // setErrands(data.data);
       })
       .catch((err) => console.log('error', err));
-  }, [isFocused]);
+  }, [isFocused, setErrands]);
 
   return (
     <View>
       <FlatList
         style={styles.container0}
+        // data={errandsList}
         data={newDataFromMongo}
         renderItem={({ item, index }) => (
           <View style={styles.container}>

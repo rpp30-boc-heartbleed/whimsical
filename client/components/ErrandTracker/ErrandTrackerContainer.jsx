@@ -21,7 +21,7 @@ import {
   icons,
   images,
 } from '../../constants';
-import errandState, { refreshErrandsState } from '../../state/atoms/errands';
+import { errandState, refreshErrandsState } from '../../state/atoms/errands';
 import ErrandMap from './ErrandMap';
 import BottomSheet from './BottomSheet/BottomSheet';
 import NavBarContainer from '../NavBar/NavBarContainer';
@@ -46,7 +46,6 @@ const ErrandTrackerContainer = ({ route, navigation }) => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [eta]);
-  console.log(errand);
 
   return (
     <>

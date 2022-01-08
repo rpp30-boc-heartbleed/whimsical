@@ -49,7 +49,7 @@ const destination = {
 const ErrandMap = ({ setEta, errand }) => {
   // const mapRef = useRef();
   // const markerRef = useRef();
-  const { errandRunner } = errand;
+  const { runner, runnerLocation } = errand;
 
   // const [errands, setErrands] = useRecoilState(errandState);
 
@@ -60,7 +60,7 @@ const ErrandMap = ({ setEta, errand }) => {
     longitudeDelta: 0.0421,
   });
 
-  const [driverPosition, setDriverPosition] = useState(errandRunner.gps);
+  const [driverPosition, setDriverPosition] = useState(runnerLocation);
 
   useEffect(() => {
     let isMounted = true;
@@ -73,7 +73,7 @@ const ErrandMap = ({ setEta, errand }) => {
           setDriverPosition(path[count]);
         }
       }
-    }, 500);
+    }, 1000);
     return () => {
       console.log('cleared');
       isMounted = false;
