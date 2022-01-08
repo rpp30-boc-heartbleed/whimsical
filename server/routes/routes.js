@@ -49,8 +49,8 @@ router.get('/friends/search', friendsList.search);
 router.put('/userProfile/stars', updateRating);
 
 // ERRANDS
-router.post('/errands/request', requestErrand); // get list of requested errands
+router.post('/errands/request', requestErrand);
 router.get('/errands/requests', getRequestedErrands);
-router.get('/errands/tasks', getRunningErrands); // get list of errands that the user running
+router.get('/errands/tasks', getRunningErrands);
 router.post('/errands/complete', completeErrand);
 module.exports = router;

@@ -14,7 +14,7 @@ const errandSchema = new Schema(
     },
     // Requester,
     requestor: ProfileSchema,
-    deliveryLocation: {
+    storeLocation: {
       latitude: Number,
       longitude: Number,
     },
@@ -28,10 +28,6 @@ const errandSchema = new Schema(
     runnerLocation: {
       latitude: Number,
       longitude: Number,
-    },
-    stars: {
-      type: Number,
-      default: 0,
     },
     // Errand Places
     storeName: { type: String, default: null },

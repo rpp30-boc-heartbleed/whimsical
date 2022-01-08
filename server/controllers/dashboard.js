@@ -16,6 +16,18 @@ const addNewErrand = (req, res) => {
   } else {
     Profile.findOne({ email: req.body.email }).then((runner) => {
       const newErrand = new Errand({
+        storeLocation: {
+          latitude: 42.2966481,
+          longitude: -85.6436558,
+        },
+        requestorLocation: {
+          latitude: 42.292547307892505,
+          longitude: -85.60230124614648,
+        },
+        runnerLocation: {
+          latitude: 42.2966481,
+          longitude: -85.6436558,
+        },
         storeName: req.body.storeName,
         storeAddress: {
           streetName: req.body.streetName,
@@ -23,7 +35,6 @@ const addNewErrand = (req, res) => {
           state: 'Michigan',
           zipCode: '99007',
         },
-        runner,
         storeETA: req.body.storeETA,
         errandName: req.body.errandName,
         timeOfPost: `${new Date()}`,
@@ -31,6 +42,8 @@ const addNewErrand = (req, res) => {
         userAvatar: 'still working userAvatar',
         status: 'Pending',
       });
+
+      newErrand.runner = runner;
 
       newErrand
         .save()
