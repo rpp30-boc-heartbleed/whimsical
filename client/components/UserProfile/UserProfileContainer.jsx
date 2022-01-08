@@ -26,14 +26,18 @@ import NavBarContainer from '../NavBar/NavBarContainer';
 const UserProfileContainer = ({ navigation }) => {
   const [user, setUser] = useRecoilState(userProfileState);
   const [pass, setPass] = useState('');
+  const [stars, setStars] = useState(0);
   const [confirmPass, setConfirmPass] = useState('');
   const [showModal, setShowModal] = useState(false);
+  const [showPassModal, setShowPassModal] = useState(false);
 
   useEffect(() => {
     axios.get(`http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/get?email=${auth.auth.currentUser.email}`) // add '?name=Ojeiku' to queryString
+    // axios.get(`http://localhost:3000/userProfile/get?email=${auth.auth.currentUser.email}`) // add '?name=Ojeiku' to queryString
       .then((data) => {
-        // console.log('loaded profile', data.data);
-        setUser(data.data[0]);
+        // console.log('loaded profile', data.data.data[0]);
+        setUser(data.data.data[0]);
+        setStars(data.data.info);
       })
       .catch((err) => console.error(err));
   }, [setUser]);
@@ -172,7 +176,9 @@ const UserProfileContainer = ({ navigation }) => {
   return (
     <>
       <View style={styles.container}>
-        <Text>User Profile</Text>
+        <Text
+          style={styles.titleText}
+        >{user.name}'s Profile</Text>
         <Image
           style={styles.tinyLogo}
           source={{
@@ -187,14 +193,73 @@ const UserProfileContainer = ({ navigation }) => {
           </TouchableOpacity>
         </View>
 
-        <Text>Username: {user.name}</Text>
-        <Text>Stars: {user.stars}</Text>
-        <Text>Errands Completed: {user.errandsCompleted}</Text>
-        <Text>Location: {user.location}</Text>
+        <Text
+          style={styles.textile}
+        >Username: {user.name}</Text>
+        <Text
+          style={styles.textile}
+        >Email Address: {user.email}</Text>
+        <Text
+          style={styles.textile}
+        >Stars
+          <AntDesign name="star" size={20} color="blue" />:  {stars}
+          </Text>
+        <Text
+          style={styles.textile}
+        >Errands Completed <AntDesign name="checksquare" size={20} color="green" />: {user.errandsCompleted}</Text>
+        <Text
+          style={styles.textile}
+        >Location: {user.location}</Text>
       </View>
       <View style={styles.editForm}>
-        <Text>EDIT</Text>
-        <TextInput
+        <Button
+          onPress={() => { setShowModal(!showModal); }}
+          title="Edit Profile Settings"
+        />
+        <Modal
+          animationType="slide"
+          transparent={showModal}
+          visible={showModal}
+          onRequestClose={() => {
+            // Alert.alert("Modal has been closed.");
+            setShowModal(!showModal);
+          }}
+        >
+          <View
+            style={styles.modalView}
+          >
+            <View
+              style={styles.betterView}
+            >
+              <Text style={{ marginTop: 20 }}>EDITING YOUR PROFILE</Text>
+              <TextInput
+                onSubmitEditing={handleSubmitUsername}
+                placeholder='Username'
+                style={styles.input}
+                />
+              <TextInput
+                // style={styles.editForm}
+                onSubmitEditing={handleSubmitEmail}
+                placeholder='Email'
+                style={styles.input}
+                />
+              <TextInput
+                // style={styles.editForm}
+                onSubmitEditing={handleSubmitLocation}
+                placeholder='Location'
+                style={styles.input}
+                />
+              <Pressable
+                onPress={() => { setShowModal(false); setShowPassModal(false); }}
+                style={[styles.button, styles.buttonClose]}
+                // title="Cancel"
+                >
+                <Text style={styles.textStyle}>Cancel</Text>
+              </Pressable>
+            </View>
+          </View>
+        </Modal>
+        {/* <TextInput
           onSubmitEditing={handleSubmitUsername}
           placeholder='Username'
         />
@@ -207,9 +272,9 @@ const UserProfileContainer = ({ navigation }) => {
           // style={styles.editForm}
           onSubmitEditing={handleSubmitLocation}
           placeholder='Location'
-        />
+        /> */}
         <Button
-          onPress={() => { setShowModal(!showModal); }}
+          onPress={() => { setShowPassModal(!showPassModal); }}
           title="Change Password"
         />
       </View>
@@ -218,31 +283,39 @@ const UserProfileContainer = ({ navigation }) => {
       </View>
       <Modal
         animationType="slide"
-        transparent={showModal}
-        visible={showModal}
+        transparent={showPassModal}
+        visible={showPassModal}
         onRequestClose={() => {
           // Alert.alert("Modal has been closed.");
-          setShowModal(!showModal);
+          setShowPassModal(!showPassModal);
         }}
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <TextInput
               onChangeText={(e) => { console.log(e); setPass(e); }}
+              style={styles.input}
               placeholder='Password'
               autoCapitalize='none'
               secureTextEntry
-            />
+              />
             <TextInput
               onChangeText={(e) => { console.log(e); setConfirmPass(e); }}
+              style={styles.input}
               placeholder='Confirm Password'
               autoCapitalize='none'
               secureTextEntry
             />
             <Pressable
+              onPress={() => { setShowModal(false); setShowPassModal(false); }}
+              style={[styles.button, styles.buttonClose]}
+            >
+              <Text style={styles.textStyle}>Cancel</Text>
+            </Pressable>
+            <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => {
-                setShowModal(!showModal); handlePass();
+                setShowPassModal(!showPassModal); handlePass();
               }}
             >
               <Text style={styles.textStyle}>Change Password</Text>
@@ -260,6 +333,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  titleText: {
+    fontSize: 20,
+    fontWeight: 'bold',
   },
   tinyLogo: {
     width: 150,
@@ -294,6 +371,28 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginTop: 22,
+  },
+  betterView: {
+    height: 100,
+    justifyContent: "center",
+    alignItems: "center",
+    alignSelf: "stretch",
+    margin: 50,
+  },
+  passView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
   },
   modalView: {
     margin: 20,
@@ -334,6 +433,17 @@ const styles = StyleSheet.create({
     color: "white",
     fontWeight: "bold",
     textAlign: "center"
+  },
+  textile: {
+    // flex: '1',
+    padding: 10,
+  },
+  input: {
+    height: 40,
+    width: 250,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
   },
 });
 
