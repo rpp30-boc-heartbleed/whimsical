@@ -15,6 +15,7 @@ import {
 } from '../../../socket/connect';
 import { images } from '../../../constants';
 import userProfileState from '../../../state/atoms/userProfile';
+import chatState from '../../../state/atoms/chats';
 // import findChat from '../../../state/selectors/findChat';
 
 const { cat } = images;
@@ -22,6 +23,7 @@ const { cat } = images;
 const Chat = ({ route, navigation }) => {
   const { chatId } = route.params;
   const [user] = useRecoilState(userProfileState);
+  const [chats] = useRecoilState(chatState);
   // const chat = useRecoilValue(findChat(chatId));
   const [messages, setMessages] = useState([]);
 
@@ -32,7 +34,7 @@ const Chat = ({ route, navigation }) => {
   useEffect(() => {
     initiateSocketConnection();
     subscribeToChat(chatId, user._id, (msgs) => {
-      setMessages(msgs);
+      setMessages(chats[1]);
     });
     receiveNewMessage((msg) => {
       setMessages((previousMsgs) => GiftedChat.append(previousMsgs, msg));
@@ -40,7 +42,7 @@ const Chat = ({ route, navigation }) => {
     return () => {
       disconnectSocket();
     };
-  }, [chatId, user]);
+  }, [chats, chatId, user]);
 
   return (
     <View style={styles.chat}>
