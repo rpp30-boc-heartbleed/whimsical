@@ -15,23 +15,23 @@ const NavBarContainer = ({ navigation }) => {
     <View style={styles.container}>
       {/* Profile */}
       <TouchableOpacity>
-        <Icon size={30} name='user' onPress={() => navigation.push('UserProfile')} />
+        <Icon size={30} name='user' testID='user' onPress={() => navigation.push('UserProfile')} />
       </TouchableOpacity>
       {/* Add Errand */}
       <TouchableOpacity>
-        <Icon size={30} name='plus-circle' onPress={() => navigation.push('NewErrand')} />
+        <Icon size={30} name='plus-circle' testID='plus-circle' onPress={() => navigation.push('NewErrand')} />
       </TouchableOpacity>
       {/* FriendsList */}
       <TouchableOpacity>
-        <Icon size={30} name='users' testIID='users' onPress={() => navigation.push('FriendsList')} />
+        <Icon size={30} name='users' testID='users' onPress={() => navigation.push('FriendsList')} />
       </TouchableOpacity>
       {/* Map */}
       <TouchableOpacity>
-        <Icon size={30} name='shopping-basket' onPress={() => navigation.push('ErrandRequests')} />
+        <Icon size={30} name='shopping-basket' testID='shopping-basket' onPress={() => navigation.push('ErrandRequests')} />
       </TouchableOpacity>
       {/* Dashboard */}
       <TouchableOpacity>
-        <Icon size={30} name='home' onPress={() => navigation.navigate('Dashboard')} />
+        <Icon size={30} name='home' testID='home' onPress={() => navigation.navigate('Dashboard')} />
       </TouchableOpacity>
     </View>
   );

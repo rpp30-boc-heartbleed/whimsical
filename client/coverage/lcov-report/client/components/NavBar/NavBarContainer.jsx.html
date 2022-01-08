@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.5% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>3/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">16.66% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/6</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">37.5% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>3/8</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -126,27 +126,27 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -180,23 +180,23 @@ const NavBarContainer = ({ navigation }) =&gt; {
     &lt;View style={styles.container}&gt;
       {/* Profile */}
       &lt;TouchableOpacity&gt;
-        &lt;Icon size={30} name='user' onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >navigation.push('UserProfile')}</span> /&gt;
+        &lt;Icon size={30} name='user' testID='user' onPress={() =&gt; navigation.push('UserProfile')} /&gt;
       &lt;/TouchableOpacity&gt;
       {/* Add Errand */}
       &lt;TouchableOpacity&gt;
-        &lt;Icon size={30} name='plus-circle' onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >navigation.push('NewErrand')}</span> /&gt;
+        &lt;Icon size={30} name='plus-circle' testID='plus-circle' onPress={() =&gt; navigation.push('NewErrand')} /&gt;
       &lt;/TouchableOpacity&gt;
       {/* FriendsList */}
       &lt;TouchableOpacity&gt;
-        &lt;Icon size={30} name='users' testIID='users' onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >navigation.push('FriendsList')}</span> /&gt;
+        &lt;Icon size={30} name='users' testID='users' onPress={() =&gt; navigation.push('FriendsList')} /&gt;
       &lt;/TouchableOpacity&gt;
       {/* Map */}
       &lt;TouchableOpacity&gt;
-        &lt;Icon size={30} name='shopping-basket' onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >navigation.push('ErrandRequests')}</span> /&gt;
+        &lt;Icon size={30} name='shopping-basket' testID='shopping-basket' onPress={() =&gt; navigation.push('ErrandRequests')} /&gt;
       &lt;/TouchableOpacity&gt;
       {/* Dashboard */}
       &lt;TouchableOpacity&gt;
-        &lt;Icon size={30} name='home' onPress={<span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >navigation.navigate('Dashboard')}</span> /&gt;
+        &lt;Icon size={30} name='home' testID='home' onPress={() =&gt; navigation.navigate('Dashboard')} /&gt;
       &lt;/TouchableOpacity&gt;
     &lt;/View&gt;
   );
@@ -220,7 +220,7 @@ export default NavBarContainer;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Sat Jan 08 2022 10:30:36 GMT-0800 (Pacific Standard Time)
+                at Sat Jan 08 2022 13:33:51 GMT-0800 (Pacific Standard Time)
             </div>
         <script src="../../../prettify.js"></script>
         <script>
