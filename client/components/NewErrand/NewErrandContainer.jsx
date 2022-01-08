@@ -11,6 +11,7 @@ import newErrandSelector from '../../state/selectors/newErrandSelector';
 import userProfileState from '../../state/atoms/userProfile';
 
 const NewErrandContainer = ({ navigation }) => {
+  const [user, setUser] = useRecoilState(userProfileState);
   const setErrands = useSetRecoilState(errandState);
   const { email } = useRecoilValue(userProfileState);
 
@@ -18,6 +19,8 @@ const NewErrandContainer = ({ navigation }) => {
   const url = `${HOST_URL}/newErrand`;
   const url2 = `${HOST_URL}/newChatID`;
   const newErrandObj = { email };
+  newErrandObj.username = user.name;
+  newErrandObj.userAvatar = user.picture;
 
   async function getChatID(data) {
     try {
@@ -34,7 +37,6 @@ const NewErrandContainer = ({ navigation }) => {
     try {
       const response = await axios.post(url, data);
       getChatID(response.data);
-      // navigation.navigate('Dashboard');
     } catch (err) {
       console.error(err);
     }
