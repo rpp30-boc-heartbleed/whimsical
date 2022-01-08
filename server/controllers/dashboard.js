@@ -5,6 +5,7 @@ const {
 } = require('../../client/common/dummyData/mockErrandsData');
 
 const addNewErrand = (req, res) => {
+  console.log('====>', req.body);
   if (req === undefined) {
     Errand.insertMany(mockErrandsData)
       .then(() => {
@@ -39,8 +40,8 @@ const addNewErrand = (req, res) => {
         storeETA: req.body.storeETA,
         errandName: req.body.errandName,
         timeOfPost: `${new Date()}`,
-        username: 'still working on username',
-        userAvatar: 'still working userAvatar',
+        username: req.body.username,
+        userAvatar: req.body.userAvatar,
         status: 'Pending',
       });
 

@@ -8,6 +8,7 @@ import {
   View, Text, StyleSheet, TextInput, StatusBar, Button, FlatList, Image, Avatar, TouchableOpacity,
 } from 'react-native';
 import { errandState } from '../../state/atoms/errands';
+import auth from '../../config/firebase';
 
 const DashboardBody = ({ navigation }) => {
   const isFocused = useIsFocused();
@@ -179,7 +180,8 @@ const styles = StyleSheet.create({
   },
   buttons: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    // justifyContent: 'space-around',
+    justifyContent: 'center',
   },
   clickable: {
     fontSize: 10,
@@ -187,18 +189,21 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   messagebox: {
-    width: 60,
+    width: 15,
+    height: 15,
     resizeMode: 'contain',
+    marginRight: 100,
   },
   messagetouch: {
-    borderWidth: 1,
+    // borderWidth: 1,
   },
   status: {
-    width: 60,
+    width: 15,
+    height: 15,
     resizeMode: 'contain',
   },
   statustouch: {
-    borderWidth: 1,
+    // borderWidth: 1,
   },
 });
 
