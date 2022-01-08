@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">67.79% </span>
+                <span class="strong">65.57% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>40/59</span>
+                <span class='fraction'>40/61</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">40% </span>
+                <span class="strong">36.36% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>8/20</span>
+                <span class='fraction'>8/22</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">75% </span>
+                <span class="strong">70.83% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>18/24</span>
+                <span class='fraction'>17/24</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">68.42% </span>
+                <span class="strong">66.1% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>39/57</span>
+                <span class='fraction'>39/59</span>
             </div>
         
             
@@ -388,7 +388,14 @@
 <a name='L323'></a><a href='#L323'>323</a>
 <a name='L324'></a><a href='#L324'>324</a>
 <a name='L325'></a><a href='#L325'>325</a>
-<a name='L326'></a><a href='#L326'>326</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L326'></a><a href='#L326'>326</a>
+<a name='L327'></a><a href='#L327'>327</a>
+<a name='L328'></a><a href='#L328'>328</a>
+<a name='L329'></a><a href='#L329'>329</a>
+<a name='L330'></a><a href='#L330'>330</a>
+<a name='L331'></a><a href='#L331'>331</a>
+<a name='L332'></a><a href='#L332'>332</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -480,7 +487,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -490,7 +497,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -508,6 +524,9 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -528,13 +547,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -714,7 +726,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState, useEffect } from 'react';
-import { atom, useRecoilState } from 'recoil';
+import axios from 'axios';
 import {
   KeyboardAvoidingView,
   View,
@@ -727,6 +739,7 @@ import {
 } from 'react-native';
 import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 // import { AuthenticatedUserContext } from '../navigation/AuthenticatedUserProvider';
+import { HOST_URL } from '@env';
 import auth from '../../config/firebase';
 &nbsp;
 const RegisterContainer = ({ navigation }) =&gt; {
@@ -805,18 +818,27 @@ const RegisterContainer = ({ navigation }) =&gt; {
   };
 &nbsp;
   // post registration info to server
-  async function postUserData(url = <span class="branch-0 cbranch-no" title="branch not covered" >'',</span> data = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> {
+  const postUserData = (url = <span class="branch-0 cbranch-no" title="branch not covered" >'',</span> data = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> =&gt; {
     // Default options are marked with *
     // eslint-disable-next-line no-undef
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data), // body data type must match "Content-Type" header
-    });
-<span class="cstat-no" title="statement not covered" >    return response.json(); </span>// parses JSON response into native JavaScript objects
-  }
+    axios.post(url, data)
+    // fetch(url, {
+    //   method: 'POST',
+    //   headers: {
+    //     Accept: 'application/json',
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify(data), // body data type must match "Content-Type" header
+    // })
+      .then(<span class="fstat-no" title="function not covered" >(r</span>es) =&gt; {
+<span class="cstat-no" title="statement not covered" >        console.log(res);</span>
+        // add email and password to firebase authentication
+<span class="cstat-no" title="statement not covered" >        handleSignUp(auth, email, password);</span>
+      })
+      .catch(<span class="fstat-no" title="function not covered" >(e</span>rr) =&gt; {
+<span class="cstat-no" title="statement not covered" >        console.log(err);</span>
+      });
+  };
 &nbsp;
   // create user authentication account in firebase
   const handleSignUp = <span class="fstat-no" title="function not covered" >(a</span>uth, email, password) =&gt; {
@@ -833,6 +855,9 @@ const RegisterContainer = ({ navigation }) =&gt; {
 <span class="cstat-no" title="statement not covered" >        if (err.code === 'auth/invalid-value-(email),-starting-an-object-on-a-scalar-field') {</span>
 <span class="cstat-no" title="statement not covered" >          setError('Please enter a valid email address');</span>
         }
+<span class="cstat-no" title="statement not covered" >        if (err.code === 'auth/email-already-in-use') {</span>
+<span class="cstat-no" title="statement not covered" >          setError('This email is already registered. Please go to the Login screen to sign in.');</span>
+        }
       });
   };
 &nbsp;
@@ -842,6 +867,7 @@ const RegisterContainer = ({ navigation }) =&gt; {
       // add user data to mongoDB
       postUserData(
         // 'http://localhost:3000/register',
+        // `${HOST_URL}/register`,
         'http://ec2-34-239-133-230.compute-1.amazonaws.com/register',
         {
           name,
@@ -852,15 +878,7 @@ const RegisterContainer = ({ navigation }) =&gt; {
           imageURL,
           email,
         },
-      )
-        .then(<span class="fstat-no" title="function not covered" >(d</span>ata) =&gt; {
-<span class="cstat-no" title="statement not covered" >          console.log(data);</span>
-          // add email and password to firebase authentication
-<span class="cstat-no" title="statement not covered" >          handleSignUp(auth, email, password);</span>
-        })
-        .catch((err) =&gt; {
-          console.log(err);
-        });
+      );
       // clear form
       setUserInfo({
         name: '',
@@ -1045,7 +1063,7 @@ export default RegisterContainer;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Wed Jan 05 2022 00:27:38 GMT-0500 (Eastern Standard Time)
+                at Fri Jan 07 2022 19:29:58 GMT-0800 (Pacific Standard Time)
             </div>
         <script src="../../../prettify.js"></script>
         <script>
