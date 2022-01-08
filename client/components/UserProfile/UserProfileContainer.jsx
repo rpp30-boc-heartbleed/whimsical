@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
+import { HOST_URL } from '@env';
 import axios from 'axios';
 import {
   View,
@@ -32,7 +33,7 @@ const UserProfileContainer = ({ navigation }) => {
   const [showPassModal, setShowPassModal] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/get?email=${auth.auth.currentUser.email}`) // add '?name=Ojeiku' to queryString
+    axios.get(`${HOST_URL}/userProfile/get?email=${auth.auth.currentUser.email}`) // add '?name=Ojeiku' to queryString
     // axios.get(`http://localhost:3000/userProfile/get?email=${auth.auth.currentUser.email}`) // add '?name=Ojeiku' to queryString
       .then((data) => {
         console.log('loaded profile', data.data);
@@ -53,7 +54,7 @@ const UserProfileContainer = ({ navigation }) => {
       stars: user.stars,
       location: user.location,
     };
-    axios.post('http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/edit', {
+    axios.post(`${HOST_URL}/userProfile/edit`, {
       formerUser: user,
       updatedUser: newUser,
     })
@@ -75,7 +76,7 @@ const UserProfileContainer = ({ navigation }) => {
       stars: user.stars,
       location: user.location,
     };
-    axios.post('http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/edit', {
+    axios.post(`${HOST_URL}/userProfile/edit`, {
       formerUser: user,
       updatedUser: newUser,
     })
@@ -97,7 +98,7 @@ const UserProfileContainer = ({ navigation }) => {
       stars: user.stars,
       location: value,
     };
-    axios.post('http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/edit', {
+    axios.post(`${HOST_URL}/userProfile/edit`, {
       formerUser: user,
       updatedUser: newUser,
     })
@@ -137,7 +138,7 @@ const UserProfileContainer = ({ navigation }) => {
       console.log('blob', image);
       console.log('data', data);
       // axios.post('http://localhost:3000/userProfile/image', data, {
-      axios.post('http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/image', data, {
+      axios.post(`${HOST_URL}/userProfile/image`, data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {
   FlatList,
   StyleSheet,
@@ -9,12 +9,11 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useRecoilValue } from 'recoil';
 import filteredErrandsState from '../../state/selectors/filterErrandsByRequestor';
-import { refreshErrandsState } from '../../state/atoms/errands';
+import { errandState, refreshErrandsState } from '../../state/atoms/errands';
 
 const ErrandRequests = ({ navigation }) => {
   const errands = useRecoilValue(filteredErrandsState);
   const refresh = useRecoilValue(refreshErrandsState);
-
   console.log('========================= errands length:', errands.length, '===========================================');
 
   return (

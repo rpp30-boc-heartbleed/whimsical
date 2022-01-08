@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { useRecoilState } from 'recoil';
 import axios from 'axios';
+import { HOST_URL } from '@env';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import {
   StyleSheet,
   View,
   Image,
   Text,
   Alert,
+  TouchableOpacity,
 } from 'react-native';
 import { Title, Colors } from 'react-native-paper';
 import {
@@ -17,29 +20,36 @@ import {
 } from '../../../constants';
 import userProfileState from '../../../state/atoms/userProfile';
 
-const Courier = () => {
-  const [count, setCount] = useState(0);
-  const [user, setUser] = useRecoilState(userProfileState);
+const Courier = ({ errand }) => {
+  // const [user, setUser] = useRecoilState(userProfileState);
+  const { runner } = errand;
+  const { stars } = runner;
+  const [count, setCount] = useState(stars);
 
-  async function handleOnClick(e) {
-    const { stars } = user;
+  const handleOnClick = async () => {
     console.log(stars);
     try {
-      const response = await axios.put('/userProfile/stars', setCount(stars + 1));
-      console.log('response', response);
+      const response = await axios.put(`${HOST_URL}/userProfile/stars`, {
+        ...runner,
+        stars: runner.stars + 1,
+      });
+      console.log('user stars response', response);
+      setCount(count + 1);
       return response;
     } catch (err) {
       return 'Unable to give gold star';
     }
-  }
+  };
 
   return (
     <View style={styles.container}>
       {/* <Text>{user.picture}</Text> */}
-      <Text style={styles.profileName}>{user.name}  </Text>
+      <Text style={styles.profileName}>{runner.name}  </Text>
       <View style={styles.container2}>
-        <Image source={icons.star} style={styles.starImage} />
-        <Text style={styles.starCount} onPress={(e) => handleOnClick}>{user.stars}</Text>
+        <TouchableOpacity onPress={handleOnClick}>
+          <Image source={icons.star} style={styles.starImage} />
+        </TouchableOpacity>
+        <Text style={styles.starCount}>{count}</Text>
       </View>
     </View>
   );
