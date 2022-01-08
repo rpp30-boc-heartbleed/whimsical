@@ -17,6 +17,7 @@ const DashboardBody = ({ navigation }) => {
   useEffect(() => {
     axios
       .get(`${HOST_URL}/getErrandData`)
+      // .get('http://172.20.10.9:3000/getErrandData')
       .then((data) => {
         const dataArr = [];
         // create new array of only 'Pending' posts (deleting 'Completed' posts)

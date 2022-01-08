@@ -1,10 +1,10 @@
 import io from 'socket.io-client';
-import { LOCAL_IP } from '@env';
+import { HOST_URL } from '@env';
 
 let socket;
 
 const initiateSocketConnection = () => {
-  socket = io(LOCAL_IP);
+  socket = io(HOST_URL);
   console.log('Connecting socket...');
 };
 

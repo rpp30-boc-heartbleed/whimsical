@@ -58,6 +58,7 @@ const ErrandTrackerContainer = ({ route, navigation }) => {
           eta={eta}
           errandName={errandName}
           chatId={chatId}
+          navigation={navigation}
         />
       </View>
       <View>
