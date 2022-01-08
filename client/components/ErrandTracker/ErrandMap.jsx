@@ -73,7 +73,8 @@ const ErrandMap = ({ setEta, errand }) => {
           setDriverPosition(path[count]);
         }
       }
-    }, 1000);
+    }, 200);
+    if (count >= path.length) clearInterval(timer);
     return () => {
       console.log('cleared');
       isMounted = false;
