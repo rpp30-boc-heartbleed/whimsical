@@ -381,6 +381,22 @@ const mockErrandsData = [
     userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emoji_u1f9c0.svg/1200px-Emoji_u1f9c0.svg.png',
     status: 'Pending',
   },
+  {
+    id: 7,
+    storeName: 'MOMA',
+    storeAddress: {
+      streetName: '119 E Michigan Ave',
+      cityName: 'Kalamazoo',
+      state: 'Michigan',
+      zipCode: 49007,
+    },
+    storeETA: '4:45 pm',
+    errandName: 'Munster Cheese MOMA Run!',
+    timeOfPost: '2022-01-06T01:24:44.124Z',
+    username: 'Rex Grossman',
+    userAvatar: 'https://external-preview.redd.it/bBV7Vv0PM2l8XfkcTVWgHf3l7jq0qQQdKFS5yR3jDWg.jpg?auto=webp&s=8aeb1958a94778aae7d3d1bb566fdbf1ff22b2f9',
+    status: 'Pending',
+  },
 ];
 
 module.exports = { mockErrandsData };
