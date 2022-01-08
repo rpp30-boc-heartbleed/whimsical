@@ -1,6 +1,7 @@
 const { Chat } = require('../models');
 
 const createChat = (req, res) => {
+  console.log(req.body, 'createChat');
   const chat = new Chat({
     errandId: req.body._id,
     users: [req.body.username],
@@ -17,10 +18,10 @@ const createChat = (req, res) => {
     });
 };
 
-const findChat = (chatId, userId) => {
-  Chat.findByIdAndUpdate(
-    chatId,
-    { $push: { $user: userId } },
+const findChat = (errandId, userId) => {
+  Chat.findOneAndUpdate(
+    { errandId },
+    { $push: { $user: userId } }, // FIX --- this could cause users to be added multiple times
     { new: true, upsert: true },
   )
     .then((chat) => {
@@ -31,9 +32,9 @@ const findChat = (chatId, userId) => {
     });
 };
 
-const postMessage = (message, chatId) => {
-  Chat.findByIdAndUpdate(
-    chatId,
+const postMessage = (message, errandId) => {
+  Chat.findOneAndUpdate(
+    { errandId },
     { $push: { $message: message } },
     { new: true, upsert: true },
   )

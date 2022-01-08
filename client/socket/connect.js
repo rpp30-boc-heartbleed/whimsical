@@ -13,16 +13,16 @@ const disconnectSocket = () => {
   if (socket) socket.disconnect();
 };
 
-const subscribeToChat = (chatId, userId, callback) => {
-  socket.emit('joinChat', chatId, userId);
+const subscribeToChat = (errandId, userId, callback) => {
+  socket.emit('joinChat', errandId, userId);
 
   socket.on('priorMessages', (messages) => {
     return callback(messages);
   });
 };
 
-const sendMessage = (message, chatId) => {
-  socket.emit('newMessage', message, chatId);
+const sendMessage = (message, errandId) => {
+  socket.emit('newMessage', message, errandId);
 };
 
 const receiveNewMessage = (callback) => {

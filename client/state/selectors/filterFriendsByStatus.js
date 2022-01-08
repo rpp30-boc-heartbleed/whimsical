@@ -10,7 +10,7 @@ const filteredFriendsStatusSelector = selector({
 
     switch (filter) {
       case true:
-        return list.filter((item) => item.status);
+        return list.filter((item) => item.currentErrands.length > 0);
       // case 'Show Offline':
       //   return list.filter((item) => !item.status);
       default:

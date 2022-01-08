@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, useEffect } from 'react';
 import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 
 import {
@@ -17,10 +17,10 @@ import {
 } from './SubComponents';
 import NavBarContainer from '../NavBar/NavBarContainer';
 import TestModal from '../Modals/TestModal';
+import Loading from '../Shared/Loading';
 // State
 import friendsListState from '../../state/atoms/friendsList';
-import friendsByNameState from '../../state/atoms/friendsByName';
-import filteredByNameSelector from '../../state/selectors/filterFriendsByName';
+import userProfileState from '../../state/atoms/userProfile';
 import friendsListQuery from '../../state/selectors/friendsListQuery';
 // Assets
 
@@ -31,13 +31,12 @@ const { width } = SIZES;
 
 const FriendsListContainer = ({ navigation }) => {
   const [friendsList, setFriendsList] = useRecoilState(friendsListState);
-  const setNameFilter = useSetRecoilState(friendsByNameState);
-  const filteredByName = useRecoilValue(filteredByNameSelector);
-  // const friends = useRecoilValue(friendsListQuery);
+  const [user, setUser] = useRecoilState(userProfileState);
+  const getFriends = useRecoilValue(friendsListQuery(user.email));
 
-  const onChange = (value) => {
-    setNameFilter(value);
-  };
+  useEffect(() => {
+    setFriendsList(getFriends);
+  });
 
   return (
     <>

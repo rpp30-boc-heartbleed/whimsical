@@ -1,5 +1,5 @@
 /* eslint-disable react/jsx-filename-extension */
-import React, { useState, useEffect } from 'react';
+import React, { Suspense } from 'react';
 import {
   RecoilRoot,
   atom,
@@ -10,11 +10,14 @@ import {
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import Navigation from './navigation/Navigation';
+import Loading from './components/Shared/Loading';
 
 function App() {
   return (
     <RecoilRoot>
-      <Navigation />
+      <Suspense fallback={<Loading />}>
+        <Navigation />
+      </Suspense>
     </RecoilRoot>
   );
 }

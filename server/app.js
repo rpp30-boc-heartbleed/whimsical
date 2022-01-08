@@ -34,32 +34,26 @@ app.use(router);
 io.on('connection', (socket) => {
   console.log('user connected');
 
-  socket.on('joinChat', (chatId, userId) => {
-    if (mobileSockets[chatId]) {
-      mobileSockets[chatId].push(socket.id);
+  socket.on('joinChat', (errandId, userId) => {
+    if (mobileSockets[errandId]) {
+      mobileSockets[errandId].push(socket.id);
     } else {
-      mobileSockets[chatId] = [socket.id];
+      mobileSockets[errandId] = [socket.id];
     }
-    // findChat(chatId, userId)
-    //   .then((chat) => {
-    //     socket.emit('priorMessages', chat.messages);
-    //   });
-    socket.emit('priorMessages', []);
+    findChat(errandId, userId)
+      .then((chat) => {
+        socket.emit('priorMessages', chat.messages);
+      });
   });
 
-  socket.on('newMessage', (message, chatId) => {
-    // postMessage(message, chatId)
-    //   .then((chat) => {
-    //     chat.users.forEach((user) => {
-    //       const userSocketId = mobileSockets[user];
-    //       socket.to(userSocketId).emit('incomingMessage', message);
-    //     });
-    //   });
-    socket.emit('incomingMessage', message);
-    const userSocketIds = mobileSockets[chatId];
-    userSocketIds.forEach((socketId) => {
-      socket.to(socketId).emit('incomingMessage', message);
-    });
+  socket.on('newMessage', (message, errandId) => {
+    postMessage(message, errandId)
+      .then((chat) => {
+        const userSocketIds = mobileSockets[errandId];
+        userSocketIds.forEach((userSocketId) => {
+          socket.to(userSocketId).emit('incomingMessage', message);
+        });
+      });
   });
 });
 

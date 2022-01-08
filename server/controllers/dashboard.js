@@ -45,12 +45,20 @@ const addNewErrand = (req, res) => {
       });
 
       newErrand.runner = runner;
-
+      let response;
       newErrand
         .save()
         .then((data) => {
-          console.log('data added', data);
-          res.status(201).send(data);
+          response = data;
+          Profile.findOneAndUpdate(
+            { email: req.body.email },
+            { $push: { $currentErrands: data._id } },
+            { new: true, upsert: true },
+          )
+            .then(() => {
+              console.log('data added', response);
+              res.status(201).send(response);
+            });
         })
         .catch((err) => {
           console.log(err);

@@ -75,7 +75,7 @@ const DashboardBody = ({ navigation }) => {
                 <TouchableOpacity
                   style={styles.messagetouch}
                   onPress={() => navigation.push('Chat', {
-                    chatId: item._id,
+                    errandId: item._id,
                   })}
                 >
                   <Image

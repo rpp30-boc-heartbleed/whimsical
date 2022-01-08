@@ -7,8 +7,10 @@ const ProfileSchema = new Schema({
   email: { type: String, unique: true },
   stars: { type: Number, default: 0 },
   picture: String,
+  currentErrands: { type: [Schema.Types.ObjectId], ref: 'Errand' },
   errandsCompleted: { type: Number, default: 0 },
   location: String,
+  friends: { type: [String] },
 }, { timestamps: true });
 
 const Profile = mongoose.model('Profile', ProfileSchema, 'profileCollection');
