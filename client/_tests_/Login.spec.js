@@ -12,15 +12,21 @@ describe('Login text', () => {
 });
 
 describe('Login form', () => {
-  describe('clicking Login', () => {
-    it('clears all fields', () => {
-      const { getByTestId } = render(<LoginContainer />);
-      fireEvent.changeText(getByTestId('email'), 'rex@rex.com');
-      fireEvent.changeText(getByTestId('password'), 'rexrexrex');
-      fireEvent.press(getByTestId('submitLogin'));
+  it('clears all fields upon clicking login button', () => {
+    const { getByTestId } = render(<LoginContainer />);
+    fireEvent.changeText(getByTestId('email'), 'rex@rex.com');
+    fireEvent.changeText(getByTestId('password'), 'rexrexrex');
+    fireEvent.press(getByTestId('submitLogin'));
 
-      expect(getByTestId('email').props.value).toEqual('');
-      expect(getByTestId('password').props.value).toEqual('');
-    });
+    expect(getByTestId('email').props.value).toEqual('');
+    expect(getByTestId('password').props.value).toEqual('');
+  });
+
+  it('should fire onPress function when clicking user profile icon', () => {
+    const push = jest.fn();
+    const { getByTestId } = render(<LoginContainer navigation={{ push }} />);
+
+    fireEvent.press(getByTestId('register'));
+    expect(push).toHaveBeenCalledWith('Register');
   });
 });
