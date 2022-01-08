@@ -4,21 +4,39 @@ import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 import {
   View, Text, StyleSheet, TextInput, StatusBar, Button, ScrollView,
 } from 'react-native';
+import { HOST_URL } from '@env';
 import NavBar from '../NavBar/NavBarContainer';
-import newErrandState from '../../state/atoms/newErrand';
+import { errandState } from '../../state/atoms/errands';
 import newErrandSelector from '../../state/selectors/newErrandSelector';
+import userProfileState from '../../state/atoms/userProfile';
 
 const NewErrandContainer = ({ navigation }) => {
-  const setNewErrand = useSetRecoilState(newErrandState);
+  const [user, setUser] = useRecoilState(userProfileState);
+  const setErrands = useSetRecoilState(errandState);
+  const { email } = useRecoilValue(userProfileState);
+
   const newErrandView = useRecoilValue(newErrandSelector);
-  // const url = 'http://ec2-34-239-133-230.compute-1.amazonaws.com/newErrand';
-  const url = 'http://localhost:3000/newErrand';
-  const newErrandObj = {};
+  const url = `${HOST_URL}/newErrand`;
+  const url2 = `${HOST_URL}/newChatID`;
+  const newErrandObj = { email };
+  newErrandObj.username = user.name;
+  newErrandObj.userAvatar = user.picture;
+
+  async function getChatID(data) {
+    try {
+      const res = await axios.post(url2, data);
+      navigation.navigate('Dashboard');
+      const errandsRes = await axios.get(`${HOST_URL}/getErrandData`);
+      setErrands(errandsRes.data);
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   async function addToMongo(data) {
     try {
-      const res = await axios.post(url, data);
-      navigation.navigate('Dashboard');
+      const response = await axios.post(url, data);
+      getChatID(response.data);
     } catch (err) {
       console.error(err);
     }
@@ -77,7 +95,6 @@ const NewErrandContainer = ({ navigation }) => {
               <Button
                 title="Submit"
                 onPress={() => {
-                  setNewErrand(newErrandObj);
                   addToMongo(newErrandObj);
                 }}
               />

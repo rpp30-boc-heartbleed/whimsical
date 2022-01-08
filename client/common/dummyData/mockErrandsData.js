@@ -1,288 +1,370 @@
-// create new errand with
-// 1. name of errand
-// 2. store location
-// 3. radius
+const moment = require('moment');
+// require
+moment().format();
 
-// 1227 Jefferson Ave Kalamazoo, MI 49006
-/*
-export const testUser = {
-  name: 'Rex Grossman',
-  address: {
-    street: '1227 Jefferson Ave',
-    city: 'Kalamazoo',
-    state: 'MI',
-    zip: '49006',
-  },
-  gps: {
-    latitude: 42.295906,
-    longitude: -85.601778,
-  },
-};
+const avatars = [
+  'https://i.pinimg.com/originals/23/df/84/23df84f7150c9b456787e0174a840808.png',
+  'https://freesvg.org/img/Comic-Hand-Peace-Sign.png',
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emoji_u1f9c0.svg/1200px-Emoji_u1f9c0.svg.png',
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emoji_u1f9c0.svg/1200px-Emoji_u1f9c0.svg.png',
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emoji_u1f9c0.svg/1200px-Emoji_u1f9c0.svg.png',
+  'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emoji_u1f9c0.svg/1200px-Emoji_u1f9c0.svg.png',
+];
 
-export const mockErrandsData1 = [
+const mockRequestors = [
+  {
+    name: 'Orange',
+    email: 'abc@gmail.com',
+    stars: 0,
+    picture: avatars[0],
+    errandsCompleted: 0,
+    location: '1423 E Crooked Lake Dr, Kalamazoo, MI, 49009',
+  },
+  {
+    name: 'Rex Grossman',
+    email: 'rex@rex.com',
+    picture: avatars[0],
+    stars: 1994,
+    errandsCompleted: 35,
+    location: '1423 E Crooked Lake Dr, Kalamazoo, MI, 49009',
+  },
+];
+
+const mockRunners = [
+  {
+    picture: 'https://via.placeholder.com/50',
+    email: 'amir@gmail.com',
+    name: 'amir',
+    stars: 53,
+    errandsCompleted: 0,
+    location: '1423 E Crooked Lake Dr, Kalamazoo, MI, 49009',
+  },
+  {
+    picture: 'https://via.placeholder.com/50',
+    email: 'billy@gmail.com',
+    name: 'billy',
+    stars: 20,
+    errandsCompleted: 0,
+    location: '1423 E Crooked Lake Dr, Kalamazoo, MI, 49009',
+  },
+  {
+    picture: 'https://via.placeholder.com/50',
+    email: 'carl@gmail.com',
+    name: 'carl',
+    stars: 7,
+    errandsCompleted: 0,
+    location: '1423 E Crooked Lake Dr, Kalamazoo, MI, 49009',
+  },
+  {
+    picture: 'https://via.placeholder.com/50',
+    email: 'david@gmail.com',
+    name: 'david',
+    stars: 9,
+    errandsCompleted: 0,
+    location: '1423 E Crooked Lake Dr, Kalamazoo, MI, 49009',
+  },
+  {
+    picture: 'https://via.placeholder.com/50',
+    email: 'eric@gmail.com',
+    name: 'eric',
+    stars: 5,
+    errandsCompleted: 0,
+    location: '1423 E Crooked Lake Dr, Kalamazoo, MI, 49009',
+  },
+  {
+    picture: 'https://via.placeholder.com/50',
+    email: 'farid@gmail.com',
+    name: 'farid',
+    stars: 0,
+    errandsCompleted: 0,
+    location: '1423 E Crooked Lake Dr, Kalamazoo, MI, 49009',
+  },
+  {
+    picture: 'https://via.placeholder.com/50',
+    email: 'gloria@gmail.com',
+    name: 'gloria',
+    stars: 1,
+    errandsCompleted: 0,
+    location: '1423 E Crooked Lake Dr, Kalamazoo, MI, 49009',
+  },
+  {
+    picture: 'https://via.placeholder.com/50',
+    email: 'hannah@gmail.com',
+    name: 'hannah',
+    stars: 3,
+    errandsCompleted: 0,
+    location: '1423 E Crooked Lake Dr, Kalamazoo, MI, 49009',
+  },
+  {
+    picture: 'https://via.placeholder.com/50',
+    email: 'irene@gmail.com',
+    name: 'irene',
+    stars: 2,
+    errandsCompleted: 0,
+    location: '1423 E Crooked Lake Dr, Kalamazoo, MI, 49009',
+  },
+];
+
+const mockErrands = [
   {
     id: 1,
-    timeOfPost: '3:30pm',
+    timeOfPost: '2022-01-06T01:24:44.124Z',
     errandName: 'Impromptu Bagel Run',
-    eta: null,
-    addressName: 'Big Apple Bagels',
-    address: {
-      street: '4408 W Main St',
-      city: 'Kalamazoo',
+    storeETA: null,
+    storeName: 'Big Apple Bagels',
+    storeAddress: {
+      streetName: '4408 W Main St',
+      cityName: 'Kalamazoo',
       state: 'MI',
-      zip: '49006',
+      zipCode: '49006',
     },
-    gps: {
+    requestorLocation: {
+      latitude: 42.295906,
+      longitude: -85.601778,
+    },
+    storeLocation: {
       latitude: 42.2966481,
       longitude: -85.6436558,
     },
-    requestor: testUser,
-    errandRunner: {
-      avatar: 'https://via.placeholder.com/50',
-      name: 'aaron',
-      gps: {
-        latitude: 42.2966481,
-        longitude: -85.6436558,
-      },
-      starRating: 53,
+    runnerLocation: {
+      latitude: 42.2966481,
+      longitude: -85.6436558,
     },
     status: 'Pending',
+    userAvatar: avatars[0],
     chat: 1,
   },
   {
     id: 2,
-    timeOfPost: '5:00pm',
-    errandName: 'Pick up my yeezy\'s',
-    eta: null,
-    addressName: 'Harper Funeral Home',
-    address: {
-      street: '521 Douglas Ave',
-      city: 'Kalamazoo',
+    timeOfPost: '2022-01-06T01:24:44.124Z',
+    errandName: "Pick up my yeezy's",
+    storeETA: null,
+    storeName: 'Harper Funeral Home',
+    storeAddress: {
+      streetName: '521 Douglas Ave',
+      cityName: 'Kalamazoo',
       state: 'MI',
-      zip: '49007',
+      zipCode: '49007',
     },
-    gps: {
+    requestorLocation: {
       latitude: 42.29646497010875,
       longitude: -85.59983806167556,
     },
-    requestor: testUser,
-    errandRunner: {
-      avatar: 'https://via.placeholder.com/50',
-      name: 'billy',
-      gps: {
-        latitude: 42.2966481,
-        longitude: -85.6436558,
-      },
-      starRating: 20,
+    storeLocation: {
+      latitude: 42.2966481,
+      longitude: -85.6436558,
+    },
+    runnerLocation: {
+      latitude: 42.2966481,
+      longitude: -85.6436558,
     },
     status: 'Pending',
+    userAvatar: avatars[1],
     chat: 2,
   },
   {
     id: 3,
-    timeOfPost: '7:00pm',
+    timeOfPost: '2022-01-06T01:24:44.124Z',
     errandName: 'Biscuit Run',
-    eta: null,
-    addressName: 'Daysha\'s Convenient Store',
-    address: {
-      street: '715 Douglas Ave',
-      city: 'Kalamazoo',
+    storeETA: null,
+    storeName: "Daysha's Convenient Store",
+    storeAddress: {
+      streetName: '715 Douglas Ave',
+      cityName: 'Kalamazoo',
       state: 'MI',
-      zip: '49508',
+      zipCode: '49508',
     },
-    gps: {
+    requestorLocation: {
       latitude: 42.2966481,
       longitude: -85.6436558,
     },
-    requestor: testUser,
-    errandRunner: {
-      avatar: 'https://via.placeholder.com/50',
-      name: 'joe',
-      gps: {
-        latitude: 42.293644,
-        longitude: -85.603899,
-      },
-      starRating: 7,
+    storeLocation: {
+      latitude: 42.293644,
+      longitude: -85.603899,
+    },
+    runnerLocation: {
+      latitude: 42.293644,
+      longitude: -85.603899,
     },
     status: 'Pending',
+    userAvatar: avatars[2],
     chat: 3,
   },
   {
     id: 4,
-    timeOfPost: '3:30pm',
+    timeOfPost: '2022-01-06T01:24:44.124Z',
     errandName: 'Wine Run',
-    eta: '45 minutes',
-    addressName: 'Henderson Castle',
-    address: {
-      street: '100 Monroe St',
-      city: 'Kalamazoo',
+    storeETA: '45 minutes',
+    storeName: 'Henderson Castle',
+    storeAddress: {
+      streetName: '100 Monroe St',
+      cityName: 'Kalamazoo',
       state: 'MI',
-      zip: '49006',
+      zipCode: '49006',
     },
-    gps: {
+    storeLocation: {
+      latitude: 42.29287071224959,
+      longitude: -85.60384602650498,
+    },
+    requestorLocation: {
       latitude: 42.29293886175921,
       longitude: -85.60509581073848,
     },
-    requestor: testUser,
-    errandRunner: {
-      avatar: 'https://via.placeholder.com/50',
-      name: 'aaron',
-      gps: {
-        latitude: 42.29287071224959,
-        longitude: -85.60384602650498,
-      },
-      starRating: 9,
+    runnerLocation: {
+      latitude: 42.29287071224959,
+      longitude: -85.60384602650498,
     },
     status: 'Pending',
+    userAvatar: avatars[3],
     chat: 4,
   },
   {
     id: 5,
-    timeOfPost: '7:45pm',
+    timeOfPost: '2022-01-06T01:24:44.124Z',
     errandName: 'Pick up my dog',
-    eta: null,
-    addressName: 'Henderson Park',
-    address: {
-      street: '1300 Grand Ave',
-      city: 'Kalamazoo',
+    storeETA: null,
+    storeName: 'Henderson Park',
+    storeAddress: {
+      streetName: '1300 Grand Ave',
+      cityName: 'Kalamazoo',
       state: 'MI',
-      zip: '49006',
+      zipCode: '49006',
     },
-    gps: {
+    requestorLocation: {
       latitude: 42.292547307892505,
       longitude: -85.60230124614648,
     },
-    requestor: testUser,
-    errandRunner: {
-      avatar: 'https://via.placeholder.com/50',
-      name: 'billy',
-      gps: {
-        latitude: 42.2966481,
-        longitude: -85.6436558,
-      },
-      starRating: 5,
+    storeLocation: {
+      latitude: 42.2966481,
+      longitude: -85.6436558,
+    },
+    runnerLocation: {
+      latitude: 42.2966481,
+      longitude: -85.6436558,
     },
     status: 'Pending',
+    userAvatar: avatars[4],
     chat: 5,
   },
   {
     id: 6,
-    timeOfPost: '8:00pm',
+    timeOfPost: '2022-01-06T01:24:44.124Z',
     errandName: 'Forgot my college papers',
-    eta: null,
-    addressName: 'Biscuit drive',
-    address: {
-      street: '106 Thompson St',
-      city: 'Kalamazoo',
+    storeETA: null,
+    storeName: 'Biscuit drive',
+    storeAddress: {
+      streetName: '106 Thompson St',
+      cityName: 'Kalamazoo',
       state: 'MI',
-      zip: '49006',
+      zipCode: '49006',
     },
-    gps: {
+    requestorLocation: {
       latitude: 42.2921873145571,
       longitude: -85.60113552296569,
     },
-    requestor: testUser,
-    errandRunner: {
-      avatar: 'https://via.placeholder.com/50',
-      name: 'joe',
-      gps: {
-        latitude: 42.293175198320796,
-        longitude: -85.60114684066646,
-      },
-      starRating: 0,
+    storeLocation: {
+      latitude: 42.2966481,
+      longitude: -85.6436558,
+    },
+    runnerLocation: {
+      latitude: 42.2966481,
+      longitude: -85.6436558,
     },
     status: 'Pending',
+    userAvatar: avatars[5],
     chat: 6,
   },
   {
     id: 7,
-    timeOfPost: '8:30pm',
-    errandName: 'It\'s steak night',
-    eta: null,
-    addressName: 'H Prime Chop House Seafood and Steakhouse',
-    address: {
-      street: '101 Monroe St',
-      city: 'Kalamazoo',
+    timeOfPost: '2022-01-06T01:24:44.124Z',
+    errandName: "It's steak night",
+    storeETA: null,
+    storeName: 'H Prime Chop Steakhouse',
+    storeAddress: {
+      streetName: '101 Monroe St',
+      cityName: 'Kalamazoo',
       state: 'MI',
-      zip: '49006',
+      zipCode: '49006',
     },
-    gps: {
+    requestorLocation: {
       latitude: 42.2966481,
       longitude: -85.6436558,
     },
-    requestor: testUser,
-    errandRunner: {
-      avatar: 'https://via.placeholder.com/50',
-      name: 'aaron',
-      gps: {
-        latitude: 42.29274054847618,
-        longitude: -85.60374108715617,
-      },
-      starRating: 1,
+    storeLocation: {
+      latitude: 42.29274054847618,
+      longitude: -85.60374108715617,
+    },
+    runnerLocation: {
+      latitude: 42.29274054847618,
+      longitude: -85.60374108715617,
     },
     status: 'Pending',
+    userAvatar: avatars[0],
     chat: 7,
   },
   {
     id: 8,
-    timeOfPost: '9:30pm',
+    timeOfPost: '2022-01-06T01:24:44.124Z',
     errandName: 'I forgot my hair',
-    eta: null,
-    addressName: 'Ultima Hair Salon',
-    address: {
-      street: '1604 W Main St',
-      city: 'Kalamazoo',
+    storeETA: null,
+    storeName: 'Ultima Hair Salon',
+    storeAddress: {
+      streetName: '1604 W Main St',
+      cityName: 'Kalamazoo',
       state: 'MI',
-      zip: '49006',
+      zipCode: '49006',
     },
-    gps: {
+    requestorLocation: {
       latitude: 42.2966481,
       longitude: -85.6436558,
     },
-    requestor: testUser,
-    errandRunner: {
-      avatar: 'https://via.placeholder.com/50',
-      name: 'billy',
-      gps: {
-        latitude: 42.29416975689851,
-        longitude: -85.60584734955037,
-      },
-      starRating: 3,
+    storeLocation: {
+      latitude: 42.29416975689851,
+      longitude: -85.60584734955037,
+    },
+    runnerLocation: {
+      latitude: 42.29416975689851,
+      longitude: -85.60584734955037,
     },
     status: 'Pending',
+    userAvatar: avatars[1],
     chat: 8,
   },
   {
     id: 9,
-    timeOfPost: '10:30pm',
-    errandName: 'Can you check out the apartment?',
-    eta: null,
-    addressName: 'Biscuit drive',
-    address: {
-      street: '735 Summit Ave',
-      city: 'Kalamazoo',
+    timeOfPost: '2022-01-06T01:24:44.124Z',
+    errandName: 'Check out apartment',
+    storeETA: null,
+    storeName: 'Biscuit drive',
+    storeAddress: {
+      streetName: '735 Summit Ave',
+      cityName: 'Kalamazoo',
       state: 'MI',
-      zip: '49006',
+      zipCode: '49006',
     },
-    gps: {
+    requestorLocation: {
       latitude: 42.29838762690168,
       longitude: -85.60113840463173,
     },
-    requestor: testUser,
-    errandRunner: {
-      avatar: 'https://via.placeholder.com/50',
-      name: 'joe',
-      gps: {
-        latitude: 42.297591824250446,
-        longitude: -85.59946859072569,
-      },
-      starRating: 2,
+    storeLocation: {
+      latitude: 42.297591824250446,
+      longitude: -85.59946859072569,
+    },
+    runnerLocation: {
+      latitude: 42.297591824250446,
+      longitude: -85.59946859072569,
     },
     status: 'Pending',
+    userAvatar: avatars[2],
     chat: 9,
   },
 ];
-*/
+
+const dynamicDate = (sub) => {
+  const now = new Date();
+  const olderDate = moment(now).subtract(sub, 'minutes').toDate();
+  return olderDate;
+};
 
 const mockErrandsData = [
   {
@@ -296,10 +378,13 @@ const mockErrandsData = [
     },
     storeETA: '1:45 pm',
     errandName: 'Watermelon Walmart Run!',
-    timeOfPost: '2022-01-06T06:24:44.124Z',
+    // timeOfPost: '2022-01-06T06:24:44.124Z',
+    timeOfPost: `${dynamicDate(10)}`,
     username: 'Willy Wonka',
-    userAvatar: 'https://i.pinimg.com/originals/23/df/84/23df84f7150c9b456787e0174a840808.png',
+    userAvatar:
+      'https://i.pinimg.com/originals/23/df/84/23df84f7150c9b456787e0174a840808.png',
     status: 'Pending',
+    chat: 1,
   },
   {
     id: 2,
@@ -312,10 +397,11 @@ const mockErrandsData = [
     },
     storeETA: '2:45 pm',
     errandName: 'Tomato Trader Joes Run!',
-    timeOfPost: '2022-01-06T05:24:44.124Z',
+    timeOfPost: `${dynamicDate(15)}`,
     username: 'Joey Trayduh',
     userAvatar: 'https://freesvg.org/img/Comic-Hand-Peace-Sign.png',
     status: 'Pending',
+    chat: 2,
   },
   {
     id: 3,
@@ -328,10 +414,12 @@ const mockErrandsData = [
     },
     storeETA: '3:45 pm',
     errandName: 'Munster Cheese MOMA Run!',
-    timeOfPost: '2022-01-06T04:04:44.124Z',
+    timeOfPost: `${dynamicDate(17)}`,
     username: 'Morgan Stanley',
-    userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emoji_u1f9c0.svg/1200px-Emoji_u1f9c0.svg.png',
+    userAvatar:
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emoji_u1f9c0.svg/1200px-Emoji_u1f9c0.svg.png',
     status: 'Pending',
+    chat: 3,
   },
   {
     id: 4,
@@ -344,10 +432,12 @@ const mockErrandsData = [
     },
     storeETA: '4:45 pm',
     errandName: 'Munster Cheese MOMA Run!',
-    timeOfPost: '2022-01-06T03:24:44.124Z',
+    timeOfPost: `${dynamicDate(21)}`,
     username: 'Morgan Stanley',
-    userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emoji_u1f9c0.svg/1200px-Emoji_u1f9c0.svg.png',
+    userAvatar:
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emoji_u1f9c0.svg/1200px-Emoji_u1f9c0.svg.png',
     status: 'Pending',
+    chat: 4,
   },
   {
     id: 5,
@@ -360,10 +450,12 @@ const mockErrandsData = [
     },
     storeETA: '4:45 pm',
     errandName: 'Munster Cheese MOMA Run!',
-    timeOfPost: '2022-01-06T02:24:44.124Z',
+    timeOfPost: `${dynamicDate(26)}`,
     username: 'Morgan Stanley',
-    userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emoji_u1f9c0.svg/1200px-Emoji_u1f9c0.svg.png',
+    userAvatar:
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emoji_u1f9c0.svg/1200px-Emoji_u1f9c0.svg.png',
     status: 'Pending',
+    chat: 5,
   },
   {
     id: 6,
@@ -376,30 +468,34 @@ const mockErrandsData = [
     },
     storeETA: '4:45 pm',
     errandName: 'Munster Cheese MOMA Run!',
-    timeOfPost: '2022-01-06T01:24:44.124Z',
+    timeOfPost: `${dynamicDate(30)}`,
     username: 'Morgan Stanley',
-    userAvatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emoji_u1f9c0.svg/1200px-Emoji_u1f9c0.svg.png',
+    userAvatar:
+      'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emoji_u1f9c0.svg/1200px-Emoji_u1f9c0.svg.png',
     status: 'Pending',
+    chat: 6,
+  },
+  {
+    id: 7,
+    storeName: 'MOMA',
+    storeAddress: {
+      streetName: '119 E Michigan Ave',
+      cityName: 'Kalamazoo',
+      state: 'Michigan',
+      zipCode: 49007,
+    },
+    storeETA: '4:45 pm',
+    errandName: 'Munster Cheese MOMA Run!',
+    timeOfPost: '2022-01-06T01:24:44.124Z',
+    username: 'Rex Grossman',
+    userAvatar: 'https://external-preview.redd.it/bBV7Vv0PM2l8XfkcTVWgHf3l7jq0qQQdKFS5yR3jDWg.jpg?auto=webp&s=8aeb1958a94778aae7d3d1bb566fdbf1ff22b2f9',
+    status: 'Delivered',
   },
 ];
 
-module.exports = { mockErrandsData };
-
-/*
-{
-  id: NUMBER,
-  storeName: STRING,
-  storeAddress: {
-    streetName: STRING,
-    cityName: STRING,
-    state: STRING,
-    zipCode: NUMBER,
-  },
-  storeETA: STRING,
-  errandName: STRING,
-  timeOfPost: STRING,
-  username: STRING,
-  userAvatar: STRING,
-  status: STRING
-}
- */
+module.exports = {
+  mockErrandsData,
+  mockErrands,
+  mockRequestors,
+  mockRunners,
+};

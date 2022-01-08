@@ -1,10 +1,10 @@
 import io from 'socket.io-client';
-import { LOCAL_IP } from '@env';
+import { HOST_URL } from '@env';
 
 let socket;
 
 const initiateSocketConnection = () => {
-  socket = io(LOCAL_IP);
+  socket = io(HOST_URL);
   console.log('Connecting socket...');
 };
 
@@ -13,16 +13,16 @@ const disconnectSocket = () => {
   if (socket) socket.disconnect();
 };
 
-const subscribeToChat = (chatId, userId, callback) => {
-  socket.emit('joinChat', chatId, userId);
+const subscribeToChat = (errandId, userId, callback) => {
+  socket.emit('joinChat', errandId, userId);
 
   socket.on('priorMessages', (messages) => {
     return callback(messages);
   });
 };
 
-const sendMessage = (message, chatId) => {
-  socket.emit('newMessage', message, chatId);
+const sendMessage = (message, errandId) => {
+  socket.emit('newMessage', message, errandId);
 };
 
 const receiveNewMessage = (callback) => {

@@ -10,6 +10,7 @@ const { createWriteStream } = require('fs');
 // https://github.com/GoogleCloudPlatform/google-cloud-node/blob/master/docs/authentication.md
 // These environment variables are set automatically on Google App Engine
 const { Storage } = require('@google-cloud/storage');
+const { Errand } = require('../models/errand');
 const { Profile } = require('../models/userProfile');
 // Instantiate a storage client
 const storage = new Storage();
@@ -24,11 +25,25 @@ app.use(express.json());
 const bucket = storage.bucket(process.env.GCLOUD_STORAGE_BUCKET);
 
 const get = (req, res) => {
-  console.log('query', req.query.email);
+  console.log('query', req.query.name);
+  const result = {};
+  Errand.count()
+    .then((data) => {
+      result.count = data;
+    });
   Profile.find({ email: req.query.email })
     .then((data) => {
-      console.log('result', data);
-      res.json(data);
+      console.log('result', data[0].name);
+      result.name = data[0].name;
+      result.email = data[0].email;
+      result.picture = data[0].picture;
+      result.location = data[0].location;
+      Errand.find({ username: data[0].name, status: 'Delivered' })
+        .then((info) => {
+          console.log('errands', info);
+          res.json({ info: info.length, data: data });
+        })
+        .catch(err => console.log(err));
     })
     .catch((err) => {
       console.log(err);
@@ -59,7 +74,8 @@ const image = (req, res, next) => {
 
     console.log(publicUrl);
     // res.status(200).send(publicUrl);
-    Profile.findOneAndUpdate(req.body.name, { picture: publicUrl }, (err, rslt) => {
+    Profile.findOneAndUpdate({ name: req.body.name }, { picture: publicUrl }, (err, rslt) => {
+      console.log('new data inserted');
       res.sendStatus(200);
     });
   }

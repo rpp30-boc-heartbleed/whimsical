@@ -3,7 +3,12 @@ const dashboard = require('./dashboard');
 const userProfile = require('./userProfile');
 const friendsList = require('./friendsList');
 const Map = require('./map');
-const errandTracker = require('./errandTracker');
+const {
+  getRequestedErrands,
+  requestErrand,
+  getRunningErrands,
+  completeErrand,
+} = require('./errands');
 const chat = require('./chat');
 const { updateRating } = require('./stars');
 
@@ -14,6 +19,9 @@ module.exports = {
   friendsList,
   updateRating,
   Map,
-  errandTracker,
+  getRequestedErrands,
+  requestErrand,
+  getRunningErrands,
+  completeErrand,
   chat,
 };

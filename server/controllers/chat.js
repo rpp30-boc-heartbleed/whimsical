@@ -1,46 +1,38 @@
 const { Chat } = require('../models');
 
-const createChat = (errand, callback) => {
+const createChat = (req, res) => {
+  console.log(req.body, 'createChat');
   const chat = new Chat({
-    errandId: errand.id,
-    users: [errand.userId],
+    errandId: req.body._id,
+    users: [req.body.username],
     messages: [],
   });
   chat.save()
-    .then((savedChat) => {
-      callback(savedChat);
+    .then((data) => {
+      console.log('data added', data);
+      res.status(201).end();
     })
     .catch((err) => {
-      callback(err);
+      console.log(err);
+      res.status(500).send({ err, msg: 'sorry. data was not added' });
     });
 };
 
-const findChat = (chatId, userId) => {
-  Chat.findByIdAndUpdate(
-    chatId,
-    { $push: { $user: userId } },
-    { new: true, upsert: true },
-  )
-    .then((chat) => {
-      return chat;
-    })
-    .catch((err) => {
-      return err;
-    });
+const findChat = (errandId, userId) => {
+  const newChat = new Chat({
+    errandId,
+    users: [userId],
+    messages: [],
+  });
+  return newChat.save();
 };
 
-const postMessage = (message, chatId) => {
-  Chat.findByIdAndUpdate(
-    chatId,
+const postMessage = (message, errandId) => {
+  return Chat.findOneAndUpdate(
+    { errandId },
     { $push: { $message: message } },
     { new: true, upsert: true },
-  )
-    .then((chat) => {
-      return chat;
-    })
-    .catch((err) => {
-      return err;
-    });
+  );
 };
 
 module.exports = { createChat, findChat, postMessage };

@@ -1,5 +1,5 @@
 import { selector } from 'recoil';
-import errandState from '../atoms/errands';
+import { errandState } from '../atoms/errands';
 import userProfileState from '../atoms/userProfile';
 
 const filteredErrandsState = selector({
@@ -7,7 +7,10 @@ const filteredErrandsState = selector({
   get: ({ get }) => {
     const errands = get(errandState);
     const user = get(userProfileState);
-    return errands.filter((errand) => errand.requestor.name === user.name);
+    // console.log('USER STATE', user);
+    // console.log('ERRANDS STATE', errands);
+
+    return errands.filter((errand) => (errand.requestor || {}).email === user.email);
   },
 });
 

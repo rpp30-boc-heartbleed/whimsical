@@ -21,6 +21,11 @@ const {
   map,
   errandTracker,
   updateRating,
+  getRequestedErrands,
+  requestErrand,
+  getRunningErrands,
+  completeErrand,
+  chat,
 } = require('../controllers');
 
 const router = express.Router();
@@ -29,8 +34,8 @@ const router = express.Router();
 router.post('/register', register.addNewUser);
 
 // FEED
-router.post('/newErrand', dashboard.addNewErrand);
-router.get('/getErrandData', dashboard.getErrandData);
+router.post('/newErrand', dashboard.addNewErrand); // create a new errand to run
+router.get('/getErrandData', dashboard.getErrandData); // see all errands in community
 
 // USER PROFILE
 router.get('/userProfile/get', userProfile.get);
@@ -42,7 +47,15 @@ router.get('/friends/get', friendsList.get);
 router.get('/friends/search', friendsList.search);
 
 // RATING
-// router.get('/stars/get', starRating.get);
 router.put('/userProfile/stars', updateRating);
+
+// ERRANDS
+router.post('/errands/request', requestErrand);
+router.get('/errands/requests', getRequestedErrands);
+router.get('/errands/tasks', getRunningErrands);
+router.post('/errands/complete', completeErrand);
+
+// CHAT
+router.post('/newChatID', chat.createChat);
 
 module.exports = router;

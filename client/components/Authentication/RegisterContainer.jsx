@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { atom, useRecoilState } from 'recoil';
+import axios from 'axios';
 import {
   KeyboardAvoidingView,
   View,
@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 // import { AuthenticatedUserContext } from '../navigation/AuthenticatedUserProvider';
+import { HOST_URL } from '@env';
 import auth from '../../config/firebase';
 
 const RegisterContainer = ({ navigation }) => {
@@ -90,18 +91,27 @@ const RegisterContainer = ({ navigation }) => {
   };
 
   // post registration info to server
-  async function postUserData(url = '', data = {}) {
+  const postUserData = (url = '', data = {}) => {
     // Default options are marked with *
     // eslint-disable-next-line no-undef
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data), // body data type must match "Content-Type" header
-    });
-    return response.json(); // parses JSON response into native JavaScript objects
-  }
+    axios.post(url, data)
+    // fetch(url, {
+    //   method: 'POST',
+    //   headers: {
+    //     Accept: 'application/json',
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify(data), // body data type must match "Content-Type" header
+    // })
+      .then((res) => {
+        console.log(res);
+        // add email and password to firebase authentication
+        handleSignUp(auth, email, password);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   // create user authentication account in firebase
   const handleSignUp = (auth, email, password) => {
@@ -118,6 +128,9 @@ const RegisterContainer = ({ navigation }) => {
         if (err.code === 'auth/invalid-value-(email),-starting-an-object-on-a-scalar-field') {
           setError('Please enter a valid email address');
         }
+        if (err.code === 'auth/email-already-in-use') {
+          setError('This email is already registered. Please go to the Login screen to sign in.');
+        }
       });
   };
 
@@ -127,6 +140,7 @@ const RegisterContainer = ({ navigation }) => {
       // add user data to mongoDB
       postUserData(
         // 'http://localhost:3000/register',
+        // `${HOST_URL}/register`,
         'http://ec2-34-239-133-230.compute-1.amazonaws.com/register',
         {
           name,
@@ -137,15 +151,7 @@ const RegisterContainer = ({ navigation }) => {
           imageURL,
           email,
         },
-      )
-        .then((data) => {
-          console.log(data);
-          // add email and password to firebase authentication
-          handleSignUp(auth, email, password);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      );
       // clear form
       setUserInfo({
         name: '',

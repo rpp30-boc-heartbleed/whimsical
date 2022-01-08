@@ -9,13 +9,18 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
+import { useRecoilState } from 'recoil';
+import { HOST_URL } from '@env';
 import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import axios from 'axios';
 import auth from '../../config/firebase';
 import NavBarContainer from '../NavBar/NavBarContainer';
+// import { errandState } from '../../state/atoms/errands';
 
 const LoginContainer = ({ navigation }) => {
   // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
+  // const [errands, setErrands] = useRecoilState(errandState);
   // const [user, setUser] = useState();
 
   // Handle user state changes
@@ -66,10 +71,13 @@ const LoginContainer = ({ navigation }) => {
   // authenticate user in firebase
   const handleLogin = (auth, email, password) => {
     signInWithEmailAndPassword(auth.auth, email, password)
-      .then((userCredentials) => {
+      .then(async (userCredentials) => {
         const { user } = userCredentials;
         console.log('logged in with', user.email, user.uid);
         // navigation.navigate('Dashboard');
+        // const errandsResp = await axios.get(`${HOST_URL}/getErrandData`);
+        // setErrands(errandsResp.data);
+
         navigation.replace('Dashboard');
       })
       .catch((err) => {

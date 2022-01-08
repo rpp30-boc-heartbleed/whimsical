@@ -21,20 +21,20 @@ import chatState from '../../../state/atoms/chats';
 const { cat } = images;
 
 const Chat = ({ route, navigation }) => {
-  const { chatId } = route.params;
+  const { errandId } = route.params;
   const [user] = useRecoilState(userProfileState);
   const [chats] = useRecoilState(chatState);
   // const chat = useRecoilValue(findChat(chatId));
   const [messages, setMessages] = useState([]);
 
   const onSend = (message) => {
-    sendMessage(message, chatId);
+    sendMessage(message, errandId);
   };
 
   useEffect(() => {
     initiateSocketConnection();
-    subscribeToChat(chatId, user._id, (msgs) => {
-      setMessages(chats[1]);
+    subscribeToChat(errandId, user._id, (msgs) => {
+      setMessages(msgs);
     });
     receiveNewMessage((msg) => {
       setMessages((previousMsgs) => GiftedChat.append(previousMsgs, msg));
@@ -42,7 +42,7 @@ const Chat = ({ route, navigation }) => {
     return () => {
       disconnectSocket();
     };
-  }, [chats, chatId, user]);
+  }, [errandId, user]);
 
   return (
     <View style={styles.chat}>
