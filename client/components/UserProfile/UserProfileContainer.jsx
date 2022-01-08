@@ -32,8 +32,8 @@ const UserProfileContainer = ({ navigation }) => {
   const [showPassModal, setShowPassModal] = useState(false);
 
   useEffect(() => {
-    // axios.get(`http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/get?email=${auth.auth.currentUser.email}`) // add '?name=Ojeiku' to queryString
-    axios.get(`http://localhost:3000/userProfile/get?email=${auth.auth.currentUser.email}`) // add '?name=Ojeiku' to queryString
+    axios.get(`http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/get?email=${auth.auth.currentUser.email}`) // add '?name=Ojeiku' to queryString
+    // axios.get(`http://localhost:3000/userProfile/get?email=${auth.auth.currentUser.email}`) // add '?name=Ojeiku' to queryString
       .then((data) => {
         // console.log('loaded profile', data.data.data[0]);
         setUser(data.data.data[0]);
