@@ -13,23 +13,23 @@ const connectDb = () => mongoose.connect('mongodb://localhost:27017/quick-bagel'
   .then(async () => {
     console.log('Connected to MongoDBagel');
     // on connection, drop the data that feeds the dashboard
-    try {
-      console.log('Seeding data...');
-      // Drop profiles collection and seed with mock data
-      await mongoose.connection.db.dropCollection('profileCollection');
-      const runners = await Profile.insertMany(mockRunners);
-      const requestor = await Profile.create(mockRequestors[1]);
+    // try {
+    //   console.log('Seeding data...');
+    //   // Drop profiles collection and seed with mock data
+    //   await mongoose.connection.db.dropCollection('profileCollection');
+    //   const runners = await Profile.insertMany(mockRunners);
+    //   const requestor = await Profile.create(mockRequestors[1]);
 
-      // Seed Errands
-      await mongoose.connection.db.dropCollection('errandCollection');
-      const errands = mockErrands.forEach(async (errand, i) => {
-        await Errand.create({ ...errand, requestor, runner: runners[i] });
-      });
+    //   // Seed Errands
+    //   await mongoose.connection.db.dropCollection('errandCollection');
+    //   const errands = mockErrands.forEach(async (errand, i) => {
+    //     await Errand.create({ ...errand, requestor, runner: runners[i] });
+    //   });
 
-      console.log('Success');
-    } catch (err) {
-      console.log('There was an error with db connection or seeding', err);
-    }
+    //   console.log('Success');
+    // } catch (err) {
+    //   console.log('There was an error with db connection or seeding', err);
+    // }
   })
   .catch((err) => {
     console.log('Connection to database failed womp womp');
