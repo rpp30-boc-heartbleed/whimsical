@@ -68,15 +68,28 @@ const DashboardBody = ({ navigation }) => {
               </View>
 
               <View style={[styles.buttons, styles.clickable]}>
-                {/* <Text style={styles.clickable}>Message</Text> */}
-                <TouchableOpacity>
+
+                <TouchableOpacity
+                  style={styles.messagetouch}
+                  onPress={() => navigation.push('Chat', {
+                    chatId: item._id,
+                  })}
+                >
                   <Image
                     source={{ uri: 'https://listimg.pinclipart.com/picdir/s/453-4531079_png-file-svg-message-box-icon-png-clipart.png' }}
                     style={styles.messagebox}
                   />
                 </TouchableOpacity>
+
                 <Text style={styles.clickable} />
-                <TouchableOpacity style={styles.statustouch} onPress={() => navigation.navigate('ErrandTracker')}>
+
+                <TouchableOpacity
+                  style={styles.statustouch}
+                  onPress={() => {
+                    console.log('firing');
+                    navigation.push('ErrandTracker');
+                  }}
+                >
                   <Image
                     source={{ uri: 'https://www.iconpacks.net/icons/1/free-pin-icon-48-thumb.png' }}
                     style={styles.status}
@@ -176,6 +189,9 @@ const styles = StyleSheet.create({
   messagebox: {
     width: 60,
     resizeMode: 'contain',
+  },
+  messagetouch: {
+    borderWidth: 1,
   },
   status: {
     width: 60,

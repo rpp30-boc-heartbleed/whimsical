@@ -21,15 +21,11 @@ const {
   map,
   errandTracker,
   updateRating,
-<<<<<<< HEAD
-  requestedErrands,
-  chat,
-=======
   getRequestedErrands,
   requestErrand,
   getRunningErrands,
   completeErrand,
->>>>>>> 2d21c788e54f38cf5d9922edd25a030f28dafa38
+  chat,
 } = require('../controllers');
 
 const router = express.Router();
@@ -54,17 +50,12 @@ router.get('/friends/search', friendsList.search);
 router.put('/userProfile/stars', updateRating);
 
 // ERRANDS
-<<<<<<< HEAD
-router.get('/:user/requests', requestedErrands); // get list of requested errands
-// router.get('/errands/tasks', runningErrands); // get list of errands that the user running
-
-// CHAT
-router.get('/newChatID', chat.createChat);
-
-=======
 router.post('/errands/request', requestErrand); // get list of requested errands
 router.get('/errands/requests', getRequestedErrands);
 router.get('/errands/tasks', getRunningErrands); // get list of errands that the user running
 router.post('/errands/complete', completeErrand);
->>>>>>> 2d21c788e54f38cf5d9922edd25a030f28dafa38
+
+// CHAT
+router.post('/newChatID', chat.createChat);
+
 module.exports = router;

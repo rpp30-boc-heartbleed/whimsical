@@ -16,22 +16,23 @@ const NewErrandContainer = ({ navigation }) => {
 
   const newErrandView = useRecoilValue(newErrandSelector);
   const url = `${HOST_URL}/newErrand`;
+  const url2 = `${HOST_URL}/newChatID`;
   const newErrandObj = { email };
 
-  // async function getChatID() {
-  //   try {
-  //     const res = await axios.post(url, data);
-  //     navigation.navigate('Dashboard');
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // }
+  async function getChatID(data) {
+    try {
+      const res = await axios.post(url2, data);
+      navigation.navigate('Dashboard');
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   async function addToMongo(data) {
-    // getChatID();
     try {
-      const res = await axios.post(url, data);
-      navigation.navigate('Dashboard');
+      const response = await axios.post(url, data);
+      getChatID(response.data);
+      // navigation.navigate('Dashboard');
     } catch (err) {
       console.error(err);
     }

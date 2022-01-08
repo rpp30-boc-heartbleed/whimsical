@@ -18,7 +18,7 @@ const DashboardContainer = ({ navigation }) => {
     <View style={styles.container}>
       <DashboardHeader navigation={navigation} />
       {/* <DashboardStats /> */}
-      <DashboardBody />
+      <DashboardBody navigation={navigation} />
       <ScrollView />
       <NavBar navigation={navigation} />
     </View>
