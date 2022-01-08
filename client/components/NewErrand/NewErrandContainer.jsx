@@ -16,14 +16,25 @@ const NewErrandContainer = ({ navigation }) => {
 
   const newErrandView = useRecoilValue(newErrandSelector);
   const url = `${HOST_URL}/newErrand`;
+  const url2 = `${HOST_URL}/newChatID`;
   const newErrandObj = { email };
 
-  async function addToMongo(data) {
+  async function getChatID(data) {
     try {
-      const res = await axios.post(url, data);
+      const res = await axios.post(url2, data);
       navigation.navigate('Dashboard');
       const errandsRes = await axios.get(`${HOST_URL}/getErrandData`);
       setErrands(errandsRes.data);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  async function addToMongo(data) {
+    try {
+      const response = await axios.post(url, data);
+      getChatID(response.data);
+      // navigation.navigate('Dashboard');
     } catch (err) {
       console.error(err);
     }

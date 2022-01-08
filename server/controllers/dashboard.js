@@ -9,6 +9,7 @@ const addNewErrand = (req, res) => {
     Errand.insertMany(mockErrandsData)
       .then(() => {
         console.log('Data inserted');
+        // console.log('mockErrandData', mockErrandsData);
       })
       .catch((error) => {
         console.log(error);
@@ -49,7 +50,7 @@ const addNewErrand = (req, res) => {
         .save()
         .then((data) => {
           console.log('data added', data);
-          res.status(201).end();
+          res.status(201).send(data);
         })
         .catch((err) => {
           console.log(err);
