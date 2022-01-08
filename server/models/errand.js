@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { ProfileSchema } = require('./userProfile');
 
 const { Schema } = mongoose;
 
@@ -12,7 +13,7 @@ const errandSchema = new Schema(
       default: 'Pending',
     },
     // Requester,
-    requestor: { type: Schema.Types.ObjectId, ref: 'Profile', default: null },
+    requestor: ProfileSchema,
     deliveryLocation: {
       latitude: Number,
       longitude: Number,
@@ -23,7 +24,7 @@ const errandSchema = new Schema(
       longitude: Number,
     },
     // Runner
-    runner: { type: Schema.Types.ObjectId, ref: 'Profile', default: null },
+    runner: ProfileSchema,
     runnerLocation: {
       latitude: Number,
       longitude: Number,
