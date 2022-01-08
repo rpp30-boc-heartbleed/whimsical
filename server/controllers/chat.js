@@ -1,6 +1,7 @@
 const { Chat } = require('../models');
 
 const createChat = (req, res) => {
+  console.log(req.body, 'createChat');
   const chat = new Chat({
     errandId: req.body._id,
     users: [req.body.username],
@@ -17,32 +18,21 @@ const createChat = (req, res) => {
     });
 };
 
-const findChat = (chatId, userId) => {
-  Chat.findByIdAndUpdate(
-    chatId,
-    { $push: { $user: userId } },
-    { new: true, upsert: true },
-  )
-    .then((chat) => {
-      return chat;
-    })
-    .catch((err) => {
-      return err;
-    });
+const findChat = (errandId, userId) => {
+  const newChat = new Chat({
+    errandId,
+    users: [userId],
+    messages: [],
+  });
+  return newChat.save();
 };
 
-const postMessage = (message, chatId) => {
-  Chat.findByIdAndUpdate(
-    chatId,
+const postMessage = (message, errandId) => {
+  return Chat.findOneAndUpdate(
+    { errandId },
     { $push: { $message: message } },
     { new: true, upsert: true },
-  )
-    .then((chat) => {
-      return chat;
-    })
-    .catch((err) => {
-      return err;
-    });
+  );
 };
 
 module.exports = { createChat, findChat, postMessage };

@@ -18,19 +18,10 @@ import filteredByNameSelector from '../../../state/selectors/filterFriendsByName
 // Assets
 import { images, icons, SIZES } from '../../../constants';
 
-// const { cat, dog } = images;
 const { star } = icons;
 
 const List = ({ style, navigation }) => {
   const filteredByName = useRecoilValue(filteredByNameSelector);
-
-  // const onMessagePress = () => {
-
-  // };
-
-  // const onErrandPress = () => {
-
-  // };
 
   return (
     <View style={style}>
@@ -50,20 +41,18 @@ const List = ({ style, navigation }) => {
               </View>
               <TouchableOpacity style={styles.chat}>
                 <IconModal
+                  disable={false}
                   icon='chat-outline'
                   size={50}
                   style={styles.chatIcon}
                   currentErrands={item.currentErrands}
                   navigation={navigation}
-                  // onPress={() => navigation.push('Chat', {
-                  //   currentErrands: item.currentErrands,
-                  // })}
                 />
               </TouchableOpacity>
             </View>
           );
         }}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item._id}
         keyboardShouldPersistTaps="handled"
       />
     </View>
