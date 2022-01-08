@@ -6,13 +6,10 @@ import {
   FlatList,
   StyleSheet,
 } from 'react-native';
-import filteredErrandsState from '../../state/selectors/filterErrandsByRequestor';
 import ErrandRequests from './ErrandRequests';
 import NavBarContainer from '../NavBar/NavBarContainer';
 
 const ErrandRequestsContainer = ({ navigation }) => {
-  // const errands = useRecoilValue(filteredErrandsState);
-
   return (
     <>
       <ErrandRequests navigation={navigation} />

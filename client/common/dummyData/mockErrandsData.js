@@ -14,7 +14,7 @@ const avatars = [
 const mockRequestors = [
   {
     name: 'Orange',
-    email: 'apple@gmail.com',
+    email: 'abc@gmail.com',
     stars: 0,
     picture: avatars[0],
     errandsCompleted: 0,
