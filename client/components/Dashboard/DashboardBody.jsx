@@ -87,10 +87,7 @@ const DashboardBody = ({ navigation }) => {
 
                 <TouchableOpacity
                   style={styles.statustouch}
-                  onPress={() => {
-                    console.log('firing');
-                    navigation.push('ErrandTracker');
-                  }}
+                  onPress={() => navigation.navigate('ErrandTracker', { errand: item })}
                 >
                   <Image
                     source={{ uri: 'https://www.iconpacks.net/icons/1/free-pin-icon-48-thumb.png' }}
