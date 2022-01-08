@@ -13,7 +13,6 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 const NavBarContainer = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      {/* <Text>This is the NavBar Component</Text> */}
       {/* Profile */}
       <TouchableOpacity>
         <Icon size={30} name='user' onPress={() => navigation.push('UserProfile')} />
@@ -24,7 +23,7 @@ const NavBarContainer = ({ navigation }) => {
       </TouchableOpacity>
       {/* FriendsList */}
       <TouchableOpacity>
-        <Icon size={30} name='users' onPress={() => navigation.push('FriendsList')} />
+        <Icon size={30} name='users' testIID='users' onPress={() => navigation.push('FriendsList')} />
       </TouchableOpacity>
       {/* Map */}
       <TouchableOpacity>
@@ -34,9 +33,6 @@ const NavBarContainer = ({ navigation }) => {
       <TouchableOpacity>
         <Icon size={30} name='home' onPress={() => navigation.navigate('Dashboard')} />
       </TouchableOpacity>
-      {/* <Button title="Go to Dashboard" onPress={() => navigation.navigate('Dashboard')} /> */}
-      {/* <Button title="Go back" onPress={() => navigation.goBack()} /> */}
-      <StatusBar />
     </View>
   );
 };
