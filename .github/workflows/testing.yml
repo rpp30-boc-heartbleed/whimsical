@@ -2,7 +2,21 @@ name: Continuous Integration
 
 on:
   pull_request:
-    branches: [ dev ]
+    branches: [dev]
+
+env:
+  FIREBASE_AUTH_DOMAIN: ${{secrets.FIREBASE_AUTH_DOMAIN}}
+  FIREBASE_API_KEY: ${{secrets.FIREBASE_API_KEY}}
+  FIREBASE_PROJECT_ID: ${{secrets.FIREBASE_PROJECT_ID}}
+  FIREBASE_STORAGE_BUCKET: ${{secrets.FIREBASE_STORAGE_BUCKET}}
+  FIREBASE_MESSAGING_SENDER: ${{secrets.FIREBASE_MESSAGING_SENDER_ID}}
+  FIREBASE_APP_ID: ${{secrets.FIREBASE_APP_ID}}
+  GOOGLE_MAPS_API_KEY: ${{secrets.GOOGLE_MAPS_API_KEY}}
+  GOOGLE_MAPS_API_KEY_IOS: ${{secrets.GOOGLE_MAPS_API_KEY_IOS}}
+  GOOGLE_MAPS_API_KEY_Android: ${{secrets.GOOGLE_MAPS_API_KEY_Android}}
+  GCLOUD_STORAGE_BUCKET: ${{secrets.GCLOUD_STORAGE_BUCKET}}
+  USERNAME: ${{secrets.USERNAME}}
+  PASS: ${{secrets.PASS}}
 
 jobs:
   test:
@@ -10,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        app: [ managed ]
+        app: [managed]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -29,53 +43,54 @@ jobs:
             ${{ runner.os }}-
       - name: Install Packages
         run: npm install
-      - name: Cd Into Client
-        run: cd client
       - name: Install Client Packages
+        working-directory: ./client
         run: npm install
       - name: Run CI environment
+        working-directory: ./client
         run: npm ci
       - name: Test
+        working-directory: ./client
         run: npx jest --ci
-  # deploy_preview:
-  #   name: Deploy Preview
-  #   needs: test
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: actions/setup-node@v1
-  #       with:
-  #         node-version: 16
-  #     - uses: expo/expo-github-action@v5
-  #       with:
-  #         expo-packager: npm
-  #         expo-token: ${{ secrets.EXPO_TOKEN }}
-  #         expo-cache: true
-  #     - name: Cache node_modules
-  #       uses: actions/cache@v2
-  #       env:
-  #         cache-name: cache-node-modules
-  #       with:
-  #         path: ~/.npm
-  #         key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
-  #         restore-keys: |
-  #           ${{ runner.os }}-build-${{ env.cache-name }}-
-  #           ${{ runner.os }}-build-
-  #           ${{ runner.os }}-
-  #     - name: Install Packages
-  #       run: npm install
-  #     - name: Cd into /client
-  #       run: cd client
-  #     - name: Install Client Packages
-  #       run: npm install
-  #     - name: Expo Publish
-  #       run: expo publish --non-interactive --release-channel pr${{ github.event.number }}
-  #     - name: Add QR to PR
-  #       uses: mshick/add-pr-comment@v1
-  #       env:
-  #         # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  #         EXPO_PROJECT: "@heartbleed/quick-bagel"
-  #       with:
-  #         message: |
-  #           ![Expo QR](https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=exp://exp.host/${{ env.EXPO_PROJECT }}?release-channel=pr${{ github.event.number }})
-  #           Published to https://exp.host/${{ env.EXPO_PROJECT }}?release-channel=pr${{ github.event.number }}
+  deploy_preview:
+    name: Deploy Preview
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - uses: expo/expo-github-action@v5
+        with:
+          expo-packager: npm
+          expo-token: ${{ secrets.EXPO_TOKEN }}
+          expo-cache: true
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+      - name: Install Packages
+        run: npm install
+      - name: Install Client Packages
+        working-directory: ./client
+        run: npm install
+      - name: Expo Publish
+        working-directory: ./client
+        run: expo publish --non-interactive --release-channel pr${{ github.event.number }}
+      - name: Add QR to PR
+        uses: mshick/add-pr-comment@v1
+        env:
+          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          EXPO_PROJECT: "@heartbleed/quick-bagel"
+        with:
+          message: |
+            ![Expo QR](https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=exp://exp.host/${{ env.EXPO_PROJECT }}?release-channel=pr${{ github.event.number }})
+            Published to https://exp.host/${{ env.EXPO_PROJECT }}?release-channel=pr${{ github.event.number }}

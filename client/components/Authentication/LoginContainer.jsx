@@ -9,25 +9,13 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import auth from '../../config/firebase';
 import NavBarContainer from '../NavBar/NavBarContainer';
 
 const LoginContainer = ({ navigation }) => {
   // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
-  const [user, setUser] = useState();
-
-  // Handle user state changes
-  const onAuthStateChanged = (user) => {
-    setUser(user);
-    if (initializing) setInitializing(false);
-  };
-
-  // useEffect(() => {
-  //   const subscriber = auth.onAuthStateChanged(onAuthStateChanged);
-  //   return subscriber; // unsubscribe on unmount
-  // });
 
   const [authenticationInfo, setAuthenticationInfo] = useState({
     email: '',
@@ -66,14 +54,13 @@ const LoginContainer = ({ navigation }) => {
   // authenticate user in firebase
   const handleLogin = (auth, email, password) => {
     signInWithEmailAndPassword(auth.auth, email, password)
-      .then((userCredentials) => {
-        setUser(userCredentials.user);
-        console.log('logged in with', user.email, user.uid);
-        // navigation.navigate('Dashboard');
+      .then(async (userCredentials) => {
+        const { user } = userCredentials;
+        // console.log('logged in with', user.email, user.uid);
         navigation.replace('Dashboard');
       })
       .catch((err) => {
-        console.log('error', err);
+        // console.log('error', err);
         console.log('err code', err.code);
         if (err.code === 'auth/invalid-value-(email),-starting-an-object-on-a-scalar-field') {
           setError('Please enter a valid email address');
@@ -84,6 +71,7 @@ const LoginContainer = ({ navigation }) => {
         if (err.code === 'auth/user-not-found') {
           setError('Please check the email address and try again');
         }
+        // eslint-disable-next-line max-len
         setError("We're sorry. We're experiencing some technical difficulties. Please try again.");
       });
   };
@@ -92,7 +80,7 @@ const LoginContainer = ({ navigation }) => {
   const submitForm = () => {
     if (isValidForm()) {
       // submit form
-      console.log('form info', authenticationInfo);
+      // console.log('form info', authenticationInfo);
       // if authenticated, navigate to Dashboard
       handleLogin(auth, email, password);
       // clear form
@@ -103,20 +91,19 @@ const LoginContainer = ({ navigation }) => {
       setError('');
     }
   };
-  // if (initializing) {
-  //   return null;
-  // }
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to Quick Bagel!</Text>
       <KeyboardAvoidingView style={styles.container}>
         <View style={styles.inputContainer}>
-          {error ? <Text style={styles.error}>{error}</Text> : null}
+          {error ? <Text style={styles.error} testID='errorMsg'>{error}</Text> : null}
           <TextInput
             style={styles.input}
             placeholder='email'
             autoCapitalize='none'
             value={email}
+            testID='email'
             onChangeText={(value) => handleOnChangeText(value, 'email')}
           />
           <TextInput
@@ -124,6 +111,7 @@ const LoginContainer = ({ navigation }) => {
             placeholder='password'
             autoCapitalize='none'
             value={password}
+            testID='password'
             onChangeText={(value) => handleOnChangeText(value, 'password')}
             secureTextEntry
           />
@@ -132,20 +120,17 @@ const LoginContainer = ({ navigation }) => {
           <TouchableOpacity
             style={[styles.button, styles.buttonOutline]}
             onPress={submitForm}
+            testID='submitLogin'
           >
             <Text style={[styles.buttonText, styles.buttonOutlineText]}>Login</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.registerContainer}>
           <Text style={styles.registerText}>Don&apos;t have an acccount?</Text>
-          <Button title='Register' onPress={() => navigation.push('Register')} />
+          <Button title='Register' testID='register' onPress={() => navigation.push('Register')} />
           <Text style={styles.registerText}>now.</Text>
         </View>
       </KeyboardAvoidingView>
-      {/* navbar at bottom of screen */}
-      <View style={styles.navbar}>
-        <NavBarContainer navigation={navigation} />
-      </View>
     </View>
   );
 };

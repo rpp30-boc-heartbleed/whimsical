@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { atom, useRecoilState } from 'recoil';
+import axios from 'axios';
 import {
   KeyboardAvoidingView,
   View,
@@ -10,8 +10,8 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
-// import { AuthenticatedUserContext } from '../navigation/AuthenticatedUserProvider';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { HOST_URL } from '@env';
 import auth from '../../config/firebase';
 
 const RegisterContainer = ({ navigation }) => {
@@ -42,17 +42,6 @@ const RegisterContainer = ({ navigation }) => {
   // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
-  // Handle user state changes
-  const onAuthStateChanged = (user) => {
-    setUser(user);
-    if (initializing) setInitializing(false);
-  };
-
-  // useEffect(() => {
-  //   const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-  //   console.log('cxn detected');
-  //   return subscriber; // unsubscribe on unmount
-  // });
 
   const handleOnChangeText = (value, fieldName) => {
     // console.log('form fields', fieldName, value);
@@ -90,33 +79,36 @@ const RegisterContainer = ({ navigation }) => {
   };
 
   // post registration info to server
-  async function postUserData(url = '', data = {}) {
-    // Default options are marked with *
+  const postUserData = (url = '', data = {}) => {
     // eslint-disable-next-line no-undef
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data), // body data type must match "Content-Type" header
-    });
-    return response.json(); // parses JSON response into native JavaScript objects
-  }
+    axios.post(url, data)
+      .then((res) => {
+        // console.log(res);
+        // add email and password to firebase authentication
+        handleSignUp(auth, email, password);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   // create user authentication account in firebase
   const handleSignUp = (auth, email, password) => {
-    console.log('hit sign up');
+    // console.log('hit sign up');
     createUserWithEmailAndPassword(auth.auth, email, password)
       .then((userCredentials) => {
         const { user } = userCredentials;
-        console.log('registered', user.email, user.uid);
+        // console.log('registered', user.email, user.uid);
         // navigation.navigate('Dashboard');
         navigation.replace('Dashboard');
       })
       .catch((err) => {
-        console.error('error', err.code);
+        // console.error('error', err.code);
         if (err.code === 'auth/invalid-value-(email),-starting-an-object-on-a-scalar-field') {
           setError('Please enter a valid email address');
+        }
+        if (err.code === 'auth/email-already-in-use') {
+          setError('This email is already registered. Please go to the Login screen to sign in.');
         }
       });
   };
@@ -127,7 +119,8 @@ const RegisterContainer = ({ navigation }) => {
       // add user data to mongoDB
       postUserData(
         // 'http://localhost:3000/register',
-        'http://ec2-34-239-133-230.compute-1.amazonaws.com',
+        // `${HOST_URL}/register`,
+        'http://ec2-34-239-133-230.compute-1.amazonaws.com/register',
         {
           name,
           streetAddress,
@@ -137,15 +130,7 @@ const RegisterContainer = ({ navigation }) => {
           imageURL,
           email,
         },
-      )
-        .then((data) => {
-          console.log(data);
-          // add email and password to firebase authentication
-          handleSignUp(auth, email, password);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      );
       // clear form
       setUserInfo({
         name: '',
@@ -174,6 +159,7 @@ const RegisterContainer = ({ navigation }) => {
           style={styles.input}
           placeholder='name'
           value={name}
+          testID='name'
           onChangeText={(value) => handleOnChangeText(value, 'name')}
         />
         <TextInput
@@ -181,6 +167,7 @@ const RegisterContainer = ({ navigation }) => {
           placeholder='street address'
           autoCapitalize='none'
           value={streetAddress}
+          testID='streetAddress'
           onChangeText={(value) => handleOnChangeText(value, 'streetAddress')}
         />
         <TextInput
@@ -188,6 +175,7 @@ const RegisterContainer = ({ navigation }) => {
           placeholder='city'
           autoCapitalize='none'
           value={city}
+          testID='city'
           onChangeText={(value) => handleOnChangeText(value, 'city')}
         />
         <TextInput
@@ -195,6 +183,7 @@ const RegisterContainer = ({ navigation }) => {
           placeholder='state'
           autoCapitalize='none'
           value={state}
+          testID='state'
           onChangeText={(value) => handleOnChangeText(value, 'state')}
         />
         <TextInput
@@ -202,6 +191,7 @@ const RegisterContainer = ({ navigation }) => {
           placeholder='zip code'
           autoCapitalize='none'
           value={zipCode}
+          testID='zipCode'
           onChangeText={(value) => handleOnChangeText(value, 'zipCode')}
         />
         <TextInput
@@ -209,6 +199,7 @@ const RegisterContainer = ({ navigation }) => {
           placeholder='image url'
           autoCapitalize='none'
           value={imageURL}
+          testID='imageURL'
           onChangeText={(value) => handleOnChangeText(value, 'imageURL')}
         />
         <TextInput
@@ -216,6 +207,7 @@ const RegisterContainer = ({ navigation }) => {
           placeholder='email'
           autoCapitalize='none'
           value={email}
+          testID='email'
           onChangeText={(value) => handleOnChangeText(value, 'email')}
         />
         <TextInput
@@ -223,6 +215,7 @@ const RegisterContainer = ({ navigation }) => {
           placeholder='password'
           autoCapitalize='none'
           value={password}
+          testID='password'
           onChangeText={(value) => handleOnChangeText(value, 'password')}
           secureTextEntry
         />
@@ -231,6 +224,7 @@ const RegisterContainer = ({ navigation }) => {
           placeholder='confirm password'
           value={confirmPassword}
           autoCapitalize='none'
+          testID='confirmPassword'
           onChangeText={(value) => handleOnChangeText(value, 'confirmPassword')}
           secureTextEntry
         />
@@ -238,6 +232,7 @@ const RegisterContainer = ({ navigation }) => {
       <View style={styles.buttonContainer}>
         <TouchableOpacity
           style={[styles.button, styles.buttonOutline]}
+          testID='submitRegister'
           onPress={submitForm}
         >
           <Text style={styles.buttonOutlineText}>Create Account</Text>
@@ -245,7 +240,7 @@ const RegisterContainer = ({ navigation }) => {
       </View>
       <View style={styles.loginContainer}>
         <Text style={styles.loginText}>Have an acccount already?</Text>
-        <Button title='Login' onPress={() => navigation.navigate('Login')} />
+        <Button title='Login' testID='login' onPress={() => navigation.navigate('Login')} />
       </View>
     </KeyboardAvoidingView>
   );

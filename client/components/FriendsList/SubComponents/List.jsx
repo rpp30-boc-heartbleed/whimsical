@@ -18,10 +18,9 @@ import filteredByNameSelector from '../../../state/selectors/filterFriendsByName
 // Assets
 import { images, icons, SIZES } from '../../../constants';
 
-const { cat, dog } = images;
 const { star } = icons;
 
-const List = ({ style }) => {
+const List = ({ style, navigation }) => {
   const filteredByName = useRecoilValue(filteredByNameSelector);
 
   return (
@@ -32,7 +31,7 @@ const List = ({ style }) => {
           return (
             <View style={styles.friend}>
               <TouchableOpacity style={styles.avatar}>
-                <Avatar.Image size={50} source={cat} />
+                <Avatar.Image size={50} source={item.avatar} />
               </TouchableOpacity>
               <View style={styles.text}>
                 <Text>
@@ -41,16 +40,19 @@ const List = ({ style }) => {
                 <Text>{item.goldStars}<Image style={styles.star} source={star} /></Text>
               </View>
               <TouchableOpacity style={styles.chat}>
-                <IconButton
+                <IconModal
+                  disable={false}
                   icon='chat-outline'
                   size={50}
                   style={styles.chatIcon}
+                  currentErrands={item.currentErrands}
+                  navigation={navigation}
                 />
               </TouchableOpacity>
             </View>
           );
         }}
-        keyExtractor={(friend) => friend.id}
+        keyExtractor={(item) => item._id}
         keyboardShouldPersistTaps="handled"
       />
     </View>

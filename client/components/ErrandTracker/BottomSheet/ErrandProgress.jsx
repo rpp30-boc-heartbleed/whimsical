@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   bar: {
     marginTop: 30,
     width: 20,
-  }
-})
+  },
+});
 
 export default ErrandProgress;

@@ -3,6 +3,7 @@ import { atom } from 'recoil';
 const userProfileState = atom({
   key: 'UserProfileState',
   default: {
+    _id: 1,
     name: 'Placeholder',
     pass: '*****',
     email: 'noName@gmail.com',

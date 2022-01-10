@@ -1,25 +1,59 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Image, Text, Alert } from 'react-native';
+import { useRecoilState } from 'recoil';
+import axios from 'axios';
+import { HOST_URL } from '@env';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import {
+  StyleSheet,
+  View,
+  Image,
+  Text,
+  Alert,
+  TouchableOpacity,
+} from 'react-native';
 import { Title, Colors } from 'react-native-paper';
-import { COLORS, SIZES, icons, images } from '../../../constants';
-import ProfilePhoto from '../../Shared/Avatar.jsx';
+import {
+  COLORS,
+  SIZES,
+  icons,
+  images,
+} from '../../../constants';
+import userProfileState from '../../../state/atoms/userProfile';
 
-//Click Avatar Picture to go to User profile
+const Courier = ({ errand }) => {
+  // const [user, setUser] = useRecoilState(userProfileState);
+  const { runner } = errand;
+  const { stars } = runner;
+  const [count, setCount] = useState(stars);
 
-const Courier = () => {
-  const [count, setCount] = useState(9000)
+  const handleOnClick = async () => {
+    console.log(stars);
+    try {
+      const response = await axios.put(`${HOST_URL}/userProfile/stars`, {
+        ...runner,
+        stars: runner.stars + 1,
+      });
+      console.log('user stars response', response);
+      setCount(count + 1);
+      return response;
+    } catch (err) {
+      return 'Unable to give gold star';
+    }
+  };
+
   return (
     <View style={styles.container}>
-      <ProfilePhoto style={styles.image} />
-      <Text style={styles.profileName}> Lady Beth </Text>
+      {/* <Text>{user.picture}</Text> */}
+      <Text style={styles.profileName}>{runner.name}  </Text>
       <View style={styles.container2}>
-        <Image source={icons.star} style={styles.starImage} />
-        <Text style={styles.starCount} onPress={() => setCount(count + 1)}>{count}</Text>
+        <TouchableOpacity onPress={handleOnClick}>
+          <Image source={icons.star} style={styles.starImage} />
+        </TouchableOpacity>
+        <Text style={styles.starCount}>{count}</Text>
       </View>
     </View>
-  )
+  );
 };
-
 
 const styles = StyleSheet.create({
   container: {
@@ -43,11 +77,11 @@ const styles = StyleSheet.create({
     paddingLeft: 5,
     width: 30,
     height: 30,
-    marginRight: SIZES.padding
+    marginRight: SIZES.padding,
   },
   starCount: {
     marginTop: 15,
-  }
+  },
 });
 
 export default Courier;

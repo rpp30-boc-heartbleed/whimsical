@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
+import { HOST_URL } from '@env';
 import axios from 'axios';
 import {
   View,
@@ -10,23 +11,34 @@ import {
   Button,
   Image,
   TouchableOpacity,
+  Modal,
+  Pressable,
 } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
-import { getAuth, updatePassword } from "firebase/auth";
+import { getAuth, updatePassword } from 'firebase/auth';
 import auth from '../../config/firebase';
 // import storage from '../../config/firebase';
 import 'firebase/storage';
-
 import userProfileState from '../../state/atoms/userProfile';
 // console.log(auth);
+import NavBarContainer from '../NavBar/NavBarContainer';
+
 const UserProfileContainer = ({ navigation }) => {
   const [user, setUser] = useRecoilState(userProfileState);
+  const [pass, setPass] = useState('');
+  const [stars, setStars] = useState(0);
+  const [confirmPass, setConfirmPass] = useState('');
+  const [showModal, setShowModal] = useState(false);
+  const [showPassModal, setShowPassModal] = useState(false);
+
   useEffect(() => {
-    axios.get(`http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/get?email=${auth.auth.currentUser.email}`) // add '?name=Ojeiku' to queryString
+    axios.get(`${HOST_URL}/userProfile/get?email=${auth.auth.currentUser.email}`) // add '?name=Ojeiku' to queryString
+    // axios.get(`http://localhost:3000/userProfile/get?email=${auth.auth.currentUser.email}`) // add '?name=Ojeiku' to queryString
       .then((data) => {
-        // console.log('loaded profile', data.data);
-        setUser(data.data[0]);
+        // console.log('loaded profile', data.data.data[0]);
+        setUser(data.data.data[0]);
+        setStars(data.data.info);
       })
       .catch((err) => console.error(err));
   }, [setUser]);
@@ -42,7 +54,7 @@ const UserProfileContainer = ({ navigation }) => {
       stars: user.stars,
       location: user.location,
     };
-    axios.post('http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/edit', {
+    axios.post(`${HOST_URL}/userProfile/edit`, {
       formerUser: user,
       updatedUser: newUser,
     })
@@ -64,7 +76,7 @@ const UserProfileContainer = ({ navigation }) => {
       stars: user.stars,
       location: user.location,
     };
-    axios.post('http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/edit', {
+    axios.post(`${HOST_URL}/userProfile/edit`, {
       formerUser: user,
       updatedUser: newUser,
     })
@@ -86,7 +98,7 @@ const UserProfileContainer = ({ navigation }) => {
       stars: user.stars,
       location: value,
     };
-    axios.post('http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/edit', {
+    axios.post(`${HOST_URL}/userProfile/edit`, {
       formerUser: user,
       updatedUser: newUser,
     })
@@ -125,10 +137,11 @@ const UserProfileContainer = ({ navigation }) => {
       // const blob = URL.createObjectURL(image.uri);
       console.log('blob', image);
       console.log('data', data);
-      axios.post('http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/image', data, {
+      // axios.post('http://localhost:3000/userProfile/image', data, {
+      axios.post(`${HOST_URL}/userProfile/image`, data, {
         headers: {
           'Content-Type': 'multipart/form-data',
-        }
+        },
       })
         .then((data) => {
           console.log('Image Saved!');
@@ -138,27 +151,35 @@ const UserProfileContainer = ({ navigation }) => {
         });
     }
   };
-  const handlePass = (e) => {
-    e.preventDefault();
-    const user = auth.auth.currentUser;
-    // console.log('user', user)
-    const newPassword = e.nativeEvent.text;
+  const handlePass = () => {
+    console.log('passwords:', pass, confirmPass);
+    if (pass === confirmPass && pass.length >= 8) {
+      const user = auth.auth.currentUser;
+      // console.log('user', user)
+      const newPassword = pass;
 
-    updatePassword(user, newPassword)
-      .then((data) => {
-      // If update is successful.
-        console.log('update successfull!', data);
-      })
-      .catch((err) => {
-        // If an error occurred
-        console.error(err);
-  });
-  }
+      updatePassword(user, newPassword)
+        .then((data) => {
+          // If update is successful.
+          console.log('update successfull!', data);
+        })
+        .catch((err) => {
+          // If an error occurred
+          console.error(err);
+        });
+    } else if (pass.length < 8) {
+      alert('The password was too short. Please try again');
+    } else if (pass !== confirmPass) {
+      alert('The passwords do not match. Please try again');
+    }
+  };
 
   return (
     <>
       <View style={styles.container}>
-        <Text>User Profile</Text>
+        <Text
+          style={styles.titleText}
+        >{user.name}'s Profile</Text>
         <Image
           style={styles.tinyLogo}
           source={{
@@ -173,27 +194,76 @@ const UserProfileContainer = ({ navigation }) => {
           </TouchableOpacity>
         </View>
 
-        <Text>Username: {user.name}</Text>
-        <Text>Stars: {user.stars}</Text>
-        <Text>Errands Completed: {user.errandsCompleted}</Text>
-        <Text>Location: {user.location}</Text>
+        <Text
+          style={styles.textile}
+        >Username: {user.name}</Text>
+        <Text
+          style={styles.textile}
+        >Email Address: {user.email}</Text>
+        <Text
+          style={styles.textile}
+        >Stars
+          <AntDesign name="star" size={20} color="blue" />:  {stars}
+          </Text>
+        <Text
+          style={styles.textile}
+        >Errands Completed <AntDesign name="checksquare" size={20} color="green" />: {user.errandsCompleted}</Text>
+        <Text
+          style={styles.textile}
+        >Location: {user.location}</Text>
       </View>
       <View style={styles.editForm}>
-        <Text>EDIT</Text>
-        <TextInput
+        <Button
+          onPress={() => { setShowModal(!showModal); }}
+          title="Edit Profile Settings"
+        />
+        <Modal
+          animationType="slide"
+          transparent={showModal}
+          visible={showModal}
+          onRequestClose={() => {
+            // Alert.alert("Modal has been closed.");
+            setShowModal(!showModal);
+          }}
+        >
+          <View
+            style={styles.modalView}
+          >
+            <View
+              style={styles.betterView}
+            >
+              <Text style={{ marginTop: 20 }}>EDITING YOUR PROFILE</Text>
+              <TextInput
+                onSubmitEditing={handleSubmitUsername}
+                placeholder='Username'
+                style={styles.input}
+                />
+              <TextInput
+                // style={styles.editForm}
+                onSubmitEditing={handleSubmitEmail}
+                placeholder='Email'
+                style={styles.input}
+                />
+              <TextInput
+                // style={styles.editForm}
+                onSubmitEditing={handleSubmitLocation}
+                placeholder='Location'
+                style={styles.input}
+                />
+              <Pressable
+                onPress={() => { setShowModal(false); setShowPassModal(false); }}
+                style={[styles.button, styles.buttonClose]}
+                // title="Cancel"
+                >
+                <Text style={styles.textStyle}>Cancel</Text>
+              </Pressable>
+            </View>
+          </View>
+        </Modal>
+        {/* <TextInput
           onSubmitEditing={handleSubmitUsername}
           placeholder='Username'
         />
-        <TextInput
-          onSubmitEditing={handlePass}
-          placeholder='Password'
-          autoCapitalize='none'
-          secureTextEntry
-        />
-        {/* <TextInput
-          onSubmitEditing={handlePass}
-          placeholder='Confirm Password'
-        /> */}
         <TextInput
           // style={styles.editForm}
           onSubmitEditing={handleSubmitEmail}
@@ -203,17 +273,57 @@ const UserProfileContainer = ({ navigation }) => {
           // style={styles.editForm}
           onSubmitEditing={handleSubmitLocation}
           placeholder='Location'
+        /> */}
+        <Button
+          onPress={() => { setShowPassModal(!showPassModal); }}
+          title="Change Password"
         />
       </View>
       <View>
-        <Button
-          title="Go to Errand Tracker"
-          onPress={() => navigation.push('ErrandTracker')} // push the name property of the Stack.Screen component as defined in App.jsx
-        />
-        <Button title="Go to Dashboard" onPress={() => navigation.navigate('Dashboard')} />
-        <Button title="Go back" onPress={() => navigation.goBack()} />
-        <StatusBar />
+        <NavBarContainer navigation={navigation} />
       </View>
+      <Modal
+        animationType="slide"
+        transparent={showPassModal}
+        visible={showPassModal}
+        onRequestClose={() => {
+          // Alert.alert("Modal has been closed.");
+          setShowPassModal(!showPassModal);
+        }}
+      >
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <TextInput
+              onChangeText={(e) => { console.log(e); setPass(e); }}
+              style={styles.input}
+              placeholder='Password'
+              autoCapitalize='none'
+              secureTextEntry
+              />
+            <TextInput
+              onChangeText={(e) => { console.log(e); setConfirmPass(e); }}
+              style={styles.input}
+              placeholder='Confirm Password'
+              autoCapitalize='none'
+              secureTextEntry
+            />
+            <Pressable
+              onPress={() => { setShowModal(false); setShowPassModal(false); }}
+              style={[styles.button, styles.buttonClose]}
+            >
+              <Text style={styles.textStyle}>Cancel</Text>
+            </Pressable>
+            <Pressable
+              style={[styles.button, styles.buttonClose]}
+              onPress={() => {
+                setShowPassModal(!showPassModal); handlePass();
+              }}
+            >
+              <Text style={styles.textStyle}>Change Password</Text>
+            </Pressable>
+          </View>
+        </View>
+      </Modal>
     </>
   );
 };
@@ -224,6 +334,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  titleText: {
+    fontSize: 20,
+    fontWeight: 'bold',
   },
   tinyLogo: {
     width: 150,
@@ -252,6 +366,85 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     margin: 10,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22,
+  },
+  betterView: {
+    height: 100,
+    justifyContent: "center",
+    alignItems: "center",
+    alignSelf: "stretch",
+    margin: 50,
+  },
+  passView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
+  button: {
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2,
+  },
+  buttonOpen: {
+    backgroundColor: "#F194FF",
+  },
+  buttonClose: {
+    backgroundColor: "#2196F3",
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center"
+  },
+  textBox: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  textile: {
+    // flex: '1',
+    padding: 10,
+  },
+  input: {
+    height: 40,
+    width: 250,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
   },
 });
 

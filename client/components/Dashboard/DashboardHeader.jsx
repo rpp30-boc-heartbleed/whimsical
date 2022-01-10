@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useState, useEffect, Component } from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import axios from 'axios';
 import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  StatusBar,
-  Button,
+  View, Text, Image, StyleSheet, TextInput, StatusBar, Button,
 } from 'react-native';
 import { signOut } from 'firebase/auth';
 import auth from '../../config/firebase';
+import userProfileState from '../../state/atoms/userProfile';
 
 const DashboardHeader = ({ navigation }) => {
+  const [user, setUser] = useRecoilState(userProfileState);
+
   const handleSignOut = (auth) => {
     signOut(auth.auth)
       .then(() => {
@@ -20,10 +20,14 @@ const DashboardHeader = ({ navigation }) => {
         console.log(error);
       });
   };
+
   return (
     <View style={styles.outercontainer}>
       <View style={styles.container}>
-        <Text style={styles.profilePic}>AA</Text>
+        <Image
+          source={{ uri: user.picture }}
+          style={styles.profilePic}
+        />
         <TextInput style={styles.searchBar} placeholder='Search' />
         <Button title='sign out' onPress={() => handleSignOut(auth)} />
       </View>
@@ -50,11 +54,14 @@ const styles = StyleSheet.create({
   },
   profilePic: {
     borderWidth: 1,
-    borderRadius: 25,
+    borderRadius: 30,
     borderColor: 'green',
     marginBottom: 5,
     marginRight: 25,
     padding: 15,
+    width: 50,
+    height: 50,
+    resizeMode: 'contain',
   },
   searchBar: {
     borderWidth: 1,
