@@ -10,8 +10,7 @@ import {
   Button,
   TouchableOpacity,
 } from 'react-native';
-import { createUserWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
-// import { AuthenticatedUserContext } from '../navigation/AuthenticatedUserProvider';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { HOST_URL } from '@env';
 import auth from '../../config/firebase';
 
@@ -43,17 +42,6 @@ const RegisterContainer = ({ navigation }) => {
   // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
-  // Handle user state changes
-  const onAuthStateChanged = (user) => {
-    setUser(user);
-    if (initializing) setInitializing(false);
-  };
-
-  // useEffect(() => {
-  //   const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
-  //   console.log('cxn detected');
-  //   return subscriber; // unsubscribe on unmount
-  // });
 
   const handleOnChangeText = (value, fieldName) => {
     // console.log('form fields', fieldName, value);
@@ -92,19 +80,10 @@ const RegisterContainer = ({ navigation }) => {
 
   // post registration info to server
   const postUserData = (url = '', data = {}) => {
-    // Default options are marked with *
     // eslint-disable-next-line no-undef
     axios.post(url, data)
-    // fetch(url, {
-    //   method: 'POST',
-    //   headers: {
-    //     Accept: 'application/json',
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(data), // body data type must match "Content-Type" header
-    // })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         // add email and password to firebase authentication
         handleSignUp(auth, email, password);
       })
@@ -115,16 +94,16 @@ const RegisterContainer = ({ navigation }) => {
 
   // create user authentication account in firebase
   const handleSignUp = (auth, email, password) => {
-    console.log('hit sign up');
+    // console.log('hit sign up');
     createUserWithEmailAndPassword(auth.auth, email, password)
       .then((userCredentials) => {
         const { user } = userCredentials;
-        console.log('registered', user.email, user.uid);
+        // console.log('registered', user.email, user.uid);
         // navigation.navigate('Dashboard');
         navigation.replace('Dashboard');
       })
       .catch((err) => {
-        console.error('error', err.code);
+        // console.error('error', err.code);
         if (err.code === 'auth/invalid-value-(email),-starting-an-object-on-a-scalar-field') {
           setError('Please enter a valid email address');
         }
@@ -261,7 +240,7 @@ const RegisterContainer = ({ navigation }) => {
       </View>
       <View style={styles.loginContainer}>
         <Text style={styles.loginText}>Have an acccount already?</Text>
-        <Button title='Login' onPress={() => navigation.navigate('Login')} />
+        <Button title='Login' testID='login' onPress={() => navigation.navigate('Login')} />
       </View>
     </KeyboardAvoidingView>
   );
