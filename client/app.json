@@ -7,7 +7,7 @@
     "orientation": "portrait",
     "icon": "./assets/favicon.png",
     "splash": {
-      "image": "./assets/icons/bagel-icon.png",
+      "image": "./assets/icons/Logo.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
