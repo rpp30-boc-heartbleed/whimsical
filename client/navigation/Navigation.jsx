@@ -18,7 +18,6 @@ import {
   ErrandTrackerContainer,
   FriendsListContainer,
   LoginContainer,
-  MapContainer,
   ErrandRequestsContainer,
   NavBarContainer,
   RegisterContainer,
@@ -48,7 +47,6 @@ const Navigation = () => {
         <Stack.Screen name='Dashboard' component={DashboardContainer} />
         <Stack.Screen name='NewErrand' component={NewErrandContainer} />
         <Stack.Screen name='ErrandTracker' component={ErrandTrackerContainer} />
-        <Stack.Screen name='Map' component={MapContainer} />
         <Stack.Screen name='ErrandRequests' component={ErrandRequestsContainer} />
         <Stack.Screen name='NavBar' component={NavBarContainer} />
         <Stack.Screen name='UserProfile' component={UserProfileContainer} />

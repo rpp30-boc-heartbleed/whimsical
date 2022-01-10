@@ -13,11 +13,11 @@ import {
   sendMessage,
   receiveNewMessage,
 } from '../../../socket/connect';
-import { images } from '../../../constants';
+import { icons } from '../../../constants';
 import userProfileState from '../../../state/atoms/userProfile';
 // import findChat from '../../../state/selectors/findChat';
 
-const { cat } = images;
+const { cat } = icons;
 
 const Chat = ({ route, navigation }) => {
   const { errandId } = route.params;

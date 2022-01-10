@@ -16,7 +16,7 @@ import IconModal from '../../Modals/IconModal';
 // State
 import filteredByNameSelector from '../../../state/selectors/filterFriendsByName';
 // Assets
-import { images, icons, SIZES } from '../../../constants';
+import {icons, SIZES } from '../../../constants';
 
 const { star } = icons;
 
