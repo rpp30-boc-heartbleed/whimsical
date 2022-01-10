@@ -13,6 +13,7 @@ import {
   TouchableOpacity,
   Modal,
   Pressable,
+  Alert,
 } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
@@ -168,9 +169,9 @@ const UserProfileContainer = ({ navigation }) => {
           console.error(err);
         });
     } else if (pass.length < 8) {
-      alert('The password was too short. Please try again');
+      Alert('The password was too short. Please try again');
     } else if (pass !== confirmPass) {
-      alert('The passwords do not match. Please try again');
+      Alert('The passwords do not match. Please try again');
     }
   };
 
@@ -179,7 +180,9 @@ const UserProfileContainer = ({ navigation }) => {
       <View style={styles.container}>
         <Text
           style={styles.titleText}
-        >{user.name}'s Profile</Text>
+        // eslint-disable-next-line react/no-unescaped-entities
+        >{user.name}'s Profile
+        </Text>
         <Image
           style={styles.tinyLogo}
           source={{
@@ -196,21 +199,25 @@ const UserProfileContainer = ({ navigation }) => {
 
         <Text
           style={styles.textile}
-        >Username: {user.name}</Text>
+        >Username: {user.name}
+        </Text>
         <Text
           style={styles.textile}
-        >Email Address: {user.email}</Text>
+        >Email Address: {user.email}
+        </Text>
         <Text
           style={styles.textile}
         >Stars
           <AntDesign name="star" size={20} color="blue" />:  {stars}
-          </Text>
+        </Text>
         <Text
           style={styles.textile}
-        >Errands Completed <AntDesign name="checksquare" size={20} color="green" />: {user.errandsCompleted}</Text>
+        >Errands Completed <AntDesign name="checksquare" size={20} color="green" />: {user.errandsCompleted}
+        </Text>
         <Text
           style={styles.textile}
-        >Location: {user.location}</Text>
+        >Location: {user.location}
+        </Text>
       </View>
       <View style={styles.editForm}>
         <Button
@@ -237,24 +244,24 @@ const UserProfileContainer = ({ navigation }) => {
                 onSubmitEditing={handleSubmitUsername}
                 placeholder='Username'
                 style={styles.input}
-                />
+              />
               <TextInput
                 // style={styles.editForm}
                 onSubmitEditing={handleSubmitEmail}
                 placeholder='Email'
                 style={styles.input}
-                />
+              />
               <TextInput
                 // style={styles.editForm}
                 onSubmitEditing={handleSubmitLocation}
                 placeholder='Location'
                 style={styles.input}
-                />
+              />
               <Pressable
                 onPress={() => { setShowModal(false); setShowPassModal(false); }}
                 style={[styles.button, styles.buttonClose]}
                 // title="Cancel"
-                >
+              >
                 <Text style={styles.textStyle}>Cancel</Text>
               </Pressable>
             </View>
@@ -299,7 +306,7 @@ const UserProfileContainer = ({ navigation }) => {
               placeholder='Password'
               autoCapitalize='none'
               secureTextEntry
-              />
+            />
             <TextInput
               onChangeText={(e) => { console.log(e); setConfirmPass(e); }}
               style={styles.input}
@@ -369,24 +376,24 @@ const styles = StyleSheet.create({
   },
   centeredView: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
     marginTop: 22,
   },
   betterView: {
     height: 100,
-    justifyContent: "center",
-    alignItems: "center",
-    alignSelf: "stretch",
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignSelf: 'stretch',
     margin: 50,
   },
   passView: {
     margin: 20,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     borderRadius: 20,
     padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
+    alignItems: 'center',
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,
@@ -397,11 +404,11 @@ const styles = StyleSheet.create({
   },
   modalView: {
     margin: 20,
-    backgroundColor: "white",
+    backgroundColor: 'white',
     borderRadius: 20,
     padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
+    alignItems: 'center',
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,
@@ -416,24 +423,24 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   buttonOpen: {
-    backgroundColor: "#F194FF",
+    backgroundColor: '#F194FF',
   },
   buttonClose: {
-    backgroundColor: "#2196F3",
+    backgroundColor: '#2196F3',
   },
   textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center"
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
   modalText: {
     marginBottom: 15,
-    textAlign: "center"
+    textAlign: 'center',
   },
   textBox: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center"
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
   textile: {
     // flex: '1',
