@@ -11,11 +11,11 @@ import {
 import {
   AddFriend,
   List,
-  Search,
   Title,
   Toggle,
 } from './SubComponents';
 import NavBarContainer from '../NavBar/NavBarContainer';
+import SearchBar from '../Shared/SearchBar';
 import TestModal from '../Modals/TestModal';
 import Loading from '../Shared/Loading';
 // State
@@ -46,7 +46,7 @@ const FriendsListContainer = ({ navigation }) => {
           <Title style={styles.title} />
           <AddFriend style={styles.addButton} />
         </View>
-        <Search style={styles.search} />
+        <SearchBar style={styles.search} />
         <List navigation={navigation} style={styles.list} />
       </View>
       <View>
