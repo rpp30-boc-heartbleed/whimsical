@@ -15,3 +15,7 @@ public
 app.json
 # macOS
 .DS_Store
+
+# tests
+/coverage/
+/coverage.data

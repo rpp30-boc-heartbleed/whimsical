@@ -146,7 +146,6 @@ const LoginContainer = ({ navigation }) => {
               Register now.
             </Text>
           </TouchableOpacity>
-          {/* <Button text='Register' title='Register' testID='register' onPress={() => navigation.push('Register')} /> */}
         </View>
       </KeyboardAvoidingView>
     </View>
@@ -170,7 +169,7 @@ const styles = StyleSheet.create({
     color: '#00214d',
     backgroundColor: '#F78888',
     fontSize: 16,
-    fontWeight: '700',
+    fontWeight: '400',
     alignSelf: 'center',
   },
   image: {
@@ -184,14 +183,11 @@ const styles = StyleSheet.create({
   input: {
     width: '100%',
     backgroundColor: 'white',
-    // paddingHorizontal: 15,
-    // paddingVertical: ,
     padding: 1,
     borderWidth: 2,
     borderStyle: 'solid',
     borderColor: '#00214d',
     borderRadius: 5,
-    // marginTop: 5,
     margin: 10,
   },
   buttonContainer: {
