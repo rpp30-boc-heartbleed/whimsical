@@ -181,7 +181,7 @@ const UserProfileContainer = ({ navigation }) => {
         <Text
           style={styles.titleText}
         // eslint-disable-next-line react/no-unescaped-entities
-        >{user.name}'s Profile
+        >{user.name}&apos;s Profile
         </Text>
         <Image
           style={styles.tinyLogo}

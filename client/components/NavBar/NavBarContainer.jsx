@@ -39,7 +39,7 @@ const NavBarContainer = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#0782F9',
+    backgroundColor: '#00ebc7',
     justifyContent: 'space-between',
     flexDirection: 'row',
     padding: 25,
