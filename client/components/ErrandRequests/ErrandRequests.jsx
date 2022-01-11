@@ -43,6 +43,7 @@ export default ErrandRequests;
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: '#ECECEC',
     flex: 1,
     paddingTop: 22,
   },

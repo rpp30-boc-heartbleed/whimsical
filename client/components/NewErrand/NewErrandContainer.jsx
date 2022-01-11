@@ -110,7 +110,7 @@ const NewErrandContainer = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: '#90CCF4',
     flex: 1,
   },
   container2: {
@@ -128,24 +128,27 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginTop: 10,
     marginBottom: 23,
-    borderColor: '#0782F9',
+    borderStyle: 'solid',
+    borderColor: '#00214d',
     textAlign: 'center',
+    backgroundColor: 'white',
   },
   buttons: {
     flexDirection: 'row',
+    padding: 5,
     marginTop: 50,
-    marginBottom: -20,
+    marginBottom: -5,
   },
   cancel: {
     borderWidth: 2,
     borderRadius: 5,
-    borderColor: 'red',
+    borderColor: '#3da9fc',
     marginRight: 70,
   },
   submit: {
     borderWidth: 2,
+    borderColor: '#3da9fc',
     borderRadius: 5,
-    borderColor: 'green',
   },
 });
 

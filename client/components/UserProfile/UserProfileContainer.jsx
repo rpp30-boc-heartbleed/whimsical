@@ -282,6 +282,7 @@ const UserProfileContainer = ({ navigation }) => {
           placeholder='Location'
         /> */}
         <Button
+        color=''
           onPress={() => { setShowPassModal(!showPassModal); }}
           title="Change Password"
         />
@@ -338,9 +339,10 @@ const UserProfileContainer = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#F3D250',
     alignItems: 'center',
     justifyContent: 'center',
+    opacity: 0.9,
   },
   titleText: {
     fontSize: 20,
@@ -356,7 +358,8 @@ const styles = StyleSheet.create({
     color: 'black',
     alignItems: 'center',
     justifyContent: 'center',
-    margin: 10,
+    maxHeight: 250,
+    margin: 5,
   },
   uploadBtnContainer: {
     opacity: 0.7,
