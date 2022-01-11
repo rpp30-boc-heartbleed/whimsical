@@ -137,8 +137,16 @@ const LoginContainer = ({ navigation }) => {
         </View>
         <View style={styles.registerContainer}>
           <Text style={styles.registerText}>Don&apos;t have an acccount?</Text>
-          <Button borderWidth='2' borderRadius='10' color='#00ebc7' title='Register' testID='register' onPress={() => navigation.push('Register')} />
-          <Text style={styles.registerText}>now.</Text>
+          <TouchableOpacity
+            title='Register'
+            testID='register'
+            onPress={() => navigation.push('Register')}
+          >
+            <Text style={styles.registerLink}>
+              Register now.
+            </Text>
+          </TouchableOpacity>
+          {/* <Button text='Register' title='Register' testID='register' onPress={() => navigation.push('Register')} /> */}
         </View>
       </KeyboardAvoidingView>
     </View>
@@ -148,19 +156,19 @@ const LoginContainer = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ff6e85',
+    backgroundColor: '#90CCF4',
     justifyContent: 'center',
   },
   title: {
     fontWeight: 'bold',
-    color: '#fffffe',
+    color: '#272343',
     fontSize: 24,
     alignSelf: 'center',
     marginTop: 15,
   },
   error: {
-    color: '#fffffe',
-    backgroundColor: '#00ebc7',
+    color: '#00214d',
+    backgroundColor: '#F78888',
     fontSize: 16,
     fontWeight: '700',
     alignSelf: 'center',
@@ -191,15 +199,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   button: {
-    backgroundColor: '#00ebc7',
+    backgroundColor: '#F3D250',
     width: '30%',
     padding: 15,
     borderRadius: 10,
   },
   buttonOutline: {
-    backgroundColor: '#00ebc7',
+    backgroundColor: '#F3D250',
     marginTop: 5,
-    borderColor: '#00ebc7',
+    borderColor: '#F3D250',
     borderWidth: 2,
   },
   buttonText: {
@@ -219,7 +227,13 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginTop: 9,
     color: '#00214d',
-    padding: 4,
+  },
+  registerLink: {
+    fontSize: 16,
+    marginTop: 9,
+    color: '#0057D9',
+    paddingLeft: 5,
+    paddingRight: 5,
   },
   navbar: {
     justifyContent: 'flex-end',

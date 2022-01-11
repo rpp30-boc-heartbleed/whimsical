@@ -249,7 +249,7 @@ const RegisterContainer = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#ff5470',
+    backgroundColor: '#90CCF4',
     alignItems: 'center',
     justifyContent: 'center',
   },
