@@ -148,7 +148,7 @@ const LoginContainer = ({ navigation }) => {
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
-      <NavBarContainer navigation={navigation} />
+      {/* <NavBarContainer navigation={navigation} /> */}
     </View>
   );
 };
