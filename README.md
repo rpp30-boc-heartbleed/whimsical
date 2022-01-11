@@ -1,6 +1,6 @@
 <!-----------------------------PROJECT LOGO ------------------------>
 <div align="center">
-<img src="client/assets/icons/bagel-icon.png" alt="Bagel Logo">
+<img src="client/assets/icons/Logo.png" alt="Bagel Logo">
 </div>
 
 <h1 align="center"> Quick Bagel </h1>
@@ -75,7 +75,7 @@
 ## About the App
 <!-- Add any additional content here pertaining to timeline, personal goals, etc-->
 
-This application will allow the community to save time while running errands for one another. 
+This application will allow the community to save time while running errands for one another.
 <!--
 * What problem does it solve? Who uses it?
 * Why was it built?
@@ -224,13 +224,13 @@ What additional features do you plan to add, how do you plan to implement those 
 
 <!-- Examples: websockets (socket.io) -->
 - [x] Login & Registration with Authentication
-- [ ] Real Time Geolocation Tracking 
+- [ ] Real Time Geolocation Tracking
 - [ ] Chat Functionality
 - [ ] Active Errand List
-- [ ] Post-Errand Rating Form 
+- [ ] Post-Errand Rating Form
 
 
- 
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 

@@ -1,15 +1,22 @@
+/* eslint-disable global-require */
 import React, { useState, useEffect } from 'react';
 import {
   KeyboardAvoidingView,
   View,
   Text,
   StyleSheet,
-  TextInput,
   StatusBar,
   Button,
   TouchableOpacity,
+  Image,
 } from 'react-native';
+import { TextInput } from 'react-native-paper';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import {
+  COLORS,
+  SIZES,
+  icons,
+} from '../../constants';
 import auth from '../../config/firebase';
 import NavBarContainer from '../NavBar/NavBarContainer';
 
@@ -95,6 +102,7 @@ const LoginContainer = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to Quick Bagel!</Text>
+      <Image style={styles.image} size={65} source={require('../../assets/icons/minilogo.png')} />
       <KeyboardAvoidingView style={styles.container}>
         <View style={styles.inputContainer}>
           {error ? <Text style={styles.error} testID='errorMsg'>{error}</Text> : null}
@@ -104,6 +112,7 @@ const LoginContainer = ({ navigation }) => {
             autoCapitalize='none'
             value={email}
             testID='email'
+            left={<TextInput.Icon name='account' />}
             onChangeText={(value) => handleOnChangeText(value, 'email')}
           />
           <TextInput
@@ -112,6 +121,7 @@ const LoginContainer = ({ navigation }) => {
             autoCapitalize='none'
             value={password}
             testID='password'
+            left={<TextInput.Icon name='form-textbox-password' />}
             onChangeText={(value) => handleOnChangeText(value, 'password')}
             secureTextEntry
           />
@@ -127,8 +137,16 @@ const LoginContainer = ({ navigation }) => {
         </View>
         <View style={styles.registerContainer}>
           <Text style={styles.registerText}>Don&apos;t have an acccount?</Text>
-          <Button title='Register' testID='register' onPress={() => navigation.push('Register')} />
-          <Text style={styles.registerText}>now.</Text>
+          <TouchableOpacity
+            title='Register'
+            testID='register'
+            onPress={() => navigation.push('Register')}
+          >
+            <Text style={styles.registerLink}>
+              Register now.
+            </Text>
+          </TouchableOpacity>
+          {/* <Button text='Register' title='Register' testID='register' onPress={() => navigation.push('Register')} /> */}
         </View>
       </KeyboardAvoidingView>
     </View>
@@ -138,59 +156,67 @@ const LoginContainer = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#90CCF4',
     justifyContent: 'center',
   },
   title: {
-    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#272343',
+    fontSize: 24,
     alignSelf: 'center',
     marginTop: 15,
   },
   error: {
-    color: 'red',
+    color: '#00214d',
+    backgroundColor: '#F78888',
     fontSize: 16,
     fontWeight: '700',
     alignSelf: 'center',
   },
+  image: {
+    alignSelf: 'center',
+    marginTop: 15,
+  },
   inputContainer: {
-    width: '80%',
+    width: '65%',
     alignSelf: 'center',
   },
   input: {
     width: '100%',
     backgroundColor: 'white',
-    paddingHorizontal: 15,
-    paddingVertical: 10,
+    // paddingHorizontal: 15,
+    // paddingVertical: ,
+    padding: 1,
     borderWidth: 2,
     borderStyle: 'solid',
-    borderColor: '#0782F9',
-    borderRadius: 10,
-    marginTop: 5,
+    borderColor: '#00214d',
+    borderRadius: 5,
+    // marginTop: 5,
+    margin: 10,
   },
   buttonContainer: {
     justifyContent: 'center',
     alignItems: 'center',
   },
   button: {
-    backgroundColor: '#0782F9',
+    backgroundColor: '#F3D250',
     width: '30%',
     padding: 15,
     borderRadius: 10,
   },
   buttonOutline: {
-    backgroundColor: 'white',
+    backgroundColor: '#F3D250',
     marginTop: 5,
-    borderColor: '#0782F9',
+    borderColor: '#F3D250',
     borderWidth: 2,
   },
   buttonText: {
-    color: 'white',
     fontWeight: '700',
     fontSize: 16,
     alignSelf: 'center',
   },
   buttonOutlineText: {
-    color: '#0782F9',
+    color: '#00214d',
   },
   registerContainer: {
     flexDirection: 'row',
@@ -200,6 +226,14 @@ const styles = StyleSheet.create({
   registerText: {
     fontSize: 16,
     marginTop: 9,
+    color: '#00214d',
+  },
+  registerLink: {
+    fontSize: 16,
+    marginTop: 9,
+    color: '#0057D9',
+    paddingLeft: 5,
+    paddingRight: 5,
   },
   navbar: {
     justifyContent: 'flex-end',

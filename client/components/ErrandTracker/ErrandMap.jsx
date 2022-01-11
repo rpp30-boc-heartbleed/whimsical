@@ -16,7 +16,7 @@ import {
 } from 'react-native';
 import { GOOGLE_MAPS_API_KEY } from '@env';
 import {
-  COLORS, SIZES, icons, images,
+  COLORS, SIZES, icons,
 } from '../../constants';
 
 const path = [
@@ -99,7 +99,7 @@ const ErrandMap = ({ setEta, errand }) => {
           <Image
             draggable
             // eslint-disable-next-line global-require
-            source={require('../../assets/icons/Icon.png')}
+            source={require('../../assets/icons/Logo.png')}
             style={{ width: 35, height: 45 }}
             resizeMode='center'
             resizeMethod='resize'
