@@ -5,11 +5,12 @@ import {
   View,
   Text,
   StyleSheet,
-  TextInput,
+  ScrollView,
   StatusBar,
   Button,
   TouchableOpacity,
 } from 'react-native';
+import { TextInput } from 'react-native-paper';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { HOST_URL } from '@env';
 import auth from '../../config/firebase';
@@ -149,99 +150,114 @@ const RegisterContainer = ({ navigation }) => {
 
   return (
     <KeyboardAvoidingView style={styles.container} behavior='padding'>
-      <View>
-        <Text>Welcome to Quick Bagel!</Text>
-        {/* <StatusBar /> */}
-      </View>
-      <View style={styles.inputContainer}>
-        {error ? <Text style={styles.error}>{error}</Text> : null}
-        <TextInput
-          style={styles.input}
-          placeholder='name'
-          value={name}
-          testID='name'
-          onChangeText={(value) => handleOnChangeText(value, 'name')}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder='street address'
-          autoCapitalize='none'
-          value={streetAddress}
-          testID='streetAddress'
-          onChangeText={(value) => handleOnChangeText(value, 'streetAddress')}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder='city'
-          autoCapitalize='none'
-          value={city}
-          testID='city'
-          onChangeText={(value) => handleOnChangeText(value, 'city')}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder='state'
-          autoCapitalize='none'
-          value={state}
-          testID='state'
-          onChangeText={(value) => handleOnChangeText(value, 'state')}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder='zip code'
-          autoCapitalize='none'
-          value={zipCode}
-          testID='zipCode'
-          onChangeText={(value) => handleOnChangeText(value, 'zipCode')}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder='image url'
-          autoCapitalize='none'
-          value={imageURL}
-          testID='imageURL'
-          onChangeText={(value) => handleOnChangeText(value, 'imageURL')}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder='email'
-          autoCapitalize='none'
-          value={email}
-          testID='email'
-          onChangeText={(value) => handleOnChangeText(value, 'email')}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder='password'
-          autoCapitalize='none'
-          value={password}
-          testID='password'
-          onChangeText={(value) => handleOnChangeText(value, 'password')}
-          secureTextEntry
-        />
-        <TextInput
-          style={styles.input}
-          placeholder='confirm password'
-          value={confirmPassword}
-          autoCapitalize='none'
-          testID='confirmPassword'
-          onChangeText={(value) => handleOnChangeText(value, 'confirmPassword')}
-          secureTextEntry
-        />
-      </View>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={[styles.button, styles.buttonOutline]}
-          testID='submitRegister'
-          onPress={submitForm}
-        >
-          <Text style={styles.buttonOutlineText}>Create Account</Text>
-        </TouchableOpacity>
-      </View>
-      <View style={styles.loginContainer}>
-        <Text style={styles.loginText}>Have an acccount already?</Text>
-        <Button title='Login' testID='login' onPress={() => navigation.navigate('Login')} />
-      </View>
+      <ScrollView centerContent bounces showsVerticalScrollIndicator={false}>
+        <View>
+          <Text style={styles.title}>Welcome to Quick Bagel!</Text>
+          {/* <StatusBar /> */}
+        </View>
+        <View style={styles.inputContainer}>
+          {error ? <Text style={styles.error}>{error}</Text> : null}
+          <TextInput
+            style={styles.input}
+            placeholder='name'
+            value={name}
+            testID='name'
+            left={<TextInput.Icon name='pencil' />}
+            onChangeText={(value) => handleOnChangeText(value, 'name')}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder='street address'
+            autoCapitalize='none'
+            value={streetAddress}
+            testID='streetAddress'
+            left={<TextInput.Icon name='home' />}
+            onChangeText={(value) => handleOnChangeText(value, 'streetAddress')}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder='city'
+            autoCapitalize='none'
+            value={city}
+            testID='city'
+            left={<TextInput.Icon name='city' />}
+            onChangeText={(value) => handleOnChangeText(value, 'city')}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder='state'
+            autoCapitalize='none'
+            value={state}
+            testID='state'
+            left={<TextInput.Icon name='map' />}
+            onChangeText={(value) => handleOnChangeText(value, 'state')}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder='zip code'
+            autoCapitalize='none'
+            value={zipCode}
+            testID='zipCode'
+            left={<TextInput.Icon name='map' />}
+            onChangeText={(value) => handleOnChangeText(value, 'zipCode')}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder='image url'
+            autoCapitalize='none'
+            value={imageURL}
+            testID='imageURL'
+            left={<TextInput.Icon name='camera' />}
+            onChangeText={(value) => handleOnChangeText(value, 'imageURL')}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder='email'
+            autoCapitalize='none'
+            value={email}
+            testID='email'
+            left={<TextInput.Icon name='email' />}
+            onChangeText={(value) => handleOnChangeText(value, 'email')}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder='password'
+            autoCapitalize='none'
+            value={password}
+            testID='password'
+            left={<TextInput.Icon name='form-textbox-password' />}
+            onChangeText={(value) => handleOnChangeText(value, 'password')}
+            secureTextEntry
+          />
+          <TextInput
+            style={styles.input}
+            placeholder='confirm password'
+            value={confirmPassword}
+            autoCapitalize='none'
+            testID='confirmPassword'
+            left={<TextInput.Icon name='form-textbox-password' />}
+            onChangeText={(value) => handleOnChangeText(value, 'confirmPassword')}
+            secureTextEntry
+          />
+        </View>
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity
+            style={[styles.button, styles.buttonOutline]}
+            testID='submitRegister'
+            onPress={submitForm}
+          >
+            <Text style={styles.buttonOutlineText}>Create Account</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={styles.loginContainer}>
+          <Text style={styles.loginText}>Have an acccount already?</Text>
+          <TouchableOpacity title='Login' testID='login' onPress={() => navigation.navigate('Login')}>
+            <Text style={styles.loginLink}>
+              Login
+            </Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
     </KeyboardAvoidingView>
   );
 };
@@ -253,49 +269,61 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  title: {
+    fontWeight: 'bold',
+    color: '#272343',
+    fontSize: 24,
+    alignSelf: 'center',
+    marginTop: 15,
+  },
   error: {
-    color: 'red',
+    color: '#00214d',
+    backgroundColor: '#F78888',
     fontSize: 16,
-    fontWeight: '700',
+    fontWeight: '400',
     alignSelf: 'center',
   },
   inputContainer: {
-    width: '80%',
+    width: '90%',
   },
   input: {
+    width: '100%',
     backgroundColor: 'white',
-    paddingHorizontal: 15,
-    paddingVertical: 10,
-    borderWidth: 1,
+    padding: 1,
+    borderWidth: 2,
     borderStyle: 'solid',
-    borderColor: '#0782F9',
-    borderRadius: 10,
+    borderColor: '#00214d',
+    borderRadius: 5,
     marginTop: 5,
+    margin: 10,
+    opacity: 0.8,
   },
   buttonContainer: {
     justifyContent: 'center',
     alignItems: 'center',
   },
   button: {
-    backgroundColor: '#00ebc7',
-    width: '100%',
+    backgroundColor: '#F3D250',
+    width: '70%',
     padding: 15,
     borderRadius: 10,
     textAlign: 'center',
   },
   buttonOutline: {
-    backgroundColor: 'white',
+    backgroundColor: '#F3D250',
     marginTop: 5,
-    borderColor: '#0782F9',
+    borderColor: '#F3D250',
     borderWidth: 2,
   },
   buttonText: {
-    color: 'white',
-    fontWeight: '700',
     fontSize: 16,
+    alignSelf: 'center',
   },
   buttonOutlineText: {
-    color: '#0782F9',
+    fontWeight: '700',
+    fontSize: 16,
+    color: '#00214d',
+    alignSelf: 'center',
   },
   loginContainer: {
     flexDirection: 'row',
@@ -303,7 +331,14 @@ const styles = StyleSheet.create({
   },
   loginText: {
     fontSize: 16,
-    marginTop: 9,
+    marginTop: 5,
+  },
+  loginLink: {
+    fontSize: 16,
+    marginTop: 5,
+    color: '#0057D9',
+    paddingLeft: 5,
+    paddingRight: 5,
   },
 });
 

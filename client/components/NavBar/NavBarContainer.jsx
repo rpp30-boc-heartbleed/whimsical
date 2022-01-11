@@ -57,7 +57,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'space-between',
     flexDirection: 'row',
-    // flex: 1,
     padding: 25,
     marginTop: 50,
     borderWidth: 1,
