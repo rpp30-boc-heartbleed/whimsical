@@ -19,6 +19,35 @@ const DashboardBody = ({ navigation }) => {
   const userProfile = useRecoilValue(userProfileState);
   const [newDataFromMongo, setNewDataFromMongo] = useState([]);
 
+  const timeFormat = () => {
+    const date = new Date();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    const ampm = hours >= 12 ? 'pm' : 'am';
+    hours %= 12;
+    hours = hours || 12;
+    minutes = minutes < 10 ? `0${minutes}` : minutes;
+    const strTime = `${hours}:${minutes} ${ampm}`;
+    return strTime;
+  };
+
+  const compareTime = (time1, time2) => {
+    const re = /^([012]?\d):([0-6]?\d)\s*(a|p)m$/i;
+    time1 = time1.match(re);
+    time2 = time2.match(re);
+    if (time1 && time2) {
+      const is_pm1 = /p/i.test(time1[3]) ? 12 : 0;
+      const hour1 = (time1[1] * 1 + is_pm1) % 12;
+      const is_pm2 = /p/i.test(time2[3]) ? 12 : 0;
+      const hour2 = (time2[1] * 1 + is_pm2) % 12;
+      if (hour1 !== hour2) return hour1 > hour2;
+
+      const minute1 = time1[2] * 1;
+      const minute2 = time2[2] * 1;
+      return minute1 > minute2;
+    }
+  };
+
   useEffect(() => {
     axios
       .get(`${HOST_URL}/getErrandData`)
@@ -30,7 +59,7 @@ const DashboardBody = ({ navigation }) => {
         for (let i = 0; i < data.data.length; i++) {
           const short = data.data[i];
 
-          if (short.status === 'Pending') {
+          if (!compareTime(timeFormat(), short.storeETA)) {
             dataArr.push(short);
           }
         }
