@@ -11,6 +11,12 @@ const avatars = [
   'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Emoji_u1f9c0.svg/1200px-Emoji_u1f9c0.svg.png',
 ];
 
+const dynamicDate = (sub) => {
+  const now = new Date();
+  const olderDate = moment(now).subtract(sub, 'minutes').toDate();
+  return olderDate;
+};
+
 const mockRequestors = [
   {
     name: 'Orange',
@@ -108,9 +114,10 @@ const mockRunners = [
 const mockErrands = [
   {
     id: 1,
-    timeOfPost: '2022-01-06T01:24:44.124Z',
+    // timeOfPost: '2022-01-06T01:24:44.124Z',
+    timeOfPost: `${dynamicDate(30)}`,
     errandName: 'Impromptu Bagel Run',
-    storeETA: null,
+    storeETA: '1:30 pm',
     storeName: 'Big Apple Bagels',
     storeAddress: {
       streetName: '4408 W Main St',
@@ -136,9 +143,9 @@ const mockErrands = [
   },
   {
     id: 2,
-    timeOfPost: '2022-01-06T01:24:44.124Z',
+    timeOfPost: `${dynamicDate(27)}`,
     errandName: "Pick up my yeezy's",
-    storeETA: null,
+    storeETA: '2:30 pm',
     storeName: 'Harper Funeral Home',
     storeAddress: {
       streetName: '521 Douglas Ave',
@@ -164,9 +171,9 @@ const mockErrands = [
   },
   {
     id: 3,
-    timeOfPost: '2022-01-06T01:24:44.124Z',
+    timeOfPost: `${dynamicDate(24)}`,
     errandName: 'Biscuit Run',
-    storeETA: null,
+    storeETA: '3:30 pm',
     storeName: "Daysha's Convenient Store",
     storeAddress: {
       streetName: '715 Douglas Ave',
@@ -192,9 +199,9 @@ const mockErrands = [
   },
   {
     id: 4,
-    timeOfPost: '2022-01-06T01:24:44.124Z',
+    timeOfPost: `${dynamicDate(20)}`,
     errandName: 'Wine Run',
-    storeETA: '45 minutes',
+    storeETA: '4:30 pm',
     storeName: 'Henderson Castle',
     storeAddress: {
       streetName: '100 Monroe St',
@@ -220,9 +227,9 @@ const mockErrands = [
   },
   {
     id: 5,
-    timeOfPost: '2022-01-06T01:24:44.124Z',
+    timeOfPost: `${dynamicDate(19)}`,
     errandName: 'Pick up my dog',
-    storeETA: null,
+    storeETA: '5:30 pm',
     storeName: 'Henderson Park',
     storeAddress: {
       streetName: '1300 Grand Ave',
@@ -248,9 +255,9 @@ const mockErrands = [
   },
   {
     id: 6,
-    timeOfPost: '2022-01-06T01:24:44.124Z',
+    timeOfPost: `${dynamicDate(15)}`,
     errandName: 'Forgot my college papers',
-    storeETA: null,
+    storeETA: '6:30 pm',
     storeName: 'Biscuit drive',
     storeAddress: {
       streetName: '106 Thompson St',
@@ -276,9 +283,9 @@ const mockErrands = [
   },
   {
     id: 7,
-    timeOfPost: '2022-01-06T01:24:44.124Z',
+    timeOfPost: `${dynamicDate(12)}`,
     errandName: "It's steak night",
-    storeETA: null,
+    storeETA: '7:30 pm',
     storeName: 'H Prime Chop Steakhouse',
     storeAddress: {
       streetName: '101 Monroe St',
@@ -304,9 +311,9 @@ const mockErrands = [
   },
   {
     id: 8,
-    timeOfPost: '2022-01-06T01:24:44.124Z',
+    timeOfPost: `${dynamicDate(10)}`,
     errandName: 'I forgot my hair',
-    storeETA: null,
+    storeETA: '8:30 pm',
     storeName: 'Ultima Hair Salon',
     storeAddress: {
       streetName: '1604 W Main St',
@@ -332,9 +339,9 @@ const mockErrands = [
   },
   {
     id: 9,
-    timeOfPost: '2022-01-06T01:24:44.124Z',
+    timeOfPost: `${dynamicDate(9)}`,
     errandName: 'Check out apartment',
-    storeETA: null,
+    storeETA: '9:30 pm',
     storeName: 'Biscuit drive',
     storeAddress: {
       streetName: '735 Summit Ave',
@@ -359,12 +366,6 @@ const mockErrands = [
     chat: 9,
   },
 ];
-
-const dynamicDate = (sub) => {
-  const now = new Date();
-  const olderDate = moment(now).subtract(sub, 'minutes').toDate();
-  return olderDate;
-};
 
 const mockErrandsData = [
   {

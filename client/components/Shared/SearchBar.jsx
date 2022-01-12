@@ -23,7 +23,7 @@ const SearchBar = ({ style }) => {
     <View>
       <TextInput
         style={style}
-        placeholder='SEARCH'
+        placeholder='Search'
         onChangeText={onChange}
         autoCapitalize='none'
       />

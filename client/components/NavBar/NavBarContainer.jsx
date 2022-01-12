@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     flexDirection: 'row',
     padding: 25,
-    marginTop: 50,
+    // marginTop: 50,
     borderWidth: 1,
     borderStyle: 'solid',
     borderColor: '#ECECEC',
