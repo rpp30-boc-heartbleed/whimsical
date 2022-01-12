@@ -125,6 +125,7 @@ const LoginContainer = ({ navigation }) => {
             value={email}
             testID='email'
             left={<TextInput.Icon name='account' />}
+            outlineColor="#fff"
             onChangeText={(value) => handleOnChangeText(value, 'email')}
           />
           <TextInput
@@ -135,6 +136,7 @@ const LoginContainer = ({ navigation }) => {
             autoCapitalize='none'
             value={password}
             testID='password'
+            outlineColor="#fff"
             left={<TextInput.Icon name='form-textbox-password' />}
             onChangeText={(value) => handleOnChangeText(value, 'password')}
             secureTextEntry
@@ -205,7 +207,6 @@ const styles = StyleSheet.create({
     width: '100%',
     // backgroundColor: 'white',
     padding: 1,
-    // borderWidth: 2,
     // borderStyle: 'solid',
     // borderColor: '#00214d',
     // borderRadius: 5,

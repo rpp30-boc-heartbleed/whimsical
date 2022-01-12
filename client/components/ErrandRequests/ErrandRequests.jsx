@@ -27,9 +27,7 @@ const ErrandRequests = ({ navigation }) => {
           return (
             <TouchableOpacity
               style={styles.friend}
-              onPress={() =>
-                navigation.navigate('ErrandTracker', { errand: item })
-              }
+              onPress={() => navigation.navigate('ErrandTracker', { errand: item })}
             >
               <View style={styles.item}>
                 <View style={{ flexDirection: 'column' }}>
