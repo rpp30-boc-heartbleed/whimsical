@@ -31,15 +31,18 @@ const DashboardBody = ({ navigation }) => {
     return strTime;
   };
 
+  // eslint-disable-next-line consistent-return
   const compareTime = (time1, time2) => {
     const re = /^([012]?\d):([0-6]?\d)\s*(a|p)m$/i;
+    // eslint-disable-next-line no-param-reassign
     time1 = time1.match(re);
+    // eslint-disable-next-line no-param-reassign
     time2 = time2.match(re);
     if (time1 && time2) {
-      const is_pm1 = /p/i.test(time1[3]) ? 12 : 0;
-      const hour1 = (time1[1] * 1 + is_pm1) % 12;
-      const is_pm2 = /p/i.test(time2[3]) ? 12 : 0;
-      const hour2 = (time2[1] * 1 + is_pm2) % 12;
+      const isPM1 = /p/i.test(time1[3]) ? 12 : 0;
+      const hour1 = (time1[1] * 1 + isPM1) % 12;
+      const isPM2 = /p/i.test(time2[3]) ? 12 : 0;
+      const hour2 = (time2[1] * 1 + isPM2) % 12;
       if (hour1 !== hour2) return hour1 > hour2;
 
       const minute1 = time1[2] * 1;

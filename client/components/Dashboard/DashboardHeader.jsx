@@ -28,8 +28,15 @@ const DashboardHeader = ({ navigation }) => {
           source={{ uri: user.picture }}
           style={styles.profilePic}
         />
-        <TextInput style={styles.searchBar} placeholder='Search' />
+
+        <TextInput
+          style={styles.searchBar}
+          placeholder='Search'
+          autoCapitalize='none'
+        />
+
         <Button title='sign out' onPress={() => handleSignOut(auth)} />
+
       </View>
       {/* <View style={styles.filter}>
         <Text style={styles.filterText}>Current Filter: Most Recent ▼</Text>
