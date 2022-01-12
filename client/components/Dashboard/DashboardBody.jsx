@@ -66,9 +66,9 @@ const DashboardBody = ({ navigation }) => {
         for (let i = 0; i < data.data.length; i++) {
           const short = data.data[i];
 
-          // if (!compareTime(timeFormat(), short.storeETA)) {
+          if (!compareTime(timeFormat(), short.storeETA)) {
             dataArr.push(short);
-          // }
+          }
         }
         // sorts posts -> most recent on top
         dataArr.sort((b, a) => {
