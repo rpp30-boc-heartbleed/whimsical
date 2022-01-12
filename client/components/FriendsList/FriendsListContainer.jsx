@@ -61,6 +61,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#90CCF4',
   },
   header: {
     flexDirection: 'row',
@@ -81,7 +82,8 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     fontSize: 14,
     borderColor: 'black',
-    borderWidth: 1,
+    backgroundColor: 'white',
+    borderWidth: 2,
     height: 50,
     width: (width * 0.8),
     textAlign: 'center',
@@ -89,16 +91,6 @@ const styles = StyleSheet.create({
   list: {
     flex: 1,
     width: '100%',
-  },
-  friend: {
-    padding: 15,
-    fontSize: 14,
-    borderRadius: 20,
-    borderColor: 'black',
-    borderWidth: 1,
-    width: '100%',
-    height: 60,
-    marginTop: 25,
   },
 });
 

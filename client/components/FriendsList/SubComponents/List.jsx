@@ -31,10 +31,10 @@ const List = ({ style, navigation }) => {
           return (
             <View style={styles.friend}>
               <TouchableOpacity style={styles.avatar}>
-                <Avatar.Image size={50} source={item.avatar} />
+                <Avatar.Image size={60} source={item.avatar} />
               </TouchableOpacity>
               <View style={styles.text}>
-                <Text>
+                <Text style={styles.name}>
                   {item.name}
                 </Text>
                 <Text>{item.goldStars}<Image style={styles.star} source={star} /></Text>
@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     padding: 15,
     width: '100%',
     height: 80,
-    marginTop: 15,
+    // marginTop: 15,
   },
   avatar: {
     flex: 1,
@@ -74,13 +74,17 @@ const styles = StyleSheet.create({
   },
   text: {
     flex: 4,
+    alignItems: 'center',
     // flexDirection: 'row',
-    fontSize: 14,
     borderRadius: 30,
     borderColor: 'black',
-    borderWidth: 1,
+    backgroundColor: 'white',
+    borderWidth: 2,
     height: 60,
     padding: 10,
+  },
+  name: {
+    fontSize: 20,
   },
   star: {
     width: 15,

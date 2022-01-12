@@ -13,7 +13,7 @@ const Title = ({ style }) => {
   const [friendsList, setFriendsList] = useRecoilState(friendsListState);
   return (
     <View style={style}>
-      <Text style={styles.heading}>Buddies</Text>
+      <Text style={styles.heading}>Friends List</Text>
       <Text style={styles.number}>{friendsList.length} friends</Text>
     </View>
   );

@@ -9,7 +9,8 @@ const AddFriend = ({ style }) => {
       <TouchableOpacity>
         <IconButton
           icon='account-plus-outline'
-          size={50}
+          size={40}
+          // color='#F3D250'
           style={styles.add}
         />
       </TouchableOpacity>
@@ -19,6 +20,7 @@ const AddFriend = ({ style }) => {
 
 const styles = StyleSheet.create({
   add: {
+    backgroundColor: '#F3D250',
   },
 });
 
