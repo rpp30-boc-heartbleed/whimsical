@@ -14,6 +14,7 @@ import userProfileState from '../../state/atoms/userProfile';
 
 const DashboardContainer = ({ navigation }) => {
   const [user, setUser] = useRecoilState(userProfileState);
+
   useEffect(() => {
     axios.get(`${HOST_URL}/userProfile/get?email=${auth.auth.currentUser.email}`)
       .then((data) => {

@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
-import { FlatList, StyleSheet, TouchableOpacity, View } from 'react-native';
+import {
+  FlatList, StyleSheet, TouchableOpacity, View,
+} from 'react-native';
 import { Text } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useRecoilValue } from 'recoil';

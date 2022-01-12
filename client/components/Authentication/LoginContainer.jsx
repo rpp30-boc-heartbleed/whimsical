@@ -67,8 +67,7 @@ const LoginContainer = ({ navigation }) => {
         // console.log('error', err);
         console.log('err code', err.code);
         if (
-          err.code ===
-          'auth/invalid-value-(email),-starting-an-object-on-a-scalar-field'
+          err.code === 'auth/invalid-value-(email),-starting-an-object-on-a-scalar-field'
         ) {
           setError('Please enter a valid email address');
         }
