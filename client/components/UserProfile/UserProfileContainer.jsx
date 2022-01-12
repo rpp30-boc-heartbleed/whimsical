@@ -18,6 +18,7 @@ import {
 import { AntDesign } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import { getAuth, updatePassword } from 'firebase/auth';
+import { COLORS, SIZES, icons } from '../../constants';
 import auth from '../../config/firebase';
 // import storage from '../../config/firebase';
 import 'firebase/storage';
@@ -34,8 +35,9 @@ const UserProfileContainer = ({ navigation }) => {
   const [showPassModal, setShowPassModal] = useState(false);
 
   useEffect(() => {
-    axios.get(`${HOST_URL}/userProfile/get?email=${auth.auth.currentUser.email}`) // add '?name=Ojeiku' to queryString
-    // axios.get(`http://localhost:3000/userProfile/get?email=${auth.auth.currentUser.email}`) // add '?name=Ojeiku' to queryString
+    axios
+      .get(`${HOST_URL}/userProfile/get?email=${auth.auth.currentUser.email}`) // add '?name=Ojeiku' to queryString
+      // axios.get(`http://localhost:3000/userProfile/get?email=${auth.auth.currentUser.email}`) // add '?name=Ojeiku' to queryString
       .then((data) => {
         // console.log('loaded profile', data.data.data[0]);
         setUser(data.data.data[0]);
@@ -55,10 +57,11 @@ const UserProfileContainer = ({ navigation }) => {
       stars: user.stars,
       location: user.location,
     };
-    axios.post(`${HOST_URL}/userProfile/edit`, {
-      formerUser: user,
-      updatedUser: newUser,
-    })
+    axios
+      .post(`${HOST_URL}/userProfile/edit`, {
+        formerUser: user,
+        updatedUser: newUser,
+      })
       .then(() => {
         // console.log('refreshing...', value);
         setUser(newUser);
@@ -77,10 +80,11 @@ const UserProfileContainer = ({ navigation }) => {
       stars: user.stars,
       location: user.location,
     };
-    axios.post(`${HOST_URL}/userProfile/edit`, {
-      formerUser: user,
-      updatedUser: newUser,
-    })
+    axios
+      .post(`${HOST_URL}/userProfile/edit`, {
+        formerUser: user,
+        updatedUser: newUser,
+      })
       .then(() => {
         // console.log('refreshing...', value);
         setUser(newUser);
@@ -99,10 +103,11 @@ const UserProfileContainer = ({ navigation }) => {
       stars: user.stars,
       location: value,
     };
-    axios.post(`${HOST_URL}/userProfile/edit`, {
-      formerUser: user,
-      updatedUser: newUser,
-    })
+    axios
+      .post(`${HOST_URL}/userProfile/edit`, {
+        formerUser: user,
+        updatedUser: newUser,
+      })
       .then(() => {
         // console.log('refreshing...', value);
         setUser(newUser);
@@ -124,7 +129,7 @@ const UserProfileContainer = ({ navigation }) => {
       stars: user.stars,
       location: user.location,
     };
-    const data = new FormData;
+    const data = new FormData();
     data.append('photoData', {
       uri: image.uri,
       type: 'image/jpeg',
@@ -139,11 +144,12 @@ const UserProfileContainer = ({ navigation }) => {
       console.log('blob', image);
       console.log('data', data);
       // axios.post('http://localhost:3000/userProfile/image', data, {
-      axios.post(`${HOST_URL}/userProfile/image`, data, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      })
+      axios
+        .post(`${HOST_URL}/userProfile/image`, data, {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
+        })
         .then((data) => {
           console.log('Image Saved!');
         })
@@ -180,8 +186,9 @@ const UserProfileContainer = ({ navigation }) => {
       <View style={styles.container}>
         <Text
           style={styles.titleText}
-        // eslint-disable-next-line react/no-unescaped-entities
-        >{user.name}&apos;s Profile
+          // eslint-disable-next-line react/no-unescaped-entities
+        >
+          {user.name}&apos;s Profile
         </Text>
         <Image
           style={styles.tinyLogo}
@@ -193,39 +200,32 @@ const UserProfileContainer = ({ navigation }) => {
         <View>
           <TouchableOpacity onPress={addImage} style={styles.uploadBtn}>
             <Text>{user.picture ? 'Edit' : 'Upload'} Image</Text>
-            <AntDesign name="camera" size={20} color="black" />
+            <AntDesign name='camera' size={20} color='black' />
           </TouchableOpacity>
         </View>
 
-        <Text
-          style={styles.textile}
-        >Username: {user.name}
+        <Text style={styles.textile}>Username: {user.name}</Text>
+        <Text style={styles.textile}>Email Address: {user.email}</Text>
+        <Text style={styles.textile}>
+          Stars
+          <Image source={icons.star} style={styles.starImage} />: {user.stars}
         </Text>
-        <Text
-          style={styles.textile}
-        >Email Address: {user.email}
+        <Text style={styles.textile}>
+          Errands Completed{' '}
+          <AntDesign name='checksquare' size={20} color='green' />:{' '}
+          {user.errandsCompleted}
         </Text>
-        <Text
-          style={styles.textile}
-        >Stars
-          <AntDesign name="star" size={20} color="blue" />:  {stars}
-        </Text>
-        <Text
-          style={styles.textile}
-        >Errands Completed <AntDesign name="checksquare" size={20} color="green" />: {user.errandsCompleted}
-        </Text>
-        <Text
-          style={styles.textile}
-        >Location: {user.location}
-        </Text>
+        <Text style={styles.textile}>Location: {user.location}</Text>
       </View>
       <View style={styles.editForm}>
         <Button
-          onPress={() => { setShowModal(!showModal); }}
-          title="Edit Profile Settings"
+          onPress={() => {
+            setShowModal(!showModal);
+          }}
+          title='Edit Profile Settings'
         />
         <Modal
-          animationType="slide"
+          animationType='slide'
           transparent={showModal}
           visible={showModal}
           onRequestClose={() => {
@@ -233,12 +233,8 @@ const UserProfileContainer = ({ navigation }) => {
             setShowModal(!showModal);
           }}
         >
-          <View
-            style={styles.modalView}
-          >
-            <View
-              style={styles.betterView}
-            >
+          <View style={styles.modalView}>
+            <View style={styles.betterView}>
               <Text style={{ marginTop: 20 }}>EDITING YOUR PROFILE</Text>
               <TextInput
                 onSubmitEditing={handleSubmitUsername}
@@ -258,7 +254,10 @@ const UserProfileContainer = ({ navigation }) => {
                 style={styles.input}
               />
               <Pressable
-                onPress={() => { setShowModal(false); setShowPassModal(false); }}
+                onPress={() => {
+                  setShowModal(false);
+                  setShowPassModal(false);
+                }}
                 style={[styles.button, styles.buttonClose]}
                 // title="Cancel"
               >
@@ -282,16 +281,17 @@ const UserProfileContainer = ({ navigation }) => {
           placeholder='Location'
         /> */}
         <Button
-        color=''
-          onPress={() => { setShowPassModal(!showPassModal); }}
-          title="Change Password"
+          onPress={() => {
+            setShowPassModal(!showPassModal);
+          }}
+          title='Change Password'
         />
       </View>
       <View>
         <NavBarContainer navigation={navigation} />
       </View>
       <Modal
-        animationType="slide"
+        animationType='slide'
         transparent={showPassModal}
         visible={showPassModal}
         onRequestClose={() => {
@@ -302,21 +302,30 @@ const UserProfileContainer = ({ navigation }) => {
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
             <TextInput
-              onChangeText={(e) => { console.log(e); setPass(e); }}
+              onChangeText={(e) => {
+                console.log(e);
+                setPass(e);
+              }}
               style={styles.input}
               placeholder='Password'
               autoCapitalize='none'
               secureTextEntry
             />
             <TextInput
-              onChangeText={(e) => { console.log(e); setConfirmPass(e); }}
+              onChangeText={(e) => {
+                console.log(e);
+                setConfirmPass(e);
+              }}
               style={styles.input}
               placeholder='Confirm Password'
               autoCapitalize='none'
               secureTextEntry
             />
             <Pressable
-              onPress={() => { setShowModal(false); setShowPassModal(false); }}
+              onPress={() => {
+                setShowModal(false);
+                setShowPassModal(false);
+              }}
               style={[styles.button, styles.buttonClose]}
             >
               <Text style={styles.textStyle}>Cancel</Text>
@@ -324,7 +333,8 @@ const UserProfileContainer = ({ navigation }) => {
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => {
-                setShowPassModal(!showPassModal); handlePass();
+                setShowPassModal(!showPassModal);
+                handlePass();
               }}
             >
               <Text style={styles.textStyle}>Change Password</Text>
@@ -339,7 +349,7 @@ const UserProfileContainer = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F3D250',
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
     opacity: 0.9,
@@ -455,6 +465,13 @@ const styles = StyleSheet.create({
     margin: 12,
     borderWidth: 1,
     padding: 10,
+  },
+  starImage: {
+    marginTop: 12,
+    paddingLeft: 5,
+    width: 30,
+    height: 30,
+    marginRight: SIZES.padding,
   },
 });
 

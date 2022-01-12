@@ -59,9 +59,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     padding: 25,
     marginTop: 50,
-    borderWidth: 1,
+    borderWidth: 2,
     borderStyle: 'solid',
-    borderColor: '#ECECEC',
+    borderColor: '#EFEFEF',
   },
   icons: {
     alignItems: 'center',
