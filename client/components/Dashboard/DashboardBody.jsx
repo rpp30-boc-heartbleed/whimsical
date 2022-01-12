@@ -88,7 +88,7 @@ const DashboardBody = ({ navigation }) => {
                 <View style={styles.container4}>
                   <View style={styles.container5}>
                     <Text style={styles.username}>{item.runner.name}</Text>
-                    <TimeAgo time={item.timeOfPost} interval={60000} />
+                    <TimeAgo time={item.timeOfPost} interval={120000} />
                   </View>
 
                   <View style={styles.container6}>
