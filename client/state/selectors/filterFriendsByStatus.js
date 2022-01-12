@@ -3,7 +3,7 @@ import friendsListState from '../atoms/friendsList';
 import friendsOnErrandState from '../atoms/friendsOnErrand';
 
 const filteredFriendsStatusSelector = selector({
-  key: 'filteredListSelector',
+  key: 'filteredFriendsStatusSelector',
   get: ({ get }) => {
     const list = get(friendsListState);
     const filter = get(friendsOnErrandState);
