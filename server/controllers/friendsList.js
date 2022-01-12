@@ -7,12 +7,10 @@ const get = (req, res) => {
     .then((user) => {
       const { friends } = user;
       const friendsList = [];
-      user.forEach((friend) => {
+      friends.forEach((friend) => {
         friendsList.push(friend);
-      })
-        .then(() => {
-          res.status(200).send(friendsList);
-        });
+      });
+      res.status(200).send(friendsList);
     })
     .catch((err) => {
       console.log(err);
