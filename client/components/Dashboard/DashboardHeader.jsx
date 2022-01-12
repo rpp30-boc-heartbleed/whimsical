@@ -7,9 +7,12 @@ import {
 import { signOut } from 'firebase/auth';
 import auth from '../../config/firebase';
 import userProfileState from '../../state/atoms/userProfile';
+import dashSearchState from '../../state/atoms/dashSearch';
+import SharedSearch from '../Shared/SearchBar';
 
 const DashboardHeader = ({ navigation }) => {
   const [user, setUser] = useRecoilState(userProfileState);
+  const [dashSearch, setDashSearch] = useRecoilState(dashSearchState);
 
   const handleSignOut = (auth) => {
     signOut(auth.auth)
@@ -29,11 +32,14 @@ const DashboardHeader = ({ navigation }) => {
           style={styles.profilePic}
         />
 
-        <TextInput
+        {/* <TextInput
           style={styles.searchBar}
           placeholder='Search'
           autoCapitalize='none'
-        />
+          onChangeText={(text) => setDashSearch(text)}
+        /> */}
+
+        <SharedSearch style={styles.searchBar} placeholder='Search' />
 
         <Button title='sign out' onPress={() => handleSignOut(auth)} />
 

@@ -12,12 +12,16 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { errandState } from '../../state/atoms/errands';
 import userProfileState from '../../state/atoms/userProfile';
 import auth from '../../config/firebase';
+// import dashSearchSelector from '../../state/selectors/dashSearchSelector';
+import filterByName from '../../state/selectors/filterByName';
 
 const DashboardBody = ({ navigation }) => {
   const isFocused = useIsFocused();
   const [errandsList, setErrands] = useRecoilState(errandState);
   const userProfile = useRecoilValue(userProfileState);
   const [newDataFromMongo, setNewDataFromMongo] = useState([]);
+  // const newData = useRecoilValue(dashSearchSelector);
+  const filtering = useRecoilValue(filterByName('errands'));
 
   const timeFormat = () => {
     const date = new Date();
@@ -62,9 +66,9 @@ const DashboardBody = ({ navigation }) => {
         for (let i = 0; i < data.data.length; i++) {
           const short = data.data[i];
 
-          if (!compareTime(timeFormat(), short.storeETA)) {
+          // if (!compareTime(timeFormat(), short.storeETA)) {
             dataArr.push(short);
-          }
+          // }
         }
         // sorts posts -> most recent on top
         dataArr.sort((b, a) => {
@@ -107,7 +111,8 @@ const DashboardBody = ({ navigation }) => {
     <View>
       <FlatList
         style={styles.container0}
-        data={errandsList}
+        // data={errandsList}
+        data={filtering}
         // data={newDataFromMongo}
         renderItem={({ item, index }) => (
           <View style={styles.container}>
