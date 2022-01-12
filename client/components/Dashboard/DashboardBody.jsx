@@ -28,8 +28,10 @@ const DashboardBody = ({ navigation }) => {
         // create new array of only 'Pending' posts (deleting 'Completed' posts)
         // eslint-disable-next-line no-plusplus
         for (let i = 0; i < data.data.length; i++) {
-          if (data.data[i].status === 'Pending') {
-            dataArr.push(data.data[i]);
+          const short = data.data[i];
+
+          if (short.status === 'Pending') {
+            dataArr.push(short);
           }
         }
         // sorts posts -> most recent on top
