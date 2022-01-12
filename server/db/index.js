@@ -25,6 +25,7 @@ const connectDb = () => mongoose.connect('mongodb://localhost:27017/quick-bagel'
       const runners = await Profile.insertMany(mockRunners);
       const rexRequestor = await Profile.create(mockRequestors[0]);
       const orangeRequestor = await Profile.create(mockRequestors[1]);
+      const laweezaRequestor = await Profile.create(mockRequestors[2]);
 
       // Seed Errands
       await mongoose.connection.db.dropCollection('errandCollection');
@@ -32,18 +33,19 @@ const connectDb = () => mongoose.connect('mongodb://localhost:27017/quick-bagel'
 
       const errands = mockErrands.forEach(async (errand, i) => {
         // alternate requestors but leave 2 un-requested errands
-        if (i < 7) {
-          if (i % 2 === 0) {
-            requestor = { requestor: rexRequestor };
-          } else {
-            requestor = { requestor: orangeRequestor };
-          }
-        } else {
-          requestor = {};
-        }
+        // if (i < 5) {
+        //   // if (i % 2 === 0) {
+        //   requestor = { requestor: rexRequestor };
+        //   // } else {
+        //   requestor = { requestor: orangeRequestor };
+        //   requestor = { requestor: laweezaRequestor };
+        //   // }
+        // } else {
+        //   requestor = {};
+        // }
         await Errand.create({
           ...errand,
-          ...requestor,
+          // ...requestor,
           runner: runners[i],
         });
       });
