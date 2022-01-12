@@ -37,7 +37,7 @@ const DashboardBody = ({ navigation }) => {
           return a.timeOfPost.localeCompare(b.timeOfPost);
         });
         setNewDataFromMongo(dataArr);
-        // setErrands(data.data);
+        setErrands(dataArr);
       })
       .catch((err) => console.log('error', err));
   }, [isFocused, setErrands]);
