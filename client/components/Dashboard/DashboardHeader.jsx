@@ -31,9 +31,9 @@ const DashboardHeader = ({ navigation }) => {
         <TextInput style={styles.searchBar} placeholder='Search' />
         <Button title='sign out' onPress={() => handleSignOut(auth)} />
       </View>
-      <View style={styles.filter}>
+      {/* <View style={styles.filter}>
         <Text style={styles.filterText}>Current Filter: Most Recent ▼</Text>
-      </View>
+      </View> */}
     </View>
   );
 };

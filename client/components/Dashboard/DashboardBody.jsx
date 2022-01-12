@@ -73,8 +73,8 @@ const DashboardBody = ({ navigation }) => {
     <View>
       <FlatList
         style={styles.container0}
-        // data={errandsList}
-        data={newDataFromMongo}
+        data={errandsList}
+        // data={newDataFromMongo}
         renderItem={({ item, index }) => (
           <View style={styles.container}>
             <View style={styles.container2}>
@@ -173,7 +173,7 @@ const useSnackBar = () => {
 
 const styles = StyleSheet.create({
   container0: {
-    height: 610,
+    height: 643,
   },
   container: {
     flex: 1,
