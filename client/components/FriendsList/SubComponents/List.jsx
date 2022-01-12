@@ -14,14 +14,14 @@ import { Avatar, Badge, IconButton } from 'react-native-paper';
 // Components
 import IconModal from '../../Modals/IconModal';
 // State
-import filteredByNameSelector from '../../../state/selectors/filterFriendsByName';
+import filterByNameSelector from '../../../state/selectors/filterByName';
 // Assets
 import { icons, SIZES } from '../../../constants';
 
 const { star } = icons;
 
 const List = ({ style, navigation }) => {
-  const filteredByName = useRecoilValue(filteredByNameSelector);
+  const filteredByName = useRecoilValue(filterByNameSelector('friends'));
 
   return (
     <View style={style}>
@@ -52,7 +52,7 @@ const List = ({ style, navigation }) => {
             </View>
           );
         }}
-        keyExtractor={(item) => item._id}
+        keyExtractor={(item) => item.id}
         keyboardShouldPersistTaps="handled"
       />
     </View>
