@@ -9,11 +9,11 @@ import {
   StyleSheet,
 } from 'react-native';
 
-import friendsByNameState from '../../../state/atoms/friendsByName';
-import filteredByNameSelector from '../../../state/selectors/filterFriendsByName';
+import searchBarState from '../../state/atoms/searchBar';
+import filteredByNameSelector from '../../state/selectors/filterByName';
 
-const Search = ({ style }) => {
-  const setNameFilter = useSetRecoilState(friendsByNameState);
+const SearchBar = ({ style }) => {
+  const setNameFilter = useSetRecoilState(searchBarState);
 
   const onChange = (value) => {
     setNameFilter(value);
@@ -23,11 +23,12 @@ const Search = ({ style }) => {
     <View>
       <TextInput
         style={style}
-        placeholder='SEARCH'
+        placeholder='Search'
         onChangeText={onChange}
+        autoCapitalize='none'
       />
     </View>
   );
 };
 
-export default Search;
+export default SearchBar;

@@ -16,7 +16,6 @@ import {
   COLORS,
   SIZES,
   icons,
-  images,
 } from '../../../constants';
 import userProfileState from '../../../state/atoms/userProfile';
 

@@ -13,41 +13,46 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 const NavBarContainer = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      {/* <Text>This is the NavBar Component</Text> */}
       {/* Profile */}
-      <TouchableOpacity>
-        <Icon size={30} name='user' onPress={() => navigation.push('UserProfile')} />
+      <TouchableOpacity style={styles.icons}>
+        <Icon size={30} color='#3da9fc' name='user' testID='user' onPress={() => navigation.push('UserProfile')} />
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.icons}>
+        <Icon size={30} color='#3da9fc' name='users' testID='users' onPress={() => navigation.push('FriendsList')} />
       </TouchableOpacity>
       {/* Add Errand */}
-      <TouchableOpacity>
-        <Icon size={30} name='plus-circle' onPress={() => navigation.push('NewErrand')} />
+      <TouchableOpacity style={styles.icons}>
+        <Icon size={30} color='#3da9fc' name='plus-circle' testID='plus-circle' onPress={() => navigation.push('NewErrand')} />
       </TouchableOpacity>
       {/* FriendsList */}
-      <TouchableOpacity>
-        <Icon size={30} name='users' onPress={() => navigation.push('FriendsList')} />
-      </TouchableOpacity>
-      {/* Map */}
-      <TouchableOpacity>
-        <Icon size={30} name='shopping-basket' onPress={() => navigation.push('ErrandRequests')} />
+      <TouchableOpacity style={styles.icons}>
+        <Icon size={30} color='#3da9fc' name='shopping-basket' testID='shopping-basket' onPress={() => navigation.push('ErrandRequests')} />
       </TouchableOpacity>
       {/* Dashboard */}
-      <TouchableOpacity>
-        <Icon size={30} name='home' onPress={() => navigation.navigate('Dashboard')} />
+      <TouchableOpacity style={styles.icons}>
+        <Icon size={30} color='#3da9fc' name='home' testID='home' onPress={() => navigation.navigate('Dashboard')} />
       </TouchableOpacity>
-      {/* <Button title="Go to Dashboard" onPress={() => navigation.navigate('Dashboard')} /> */}
-      {/* <Button title="Go back" onPress={() => navigation.goBack()} /> */}
-      <StatusBar />
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#0782F9',
+    backgroundColor: '#fffffe',
+    display: 'flex',
     justifyContent: 'space-between',
     flexDirection: 'row',
     padding: 25,
     marginTop: 50,
+    borderWidth: 2,
+    // marginTop: 50,
+    // borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: '#EFEFEF',
+  },
+  icons: {
+    alignItems: 'center',
+    maxWidth: 50,
   },
 });
 

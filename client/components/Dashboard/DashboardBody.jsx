@@ -12,23 +12,62 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { errandState } from '../../state/atoms/errands';
 import userProfileState from '../../state/atoms/userProfile';
 import auth from '../../config/firebase';
+// import dashSearchSelector from '../../state/selectors/dashSearchSelector';
+import filterByName from '../../state/selectors/filterByName';
 
 const DashboardBody = ({ navigation }) => {
   const isFocused = useIsFocused();
   const [errandsList, setErrands] = useRecoilState(errandState);
   const userProfile = useRecoilValue(userProfileState);
   const [newDataFromMongo, setNewDataFromMongo] = useState([]);
+  // const newData = useRecoilValue(dashSearchSelector);
+  const filtering = useRecoilValue(filterByName('errands'));
+
+  const timeFormat = () => {
+    const date = new Date();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    const ampm = hours >= 12 ? 'pm' : 'am';
+    hours %= 12;
+    hours = hours || 12;
+    minutes = minutes < 10 ? `0${minutes}` : minutes;
+    const strTime = `${hours}:${minutes} ${ampm}`;
+    return strTime;
+  };
+
+  // eslint-disable-next-line consistent-return
+  const compareTime = (time1, time2) => {
+    const re = /^([012]?\d):([0-6]?\d)\s*(a|p)m$/i;
+    // eslint-disable-next-line no-param-reassign
+    time1 = time1.match(re);
+    // eslint-disable-next-line no-param-reassign
+    time2 = time2.match(re);
+    if (time1 && time2) {
+      const isPM1 = /p/i.test(time1[3]) ? 12 : 0;
+      const hour1 = (time1[1] * 1 + isPM1) % 12;
+      const isPM2 = /p/i.test(time2[3]) ? 12 : 0;
+      const hour2 = (time2[1] * 1 + isPM2) % 12;
+      if (hour1 !== hour2) return hour1 > hour2;
+
+      const minute1 = time1[2] * 1;
+      const minute2 = time2[2] * 1;
+      return minute1 > minute2;
+    }
+  };
 
   useEffect(() => {
     axios
       .get(`${HOST_URL}/getErrandData`)
+      // .get('http://172.20.10.9:3000/getErrandData')
       .then((data) => {
         const dataArr = [];
         // create new array of only 'Pending' posts (deleting 'Completed' posts)
         // eslint-disable-next-line no-plusplus
         for (let i = 0; i < data.data.length; i++) {
-          if (data.data[i].status === 'Pending') {
-            dataArr.push(data.data[i]);
+          const short = data.data[i];
+
+          if (!compareTime(timeFormat(), short.storeETA)) {
+            dataArr.push(short);
           }
         }
         // sorts posts -> most recent on top
@@ -36,7 +75,7 @@ const DashboardBody = ({ navigation }) => {
           return a.timeOfPost.localeCompare(b.timeOfPost);
         });
         setNewDataFromMongo(dataArr);
-        // setErrands(data.data);
+        setErrands(dataArr);
       })
       .catch((err) => console.log('error', err));
   }, [isFocused, setErrands]);
@@ -73,7 +112,8 @@ const DashboardBody = ({ navigation }) => {
       <FlatList
         style={styles.container0}
         // data={errandsList}
-        data={newDataFromMongo}
+        data={filtering}
+        // data={newDataFromMongo}
         renderItem={({ item, index }) => (
           <View style={styles.container}>
             <View style={styles.container2}>
@@ -85,7 +125,7 @@ const DashboardBody = ({ navigation }) => {
                 <View style={styles.container4}>
                   <View style={styles.container5}>
                     <Text style={styles.username}>{item.runner.name}</Text>
-                    <TimeAgo time={item.timeOfPost} interval={60000} />
+                    <TimeAgo time={item.timeOfPost} interval={120000} />
                   </View>
 
                   <View style={styles.container6}>
@@ -97,16 +137,15 @@ const DashboardBody = ({ navigation }) => {
               </View>
 
               <View style={styles.container7}>
-                <Text style={styles.cont7}>Address: {item.storeAddress.streetName}</Text>
-                <Text style={styles.cont7}>ETA: {item.storeETA || '5 minutes'}</Text>
+                <Text style={{ fontWeight: 'bold' }}>Address: <Text style={{ fontWeight: 'normal' }}>{item.storeAddress.streetName}</Text></Text>
+                <Text style={{ fontWeight: 'bold' }}>ETA: <Text style={{ fontWeight: 'bold', color: '#F78888' }}> {item.storeETA || '5 minutes'}</Text></Text>
               </View>
-
               <View style={[styles.buttons, styles.clickable]}>
 
                 <TouchableOpacity
                   style={styles.messagetouch}
                   onPress={() => navigation.push('Chat', {
-                    chatId: item._id,
+                    errandId: item._id,
                   })}
                 >
                   <Image
@@ -172,14 +211,15 @@ const useSnackBar = () => {
 
 const styles = StyleSheet.create({
   container0: {
-    height: 610,
+    height: 643,
+    backgroundColor: '#90CCF4',
   },
   container: {
     flex: 1,
     backgroundColor: '#fff',
     flexDirection: 'row',
     borderWidth: 1,
-    borderColor: '#0782F9',
+    borderColor: '#F1F3F4',
     borderRadius: 5,
     marginTop: 10,
     marginHorizontal: 5,
@@ -221,11 +261,13 @@ const styles = StyleSheet.create({
   },
   cont6: {
     fontSize: 15,
-    fontWeight: 'bold',
+    fontWeight: 'normal',
   },
   store: {
     marginLeft: -20,
     paddingTop: 13,
+    fontWeight: 'bold',
+    color: '#5DA2D5',
   },
   errandname: {
     paddingTop: 13,

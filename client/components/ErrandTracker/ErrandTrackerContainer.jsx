@@ -20,7 +20,6 @@ import {
   COLORS,
   SIZES,
   icons,
-  images,
 } from '../../constants';
 import { errandState, refreshErrandsState } from '../../state/atoms/errands';
 import ErrandMap from './ErrandMap';
@@ -62,7 +61,7 @@ const ErrandTrackerContainer = ({ route, navigation }) => {
         <ErrandMap setEta={setEta} errand={errand} />
       </View>
       <View style={styles.details}>
-        <BottomSheet eta={eta} errand={errand} />
+        <BottomSheet navigation={navigation} eta={eta} errand={errand} />
       </View>
       <View>
         <NavBarContainer navigation={navigation} />

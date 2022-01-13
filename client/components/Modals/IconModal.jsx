@@ -7,7 +7,7 @@ import {
 } from 'react-native-paper';
 
 const IconModal = ({
-  icon, size, style, currentErrands, navigation,
+  disable, icon, size, style, currentErrands, navigation,
 }) => {
   const [visible, setVisible] = useState(false);
 
@@ -30,7 +30,7 @@ const IconModal = ({
                 return (
                   <View style={styles.friend}>
                     <TouchableOpacity style={styles.avatar}>
-                      <Text onPress={() => navigation.push('Chat', { errand: item.chatId })}>{item.name}</Text>
+                      <Text disable={disable} onPress={() => navigation.push('Chat', { errandId: item.errandId })}>{item.name}</Text>
                     </TouchableOpacity>
                   </View>
                 );
@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 22,
+    backgroundColor: 'white',
   },
   modalView: {
     margin: 20,

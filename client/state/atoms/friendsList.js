@@ -3,7 +3,7 @@ import dummyFriendsList from '../../common/dummyData/dummyFriendsList';
 
 const friendsListState = atom({
   key: 'FriendsListState',
-  default: dummyFriendsList, // []
+  default: dummyFriendsList,
 });
 
 export default friendsListState;

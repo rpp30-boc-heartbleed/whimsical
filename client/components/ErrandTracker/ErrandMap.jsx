@@ -16,7 +16,7 @@ import {
 } from 'react-native';
 import { GOOGLE_MAPS_API_KEY } from '@env';
 import {
-  COLORS, SIZES, icons, images,
+  COLORS, SIZES, icons,
 } from '../../constants';
 
 const path = [
@@ -40,6 +40,11 @@ const path = [
   { latitude: 42.296043, longitude: -85.601783 },
   { latitude: 42.295906, longitude: -85.601778 },
 ];
+
+const starting = {
+  latitude: 42.2966481,
+  longitude: -85.6436558,
+};
 
 const destination = {
   latitude: 42.295906,
@@ -92,6 +97,12 @@ const ErrandMap = ({ setEta, errand }) => {
       >
         <Marker
           draggable
+          description='errand place'
+          title='Errand Place'
+          coordinate={starting}
+        />
+        <Marker
+          draggable
           description='He running'
           title='Errand Runner'
           coordinate={driverPosition}
@@ -99,7 +110,7 @@ const ErrandMap = ({ setEta, errand }) => {
           <Image
             draggable
             // eslint-disable-next-line global-require
-            source={require('../../assets/icons/Icon.png')}
+            source={require('../../assets/icons/Logo.png')}
             style={{ width: 35, height: 45 }}
             resizeMode='center'
             resizeMethod='resize'
