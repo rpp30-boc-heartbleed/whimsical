@@ -105,7 +105,7 @@ $ npm start
 $ expo start
 ```
 
-3. To test run:
+3. To test, in the client directory run:
 ```
 $ npm test
 ```
@@ -141,6 +141,19 @@ $ npm test
 <!--
 * What happens behind the scenes when the user interacts with it?
 * OR What are all the places the data travels?  What happens to that data?
+-->
+Login and registration information (email and password) is authenticated utilizing the Firebase API. If registering, the user's account information (less their password), is saved in MongoDB while their email and password are saved in Firebase.
+
+Once authenticated, the user is taken to the Dashboard, which is populated by errand posts saved in MongoDB. This list of errands is retrieved from MongoDB upon loading the app and saved in the Recoil global state.
+
+On each respective post, the user can click the chat button, which enables them to chat with the errand runner utilizing socket.io. They can also click on the errand tracker which utilizes Google Maps to display a map of the errand runner's location and tracks their progress running the posted errand.
+
+To post an errand to the Dashboard, the user can click on the 'add errand' button in the navbar and fill out a form. The data is then saved in MongoDB and added to the Dashboard errand list.
+
+The user can update their profile by clicking on the User Profile button in the navbar. They can update their profile information in MongoDB, as well as update their email and password in Firebase.
+
+Lastly, the user can then return to the Dashboard via a link in the navbar and signout via Firebase. They will then return to the Login screen.
+<!--
 * Optionally include a diagram
 * How does the tech stack come together?
 -->
@@ -153,21 +166,8 @@ $ npm test
 📖   <a href="https://docs.google.com/spreadsheets/d/1heVGbScj-MP8areUMJkZk7aNSUPD_GR8Hwmd6uMnrQ8/edit#gid=484004821">User Stories
 </a>
 
-### API
-|Request Type|Endpoint                          |Status |
-|:----------:|----------------------------------|:-----:|
-|    GET     | /qb/something                    |200    |
-|    GET     | /qb/something                    |200    |
-|    POST    | /qb/something                    |201    |
-|    POST    | /qb/something                    |201    |
-|    PUT     | /qb/something                    |204    |
-|    PUT     | /qb/something                    |204    |
-|    PUT     | /qb/something                    |204    |
-|    PUT     | /qb/something                    |204    |
-
-
 ### Testing
-✅  Placeholder
+✅  Jest and React Native Testing Library
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -176,15 +176,22 @@ $ npm test
 <!--
 * Why, what was the plan to overcome those challenges?
 * What did you learn?
-
-For unexpected Challenges:
+-->
+We anticipated that there would be some differences between using React Native as distinguished from React, and gave ourselves time to review documentation and become familiar with React Native's syntax and structure. Howver, we learned that the difference goes beyond just the React and React Native frameworks because the Expo platform we used to build the code presented challenges beyond just writing with React Native.
+<!--For unexpected Challenges:
 * Why was it a challenge?
 * What did you learn?
 -->
+We learned that many dependencies and APIs have different configurations to be used with android versus iOS, so we had to do extra research, experimentation, and modification in order to use these dependencies and APIs with a single configuration for Expo to build for both android and iOS at the same time.
 
 * 🌊 Technical Challenges
+Configuring Firebase SDK to work with Expo without converting the app.json file to a config.js file per the documentation as this would interfere with other aspects of the app worked on by teammates.
+
 * 🔨 Actions Taken
+Utilized the babel.config.js to declare a path for environmental variables to be used by Firebase and created an independent firebase config file.
+
 * 💡 Results Observed
+Able to authenticate users logging in or registering on React Native with Expo app without breaking configurations set up for other APIs.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -193,7 +200,7 @@ For unexpected Challenges:
 ## Research
 
 <!-- Workflow and Key lessons from your team - specifically those related to: Agile, CI/CD, testing, working with external stakeholders, ticketing, and user stories. -->
-
+Everyone needs to be on the same page as to what features will be included and how the app will flow to ensure full integration of components and that client needs are met. This may require far more time and communication than a standard daily standup, especially in the beginning, but is well worth the investment of extra time to minimize unnecessary pivots and expensive refactoring during the building process. Discussing the user story as a narrative and as a diagram was extremely helpful to clarify what features to include, how they related to each other, and who would be responsible for them respectively.
 <!--
 * Your git workflow, style guides, commit guides, etc
 * What did you learn from the process
@@ -224,12 +231,12 @@ What additional features do you plan to add, how do you plan to implement those 
 
 <!-- Examples: websockets (socket.io) -->
 - [x] Login & Registration with Authentication
-- [ ] Real Time Geolocation Tracking
-- [ ] Chat Functionality
-- [ ] Active Errand List
-- [ ] Post-Errand Rating Form
-
-
+- [x] Chat Functionality
+- [x] Active Errand List
+- [x] Errand Tracker
+- [x] User Profile
+- [ ] Real Time GeoLocation
+- [ ] Errand Completion Feedback Form
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
