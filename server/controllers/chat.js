@@ -29,7 +29,7 @@ const findChat = (errandId, userId) => {
 const postMessage = (message, errandId) => {
   return Chat.findOneAndUpdate(
     { errandId },
-    { $push: { message } },
+    { $push: { messages: { $each: [message], $position: 0 } } },
     { new: true, upsert: true },
   );
 };

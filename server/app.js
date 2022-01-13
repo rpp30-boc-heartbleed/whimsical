@@ -35,11 +35,7 @@ io.on('connection', (socket) => {
   console.log('user connected');
 
   socket.on('joinChat', (errandId, userId) => {
-    if (mobileSockets[errandId]) {
-      mobileSockets[errandId].push(socket.id);
-    } else {
-      mobileSockets[errandId] = [socket.id];
-    }
+    mobileSockets[userId] = [socket.id];
     findChat(errandId, userId)
       .then((chat) => {
         socket.emit('priorMessages', chat.messages);
@@ -50,9 +46,8 @@ io.on('connection', (socket) => {
     postMessage(message, errandId)
       .then((chat) => {
         socket.emit('incomingMessage', message);
-        const userSocketIds = mobileSockets[errandId];
-        userSocketIds.forEach((userSocketId) => {
-          socket.to(userSocketId).emit('incomingMessage', message);
+        chat.users.forEach((userId) => {
+          socket.to(mobileSockets[userId]).emit('incomingMessage', message);
         });
       });
   });
