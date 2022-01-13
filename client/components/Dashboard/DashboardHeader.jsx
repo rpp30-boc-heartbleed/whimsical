@@ -2,8 +2,10 @@ import React, { useState, useEffect, Component } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import axios from 'axios';
 import {
-  View, Text, Image, StyleSheet, TextInput, StatusBar, Button,
+  View, Text, Image, StyleSheet, TextInput, StatusBar,
 } from 'react-native';
+import { Avatar } from 'react-native-paper';
+import { Button } from 'react-native-elements';
 import { signOut } from 'firebase/auth';
 import auth from '../../config/firebase';
 import userProfileState from '../../state/atoms/userProfile';
@@ -27,9 +29,16 @@ const DashboardHeader = ({ navigation }) => {
   return (
     <View style={styles.outercontainer}>
       <View style={styles.container}>
-        <Image
+        {/* <Image
           source={{ uri: user.picture }}
           style={styles.profilePic}
+        /> */}
+        <Avatar.Image
+          size={60}
+          style={styles.profilePic}
+          source={{
+            uri: user.picture,
+          }}
         />
 
         {/* <TextInput
@@ -41,7 +50,21 @@ const DashboardHeader = ({ navigation }) => {
 
         <SharedSearch style={styles.searchBar} placeholder='Search' />
 
-        <Button title='sign out' onPress={() => handleSignOut(auth)} />
+        <Button
+          buttonStyle={{
+            backgroundColor: '#F78888',
+            borderColor: 'transparent',
+            borderWidth: 0,
+            borderRadius: 20,
+          }}
+          containerStyle={{
+            marginLeft: 5,
+            marginBottom: 3,
+            width: 95,
+          }}
+          title='sign out'
+          onPress={() => handleSignOut(auth)}
+        />
 
       </View>
       {/* <View style={styles.filter}>
@@ -66,24 +89,19 @@ const styles = StyleSheet.create({
     paddingTop: 15,
   },
   profilePic: {
-    borderWidth: 1,
-    borderRadius: 30,
-    borderColor: 'green',
     marginBottom: 5,
-    marginRight: 25,
-    padding: 15,
-    width: 50,
-    height: 50,
-    resizeMode: 'contain',
+    marginRight: 4,
+    backgroundColor: '#5DA2D5',
+    // resizeMode: 'contain',
   },
   searchBar: {
-    borderWidth: 1,
-    borderColor: '#0782F9',
+    borderWidth: 2,
+    borderColor: '#DEE1E6',
     borderRadius: 10,
     marginBottom: 5,
     width: 225,
     paddingHorizontal: 10,
-    paddingVertical: 3,
+    paddingVertical: 4,
   },
   filter: {
     borderBottomWidth: 1,

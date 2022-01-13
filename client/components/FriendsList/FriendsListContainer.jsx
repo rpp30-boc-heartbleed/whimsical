@@ -5,7 +5,6 @@ import {
   View,
   Text,
   StyleSheet,
-  ScrollView,
 } from 'react-native';
 
 // Components
@@ -59,45 +58,34 @@ const FriendsListContainer = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    // backgroundColor: '#90CCF4',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#90CCF4',
+    height: '100%',
   },
   header: {
     flexDirection: 'row',
-    marginLeft: 2,
     justifyContent: 'space-between',
     alignItems: 'center',
-    width: '100%',
+    width: '95%',
     backgroundColor: '#90CCF4',
-    marginTop: 148,
   },
   search: {
-    margin: 5,
-    borderRadius: 3,
+    margin: 10,
+    borderRadius: 5,
     fontSize: 14,
-    backgroundColor: '#d2d2d2',
+    backgroundColor: '#fff',
+    borderColor: '#DEE1E6',
+    borderWidth: 1,
     height: 50,
     width: (width * 0.8),
     textAlign: 'center',
   },
   list: {
     flex: 1,
+    backgroundColor: '#fff',
     width: '100%',
-  },
-  friend: {
-    padding: 15,
-    fontSize: 14,
-    borderRadius: 20,
-    borderColor: 'black',
-    borderWidth: 1,
-    width: '100%',
-    height: 60,
-    marginTop: 25,
-  },
-  toggle: {
-    marginLeft: 4,
   },
 });
 

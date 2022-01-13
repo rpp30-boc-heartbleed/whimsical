@@ -1,4 +1,3 @@
-/* eslint-disable max-len */
 import React from 'react';
 import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 
@@ -25,7 +24,7 @@ const List = ({ style, navigation }) => {
   const filteredByName = useRecoilValue(filterByNameSelector('friends'));
 
   return (
-    <View style={style.container}>
+    <View style={style}>
       <FlatList
         data={filteredByName}
         renderItem={({ item, index }) => {
@@ -35,10 +34,13 @@ const List = ({ style, navigation }) => {
                 <Avatar.Image size={50} source={item.avatar} />
               </TouchableOpacity>
               <View style={styles.text}>
-                <Text style={{ fontWeight: 'bold', fontSize: 14 }}>
+                <Text style={{ fontWeight: 'bold' }}>
                   {item.name}
                 </Text>
-                <Text><Image style={styles.star} source={star} /> {item.goldStars}</Text>
+                <Text><Image style={styles.star} source={star} />
+                  <Text style={{ margin: 5 }}>{item.goldStars}
+                  </Text>
+                </Text>
               </View>
               <TouchableOpacity style={styles.chat}>
                 <IconModal
@@ -63,39 +65,34 @@ const List = ({ style, navigation }) => {
 const styles = StyleSheet.create({
   friend: {
     flexDirection: 'row',
-    padding: 15,
+    // padding: 15,
     width: '100%',
-    height: 80,
-    marginTop: 15,
+    height: 100,
+    borderColor: '#F1F3F4',
+    borderWidth: 1,
   },
   avatar: {
     flex: 1,
-    marginRight: 30,
-    marginLeft: 10,
+    margin: 20,
   },
   text: {
     flex: 4,
-    flexDirection: 'row',
+    width: '100%',
     fontSize: 14,
-    borderColor: '#fff',
-    backgroundColor: '#fff',
-    borderWidth: 3,
+    borderRadius: 30,
     height: 60,
-    padding: 10,
+    margin: 10,
   },
   star: {
-    flexDirection: 'row',
-    width: 18,
-    height: 18,
-    margin: 6,
-    marginBottom: 10,
+    width: 15,
+    height: 15,
   },
   chat: {
     flex: 1,
     marginRight: 30,
   },
   chatIcon: {
-    paddingBottom: 20,
+    marginBottom: 20,
   },
 });
 
