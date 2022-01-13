@@ -112,32 +112,3 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
-
-// {
-//   id: 1,
-//     timeOfPost: '3:30pm',
-//       errandName: 'Impromptu Bagel Run',
-//         eta: 0,
-//           addressName: 'Big Apple Bagels',
-//             address: {
-//     street: '4408 W Main St',
-//       city: 'Kalamazoo',
-//         state: 'MI',
-//           zip: '49006',
-//     },
-//   gps: {
-//     latitude: 42.2966481,
-//       longitude: -85.6436558,
-//     },
-//   requestor: testUser,
-//     errandRunner: {
-//     avatar: 'https://via.placeholder.com/50',
-//       name: 'aaron',
-//         gps: {
-//       latitude: 42.2966481,
-//         longitude: -85.6436558,
-//       },
-//     starRating: 53,
-//     },
-//   status: 'Pending',
-//   },

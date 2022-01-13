@@ -4,18 +4,21 @@ import { HOST_URL } from '@env';
 import axios from 'axios';
 import {
   View,
-  Text,
+  Image,
   StyleSheet,
   TextInput,
   StatusBar,
-  Button,
-  Image,
   TouchableOpacity,
   Modal,
   Pressable,
   Alert,
+  SafeAreaView,
 } from 'react-native';
-import { AntDesign } from '@expo/vector-icons';
+import {
+  Avatar, Text,
+} from 'react-native-paper';
+import { Icon, Button, Badge } from 'react-native-elements';
+import { FontAwesome } from 'react-native-vector-icons/FontAwesome';
 import * as ImagePicker from 'expo-image-picker';
 import { getAuth, updatePassword } from 'firebase/auth';
 import { COLORS, SIZES, icons } from '../../constants';
@@ -182,76 +185,160 @@ const UserProfileContainer = ({ navigation }) => {
   };
 
   return (
-    <>
-      <View style={styles.container}>
-        <Text
-          style={styles.titleText}
-          // eslint-disable-next-line react/no-unescaped-entities
-        >
-          {user.name}&apos;s Profile
-        </Text>
-        <Image
-          style={styles.tinyLogo}
-          source={{
-            uri: user.picture,
-          }}
-        />
-
-        <View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.header}>
+        <View style={styles.headerContent}>
+          <Avatar.Image
+            size={100}
+            style={styles.avatar}
+            source={{
+              uri: user.picture,
+            }}
+          />
           <TouchableOpacity onPress={addImage} style={styles.uploadBtn}>
-            <Text>{user.picture ? 'Edit' : 'Upload'} Image</Text>
-            <AntDesign name='camera' size={20} color='black' />
+            <Icon name='photo' size={13} raised color='black' />
+            {/* <Text style={{ fontSize: 10 }}>{user.picture ? 'Edit' : 'Upload'}</Text> */}
           </TouchableOpacity>
+          <Text style={styles.name}>{user.name}</Text>
+          <Text style={styles.location}>{user.location}</Text>
+          <Text style={styles.email}>{user.email}</Text>
+          <View style={styles.stats}>
+            <Text style={styles.starCount}>
+              <Image source={icons.star} style={styles.starImage} /> {user.stars}
+            </Text>
+            <Text style={styles.errands}>
+              <Badge value="Errands Completed" status="success" />
+              {' '}: {user.errandsCompleted}
+            </Text>
+          </View>
         </View>
-
-        <Text style={styles.textile}>Username: {user.name}</Text>
-        <Text style={styles.textile}>Email Address: {user.email}</Text>
-        <Text style={styles.textile}>
-          Stars
-          <Image source={icons.star} style={styles.starImage} />: {user.stars}
-        </Text>
-        <Text style={styles.textile}>
-          Errands Completed{' '}
-          <AntDesign name='checksquare' size={20} color='green' />:{' '}
-          {user.errandsCompleted}
-        </Text>
-        <Text style={styles.textile}>Location: {user.location}</Text>
       </View>
       <View style={styles.editForm}>
-        <Button
-          onPress={() => {
-            setShowModal(!showModal);
-          }}
-          title='Edit Profile Settings'
-        />
+        <View style={styles.item}>
+
+          <Button
+            onPress={() => {
+              setShowModal(!showModal);
+            }}
+            buttonStyle={{
+              backgroundColor: '#3da9fc',
+              borderColor: 'transparent',
+              borderWidth: 0,
+              borderRadius: 30,
+            }}
+            icon={{
+              name: 'pencil',
+              type: 'font-awesome',
+              size: 15,
+              color: 'white',
+            }}
+            iconContainerStyle={{ marginRight: 10 }}
+            containerStyle={{
+              width: 200,
+              marginHorizontal: 50,
+              marginVertical: 10,
+            }}
+            titleStyle={{ color: '#fff', fontSize: 14, fontWeight: '400' }}
+            title='EDIT PROFILE'
+          />
+          <Modal
+            animationType='slide'
+            transparent={showModal}
+            visible={showModal}
+            onRequestClose={() => {
+              // Alert.alert("Modal has been closed.");
+              setShowModal(!showModal);
+            }}
+          >
+            <View style={styles.modalView}>
+              <View style={styles.betterView}>
+                <Text style={{ marginTop: 20 }}>EDITING YOUR PROFILE</Text>
+                <TextInput
+                  onSubmitEditing={handleSubmitUsername}
+                  placeholder='Username'
+                  style={styles.input}
+                />
+                <TextInput
+                  // style={styles.editForm}
+                  onSubmitEditing={handleSubmitEmail}
+                  placeholder='Email'
+                  style={styles.input}
+                />
+                <TextInput
+                  // style={styles.editForm}
+                  onSubmitEditing={handleSubmitLocation}
+                  placeholder='Location'
+                  style={styles.input}
+                />
+                <Pressable
+                  onPress={() => {
+                    setShowModal(false);
+                    setShowPassModal(false);
+                  }}
+                  style={[styles.button, styles.buttonClose]}
+                  // title="Cancel"
+                >
+                  <Text style={styles.textStyle}>Cancel</Text>
+                </Pressable>
+              </View>
+            </View>
+          </Modal>
+          <Button
+            onPress={() => {
+              setShowPassModal(!showPassModal);
+            }}
+            containerStyle={{
+              width: 200,
+              marginHorizontal: 50,
+              marginVertical: 10,
+            }}
+            buttonStyle={{
+              backgroundColor: '#3da9fc',
+              borderColor: 'transparent',
+              borderWidth: 0,
+              borderRadius: 30,
+            }}
+            icon={{
+              name: 'unlock',
+              type: 'font-awesome',
+              size: 15,
+              color: 'white',
+            }}
+            iconContainerStyle={{ marginRight: 10 }}
+            titleStyle={{ color: '#fff', fontSize: 14, fontWeight: '400' }}
+            title='CHANGE PASSWORD'
+          />
+        </View>
         <Modal
           animationType='slide'
-          transparent={showModal}
-          visible={showModal}
+          transparent={showPassModal}
+          visible={showPassModal}
           onRequestClose={() => {
             // Alert.alert("Modal has been closed.");
-            setShowModal(!showModal);
+            setShowPassModal(!showPassModal);
           }}
         >
-          <View style={styles.modalView}>
-            <View style={styles.betterView}>
-              <Text style={{ marginTop: 20 }}>EDITING YOUR PROFILE</Text>
+          <View style={styles.centeredView}>
+            <View style={styles.modalView}>
               <TextInput
-                onSubmitEditing={handleSubmitUsername}
-                placeholder='Username'
+                onChangeText={(e) => {
+                  console.log(e);
+                  setPass(e);
+                }}
                 style={styles.input}
+                placeholder='Password'
+                autoCapitalize='none'
+                secureTextEntry
               />
               <TextInput
-                // style={styles.editForm}
-                onSubmitEditing={handleSubmitEmail}
-                placeholder='Email'
+                onChangeText={(e) => {
+                  console.log(e);
+                  setConfirmPass(e);
+                }}
                 style={styles.input}
-              />
-              <TextInput
-                // style={styles.editForm}
-                onSubmitEditing={handleSubmitLocation}
-                placeholder='Location'
-                style={styles.input}
+                placeholder='Confirm Password'
+                autoCapitalize='none'
+                secureTextEntry
               />
               <Pressable
                 onPress={() => {
@@ -259,133 +346,110 @@ const UserProfileContainer = ({ navigation }) => {
                   setShowPassModal(false);
                 }}
                 style={[styles.button, styles.buttonClose]}
-                // title="Cancel"
               >
                 <Text style={styles.textStyle}>Cancel</Text>
+              </Pressable>
+              <Pressable
+                style={[styles.button, styles.buttonClose]}
+                onPress={() => {
+                  setShowPassModal(!showPassModal);
+                  handlePass();
+                }}
+              >
+                <Text style={styles.textStyle}>Change Password</Text>
               </Pressable>
             </View>
           </View>
         </Modal>
-        {/* <TextInput
-          onSubmitEditing={handleSubmitUsername}
-          placeholder='Username'
-        />
-        <TextInput
-          // style={styles.editForm}
-          onSubmitEditing={handleSubmitEmail}
-          placeholder='Email'
-        />
-        <TextInput
-          // style={styles.editForm}
-          onSubmitEditing={handleSubmitLocation}
-          placeholder='Location'
-        /> */}
-        <Button
-          onPress={() => {
-            setShowPassModal(!showPassModal);
-          }}
-          title='Change Password'
-        />
-      </View>
-      <View>
-        <NavBarContainer navigation={navigation} />
-      </View>
-      <Modal
-        animationType='slide'
-        transparent={showPassModal}
-        visible={showPassModal}
-        onRequestClose={() => {
-          // Alert.alert("Modal has been closed.");
-          setShowPassModal(!showPassModal);
-        }}
-      >
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
-            <TextInput
-              onChangeText={(e) => {
-                console.log(e);
-                setPass(e);
-              }}
-              style={styles.input}
-              placeholder='Password'
-              autoCapitalize='none'
-              secureTextEntry
-            />
-            <TextInput
-              onChangeText={(e) => {
-                console.log(e);
-                setConfirmPass(e);
-              }}
-              style={styles.input}
-              placeholder='Confirm Password'
-              autoCapitalize='none'
-              secureTextEntry
-            />
-            <Pressable
-              onPress={() => {
-                setShowModal(false);
-                setShowPassModal(false);
-              }}
-              style={[styles.button, styles.buttonClose]}
-            >
-              <Text style={styles.textStyle}>Cancel</Text>
-            </Pressable>
-            <Pressable
-              style={[styles.button, styles.buttonClose]}
-              onPress={() => {
-                setShowPassModal(!showPassModal);
-                handlePass();
-              }}
-            >
-              <Text style={styles.textStyle}>Change Password</Text>
-            </Pressable>
-          </View>
+        <View style={styles.nav}>
+          <NavBarContainer navigation={navigation} />
         </View>
-      </Modal>
-    </>
+      </View>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
+  nav: {
+    flexDirection: 'row',
+    zIndex: 400,
+    elevation: 400,
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
   container: {
     flex: 1,
+    // maxHeight: 400,
+    height: '100%',
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    opacity: 0.9,
   },
-  titleText: {
-    fontSize: 20,
+  header: {
+    backgroundColor: '#fff',
+  },
+  headerContent: {
+    padding: 30,
+    alignItems: 'center',
+  },
+  avatar: {
+    marginTop: 25,
+    position: 'absolute',
+  },
+  location: {
+    fontSize: 16,
+    color: '#778899',
+    fontWeight: '600',
+  },
+  name: {
+    marginTop: 50,
+    marginBottom: 16,
+    fontSize: 24,
+    color: 'black',
     fontWeight: 'bold',
   },
-  tinyLogo: {
-    width: 150,
-    height: 150,
-    margin: 10,
+  email: {
+    padding: 5,
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  uploadBtn: {
+    marginBottom: 7,
+    justifyContent: 'center',
+    left: 48,
+    top: 35,
+    textShadowOffset: { width: 5, height: 2 },
+    shadowColor: '#000000',
+    shadowOpacity: 1,
+  },
+  stats: {
+    marginTop: 7,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  starImage: {
+    width: 17,
+    height: 17,
+    paddingHorizontal: 25,
+    marginBottom: 5,
+  },
+  starCount: {
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  errands: {
+    marginTop: 2,
+    paddingHorizontal: 25,
+    fontSize: 14,
+    fontWeight: '600',
   },
   editForm: {
-    backgroundColor: 'white',
+    borderRadius: 30,
+    opacity: 0.8,
+    backgroundColor: '#90CCF4',
     color: 'black',
     alignItems: 'center',
     justifyContent: 'center',
-    maxHeight: 250,
-    margin: 5,
-  },
-  uploadBtnContainer: {
-    opacity: 0.7,
-    position: 'absolute',
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'lightgrey',
-    width: '100%',
-    height: '25%',
-    margin: 10,
-  },
-  uploadBtn: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    margin: 10,
+    minHeight: 350,
   },
   centeredView: {
     flex: 1,
@@ -434,11 +498,13 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 10,
     elevation: 2,
+    zIndex: 2,
   },
   buttonOpen: {
     backgroundColor: '#F194FF',
   },
   buttonClose: {
+    marginBottom: 10,
     backgroundColor: '#2196F3',
   },
   textStyle: {
@@ -455,23 +521,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
   },
-  textile: {
-    // flex: '1',
-    padding: 10,
-  },
   input: {
     height: 40,
     width: 250,
     margin: 12,
     borderWidth: 1,
     padding: 10,
-  },
-  starImage: {
-    marginTop: 12,
-    paddingLeft: 5,
-    width: 30,
-    height: 30,
-    marginRight: SIZES.padding,
+    borderRadius: 5,
   },
 });
 

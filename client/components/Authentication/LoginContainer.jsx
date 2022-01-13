@@ -203,11 +203,7 @@ const styles = StyleSheet.create({
   },
   input: {
     width: '100%',
-    // backgroundColor: 'white',
     padding: 1,
-    // borderStyle: 'solid',
-    // borderColor: '#00214d',
-    // borderRadius: 5,
     margin: 10,
   },
   buttonContainer: {
