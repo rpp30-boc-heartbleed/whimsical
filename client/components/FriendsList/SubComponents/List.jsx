@@ -47,19 +47,6 @@ const List = ({ style, navigation }) => {
                 <Text style={{ fontWeight: 'bold' }}>
                   {item.name}
                 </Text>
-<<<<<<< HEAD
-                <Text>{item.goldstars}<Image style={styles.star} source={star} /></Text>
-              </View>
-              <TouchableOpacity style={styles.avatar}>
-                <IconButton
-                  icon='chat-outline'
-                  size={50}
-                  style={styles.chatIcon}
-                  disabled={disabled}
-                  onPress={() => navigation.push('Chat', { errandId: item.currentErrands[0] })}
-                />
-              </TouchableOpacity>
-=======
                 <Text><Image style={styles.star} source={star} />
                   <Text style={{ margin: 5 }}>{item.goldStars}
                   </Text>
@@ -79,7 +66,6 @@ const List = ({ style, navigation }) => {
                   </TouchableOpacity>
                 )
                 : (<AddIcon stranger={item} />)}
->>>>>>> finish-addFriend
             </View>
           );
         }}
