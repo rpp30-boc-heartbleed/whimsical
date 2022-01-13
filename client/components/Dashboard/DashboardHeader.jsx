@@ -95,7 +95,7 @@ const styles = StyleSheet.create({
     // resizeMode: 'contain',
   },
   searchBar: {
-    borderWidth: 2,
+    borderWidth: 0.5,
     borderColor: '#DEE1E6',
     borderRadius: 10,
     marginBottom: 5,
