@@ -5,6 +5,7 @@ import {
   View,
   Text,
   StyleSheet,
+  ScrollView,
 } from 'react-native';
 
 // Components
@@ -65,16 +66,18 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: 'row',
+    marginLeft: 2,
     justifyContent: 'space-between',
     alignItems: 'center',
-    width: '90%',
+    width: '100%',
     backgroundColor: '#90CCF4',
+    marginTop: 148,
   },
   search: {
-    borderRadius: 30,
+    margin: 5,
+    borderRadius: 3,
     fontSize: 14,
-    borderStyle: 'solid',
-    borderColor: 'grey',
+    backgroundColor: '#d2d2d2',
     height: 50,
     width: (width * 0.8),
     textAlign: 'center',
@@ -92,6 +95,9 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 60,
     marginTop: 25,
+  },
+  toggle: {
+    marginLeft: 4,
   },
 });
 

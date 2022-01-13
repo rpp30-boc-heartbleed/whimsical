@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React from 'react';
 import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 
@@ -24,7 +25,7 @@ const List = ({ style, navigation }) => {
   const filteredByName = useRecoilValue(filterByNameSelector('friends'));
 
   return (
-    <View style={style}>
+    <View style={style.container}>
       <FlatList
         data={filteredByName}
         renderItem={({ item, index }) => {
@@ -34,10 +35,10 @@ const List = ({ style, navigation }) => {
                 <Avatar.Image size={50} source={item.avatar} />
               </TouchableOpacity>
               <View style={styles.text}>
-                <Text>
+                <Text style={{ fontWeight: 'bold', fontSize: 14 }}>
                   {item.name}
                 </Text>
-                <Text>{item.goldStars}<Image style={styles.star} source={star} /></Text>
+                <Text><Image style={styles.star} source={star} /> {item.goldStars}</Text>
               </View>
               <TouchableOpacity style={styles.chat}>
                 <IconModal
@@ -74,18 +75,20 @@ const styles = StyleSheet.create({
   },
   text: {
     flex: 4,
-    // flexDirection: 'row',
-    borderColor: 'grey',
+    flexDirection: 'row',
     fontSize: 14,
-    borderRadius: 30,
-    // borderColor: 'black',
-    borderWidth: 1,
+    borderColor: '#fff',
+    backgroundColor: '#fff',
+    borderWidth: 3,
     height: 60,
     padding: 10,
   },
   star: {
-    width: 20,
-    height: 20,
+    flexDirection: 'row',
+    width: 18,
+    height: 18,
+    margin: 6,
+    marginBottom: 10,
   },
   chat: {
     flex: 1,
