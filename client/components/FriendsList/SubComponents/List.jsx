@@ -80,14 +80,9 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     // padding: 15,
     width: '100%',
-<<<<<<< HEAD
-    height: 80,
-    // marginTop: 15,
-=======
     height: 100,
     borderColor: '#F1F3F4',
     borderWidth: 1,
->>>>>>> 2d942408f4a82c3faf0b5cc424fc4c43d10f96ac
   },
   avatar: {
     flex: 1,
@@ -95,18 +90,9 @@ const styles = StyleSheet.create({
   },
   text: {
     flex: 4,
-<<<<<<< HEAD
-    alignItems: 'center',
-    // flexDirection: 'row',
-    borderRadius: 30,
-    borderColor: 'black',
-    backgroundColor: 'white',
-    borderWidth: 2,
-=======
     width: '100%',
     fontSize: 14,
     borderRadius: 30,
->>>>>>> 2d942408f4a82c3faf0b5cc424fc4c43d10f96ac
     height: 60,
     margin: 10,
   },

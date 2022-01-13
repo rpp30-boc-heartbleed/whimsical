@@ -65,15 +65,9 @@ const styles = StyleSheet.create({
     margin: 10,
     borderRadius: 5,
     fontSize: 14,
-<<<<<<< HEAD
-    borderColor: 'black',
-    backgroundColor: 'white',
-    borderWidth: 2,
-=======
     backgroundColor: '#fff',
     borderColor: '#DEE1E6',
     borderWidth: 1,
->>>>>>> 2d942408f4a82c3faf0b5cc424fc4c43d10f96ac
     height: 50,
     width: (width * 0.8),
     textAlign: 'center',
