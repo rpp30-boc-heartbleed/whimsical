@@ -144,7 +144,6 @@ const UserProfileContainer = ({ navigation }) => {
       // const blob = URL.createObjectURL(image.uri);
       console.log('blob', image);
       console.log('data', data);
-      // axios.post('http://localhost:3000/userProfile/image', data, {
       axios
         .post(`${HOST_URL}/userProfile/image`, data, {
           headers: {
