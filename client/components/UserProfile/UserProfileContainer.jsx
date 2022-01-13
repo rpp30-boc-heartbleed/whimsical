@@ -185,90 +185,161 @@ const UserProfileContainer = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.headerContent}>
-          <Avatar.Image
-            size={100}
-            style={styles.avatar}
-            source={{
-              uri: user.picture,
-            }}
-          />
-          <TouchableOpacity onPress={addImage} style={styles.uploadBtn}>
-            <Icon name='photo' size={13} raised color='black' />
-            {/* <Text style={{ fontSize: 10 }}>{user.picture ? 'Edit' : 'Upload'}</Text> */}
-          </TouchableOpacity>
-          <Text style={styles.name}>{user.name}</Text>
-          <Text style={styles.location}>{user.location}</Text>
-          <Text style={styles.email}>{user.email}</Text>
-          <View style={styles.stats}>
-            <Text style={styles.starCount}>
-              <Image source={icons.star} style={styles.starImage} /> {user.stars}
-            </Text>
-            <Text style={styles.errands}>
-              <Badge value="Errands Completed" status="success" />
-              {' '}: {user.errandsCompleted}
-            </Text>
+    <>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.header}>
+          <View style={styles.headerContent}>
+            <Avatar.Image
+              size={100}
+              style={styles.avatar}
+              source={{
+                uri: user.picture,
+              }}
+            />
+            <TouchableOpacity onPress={addImage} style={styles.uploadBtn}>
+              <Icon name='photo' size={13} raised color='black' />
+              {/* <Text style={{ fontSize: 10 }}>{user.picture ? 'Edit' : 'Upload'}</Text> */}
+            </TouchableOpacity>
+            <Text style={styles.name}>{user.name}</Text>
+            <Text style={styles.location}>{user.location}</Text>
+            <Text style={styles.email}>{user.email}</Text>
+            <View style={styles.stats}>
+              <Text style={styles.starCount}>
+                <Image source={icons.star} style={styles.starImage} /> {user.stars}
+              </Text>
+              <Text style={styles.errands}>
+                <Badge value="Errands Completed" status="success" />
+                {' '}: {user.errandsCompleted}
+              </Text>
+            </View>
           </View>
         </View>
-      </View>
-      <View style={styles.editForm}>
-        <View style={styles.item}>
+        <View style={styles.editForm}>
+          <View style={styles.item}>
 
-          <Button
-            onPress={() => {
-              setShowModal(!showModal);
-            }}
-            buttonStyle={{
-              backgroundColor: '#3da9fc',
-              borderColor: 'transparent',
-              borderWidth: 0,
-              borderRadius: 30,
-            }}
-            icon={{
-              name: 'pencil',
-              type: 'font-awesome',
-              size: 15,
-              color: 'white',
-            }}
-            iconContainerStyle={{ marginRight: 10 }}
-            containerStyle={{
-              width: 200,
-              marginHorizontal: 50,
-              marginVertical: 10,
-            }}
-            titleStyle={{ color: '#fff', fontSize: 14, fontWeight: '400' }}
-            title='EDIT PROFILE'
-          />
+            <Button
+              onPress={() => {
+                setShowModal(!showModal);
+              }}
+              buttonStyle={{
+                backgroundColor: '#3da9fc',
+                borderColor: 'transparent',
+                // borderWidth: 0,
+                borderRadius: 30,
+              }}
+              icon={{
+                name: 'pencil',
+                type: 'font-awesome',
+                size: 15,
+                color: 'white',
+              }}
+              iconContainerStyle={{ marginRight: 10 }}
+              containerStyle={{
+                width: 200,
+                marginHorizontal: 50,
+                marginVertical: 30,
+              }}
+              titleStyle={{ color: '#fff', fontSize: 14, fontWeight: '400' }}
+              title='EDIT PROFILE'
+            />
+            <Modal
+              animationType='slide'
+              transparent={showModal}
+              visible={showModal}
+              onRequestClose={() => {
+                // Alert.alert("Modal has been closed.");
+                setShowModal(!showModal);
+              }}
+            >
+              <View style={styles.modalView}>
+                <View style={styles.betterView}>
+                  <Text style={{ marginTop: 20 }}>EDITING YOUR PROFILE</Text>
+                  <TextInput
+                    onSubmitEditing={handleSubmitUsername}
+                    placeholder='Username'
+                    style={styles.input}
+                  />
+                  <TextInput
+                    // style={styles.editForm}
+                    onSubmitEditing={handleSubmitEmail}
+                    placeholder='Email'
+                    style={styles.input}
+                  />
+                  <TextInput
+                    // style={styles.editForm}
+                    onSubmitEditing={handleSubmitLocation}
+                    placeholder='Location'
+                    style={styles.input}
+                  />
+                  <Pressable
+                    onPress={() => {
+                      setShowModal(false);
+                      setShowPassModal(false);
+                    }}
+                    style={[styles.button, styles.buttonClose]}
+                    // title="Cancel"
+                  >
+                    <Text style={styles.textStyle}>Cancel</Text>
+                  </Pressable>
+                </View>
+              </View>
+            </Modal>
+            <Button
+              onPress={() => {
+                setShowPassModal(!showPassModal);
+              }}
+              containerStyle={{
+                width: 200,
+                marginHorizontal: 50,
+                marginBottom: 90,
+              }}
+              buttonStyle={{
+                backgroundColor: '#3da9fc',
+                borderColor: 'transparent',
+                // borderWidth: 0,
+                borderRadius: 30,
+              }}
+              icon={{
+                name: 'unlock',
+                type: 'font-awesome',
+                size: 15,
+                color: 'white',
+              }}
+              iconContainerStyle={{ marginRight: 10 }}
+              titleStyle={{ color: '#fff', fontSize: 14, fontWeight: '400' }}
+              title='CHANGE PASSWORD'
+            />
+          </View>
           <Modal
             animationType='slide'
-            transparent={showModal}
-            visible={showModal}
+            transparent={showPassModal}
+            visible={showPassModal}
             onRequestClose={() => {
               // Alert.alert("Modal has been closed.");
-              setShowModal(!showModal);
+              setShowPassModal(!showPassModal);
             }}
           >
-            <View style={styles.modalView}>
-              <View style={styles.betterView}>
-                <Text style={{ marginTop: 20 }}>EDITING YOUR PROFILE</Text>
+            <View style={styles.centeredView}>
+              <View style={styles.modalView}>
                 <TextInput
-                  onSubmitEditing={handleSubmitUsername}
-                  placeholder='Username'
+                  onChangeText={(e) => {
+                    console.log(e);
+                    setPass(e);
+                  }}
                   style={styles.input}
+                  placeholder='Password'
+                  autoCapitalize='none'
+                  secureTextEntry
                 />
                 <TextInput
-                  // style={styles.editForm}
-                  onSubmitEditing={handleSubmitEmail}
-                  placeholder='Email'
+                  onChangeText={(e) => {
+                    console.log(e);
+                    setConfirmPass(e);
+                  }}
                   style={styles.input}
-                />
-                <TextInput
-                  // style={styles.editForm}
-                  onSubmitEditing={handleSubmitLocation}
-                  placeholder='Location'
-                  style={styles.input}
+                  placeholder='Confirm Password'
+                  autoCapitalize='none'
+                  secureTextEntry
                 />
                 <Pressable
                   onPress={() => {
@@ -276,110 +347,33 @@ const UserProfileContainer = ({ navigation }) => {
                     setShowPassModal(false);
                   }}
                   style={[styles.button, styles.buttonClose]}
-                  // title="Cancel"
                 >
                   <Text style={styles.textStyle}>Cancel</Text>
+                </Pressable>
+                <Pressable
+                  style={[styles.button, styles.buttonClose]}
+                  onPress={() => {
+                    setShowPassModal(!showPassModal);
+                    handlePass();
+                  }}
+                >
+                  <Text style={styles.textStyle}>Change Password</Text>
                 </Pressable>
               </View>
             </View>
           </Modal>
-          <Button
-            onPress={() => {
-              setShowPassModal(!showPassModal);
-            }}
-            containerStyle={{
-              width: 200,
-              marginHorizontal: 50,
-              marginVertical: 10,
-            }}
-            buttonStyle={{
-              backgroundColor: '#3da9fc',
-              borderColor: 'transparent',
-              borderWidth: 0,
-              borderRadius: 30,
-            }}
-            icon={{
-              name: 'unlock',
-              type: 'font-awesome',
-              size: 15,
-              color: 'white',
-            }}
-            iconContainerStyle={{ marginRight: 10 }}
-            titleStyle={{ color: '#fff', fontSize: 14, fontWeight: '400' }}
-            title='CHANGE PASSWORD'
-          />
         </View>
-        <Modal
-          animationType='slide'
-          transparent={showPassModal}
-          visible={showPassModal}
-          onRequestClose={() => {
-            // Alert.alert("Modal has been closed.");
-            setShowPassModal(!showPassModal);
-          }}
-        >
-          <View style={styles.centeredView}>
-            <View style={styles.modalView}>
-              <TextInput
-                onChangeText={(e) => {
-                  console.log(e);
-                  setPass(e);
-                }}
-                style={styles.input}
-                placeholder='Password'
-                autoCapitalize='none'
-                secureTextEntry
-              />
-              <TextInput
-                onChangeText={(e) => {
-                  console.log(e);
-                  setConfirmPass(e);
-                }}
-                style={styles.input}
-                placeholder='Confirm Password'
-                autoCapitalize='none'
-                secureTextEntry
-              />
-              <Pressable
-                onPress={() => {
-                  setShowModal(false);
-                  setShowPassModal(false);
-                }}
-                style={[styles.button, styles.buttonClose]}
-              >
-                <Text style={styles.textStyle}>Cancel</Text>
-              </Pressable>
-              <Pressable
-                style={[styles.button, styles.buttonClose]}
-                onPress={() => {
-                  setShowPassModal(!showPassModal);
-                  handlePass();
-                }}
-              >
-                <Text style={styles.textStyle}>Change Password</Text>
-              </Pressable>
-            </View>
-          </View>
-        </Modal>
-        <View style={styles.nav}>
-          <NavBarContainer navigation={navigation} />
-        </View>
+      </SafeAreaView>
+      <View>
+        <NavBarContainer navigation={navigation} />
       </View>
-    </SafeAreaView>
+    </>
   );
 };
 
 const styles = StyleSheet.create({
-  nav: {
-    flexDirection: 'row',
-    zIndex: 400,
-    elevation: 400,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
   container: {
     flex: 1,
-    // maxHeight: 400,
     height: '100%',
     backgroundColor: '#fff',
   },
@@ -415,7 +409,7 @@ const styles = StyleSheet.create({
     marginBottom: 7,
     justifyContent: 'center',
     left: 48,
-    top: 35,
+    top: 40,
     textShadowOffset: { width: 5, height: 2 },
     shadowColor: '#000000',
     shadowOpacity: 1,
@@ -444,12 +438,12 @@ const styles = StyleSheet.create({
   },
   editForm: {
     borderRadius: 30,
-    opacity: 0.8,
+    opacity: 0.75,
     backgroundColor: '#90CCF4',
     color: 'black',
     alignItems: 'center',
     justifyContent: 'center',
-    minHeight: 350,
+    minHeight: 300,
   },
   centeredView: {
     flex: 1,
