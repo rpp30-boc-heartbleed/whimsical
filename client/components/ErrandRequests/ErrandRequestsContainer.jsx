@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useRecoilValue } from 'recoil';
-import { Text, View, FlatList, StyleSheet } from 'react-native';
+import {
+  Text, View, FlatList, StyleSheet,
+} from 'react-native';
 import ErrandRequests from './ErrandRequests';
 
 const ErrandRequestsContainer = ({ navigation }) => {

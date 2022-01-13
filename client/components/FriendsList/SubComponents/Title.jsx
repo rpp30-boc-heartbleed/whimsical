@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
   heading: {
     fontSize: 30,
     fontWeight: 'bold',
+    color: '#fff',
   },
   number: {
     fontSize: 12,

@@ -172,6 +172,7 @@ const RegisterContainer = ({ navigation }) => {
             left={<TextInput.Icon name='pencil' />}
             dense
             mode='outlined'
+            outlineColor="#fff"
             onChangeText={(value) => handleOnChangeText(value, 'name')}
           />
           <TextInput
@@ -183,6 +184,7 @@ const RegisterContainer = ({ navigation }) => {
             left={<TextInput.Icon name='home' />}
             dense
             mode='outlined'
+            outlineColor="#fff"
             onChangeText={(value) => handleOnChangeText(value, 'streetAddress')}
           />
           <TextInput
@@ -194,6 +196,7 @@ const RegisterContainer = ({ navigation }) => {
             left={<TextInput.Icon name='city' />}
             dense
             mode='outlined'
+            outlineColor="#fff"
             onChangeText={(value) => handleOnChangeText(value, 'city')}
           />
           <TextInput
@@ -205,6 +208,7 @@ const RegisterContainer = ({ navigation }) => {
             left={<TextInput.Icon name='map' />}
             dense
             mode='outlined'
+            outlineColor="#fff"
             onChangeText={(value) => handleOnChangeText(value, 'state')}
           />
           <TextInput
@@ -216,6 +220,7 @@ const RegisterContainer = ({ navigation }) => {
             left={<TextInput.Icon name='map' />}
             dense
             mode='outlined'
+            outlineColor="#fff"
             onChangeText={(value) => handleOnChangeText(value, 'zipCode')}
           />
           <TextInput
@@ -227,6 +232,7 @@ const RegisterContainer = ({ navigation }) => {
             left={<TextInput.Icon name='camera' />}
             dense
             mode='outlined'
+            outlineColor="#fff"
             onChangeText={(value) => handleOnChangeText(value, 'imageURL')}
           />
           <TextInput
@@ -238,6 +244,7 @@ const RegisterContainer = ({ navigation }) => {
             left={<TextInput.Icon name='email' />}
             dense
             mode='outlined'
+            outlineColor="#fff"
             onChangeText={(value) => handleOnChangeText(value, 'email')}
           />
           <TextInput
@@ -249,6 +256,7 @@ const RegisterContainer = ({ navigation }) => {
             left={<TextInput.Icon name='form-textbox-password' />}
             dense
             mode='outlined'
+            outlineColor="#fff"
             onChangeText={(value) => handleOnChangeText(value, 'password')}
             secureTextEntry
           />
@@ -261,6 +269,7 @@ const RegisterContainer = ({ navigation }) => {
             left={<TextInput.Icon name='form-textbox-password' />}
             dense
             mode='outlined'
+            outlineColor="#fff"
             onChangeText={(value) =>
               handleOnChangeText(value, 'confirmPassword')
             }
@@ -320,7 +329,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   inputContainer: {
-    width: '90%',
+    width: '95%',
   },
   input: {
     width: '100%',

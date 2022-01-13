@@ -61,26 +61,22 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#90CCF4',
+    height: '100%',
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    width: '90%',
+    width: '95%',
+    backgroundColor: '#90CCF4',
   },
-  // toggle: {
-  //   flex: 1,
-  // },
-  // title: {
-  //   flex: 1,
-  // },
-  // addButton: {
-  //   flex: 1,
-  // },
   search: {
-    borderRadius: 30,
+    margin: 10,
+    borderRadius: 5,
     fontSize: 14,
-    borderColor: 'black',
+    backgroundColor: '#fff',
+    borderColor: '#DEE1E6',
     borderWidth: 1,
     height: 50,
     width: (width * 0.8),
@@ -88,17 +84,8 @@ const styles = StyleSheet.create({
   },
   list: {
     flex: 1,
+    backgroundColor: '#fff',
     width: '100%',
-  },
-  friend: {
-    padding: 15,
-    fontSize: 14,
-    borderRadius: 20,
-    borderColor: 'black',
-    borderWidth: 1,
-    width: '100%',
-    height: 60,
-    marginTop: 25,
   },
 });
 

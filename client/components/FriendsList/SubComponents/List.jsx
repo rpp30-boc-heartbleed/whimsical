@@ -34,10 +34,13 @@ const List = ({ style, navigation }) => {
                 <Avatar.Image size={50} source={item.avatar} />
               </TouchableOpacity>
               <View style={styles.text}>
-                <Text>
+                <Text style={{ fontWeight: 'bold' }}>
                   {item.name}
                 </Text>
-                <Text>{item.goldStars}<Image style={styles.star} source={star} /></Text>
+                <Text><Image style={styles.star} source={star} />
+                  <Text style={{ margin: 5 }}>{item.goldStars}
+                  </Text>
+                </Text>
               </View>
               <TouchableOpacity style={styles.chat}>
                 <IconModal
@@ -62,25 +65,23 @@ const List = ({ style, navigation }) => {
 const styles = StyleSheet.create({
   friend: {
     flexDirection: 'row',
-    padding: 15,
+    // padding: 15,
     width: '100%',
-    height: 80,
-    marginTop: 15,
+    height: 100,
+    borderColor: '#F1F3F4',
+    borderWidth: 1,
   },
   avatar: {
     flex: 1,
-    marginRight: 30,
-    marginLeft: 10,
+    margin: 20,
   },
   text: {
     flex: 4,
-    // flexDirection: 'row',
+    width: '100%',
     fontSize: 14,
     borderRadius: 30,
-    borderColor: 'black',
-    borderWidth: 1,
     height: 60,
-    padding: 10,
+    margin: 10,
   },
   star: {
     width: 15,
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
     marginRight: 30,
   },
   chatIcon: {
-    paddingBottom: 20,
+    marginBottom: 20,
   },
 });
 
