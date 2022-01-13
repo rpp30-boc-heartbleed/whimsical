@@ -10,26 +10,11 @@ const {
 const { Profile } = require('../models/userProfile');
 const { Errand } = require('../models/errand');
 
-<<<<<<< HEAD
-const connectDb = () => mongoose.connect(`mongodb://${process.env.USERNAME}:${process.env.PASS}@3.83.254.62/quick-bagel`, {
-// const connectDb = () => mongoose.connect('mongodb://localhost:27017/quick-bagel', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
-  .then(async () => {
-    console.log('Connected to MongoDBagel');
-    // on connection, drop the data that feeds the dashboard
-    // try {
-    //   console.log('Seeding data...');
-    //   // Drop profiles collection and seed with mock data
-    //   await mongoose.connection.db.dropCollection('profileCollection');
-    //   const runners = await Profile.insertMany(mockRunners);
-    //   const requestor = await Profile.create(mockRequestors[1]);
-=======
 // const connectDb = () => mongoose.connect(`mongodb://${process.env.USERNAME}:${process.env.PASS}@3.83.254.62/quick-bagel`, {
 const connectDb = () =>
   mongoose
-    .connect('mongodb://localhost:27017/quick-bagel', {
+    // .connect('mongodb://localhost:27017/quick-bagel', {
+    .connect(`mongodb://${process.env.USERNAME}:${process.env.PASS}@3.83.254.62/quick-bagel`, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     })
@@ -43,7 +28,6 @@ const connectDb = () =>
         const runners = await Profile.insertMany(mockRunners);
         const rexRequestor = await Profile.create(mockRequestors[0]);
         const orangeRequestor = await Profile.create(mockRequestors[1]);
->>>>>>> 863276825accb7474f27ebc60a0c817e86ee6593
 
         // Seed Errands
         await mongoose.connection.db.dropCollection('errandCollection');

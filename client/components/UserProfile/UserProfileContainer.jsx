@@ -28,6 +28,7 @@ const UserProfileContainer = ({ navigation }) => {
   const [user, setUser] = useRecoilState(userProfileState);
   const [pass, setPass] = useState('');
   const [stars, setStars] = useState(0);
+  const [completed, setCompleted] = useState(0);
   const [confirmPass, setConfirmPass] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [showPassModal, setShowPassModal] = useState(false);
@@ -38,7 +39,7 @@ const UserProfileContainer = ({ navigation }) => {
       .then((data) => {
         console.log('loaded profile', data.data);
         setUser(data.data.data[0]);
-        setStars(data.data.info);
+        setCompleted(data.data.info);
       })
       .catch((err) => console.error(err));
   }, [setUser]);
@@ -203,7 +204,7 @@ const UserProfileContainer = ({ navigation }) => {
         <Text
           style={styles.textile}
         >Stars
-          <AntDesign name="star" size={20} color="blue" />:  {stars}
+          <AntDesign name="star" size={20} color="blue" />:  {user.stars}
           </Text>
         <Text
           style={styles.textile}
