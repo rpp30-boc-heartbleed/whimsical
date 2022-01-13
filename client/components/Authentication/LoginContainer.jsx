@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /* eslint-disable global-require */
 import React, { useState, useEffect } from 'react';
 import {
@@ -38,9 +39,7 @@ const LoginContainer = ({ navigation }) => {
     return Object.values(obj).every((value) => value.trim());
   };
   const isValidEmail = (str) => {
-    // eslint-disable-next-line no-useless-escape
-    const regex =
-      /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    const regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(str);
   };
   const isValidForm = () => {
