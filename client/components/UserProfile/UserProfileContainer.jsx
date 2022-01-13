@@ -129,6 +129,7 @@ const UserProfileContainer = ({ navigation }) => {
       stars: user.stars,
       location: user.location,
     };
+    // eslint-disable-next-line no-undef
     const data = new FormData();
     data.append('photoData', {
       uri: image.uri,
