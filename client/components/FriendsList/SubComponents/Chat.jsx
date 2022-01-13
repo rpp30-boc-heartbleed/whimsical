@@ -48,9 +48,9 @@ const Chat = ({ route, navigation }) => {
         messages={messages}
         onSend={(message) => onSend(message[0])}
         user={{
-          _id: 1,
-          name: 'cat',
-          avatar: cat,
+          _id: user._id,
+          name: user.name,
+          avatar: user.picture,
         }}
         // isTyping
         // infiniteScroll
