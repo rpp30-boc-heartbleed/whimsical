@@ -137,10 +137,9 @@ const DashboardBody = ({ navigation }) => {
               </View>
 
               <View style={styles.container7}>
-                <Text style={styles.cont7}>Address: {item.storeAddress.streetName}</Text>
-                <Text style={styles.cont7}>ETA: {item.storeETA || '5 minutes'}</Text>
+                <Text style={{ fontWeight: 'bold' }}>Address: <Text style={{ fontWeight: 'normal' }}>{item.storeAddress.streetName}</Text></Text>
+                <Text style={{ fontWeight: 'bold' }}>ETA: <Text style={{ fontWeight: 'bold', color: '#F78888' }}> {item.storeETA || '5 minutes'}</Text></Text>
               </View>
-
               <View style={[styles.buttons, styles.clickable]}>
 
                 <TouchableOpacity
@@ -213,13 +212,14 @@ const useSnackBar = () => {
 const styles = StyleSheet.create({
   container0: {
     height: 643,
+    backgroundColor: '#90CCF4',
   },
   container: {
     flex: 1,
     backgroundColor: '#fff',
     flexDirection: 'row',
     borderWidth: 1,
-    borderColor: '#0782F9',
+    borderColor: '#F1F3F4',
     borderRadius: 5,
     marginTop: 10,
     marginHorizontal: 5,
@@ -261,11 +261,13 @@ const styles = StyleSheet.create({
   },
   cont6: {
     fontSize: 15,
-    fontWeight: 'bold',
+    fontWeight: 'normal',
   },
   store: {
     marginLeft: -20,
     paddingTop: 13,
+    fontWeight: 'bold',
+    color: '#5DA2D5',
   },
   errandname: {
     paddingTop: 13,

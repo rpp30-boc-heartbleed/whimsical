@@ -13,31 +13,41 @@ import { Avatar, Badge, IconButton } from 'react-native-paper';
 
 // Components
 import IconModal from '../../Modals/IconModal';
+import AddIcon from './AddIcon';
 // State
 import filterByNameSelector from '../../../state/selectors/filterByName';
+import addFriendState from '../../../state/atoms/addFriends';
+import userProfileState from '../../../state/atoms/userProfile';
+import addFriendsQuery from '../../../state/selectors/addFriendsQuery';
+import friendsListQuery from '../../../state/selectors/friendsListQuery';
 // Assets
 import { icons, SIZES } from '../../../constants';
 
 const { star } = icons;
 
 const List = ({ style, navigation }) => {
-  const filteredByName = useRecoilValue(filterByNameSelector('friends'));
+  const [addList, setAddList] = useRecoilState(addFriendState);
+  const [user] = useRecoilState(userProfileState);
+  const filteredFriends = useRecoilValue(filterByNameSelector('friends'));
+  const filteredUsers = useRecoilValue(filterByNameSelector('strangers'));
+  const list = addList ? filteredUsers : filteredFriends;
 
   return (
     <View style={style}>
       <FlatList
-        data={filteredByName}
+        data={list}
         renderItem={({ item, index }) => {
           const disabled = !!item.currentErrands.length;
           return (
             <View style={styles.friend}>
               <TouchableOpacity style={styles.avatar}>
-                <Avatar.Image size={50} source={item.avatar} />
+                <Avatar.Image size={60} source={item.picture} />
               </TouchableOpacity>
               <View style={styles.text}>
-                <Text>
+                <Text style={{ fontWeight: 'bold' }}>
                   {item.name}
                 </Text>
+<<<<<<< HEAD
                 <Text>{item.goldstars}<Image style={styles.star} source={star} /></Text>
               </View>
               <TouchableOpacity style={styles.avatar}>
@@ -49,10 +59,31 @@ const List = ({ style, navigation }) => {
                   onPress={() => navigation.push('Chat', { errandId: item.currentErrands[0] })}
                 />
               </TouchableOpacity>
+=======
+                <Text><Image style={styles.star} source={star} />
+                  <Text style={{ margin: 5 }}>{item.goldStars}
+                  </Text>
+                </Text>
+              </View>
+              {(!addList)
+                ? (
+                  <TouchableOpacity style={styles.chat}>
+                    <IconModal
+                      disable={false}
+                      icon='chat-outline'
+                      size={50}
+                      style={styles.chatIcon}
+                      currentErrands={item.currentErrands}
+                      navigation={navigation}
+                    />
+                  </TouchableOpacity>
+                )
+                : (<AddIcon stranger={item} />)}
+>>>>>>> finish-addFriend
             </View>
           );
         }}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item._id}
         keyboardShouldPersistTaps="handled"
       />
     </View>
@@ -62,25 +93,26 @@ const List = ({ style, navigation }) => {
 const styles = StyleSheet.create({
   friend: {
     flexDirection: 'row',
-    padding: 15,
+    // padding: 15,
     width: '100%',
-    height: 80,
-    marginTop: 15,
+    height: 100,
+    borderColor: '#F1F3F4',
+    borderWidth: 1,
   },
   avatar: {
     flex: 1,
-    marginRight: 30,
-    marginLeft: 10,
+    margin: 20,
   },
   text: {
     flex: 4,
-    // flexDirection: 'row',
+    width: '100%',
     fontSize: 14,
     borderRadius: 30,
-    borderColor: 'black',
-    borderWidth: 1,
     height: 60,
-    padding: 10,
+    margin: 10,
+  },
+  name: {
+    fontSize: 20,
   },
   star: {
     width: 15,
@@ -91,7 +123,7 @@ const styles = StyleSheet.create({
     marginRight: 30,
   },
   chatIcon: {
-    paddingBottom: 20,
+    marginBottom: 20,
   },
 });
 

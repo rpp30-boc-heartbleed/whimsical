@@ -1,25 +1,23 @@
-import { selectorFamily } from 'recoil';
+import { selector } from 'recoil';
 import axios from 'axios';
-import { HOST_URL, DEPLOYED_IP } from '@env';
-import friendsListState from '../atoms/friendsList';
+import { HOST_URL } from '@env';
+import userProfile from '../atoms/userProfile';
 
-const friendsListQuery = selectorFamily({
+const friendsListQuery = selector({
   key: 'friendsListQuery',
-  get: (userEmail) => {
-    return ({ get }) => {
-      const res = axios({
-        method: 'get',
-        url: `${HOST_URL}/friends/get?email=${userEmail}`,
+  get: async ({ get }) => {
+    const user = await get(userProfile);
+    const res = await axios.post(
+      `${HOST_URL}/friends/getFriends`,
+      { friends: user.friends },
+    )
+      .then((data) => {
+        return data.data.friendsList;
       })
-        .then((data) => {
-          console.log(data.data);
-          return data.data;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-      return res;
-    };
+      .catch((err) => {
+        console.log(err);
+      });
+    return res;
   },
 });
 

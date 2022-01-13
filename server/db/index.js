@@ -29,7 +29,7 @@ const connectDb = () => mongoose.connect(`mongodb://${process.env.MONGO_USERNAME
 
       // Seed Errands
       await mongoose.connection.db.dropCollection('errandCollection');
-      let requestor = null;
+      const requestor = null;
 
       const errands = mockErrands.forEach(async (errand, i) => {
         // alternate requestors but leave 2 un-requested errands
