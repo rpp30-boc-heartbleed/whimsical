@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /* eslint-disable global-require */
 import React, { useState, useEffect } from 'react';
 import {
@@ -6,17 +7,13 @@ import {
   Text,
   StyleSheet,
   StatusBar,
-  Button,
   TouchableOpacity,
   Image,
 } from 'react-native';
 import { TextInput } from 'react-native-paper';
+import { Button } from 'react-native-elements';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import {
-  COLORS,
-  SIZES,
-  icons,
-} from '../../constants';
+import { COLORS, SIZES, icons } from '../../constants';
 import auth from '../../config/firebase';
 import NavBarContainer from '../NavBar/NavBarContainer';
 
@@ -42,7 +39,6 @@ const LoginContainer = ({ navigation }) => {
     return Object.values(obj).every((value) => value.trim());
   };
   const isValidEmail = (str) => {
-    // eslint-disable-next-line no-useless-escape
     const regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(str);
   };
@@ -69,7 +65,9 @@ const LoginContainer = ({ navigation }) => {
       .catch((err) => {
         // console.log('error', err);
         console.log('err code', err.code);
-        if (err.code === 'auth/invalid-value-(email),-starting-an-object-on-a-scalar-field') {
+        if (
+          err.code === 'auth/invalid-value-(email),-starting-an-object-on-a-scalar-field'
+        ) {
           setError('Please enter a valid email address');
         }
         if (err.code === 'auth/wrong-password') {
@@ -79,7 +77,9 @@ const LoginContainer = ({ navigation }) => {
           setError('Please check the email address and try again');
         }
         // eslint-disable-next-line max-len
-        setError("We're sorry. We're experiencing some technical difficulties. Please try again.");
+        setError(
+          "We're sorry. We're experiencing some technical difficulties. Please try again.",
+        );
       });
   };
 
@@ -102,38 +102,60 @@ const LoginContainer = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to Quick Bagel!</Text>
-      <Image style={styles.image} size={65} source={require('../../assets/icons/minilogo.png')} />
+      <Image
+        style={styles.image}
+        size={1}
+        source={require('../../assets/icons/logo-bg.png')}
+      />
       <KeyboardAvoidingView style={styles.container}>
         <View style={styles.inputContainer}>
-          {error ? <Text style={styles.error} testID='errorMsg'>{error}</Text> : null}
+          {error ? (
+            <Text style={styles.error} testID='errorMsg'>
+              {error}
+            </Text>
+          ) : null}
           <TextInput
             style={styles.input}
             placeholder='email'
             autoCapitalize='none'
+            dense
+            mode='outlined'
             value={email}
             testID='email'
             left={<TextInput.Icon name='account' />}
+            outlineColor="#fff"
             onChangeText={(value) => handleOnChangeText(value, 'email')}
           />
           <TextInput
             style={styles.input}
             placeholder='password'
+            dense
+            mode='outlined'
             autoCapitalize='none'
             value={password}
             testID='password'
-            left={<TextInput.Icon name='form-textbox-password' />}
+            outlineColor="#fff"
+            left={<TextInput.Icon name='lock' />}
             onChangeText={(value) => handleOnChangeText(value, 'password')}
             secureTextEntry
           />
         </View>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            style={[styles.button, styles.buttonOutline]}
+          <Button
+            title='LOGIN'
             onPress={submitForm}
             testID='submitLogin'
-          >
-            <Text style={[styles.buttonText, styles.buttonOutlineText]}>Login</Text>
-          </TouchableOpacity>
+            raised
+            buttonStyle={{
+              backgroundColor: '#F3D250',
+            }}
+            containerStyle={{
+              width: 200,
+              marginHorizontal: 50,
+              marginVertical: 10,
+            }}
+            titleStyle={{ fontWeight: 'bold', color: 'black' }}
+          />
         </View>
         <View style={styles.registerContainer}>
           <Text style={styles.registerText}>Don&apos;t have an acccount?</Text>
@@ -142,9 +164,7 @@ const LoginContainer = ({ navigation }) => {
             testID='register'
             onPress={() => navigation.push('Register')}
           >
-            <Text style={styles.registerLink}>
-              Register now.
-            </Text>
+            <Text style={styles.registerLink}>Register now.</Text>
           </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
@@ -161,10 +181,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: 'bold',
-    color: '#272343',
-    fontSize: 24,
+    color: '#fff',
+    fontSize: 26,
     alignSelf: 'center',
-    marginTop: 15,
+    margin: 20,
   },
   error: {
     color: '#00214d',
@@ -175,29 +195,27 @@ const styles = StyleSheet.create({
   },
   image: {
     alignSelf: 'center',
-    marginTop: 15,
+    marginTop: 23,
+    marginLeft: 20,
   },
   inputContainer: {
-    width: '65%',
+    width: '60%',
     alignSelf: 'center',
   },
   input: {
     width: '100%',
-    backgroundColor: 'white',
     padding: 1,
-    borderWidth: 2,
-    borderStyle: 'solid',
-    borderColor: '#00214d',
-    borderRadius: 5,
     margin: 10,
+    borderRadius: 10,
   },
   buttonContainer: {
     justifyContent: 'center',
     alignItems: 'center',
+    marginLeft: 20,
   },
   button: {
     backgroundColor: '#F3D250',
-    width: '30%',
+    width: '25%',
     padding: 15,
     borderRadius: 10,
   },
@@ -206,6 +224,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     borderColor: '#F3D250',
     borderWidth: 2,
+    borderRadius: 15,
   },
   buttonText: {
     fontWeight: '700',

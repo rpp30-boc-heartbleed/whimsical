@@ -43,10 +43,13 @@ const List = ({ style, navigation }) => {
                 <Avatar.Image size={60} source={item.picture} />
               </TouchableOpacity>
               <View style={styles.text}>
-                <Text style={styles.name}>
+                <Text style={{ fontWeight: 'bold' }}>
                   {item.name}
                 </Text>
-                <Text>{item.stars}<Image style={styles.star} source={star} /></Text>
+                <Text><Image style={styles.star} source={star} />
+                  <Text style={{ margin: 5 }}>{item.goldStars}
+                  </Text>
+                </Text>
               </View>
               {(!addList)
                 ? (
@@ -75,26 +78,37 @@ const List = ({ style, navigation }) => {
 const styles = StyleSheet.create({
   friend: {
     flexDirection: 'row',
-    padding: 15,
+    // padding: 15,
     width: '100%',
+<<<<<<< HEAD
     height: 80,
     // marginTop: 15,
+=======
+    height: 100,
+    borderColor: '#F1F3F4',
+    borderWidth: 1,
+>>>>>>> 2d942408f4a82c3faf0b5cc424fc4c43d10f96ac
   },
   avatar: {
     flex: 1,
-    marginRight: 30,
-    marginLeft: 10,
+    margin: 20,
   },
   text: {
     flex: 4,
+<<<<<<< HEAD
     alignItems: 'center',
     // flexDirection: 'row',
     borderRadius: 30,
     borderColor: 'black',
     backgroundColor: 'white',
     borderWidth: 2,
+=======
+    width: '100%',
+    fontSize: 14,
+    borderRadius: 30,
+>>>>>>> 2d942408f4a82c3faf0b5cc424fc4c43d10f96ac
     height: 60,
-    padding: 10,
+    margin: 10,
   },
   name: {
     fontSize: 20,
@@ -108,7 +122,7 @@ const styles = StyleSheet.create({
     marginRight: 30,
   },
   chatIcon: {
-    paddingBottom: 20,
+    marginBottom: 20,
   },
 });
 

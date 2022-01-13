@@ -20,7 +20,7 @@ const Toggle = ({ style }) => {
   return (
     <View style={style}>
       <Switch
-        trackColor={{ true: '#F3D250' }}
+        trackColor={{ true: '#90CCF4' }}
         onValueChange={toggleSwitch}
         value={statusFilter}
       />

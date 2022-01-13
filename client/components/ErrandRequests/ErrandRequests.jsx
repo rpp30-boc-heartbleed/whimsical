@@ -1,20 +1,23 @@
 import React, { useEffect } from 'react';
 import {
-  FlatList,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
+  FlatList, StyleSheet, TouchableOpacity, View,
 } from 'react-native';
+import { Text } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useRecoilValue } from 'recoil';
+import { Badge } from 'react-native-paper';
 import filteredErrandsState from '../../state/selectors/filterErrandsByRequestor';
 import { errandState, refreshErrandsState } from '../../state/atoms/errands';
+import NavBarContainer from '../NavBar/NavBarContainer';
 
 const ErrandRequests = ({ navigation }) => {
   const errands = useRecoilValue(filteredErrandsState);
   const refresh = useRecoilValue(refreshErrandsState);
-  console.log('========================= errands length:', errands.length, '===========================================');
+  console.log(
+    '========================= errands length:',
+    errands.length,
+    '===========================================',
+  );
 
   return (
     <View style={styles.container}>
@@ -24,17 +27,43 @@ const ErrandRequests = ({ navigation }) => {
         extraData={errands}
         renderItem={({ item, index }) => {
           return (
-            <TouchableOpacity style={styles.friend} onPress={() => navigation.navigate('ErrandTracker', { errand: item })}>
-              <View style={styles.text}>
-                <Text>
-                  {item.errandName}
-                </Text>
-                <Text>{item.id}{item.status === 'Delivered' && <Icon size={25} name='check' />}</Text>
+            <TouchableOpacity
+              style={styles.friend}
+              onPress={() => navigation.navigate('ErrandTracker', { errand: item })}
+            >
+              <View style={styles.item}>
+                <View style={{ flexDirection: 'column' }}>
+                  <Text style={styles.title}>{item.errandName}</Text>
+                  <Text>Runner: {item.runner.name}</Text>
+                </View>
+                <View>
+                  {item.status === 'Delivered' ? (
+                    <Badge
+                      size={25}
+                      style={{
+                        backgroundColor: '#90f4b8',
+                        color: 'white',
+                      }}
+                    >
+                      Delivered
+                    </Badge>
+                  ) : (
+                    <Badge
+                      size={25}
+                      style={{ backgroundColor: '#f4909a', color: 'white' }}
+                    >
+                      Pending
+                    </Badge>
+                  )}
+                </View>
               </View>
             </TouchableOpacity>
           );
         }}
       />
+      <View>
+        <NavBarContainer navigation={navigation} />
+      </View>
     </View>
   );
 };
@@ -43,13 +72,15 @@ export default ErrandRequests;
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: '#fff',
     flex: 1,
-    paddingTop: 22,
   },
   item: {
-    padding: 10,
-    fontSize: 18,
-    height: 44,
+    borderColor: '#EFEFEF',
+    borderBottomWidth: 2,
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   friend: {
     flexDirection: 'row',
@@ -74,36 +105,10 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   star: {
-    width: 15,
-    height: 15,
+    width: 20,
+    height: 20,
+  },
+  title: {
+    fontWeight: 'bold',
   },
 });
-
-// {
-//   id: 1,
-//     timeOfPost: '3:30pm',
-//       errandName: 'Impromptu Bagel Run',
-//         eta: 0,
-//           addressName: 'Big Apple Bagels',
-//             address: {
-//     street: '4408 W Main St',
-//       city: 'Kalamazoo',
-//         state: 'MI',
-//           zip: '49006',
-//     },
-//   gps: {
-//     latitude: 42.2966481,
-//       longitude: -85.6436558,
-//     },
-//   requestor: testUser,
-//     errandRunner: {
-//     avatar: 'https://via.placeholder.com/50',
-//       name: 'aaron',
-//         gps: {
-//       latitude: 42.2966481,
-//         longitude: -85.6436558,
-//       },
-//     starRating: 53,
-//     },
-//   status: 'Pending',
-//   },

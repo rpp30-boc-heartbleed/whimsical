@@ -7,10 +7,10 @@ import {
   StyleSheet,
   ScrollView,
   StatusBar,
-  Button,
   TouchableOpacity,
 } from 'react-native';
 import { TextInput } from 'react-native-paper';
+import { Button } from 'react-native-elements';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { HOST_URL } from '@env';
 import auth from '../../config/firebase';
@@ -56,7 +56,8 @@ const RegisterContainer = ({ navigation }) => {
   };
   const isValidEmail = (str) => {
     // eslint-disable-next-line no-useless-escape
-    const regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    const regex =
+      /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(str);
   };
   const isValidForm = () => {
@@ -82,7 +83,8 @@ const RegisterContainer = ({ navigation }) => {
   // post registration info to server
   const postUserData = (url = '', data = {}) => {
     // eslint-disable-next-line no-undef
-    axios.post(url, data)
+    axios
+      .post(url, data)
       .then((res) => {
         // console.log(res);
         // add email and password to firebase authentication
@@ -105,11 +107,16 @@ const RegisterContainer = ({ navigation }) => {
       })
       .catch((err) => {
         // console.error('error', err.code);
-        if (err.code === 'auth/invalid-value-(email),-starting-an-object-on-a-scalar-field') {
+        if (
+          err.code ===
+          'auth/invalid-value-(email),-starting-an-object-on-a-scalar-field'
+        ) {
           setError('Please enter a valid email address');
         }
         if (err.code === 'auth/email-already-in-use') {
-          setError('This email is already registered. Please go to the Login screen to sign in.');
+          setError(
+            'This email is already registered. Please go to the Login screen to sign in.',
+          );
         }
       });
   };
@@ -120,8 +127,8 @@ const RegisterContainer = ({ navigation }) => {
       // add user data to mongoDB
       postUserData(
         // 'http://localhost:3000/register',
-        // `${HOST_URL}/register`,
-        'http://ec2-34-239-133-230.compute-1.amazonaws.com/register',
+        `${HOST_URL}/register`,
+        // 'http://ec2-34-239-133-230.compute-1.amazonaws.com/register',
         {
           name,
           streetAddress,
@@ -149,7 +156,7 @@ const RegisterContainer = ({ navigation }) => {
   };
 
   return (
-    <KeyboardAvoidingView style={styles.container} behavior='padding'>
+    <View style={styles.container}>
       <ScrollView centerContent bounces showsVerticalScrollIndicator={false}>
         <View>
           <Text style={styles.title}>Welcome to Quick Bagel!</Text>
@@ -163,6 +170,9 @@ const RegisterContainer = ({ navigation }) => {
             value={name}
             testID='name'
             left={<TextInput.Icon name='pencil' />}
+            dense
+            mode='outlined'
+            outlineColor="#fff"
             onChangeText={(value) => handleOnChangeText(value, 'name')}
           />
           <TextInput
@@ -172,6 +182,9 @@ const RegisterContainer = ({ navigation }) => {
             value={streetAddress}
             testID='streetAddress'
             left={<TextInput.Icon name='home' />}
+            dense
+            mode='outlined'
+            outlineColor="#fff"
             onChangeText={(value) => handleOnChangeText(value, 'streetAddress')}
           />
           <TextInput
@@ -181,6 +194,9 @@ const RegisterContainer = ({ navigation }) => {
             value={city}
             testID='city'
             left={<TextInput.Icon name='city' />}
+            dense
+            mode='outlined'
+            outlineColor="#fff"
             onChangeText={(value) => handleOnChangeText(value, 'city')}
           />
           <TextInput
@@ -190,6 +206,9 @@ const RegisterContainer = ({ navigation }) => {
             value={state}
             testID='state'
             left={<TextInput.Icon name='map' />}
+            dense
+            mode='outlined'
+            outlineColor="#fff"
             onChangeText={(value) => handleOnChangeText(value, 'state')}
           />
           <TextInput
@@ -199,6 +218,9 @@ const RegisterContainer = ({ navigation }) => {
             value={zipCode}
             testID='zipCode'
             left={<TextInput.Icon name='map' />}
+            dense
+            mode='outlined'
+            outlineColor="#fff"
             onChangeText={(value) => handleOnChangeText(value, 'zipCode')}
           />
           <TextInput
@@ -208,6 +230,9 @@ const RegisterContainer = ({ navigation }) => {
             value={imageURL}
             testID='imageURL'
             left={<TextInput.Icon name='camera' />}
+            dense
+            mode='outlined'
+            outlineColor="#fff"
             onChangeText={(value) => handleOnChangeText(value, 'imageURL')}
           />
           <TextInput
@@ -217,6 +242,9 @@ const RegisterContainer = ({ navigation }) => {
             value={email}
             testID='email'
             left={<TextInput.Icon name='email' />}
+            dense
+            mode='outlined'
+            outlineColor="#fff"
             onChangeText={(value) => handleOnChangeText(value, 'email')}
           />
           <TextInput
@@ -226,6 +254,9 @@ const RegisterContainer = ({ navigation }) => {
             value={password}
             testID='password'
             left={<TextInput.Icon name='form-textbox-password' />}
+            dense
+            mode='outlined'
+            outlineColor="#fff"
             onChangeText={(value) => handleOnChangeText(value, 'password')}
             secureTextEntry
           />
@@ -236,29 +267,43 @@ const RegisterContainer = ({ navigation }) => {
             autoCapitalize='none'
             testID='confirmPassword'
             left={<TextInput.Icon name='form-textbox-password' />}
-            onChangeText={(value) => handleOnChangeText(value, 'confirmPassword')}
+            dense
+            mode='outlined'
+            outlineColor="#fff"
+            onChangeText={(value) =>
+              handleOnChangeText(value, 'confirmPassword')
+            }
             secureTextEntry
           />
         </View>
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity
-            style={[styles.button, styles.buttonOutline]}
-            testID='submitRegister'
-            onPress={submitForm}
-          >
-            <Text style={styles.buttonOutlineText}>Create Account</Text>
-          </TouchableOpacity>
-        </View>
+
+        <Button
+          title='Create Account'
+          onPress={submitForm}
+          testID='submitRegister'
+          raised
+          buttonStyle={{
+            backgroundColor: '#F3D250',
+          }}
+          containerStyle={{
+            width: 200,
+            marginHorizontal: 50,
+            marginVertical: 10,
+          }}
+          titleStyle={{ fontWeight: 'bold', color: 'black' }}
+        />
         <View style={styles.loginContainer}>
           <Text style={styles.loginText}>Have an acccount already?</Text>
-          <TouchableOpacity title='Login' testID='login' onPress={() => navigation.navigate('Login')}>
-            <Text style={styles.loginLink}>
-              Login
-            </Text>
+          <TouchableOpacity
+            title='Login'
+            testID='login'
+            onPress={() => navigation.navigate('Login')}
+          >
+            <Text style={styles.loginLink}>Login</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
-    </KeyboardAvoidingView>
+    </View>
   );
 };
 
@@ -284,16 +329,12 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   inputContainer: {
-    width: '90%',
+    width: '95%',
   },
   input: {
     width: '100%',
     backgroundColor: 'white',
     padding: 1,
-    borderWidth: 2,
-    borderStyle: 'solid',
-    borderColor: '#00214d',
-    borderRadius: 5,
     marginTop: 5,
     margin: 10,
     opacity: 0.8,

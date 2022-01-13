@@ -4,6 +4,7 @@ import axios from 'axios';
 import {
   View, ScrollView, StyleSheet,
 } from 'react-native';
+import { HOST_URL } from '@env';
 import DashboardHeader from './DashboardHeader';
 import DashboardStats from './DashboardStats';
 import DashboardBody from './DashboardBody';
@@ -13,8 +14,9 @@ import userProfileState from '../../state/atoms/userProfile';
 
 const DashboardContainer = ({ navigation }) => {
   const [user, setUser] = useRecoilState(userProfileState);
+
   useEffect(() => {
-    axios.get(`http://ec2-34-239-133-230.compute-1.amazonaws.com/userProfile/get?email=${auth.auth.currentUser.email}`)
+    axios.get(`${HOST_URL}/userProfile/get?email=${auth.auth.currentUser.email}`)
       .then((data) => {
         setUser(data.data.data[0]);
       })

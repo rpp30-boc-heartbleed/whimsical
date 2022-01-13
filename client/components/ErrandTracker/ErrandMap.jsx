@@ -41,6 +41,11 @@ const path = [
   { latitude: 42.295906, longitude: -85.601778 },
 ];
 
+const starting = {
+  latitude: 42.2966481,
+  longitude: -85.6436558,
+};
+
 const destination = {
   latitude: 42.295906,
   longitude: -85.601778,
@@ -90,6 +95,12 @@ const ErrandMap = ({ setEta, errand }) => {
         provider={PROVIDER_GOOGLE}
         initialRegion={region}
       >
+        <Marker
+          draggable
+          description='errand place'
+          title='Errand Place'
+          coordinate={starting}
+        />
         <Marker
           draggable
           description='He running'
