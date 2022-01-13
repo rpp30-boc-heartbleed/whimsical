@@ -9,9 +9,9 @@ import userProfileState from '../../../state/atoms/userProfile';
 import friendsListState from '../../../state/atoms/friendsList';
 
 const AddIcon = ({ stranger }) => {
-  const [isFriend, setIsFriend] = useState(false);
   const [friendsList, setFriendsList] = useRecoilState(friendsListState);
   const [user] = useRecoilState(userProfileState);
+  const [isFriend, setIsFriend] = useState(false);
 
   const onPress = () => {
     setIsFriend(true);

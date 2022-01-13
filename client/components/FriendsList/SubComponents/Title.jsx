@@ -8,13 +8,24 @@ import {
 } from 'react-native';
 
 import friendsListState from '../../../state/atoms/friendsList';
+import addFriendState from '../../../state/atoms/addFriends';
 
 const Title = ({ style }) => {
   const [friendsList, setFriendsList] = useRecoilState(friendsListState);
+  const [listType, setListType] = useRecoilState(addFriendState);
+
   return (
     <View style={style}>
-      <Text style={styles.heading}>Friends List</Text>
-      <Text style={styles.number}>{friendsList.length} friends</Text>
+      {(!listType)
+        ? (
+          <>
+            <Text style={styles.heading}>Friends List</Text>
+            <Text style={styles.number}>{friendsList.length} friends</Text>
+          </>
+        )
+        : (
+          <Text style={styles.heading}>Search</Text>
+        )}
     </View>
   );
 };

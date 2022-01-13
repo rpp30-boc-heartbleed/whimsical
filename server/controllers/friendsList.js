@@ -3,10 +3,12 @@ const { Friend } = require('../models/friendsList');
 
 const getFriends = (req, res) => {
   const { friends } = req.body;
-  console.log('hello', friends);
-  Profile.find({
-    email: friends[1],
-  })
+  const profiles = friends.map((profile) => {
+    return Profile.find({
+      email: profile.email,
+    });
+  });
+  Promise.all(profiles)
     .then((friendsList) => {
       res.status(200).json({ friendsList });
     })
@@ -29,7 +31,6 @@ const getAll = (req, res) => {
 
 const add = (req, res) => {
   const { userEmail, friendEmail } = req.body;
-  console.log(req.body, 'body');
   Profile.findOneAndUpdate(
     { email: userEmail },
     { $push: { friends: friendEmail } },
