@@ -163,16 +163,15 @@ const styles = StyleSheet.create({
   textInputs: {
     width: 300,
     padding: 8,
-    // borderRadius: 5,
-    marginTop: 10,
-    // marginBottom: 23,
+    marginVertical: 10,
     textAlign: 'center',
     backgroundColor: 'white',
+    borderRadius: 15,
   },
   buttons: {
     flexDirection: 'column',
     padding: 5,
-    marginTop: 50,
+    marginTop: 40,
     marginBottom: -5,
   },
 });

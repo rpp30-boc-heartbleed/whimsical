@@ -111,9 +111,8 @@ const DashboardBody = ({ navigation }) => {
     <View>
       <FlatList
         style={styles.container0}
-        // data={errandsList}
         data={filtering}
-        // data={newDataFromMongo}
+        keyExtractor={(item, index) => item._id}
         renderItem={({ item, index }) => (
           <View style={styles.container}>
             <View style={styles.container2}>
@@ -125,7 +124,7 @@ const DashboardBody = ({ navigation }) => {
                 <View style={styles.container4}>
                   <View style={styles.container5}>
                     <Text style={styles.username}>{item.runner.name}</Text>
-                    <TimeAgo time={item.timeOfPost} interval={120000} />
+                    <TimeAgo style={styles.timeOfPost} time={item.timeOfPost} interval={120000} />
                   </View>
 
                   <View style={styles.container6}>
@@ -137,10 +136,9 @@ const DashboardBody = ({ navigation }) => {
               </View>
 
               <View style={styles.container7}>
-                <Text style={styles.cont7}>Address: {item.storeAddress.streetName}</Text>
-                <Text style={styles.cont7}>ETA: {item.storeETA || '5 minutes'}</Text>
+                <Text style={{ fontWeight: 'bold' }}>Address: <Text style={{ fontWeight: 'normal' }}>{item.storeAddress.streetName}</Text></Text>
+                <Text style={{ fontWeight: 'bold' }}>Store ETA: <Text style={{ fontWeight: 'bold', color: '#F78888' }}> {item.storeETA || '5 minutes'}</Text></Text>
               </View>
-
               <View style={[styles.buttons, styles.clickable]}>
 
                 <TouchableOpacity
@@ -212,14 +210,15 @@ const useSnackBar = () => {
 
 const styles = StyleSheet.create({
   container0: {
-    height: 670,
+    height: 660,
+    backgroundColor: '#90CCF4',
   },
   container: {
     flex: 1,
     backgroundColor: '#fff',
     flexDirection: 'row',
     borderWidth: 1,
-    borderColor: '#0782F9',
+    borderColor: '#F1F3F4',
     borderRadius: 5,
     marginTop: 10,
     marginHorizontal: 5,
@@ -255,17 +254,23 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     fontWeight: 'bold',
   },
+  timeOfPost: {
+    marginTop: 3,
+    fontSize: 10,
+  },
   container6: {
     flexDirection: 'row',
     justifyContent: 'center',
   },
   cont6: {
     fontSize: 15,
-    fontWeight: 'bold',
+    fontWeight: 'normal',
   },
   store: {
     marginLeft: -20,
     paddingTop: 13,
+    fontWeight: 'bold',
+    color: '#5DA2D5',
   },
   errandname: {
     paddingTop: 13,

@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-escape */
 /* eslint-disable global-require */
 import React, { useState, useEffect } from 'react';
 import {
@@ -38,9 +39,7 @@ const LoginContainer = ({ navigation }) => {
     return Object.values(obj).every((value) => value.trim());
   };
   const isValidEmail = (str) => {
-    // eslint-disable-next-line no-useless-escape
-    const regex =
-      /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    const regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(str);
   };
   const isValidForm = () => {
@@ -105,8 +104,8 @@ const LoginContainer = ({ navigation }) => {
       <Text style={styles.title}>Welcome to Quick Bagel!</Text>
       <Image
         style={styles.image}
-        size={65}
-        source={require('../../assets/icons/minilogo.png')}
+        size={1}
+        source={require('../../assets/icons/logo-bg.png')}
       />
       <KeyboardAvoidingView style={styles.container}>
         <View style={styles.inputContainer}>
@@ -136,7 +135,7 @@ const LoginContainer = ({ navigation }) => {
             value={password}
             testID='password'
             outlineColor="#fff"
-            left={<TextInput.Icon name='form-textbox-password' />}
+            left={<TextInput.Icon name='lock' />}
             onChangeText={(value) => handleOnChangeText(value, 'password')}
             secureTextEntry
           />
@@ -182,10 +181,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontWeight: 'bold',
-    color: '#272343',
-    fontSize: 24,
+    color: '#fff',
+    fontSize: 26,
     alignSelf: 'center',
-    marginTop: 15,
+    margin: 20,
   },
   error: {
     color: '#00214d',
@@ -196,28 +195,27 @@ const styles = StyleSheet.create({
   },
   image: {
     alignSelf: 'center',
-    marginTop: 15,
+    marginTop: 23,
+    marginLeft: 20,
   },
   inputContainer: {
-    width: '65%',
+    width: '60%',
     alignSelf: 'center',
   },
   input: {
     width: '100%',
-    // backgroundColor: 'white',
     padding: 1,
-    // borderStyle: 'solid',
-    // borderColor: '#00214d',
-    // borderRadius: 5,
     margin: 10,
+    borderRadius: 10,
   },
   buttonContainer: {
     justifyContent: 'center',
     alignItems: 'center',
+    marginLeft: 20,
   },
   button: {
     backgroundColor: '#F3D250',
-    width: '30%',
+    width: '25%',
     padding: 15,
     borderRadius: 10,
   },
@@ -226,6 +224,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
     borderColor: '#F3D250',
     borderWidth: 2,
+    borderRadius: 15,
   },
   buttonText: {
     fontWeight: '700',
