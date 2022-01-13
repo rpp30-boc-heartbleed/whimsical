@@ -19,18 +19,17 @@ const createChat = (req, res) => {
 };
 
 const findChat = (errandId, userId) => {
-  const newChat = new Chat({
-    errandId,
-    users: [userId],
-    messages: [],
-  });
-  return newChat.save();
+  return Chat.findOneAndUpdate(
+    { errandId },
+    { $push: { users: userId } },
+    { new: true, upsert: true },
+  );
 };
 
 const postMessage = (message, errandId) => {
   return Chat.findOneAndUpdate(
     { errandId },
-    { $push: { $message: message } },
+    { $push: { message } },
     { new: true, upsert: true },
   );
 };

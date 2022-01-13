@@ -4,6 +4,7 @@ import { GiftedChat } from 'react-native-gifted-chat';
 import {
   View,
   StyleSheet,
+  Platform,
 } from 'react-native';
 
 import {
@@ -16,14 +17,16 @@ import {
 import { images } from '../../../constants';
 import userProfileState from '../../../state/atoms/userProfile';
 // import findChat from '../../../state/selectors/findChat';
+// import chatState from '../../../state/atoms/chats';
 
 const { cat } = images;
 
 const Chat = ({ route, navigation }) => {
   const { errandId } = route.params;
   const [user] = useRecoilState(userProfileState);
-  // const chat = useRecoilValue(findChat(chatId));
+  // const [chats, setChats] = useRecoilState(chatState);
   const [messages, setMessages] = useState([]);
+  const [isTyping, setIsTyping] = useState(false);
 
   const onSend = (message) => {
     sendMessage(message, errandId);
@@ -43,7 +46,11 @@ const Chat = ({ route, navigation }) => {
   }, [errandId, user]);
 
   return (
-    <View style={styles.chat}>
+    <View
+      style={styles.chat}
+      accessible
+      accessiblilityLabel='main'
+    >
       <GiftedChat
         messages={messages}
         onSend={(message) => onSend(message[0])}
@@ -52,10 +59,14 @@ const Chat = ({ route, navigation }) => {
           name: user.name,
           avatar: user.picture,
         }}
-        // isTyping
-        // infiniteScroll
-        // loadEarlier
-        // inverted={false}
+        scrollToBottom
+        keyboardShouldPersistTaps='never'
+        inverted={Platform.OS !== 'web'}
+        infiniteScroll
+        timeTextStyle={{ left: { color: 'red' }, right: { color: 'yellow' } }}
+      // isTyping
+      // loadEarlier
+      // inverted={false}
       />
     </View>
   );

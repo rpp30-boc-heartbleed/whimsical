@@ -28,6 +28,7 @@ const List = ({ style, navigation }) => {
       <FlatList
         data={filteredByName}
         renderItem={({ item, index }) => {
+          const disabled = !!item.currentErrands.length;
           return (
             <View style={styles.friend}>
               <TouchableOpacity style={styles.avatar}>
@@ -37,16 +38,15 @@ const List = ({ style, navigation }) => {
                 <Text>
                   {item.name}
                 </Text>
-                <Text>{item.goldStars}<Image style={styles.star} source={star} /></Text>
+                <Text>{item.goldstars}<Image style={styles.star} source={star} /></Text>
               </View>
-              <TouchableOpacity style={styles.chat}>
-                <IconModal
-                  disable={false}
+              <TouchableOpacity style={styles.avatar}>
+                <IconButton
                   icon='chat-outline'
                   size={50}
                   style={styles.chatIcon}
-                  currentErrands={item.currentErrands}
-                  navigation={navigation}
+                  disabled={disabled}
+                  onPress={() => navigation.push('Chat', { errandId: item.currentErrands[0] })}
                 />
               </TouchableOpacity>
             </View>
