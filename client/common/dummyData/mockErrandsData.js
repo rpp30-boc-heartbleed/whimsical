@@ -20,19 +20,28 @@ const dynamicDate = (sub) => {
 const mockRequestors = [
   {
     name: 'Orange',
-    email: 'abc@gmail.com',
+    email: 'orange@gmail.com',
     stars: 0,
-    picture: avatars[0],
+    picture: avatars[4],
     errandsCompleted: 0,
-    location: '1423 E Crooked Lake Dr, Kalamazoo, MI, 49009',
+    location: '9548 Andes Ave, Kalamazoo, MI 49009',
   },
   {
     name: 'Rex Grossman',
     email: 'rex@rex.com',
-    picture: avatars[0],
     stars: 1994,
+    picture: avatars[0],
     errandsCompleted: 35,
     location: '1423 E Crooked Lake Dr, Kalamazoo, MI, 49009',
+  },
+  {
+    name: 'Laweeza',
+    email: 'laweeza@gmail.com',
+    stars: 10,
+    picture: avatars[3],
+    errandsCompleted: 2,
+    location: '1300 N Eagle Lake Dr, Kalamazoo, MI 49009',
+
   },
 ];
 

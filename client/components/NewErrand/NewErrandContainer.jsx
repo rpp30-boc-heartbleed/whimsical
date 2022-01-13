@@ -2,8 +2,13 @@ import React from 'react';
 import axios from 'axios';
 import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 import {
-  View, Text, StyleSheet, TextInput, StatusBar, Button, ScrollView,
+  View,
+  StyleSheet,
+  TextInput,
+  StatusBar,
+  ScrollView,
 } from 'react-native';
+import { Text, Button } from 'react-native-elements';
 import { HOST_URL } from '@env';
 import NavBar from '../NavBar/NavBarContainer';
 import { errandState } from '../../state/atoms/errands';
@@ -46,74 +51,108 @@ const NewErrandContainer = ({ navigation }) => {
     <View style={styles.container}>
       <ScrollView>
         <View style={styles.container2}>
-          <Text style={styles.textfields}>Store:</Text>
+          <Text h3 style={styles.heading}>
+            Create an Errand
+          </Text>
+          {/* <Text style={styles.textfields}>Store:</Text> */}
           <TextInput
             style={styles.textInputs}
-            placeholder="Bagelmart"
+            // placeholder="Bagelmart"
+            placeholder='store'
+            dense
+            mode='outlined'
             onChangeText={(text) => {
               newErrandObj.storeName = text;
             }}
           />
 
-          <Text style={styles.textfields}>Address:</Text>
+          {/* <Text style={styles.textfields}>Address:</Text> */}
           <TextInput
             style={styles.textInputs}
-            placeholder="231 Bagel Hole Circle"
+            placeholder='street address'
+            // placeholder="231 Bagel Hole Circle"
+            dense
+            mode='outlined'
             onChangeText={(text) => {
               newErrandObj.streetName = text;
             }}
           />
 
-          <Text style={styles.textfields}>Time:</Text>
           <TextInput
             style={styles.textInputs}
-            placeholder="5:45pm"
+            // placeholder="5:45pm"
+            placeholder='time'
+            dense
+            mode='outlined'
             onChangeText={(text) => {
               newErrandObj.storeETA = text;
             }}
           />
 
-          <Text style={styles.textfields}>Errand Name:</Text>
           <TextInput
             style={styles.textInputs}
-            placeholder="bagel time!!!"
+            // placeholder="bagel time!!!"
+            placeholder='errand name'
+            dense
+            mode='outlined'
             onChangeText={(text) => {
               newErrandObj.errandName = text;
             }}
           />
 
           <View style={styles.buttons}>
-            <View style={styles.cancel}>
-              <Button
-                title="Cancel"
-                onPress={() => {
-                  navigation.navigate('Dashboard');
-                }}
-              />
-            </View>
-            <View style={styles.submit}>
-              <Button
-                title="Submit"
-                onPress={() => {
-                  addToMongo(newErrandObj);
-                }}
-              />
-            </View>
+            <Button
+              title='Submit'
+              onPress={() => {
+                addToMongo(newErrandObj);
+              }}
+              raised
+              buttonStyle={{
+                backgroundColor: '#F3D250',
+              }}
+              containerStyle={{
+                width: 200,
+                marginHorizontal: 50,
+                marginVertical: 10,
+              }}
+              titleStyle={{ fontWeight: 'bold', color: 'black' }}
+            />
+            <Button
+              title='Cancel'
+              onPress={() => {
+                navigation.navigate('Dashboard');
+              }}
+              raised
+              buttonStyle={{
+                backgroundColor: '#F3D250',
+              }}
+              containerStyle={{
+                width: 200,
+                marginHorizontal: 50,
+                marginVertical: 10,
+              }}
+              titleStyle={{ fontWeight: 'bold', color: 'black' }}
+            />
           </View>
         </View>
       </ScrollView>
-
       <NavBar navigation={navigation} />
+
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
+    backgroundColor: '#90CCF4',
     flex: 1,
   },
+  heading: {
+    marginTop: 20,
+    marginBottom: 50,
+  },
   container2: {
+    justifyContent: 'space-evenly',
     alignItems: 'center',
   },
   textfields: {
@@ -122,30 +161,19 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   textInputs: {
-    borderWidth: 2,
     width: 300,
     padding: 8,
-    borderRadius: 5,
+    // borderRadius: 5,
     marginTop: 10,
-    marginBottom: 23,
-    borderColor: '#0782F9',
+    // marginBottom: 23,
     textAlign: 'center',
+    backgroundColor: 'white',
   },
   buttons: {
-    flexDirection: 'row',
+    flexDirection: 'column',
+    padding: 5,
     marginTop: 50,
-    marginBottom: -20,
-  },
-  cancel: {
-    borderWidth: 2,
-    borderRadius: 5,
-    borderColor: 'red',
-    marginRight: 70,
-  },
-  submit: {
-    borderWidth: 2,
-    borderRadius: 5,
-    borderColor: 'green',
+    marginBottom: -5,
   },
 });
 
