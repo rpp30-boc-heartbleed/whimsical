@@ -21,7 +21,6 @@ const filterByName = selectorFamily({
         list = get(errandState);
         name = 'placeName';
       }
-      console.log(list);
       const filter = get(searchBarState);
       const onErrand = get(friendsOnErrandState);
 

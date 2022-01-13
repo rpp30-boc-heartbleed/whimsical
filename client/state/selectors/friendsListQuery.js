@@ -7,10 +7,10 @@ const friendsListQuery = selector({
   key: 'friendsListQuery',
   get: async ({ get }) => {
     const user = await get(userProfile);
-    const res = await axios({
-      method: 'get',
-      url: `${HOST_URL}/friends/get?email=${user.email}`,
-    })
+    const res = await axios.post(
+      `${HOST_URL}/friends/getFriends`,
+      { friends: user.friends },
+    )
       .then((data) => {
         return data.data.friendsList;
       })

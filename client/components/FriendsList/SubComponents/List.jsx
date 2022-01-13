@@ -28,15 +28,14 @@ const { star } = icons;
 const List = ({ style, navigation }) => {
   const [addList, setAddList] = useRecoilState(addFriendState);
   const [user] = useRecoilState(userProfileState);
-  const usersFriends = useRecoilValue(friendsListQuery);
-  const addFriends = useRecoilValue(addFriendsQuery);
   const filteredFriends = useRecoilValue(filterByNameSelector('friends'));
   const filteredUsers = useRecoilValue(filterByNameSelector('strangers'));
+  const list = addList ? filteredUsers : filteredFriends;
 
   return (
     <View style={style}>
       <FlatList
-        data={filteredUsers}
+        data={list}
         renderItem={({ item, index }) => {
           return (
             <View style={styles.friend}>
@@ -62,7 +61,7 @@ const List = ({ style, navigation }) => {
                     />
                   </TouchableOpacity>
                 )
-                : (<AddIcon />)}
+                : (<AddIcon stranger={item} />)}
             </View>
           );
         }}
