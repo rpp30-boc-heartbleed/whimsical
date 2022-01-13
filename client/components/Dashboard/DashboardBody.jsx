@@ -212,7 +212,7 @@ const useSnackBar = () => {
 
 const styles = StyleSheet.create({
   container0: {
-    height: 643,
+    height: 670,
   },
   container: {
     flex: 1,
