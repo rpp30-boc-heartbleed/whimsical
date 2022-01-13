@@ -19,7 +19,6 @@ const {
   userProfile,
   friendsList,
   map,
-  errandTracker,
   updateRating,
   getRequestedErrands,
   requestErrand,
@@ -43,7 +42,7 @@ router.post('/userProfile/edit', userProfile.post);
 router.post('/userProfile/image', upload.any('photoData'), userProfile.image);
 
 // FRIENDS
-router.get('/friends/get', friendsList.get);
+router.get('/friends/get/:email?', friendsList.get);
 router.get('/friends/search', friendsList.search);
 
 // RATING

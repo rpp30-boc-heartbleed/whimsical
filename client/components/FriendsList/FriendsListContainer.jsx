@@ -9,7 +9,7 @@ import {
 
 // Components
 import {
-  AddFriend,
+  AddButton,
   List,
   Title,
   Toggle,
@@ -20,8 +20,6 @@ import TestModal from '../Modals/TestModal';
 import Loading from '../Shared/Loading';
 // State
 import friendsListState from '../../state/atoms/friendsList';
-import userProfileState from '../../state/atoms/userProfile';
-import friendsListQuery from '../../state/selectors/friendsListQuery';
 // Assets
 
 // Style
@@ -30,21 +28,13 @@ import { SIZES } from '../../constants/theme';
 const { width } = SIZES;
 
 const FriendsListContainer = ({ navigation }) => {
-  const [friendsList, setFriendsList] = useRecoilState(friendsListState);
-  const [user, setUser] = useRecoilState(userProfileState);
-  const getFriends = useRecoilValue(friendsListQuery(user.email));
-
-  // useEffect(() => {
-  //   setFriendsList(getFriends);
-  // });
-
   return (
     <>
       <View style={styles.container}>
         <View style={styles.header}>
           <Toggle style={styles.toggle} />
           <Title style={styles.title} />
-          <AddFriend style={styles.addButton} />
+          <AddButton style={styles.addButton} />
         </View>
         <SearchBar style={styles.search} />
         <List navigation={navigation} style={styles.list} />

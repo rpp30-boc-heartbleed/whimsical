@@ -3,19 +3,37 @@ const { Friend } = require('../models/friendsList');
 
 const get = (req, res) => {
   const { email } = req.query;
-  Profile.findOne({ email })
-    .then((user) => {
-      const { friends } = user;
-      const friendsList = [];
-      friends.forEach((friend) => {
-        friendsList.push(friend);
+  if (email) {
+    Profile.findOne({ email })
+      .then((user) => {
+        const { friends } = user;
+        const friendsList = [];
+        friends.forEach((id) => {
+          Profile.findOne({ _id: id })
+            .then((friend) => {
+              friendsList.push(friend);
+            })
+            .catch((err) => {
+              console.log(err);
+              res.json({ message: 'error finding each friend' });
+            });
+        });
+        res.status(200).json({ friendsList });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.json({ message: 'error getting friends' });
       });
-      res.status(200).send(friendsList);
-    })
-    .catch((err) => {
-      console.log(err);
-      res.json({ message: 'you have no friends' });
-    });
+  } else {
+    Profile.find()
+      .then((users) => {
+        res.status(200).json({ users });
+      })
+      .catch((err) => {
+        console.log(err);
+        res.json({ message: 'there are no people' });
+      });
+  }
 };
 
 const search = (req, res) => {

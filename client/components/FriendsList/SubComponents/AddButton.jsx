@@ -1,9 +1,17 @@
 import React from 'react';
+import { useRecoilState } from 'recoil';
 
 import { View, TouchableOpacity, StyleSheet } from 'react-native';
 import { IconButton } from 'react-native-paper';
+import addFriendState from '../../../state/atoms/addFriends';
 
-const AddFriend = ({ style }) => {
+const AddButton = ({ style }) => {
+  const [listType, setListType] = useRecoilState(addFriendState);
+
+  const onPress = () => {
+    setListType(!listType);
+  };
+
   return (
     <View style={style}>
       <TouchableOpacity>
@@ -12,6 +20,7 @@ const AddFriend = ({ style }) => {
           size={40}
           // color='#F3D250'
           style={styles.add}
+          onPress={onPress}
         />
       </TouchableOpacity>
     </View>
@@ -24,4 +33,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AddFriend;
+export default AddButton;

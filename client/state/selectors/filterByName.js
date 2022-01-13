@@ -1,5 +1,6 @@
 import { selectorFamily } from 'recoil';
 import friendsListState from '../atoms/friendsList';
+import userListState from '../atoms/userList';
 import { errandState } from '../atoms/errands';
 import searchBarState from '../atoms/searchBar';
 import friendsOnErrandState from '../atoms/friendsOnErrand';
@@ -13,10 +14,14 @@ const filterByName = selectorFamily({
       if (component === 'friends') {
         list = get(friendsListState);
         name = 'name';
+      } else if (component === 'strangers') {
+        list = get(userListState);
+        name = 'name';
       } else if (component === 'errands') {
         list = get(errandState);
         name = 'placeName';
       }
+      console.log(list);
       const filter = get(searchBarState);
       const onErrand = get(friendsOnErrandState);
 

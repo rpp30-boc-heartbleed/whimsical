@@ -1,18 +1,16 @@
 import { selector } from 'recoil';
 import axios from 'axios';
 import { HOST_URL } from '@env';
-import userProfile from '../atoms/userProfile';
 
-const friendsListQuery = selector({
-  key: 'friendsListQuery',
+const addFriendsQuery = selector({
+  key: 'addFriendsQuery',
   get: async ({ get }) => {
-    const user = await get(userProfile);
     const res = await axios({
       method: 'get',
-      url: `${HOST_URL}/friends/get?email=${user.email}`,
+      url: `${HOST_URL}/friends/get`,
     })
       .then((data) => {
-        return data.data.friendsList;
+        return data.data.users;
       })
       .catch((err) => {
         console.log(err);
@@ -21,4 +19,4 @@ const friendsListQuery = selector({
   },
 });
 
-export default friendsListQuery;
+export default addFriendsQuery;
