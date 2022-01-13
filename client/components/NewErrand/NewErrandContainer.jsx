@@ -166,11 +166,12 @@ const styles = StyleSheet.create({
     marginTop: 10,
     textAlign: 'center',
     backgroundColor: 'white',
+    borderRadius: 15,
   },
   buttons: {
     flexDirection: 'column',
     padding: 5,
-    marginTop: 50,
+    marginTop: 40,
     marginBottom: -5,
   },
 });

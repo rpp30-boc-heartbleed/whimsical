@@ -58,6 +58,7 @@ const FriendsListContainer = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
+    // backgroundColor: '#90CCF4',
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -67,21 +68,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '90%',
+    backgroundColor: '#90CCF4',
   },
-  // toggle: {
-  //   flex: 1,
-  // },
-  // title: {
-  //   flex: 1,
-  // },
-  // addButton: {
-  //   flex: 1,
-  // },
   search: {
     borderRadius: 30,
     fontSize: 14,
-    borderColor: 'black',
-    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: 'grey',
     height: 50,
     width: (width * 0.8),
     textAlign: 'center',

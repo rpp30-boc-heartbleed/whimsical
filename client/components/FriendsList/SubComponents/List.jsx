@@ -75,16 +75,17 @@ const styles = StyleSheet.create({
   text: {
     flex: 4,
     // flexDirection: 'row',
+    borderColor: 'grey',
     fontSize: 14,
     borderRadius: 30,
-    borderColor: 'black',
+    // borderColor: 'black',
     borderWidth: 1,
     height: 60,
     padding: 10,
   },
   star: {
-    width: 15,
-    height: 15,
+    width: 20,
+    height: 20,
   },
   chat: {
     flex: 1,

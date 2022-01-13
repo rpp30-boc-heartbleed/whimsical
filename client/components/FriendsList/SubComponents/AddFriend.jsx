@@ -11,6 +11,7 @@ const AddFriend = ({ style }) => {
           icon='account-plus-outline'
           size={50}
           style={styles.add}
+          tintColor='white'
         />
       </TouchableOpacity>
     </View>

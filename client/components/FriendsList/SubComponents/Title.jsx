@@ -22,7 +22,9 @@ const Title = ({ style }) => {
 const styles = StyleSheet.create({
   heading: {
     fontSize: 30,
+    alignItems: 'center',
     fontWeight: 'bold',
+    backgroundColor: '#90CCF4',
   },
   number: {
     fontSize: 12,
