@@ -27,6 +27,7 @@ const BottomSheet = ({
     errandId,
     status,
     runner,
+    requestor,
   } = errand;
   const { stars } = runner;
   const [count, setCount] = useState(stars);
@@ -37,23 +38,17 @@ const BottomSheet = ({
     setModalVisible(!isModalVisible);
   };
 
-  // const handleDisableRating = () => {
-  //   isClicked(true);
-  // };
-
   const handleRating = async () => {
     try {
-      // if (handleDisableRating) {
-        const response = await axios.put(`${HOST_URL}/userProfile/stars`, {
-          ...runner,
-          stars: runner.stars + 1,
-        });
-        console.log('user stars response', response);
-        setCount(count + 1);
-        setModalVisible(false);
-        return response;
-      // }
-      // return 'Already rated';
+      const response = await axios.put(`${HOST_URL}/userProfile/stars`, {
+        ...runner,
+        stars: runner.stars + 1,
+      });
+      console.log('user stars response', response);
+      setCount(count + 1);
+      setClicked(true);
+      setModalVisible(false);
+      return response;
     } catch (e) {
       console.log('error', e);
     }
@@ -88,7 +83,7 @@ const BottomSheet = ({
                   type='font-awesome'
                   color='#F3D250'
                   onPress={handleRating}
-                  // disabled={!isClicked}
+                  disabled={isClicked}
                 />
               </Text>
               <Text style={{ marginLeft: 20 }}>
