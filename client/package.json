@@ -8,7 +8,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "test": "jest --coverage",
-    "eject": "expo eject"
+    "eject": "expo eject",
+    "postinstall": "./scripts/fix.sh"
   },
   "dependencies": {
     "@expo/vector-icons": "^12.0.5",
