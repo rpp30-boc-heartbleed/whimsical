@@ -37,6 +37,7 @@ const List = ({ style, navigation }) => {
       <FlatList
         data={list}
         renderItem={({ item, index }) => {
+          const disabled = !!item.currentErrands.length;
           return (
             <View style={styles.friend}>
               <TouchableOpacity style={styles.avatar}>

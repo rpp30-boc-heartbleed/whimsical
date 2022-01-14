@@ -3,7 +3,7 @@ import mockChats from '../../common/dummyData/mockChats';
 
 const chatState = atom({
   key: 'errandState',
-  default: mockChats, // {}
+  default: {},
 });
 
 export default chatState;
