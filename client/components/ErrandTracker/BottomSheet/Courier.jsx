@@ -8,10 +8,8 @@ import {
   View,
   Image,
   Text,
-  Alert,
   TouchableOpacity,
 } from 'react-native';
-import { Title, Colors } from 'react-native-paper';
 import {
   COLORS,
   SIZES,
@@ -21,7 +19,8 @@ import userProfileState from '../../../state/atoms/userProfile';
 
 const Courier = ({ errand }) => {
   // const [user, setUser] = useRecoilState(userProfileState);
-  const { runner } = errand;
+  const { runner, errandId } = errand;
+  // console.log('runner', runner);
   const { stars } = runner;
   const [count, setCount] = useState(stars);
 
@@ -42,14 +41,12 @@ const Courier = ({ errand }) => {
 
   return (
     <View style={styles.container}>
-      {/* <Text>{user.picture}</Text> */}
-      <Text style={styles.profileName}>{runner.name}  </Text>
-      <View style={styles.container2}>
-        <TouchableOpacity onPress={handleOnClick}>
-          <Image source={icons.star} style={styles.starImage} />
-        </TouchableOpacity>
-        <Text style={styles.starCount}>{count}</Text>
-      </View>
+      <Text style={styles.profileName}>{runner.name}
+      </Text>
+      <TouchableOpacity onPress={handleOnClick}>
+        <Image source={icons.star} style={styles.starImage} />
+      </TouchableOpacity>
+      <Text style={styles.starCount}>{count}</Text>
     </View>
   );
 };
@@ -57,29 +54,25 @@ const Courier = ({ errand }) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    marginTop: 40,
-    borderRadius: 40,
-    borderWidth: 4,
-    borderColor: 'white',
-  },
-  container2: {
-    flexDirection: 'row',
-    borderWidth: 4,
-    borderColor: 'white',
+    justifyContent: 'space-between',
   },
   profileName: {
     marginTop: 20,
-    paddingLeft: 5,
+    marginLeft: 10,
+    fontSize: 18,
+    fontWeight: 'bold',
   },
   starImage: {
-    marginTop: 12,
-    paddingLeft: 5,
-    width: 30,
-    height: 30,
+    marginTop: 16,
+    marginLeft: 5,
+    width: 25,
+    height: 25,
     marginRight: SIZES.padding,
   },
   starCount: {
-    marginTop: 15,
+    marginTop: 18,
+    fontSize: 20,
+    fontWeight: '700',
   },
 });
 

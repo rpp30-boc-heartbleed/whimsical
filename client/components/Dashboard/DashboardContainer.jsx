@@ -2,9 +2,10 @@ import React, { useState, useEffect, Component } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import axios from 'axios';
 import {
-  View, ScrollView, StyleSheet,
+  View, ScrollView, StyleSheet, Button,
 } from 'react-native';
 import { HOST_URL } from '@env';
+import { NavigationContainer } from '@react-navigation/native';
 import DashboardHeader from './DashboardHeader';
 import DashboardStats from './DashboardStats';
 import DashboardBody from './DashboardBody';
@@ -25,6 +26,7 @@ const DashboardContainer = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      <NavBar navigation={navigation} />
       <DashboardHeader navigation={navigation} />
       <DashboardBody navigation={navigation} />
       <ScrollView />

@@ -56,7 +56,7 @@ const connectDb = () => mongoose.connect(`mongodb://${process.env.MONGO_USERNAME
     }
   })
   .catch((err) => {
-    console.log('Connection to database failed womp womp');
+    console.log('Connection to database failed womp womp', err);
     process.exit(1);
   });
 

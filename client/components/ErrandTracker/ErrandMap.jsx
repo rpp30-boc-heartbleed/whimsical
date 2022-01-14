@@ -52,11 +52,7 @@ const destination = {
 };
 
 const ErrandMap = ({ setEta, errand }) => {
-  // const mapRef = useRef();
-  // const markerRef = useRef();
   const { runner, runnerLocation } = errand;
-
-  // const [errands, setErrands] = useRecoilState(errandState);
 
   const [region, setRegion] = useState({
     latitude: 42.2966481,
