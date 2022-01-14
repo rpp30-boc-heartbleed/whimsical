@@ -208,8 +208,8 @@ const UserProfileContainer = ({ navigation }) => {
                 <Image source={icons.star} style={styles.starImage} /> :     {user.stars}
               </Text>
               <Text style={styles.errands}>
-                <Text>Errands Completed:</Text>
-                <Badge containerStyle={styles.badge} badgeStyle={styles.badge} value={user.errandsCompleted} status="success" />
+                <View style={styles.badge}><Text style={styles.badgeText} value={user.errandsCompleted} status="success">{user.errandsCompleted}</Text></View>
+                <Text style={{fontSize: 48}}>Errands Completed!</Text>
               </Text>
             </View>
           </View>
@@ -403,8 +403,16 @@ const styles = StyleSheet.create({
   badge: {
     height: 50,
     width: 50,
+    backgroundColor: 'limegreen',
+    color: 'white',
+    borderRadius: 50 / 2,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  badgeText: {
+    color: 'white',
+    fontSize: 25,
     fontWeight: '600',
-    marginLeft: 30,
   },
   email: {
     padding: 5,
@@ -460,7 +468,6 @@ const styles = StyleSheet.create({
     marginTop: 22,
   },
   centered: {
-
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 22,
