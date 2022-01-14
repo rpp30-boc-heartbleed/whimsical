@@ -1,20 +1,26 @@
+/* eslint-disable react/jsx-wrap-multilines */
 import React, { useState } from 'react';
 import {
   Dimensions,
   StyleSheet,
   View,
   Text,
+  Alert,
+  Button,
 } from 'react-native';
+import Modal from 'react-native-modal';
 import axios from 'axios';
 import { HOST_URL } from '@env';
-import { Icon, LinearProgress, Overlay } from 'react-native-elements';
+import { Icon, LinearProgress } from 'react-native-elements';
 import { errandState, refreshErrandsState } from '../../../state/atoms/errands';
 import MessageButton from './MessageButton';
 import Courier from './Courier';
 
 const { width, height } = Dimensions.get('window').width;
 
-const BottomSheet = ({ navigation, eta, errand }) => {
+const BottomSheet = ({
+  navigation, eta, errand, showModal,
+}) => {
   const {
     errandName,
     errandId,
@@ -22,14 +28,14 @@ const BottomSheet = ({ navigation, eta, errand }) => {
     runner,
   } = errand;
   const { stars } = runner;
-  const [visible, isVisible] = useState(false);
   const [count, setCount] = useState(stars);
+  const [isModalVisible, setModalVisible] = useState(false);
 
-  const toggleOverlay = () => {
-    isVisible(!visible);
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
   };
 
-  const handleOnClick = async () => {
+  const handleRating = async () => {
     console.log(stars);
     try {
       const response = await axios.put(`${HOST_URL}/userProfile/stars`, {
@@ -46,6 +52,19 @@ const BottomSheet = ({ navigation, eta, errand }) => {
 
   return (
     <View style={styles.container}>
+      {/* <Button title='Show modal' onPress={toggleModal} /> */}
+      <View>
+        <Modal
+          isVisible={isModalVisible}
+          animationIn='slideInUp'
+          animationOut='slideOutDown'
+        >
+          <View style={{ backgroundColor: '#ffff' }}>
+            <Text>Context here</Text>
+            <Button title='Hide modal' onPress={toggleModal} />
+          </View>
+        </Modal>
+      </View>
       <View style={styles.content}>
         <Text style={styles.errand}>{errandName}</Text>
         <Text style={styles.eta}>Arrives in
@@ -58,14 +77,31 @@ const BottomSheet = ({ navigation, eta, errand }) => {
       </View>
       <View style={styles.content2}>
         <Courier errand={errand} />
-        <Icon
-          raised
-          name='star'
-          type='font-awesome'
-          color='#F3D250'
-          onPress={toggleOverlay}
-        />
-        <MessageButton style={styles.button} navigation={navigation} errandId={errandId} />
+        <Text style={styles.starBtn}>
+          {/* {
+            // eslint-disable-next-line no-constant-condition
+            { status } === 'Pending' || eta > 0
+              ? <Icon
+                  disabled
+                  raised
+                  name='star'
+                  type='font-awesome'
+                  color='#5F6368'
+                  onPress={toggleModal}
+              /> */}
+              {/* :  */}
+              <Icon
+                  raised
+                  name='star'
+                  type='font-awesome'
+                  color='#F3D250'
+                  onPress={toggleModal}
+              />
+          {/* } */}
+        </Text>
+        <View style={styles.button}>
+          <MessageButton navigation={navigation} errandId={errandId} />
+        </View>
       </View>
     </View>
   );
@@ -84,17 +120,18 @@ const styles = StyleSheet.create({
   },
   content2: {
     flexDirection: 'row',
-    marginTop: 70,
+    marginTop: 65,
     justifyContent: 'space-between',
     borderWidth: 2,
     borderRadius: 1,
-    shadowOffset: { width: 1, height: 2 },
-    shadowColor: '#000000',
-    shadowOpacity: 3,
     borderColor: '#EFEFEF',
   },
+  starBtn: {
+    marginTop: 7,
+  },
   button: {
-    marginRight: 40,
+    marginRight: 30,
+    marginBottom: 30,
   },
   errand: {
     fontSize: 30,

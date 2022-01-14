@@ -54,24 +54,25 @@ const Courier = ({ errand }) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
   },
   profileName: {
     marginTop: 20,
     marginLeft: 10,
-    fontSize: 18,
+    fontSize: 20,
     fontWeight: 'bold',
   },
   starImage: {
-    marginTop: 16,
+    marginTop: 22,
     marginLeft: 5,
     width: 20,
     height: 20,
     marginRight: SIZES.padding,
   },
   starCount: {
-    marginTop: 16,
-    fontSize: 20,
+    marginTop: 22,
+    marginRight: 5,
+    fontSize: 14,
     fontWeight: '700',
   },
 });
