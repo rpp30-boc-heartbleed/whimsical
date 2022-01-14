@@ -41,7 +41,7 @@ const List = ({ style, navigation }) => {
           return (
             <View style={styles.friend}>
               <TouchableOpacity style={styles.avatar}>
-                <Avatar.Image size={60} source={item.picture} />
+                <Avatar.Image size={60} source={{ uri: item.picture }} />
               </TouchableOpacity>
               <View style={styles.text}>
                 <Text style={{ fontWeight: 'bold' }}>
