@@ -24,28 +24,28 @@ const Courier = ({ errand }) => {
   const { stars } = runner;
   const [count, setCount] = useState(stars);
 
-  const handleOnClick = async () => {
-    console.log(stars);
-    try {
-      const response = await axios.put(`${HOST_URL}/userProfile/stars`, {
-        ...runner,
-        stars: runner.stars + 1,
-      });
-      console.log('user stars response', response);
-      setCount(count + 1);
-      return response;
-    } catch (err) {
-      return 'Unable to give gold star';
-    }
-  };
+  // const handleOnClick = async () => {
+  //   console.log(stars);
+  //   try {
+  //     const response = await axios.put(`${HOST_URL}/userProfile/stars`, {
+  //       ...runner,
+  //       stars: runner.stars + 1,
+  //     });
+  //     console.log('user stars response', response);
+  //     setCount(count + 1);
+  //     return response;
+  //   } catch (err) {
+  //     return 'Unable to give gold star';
+  //   }
+  // };
 
   return (
     <View style={styles.container}>
       <Text style={styles.profileName}>{runner.name}
       </Text>
-      <TouchableOpacity onPress={handleOnClick}>
-        <Image source={icons.star} style={styles.starImage} />
-      </TouchableOpacity>
+      {/* <TouchableOpacity onPress={handleOnClick}> */}
+      <Image source={icons.star} style={styles.starImage} />
+      {/* </TouchableOpacity> */}
       <Text style={styles.starCount}>{count}</Text>
     </View>
   );
@@ -65,12 +65,12 @@ const styles = StyleSheet.create({
   starImage: {
     marginTop: 16,
     marginLeft: 5,
-    width: 25,
-    height: 25,
+    width: 20,
+    height: 20,
     marginRight: SIZES.padding,
   },
   starCount: {
-    marginTop: 18,
+    marginTop: 16,
     fontSize: 20,
     fontWeight: '700',
   },

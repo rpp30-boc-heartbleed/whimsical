@@ -5,6 +5,8 @@ import {
   View,
   Text,
 } from 'react-native';
+import axios from 'axios';
+import { HOST_URL } from '@env';
 import { Icon, LinearProgress, Overlay } from 'react-native-elements';
 import { errandState, refreshErrandsState } from '../../../state/atoms/errands';
 import MessageButton from './MessageButton';
@@ -12,10 +14,35 @@ import Courier from './Courier';
 
 const { width, height } = Dimensions.get('window').width;
 
-const BottomSheet = ({
-  navigation, eta, errand, toggleOverlay,
-}) => {
-  const { errandName, errandId, status } = errand;
+const BottomSheet = ({ navigation, eta, errand }) => {
+  const {
+    errandName,
+    errandId,
+    status,
+    runner,
+  } = errand;
+  const { stars } = runner;
+  const [visible, isVisible] = useState(false);
+  const [count, setCount] = useState(stars);
+
+  const toggleOverlay = () => {
+    isVisible(!visible);
+  };
+
+  const handleOnClick = async () => {
+    console.log(stars);
+    try {
+      const response = await axios.put(`${HOST_URL}/userProfile/stars`, {
+        ...runner,
+        stars: runner.stars + 1,
+      });
+      console.log('user stars response', response);
+      setCount(count + 1);
+      return response;
+    } catch (err) {
+      return 'Unable to give gold star';
+    }
+  };
 
   return (
     <View style={styles.container}>

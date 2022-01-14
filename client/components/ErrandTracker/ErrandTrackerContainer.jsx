@@ -16,7 +16,6 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import { LinearProgress, Overlay } from 'react-native-elements';
 import {
   COLORS,
   SIZES,
@@ -26,9 +25,6 @@ import { errandState, refreshErrandsState } from '../../state/atoms/errands';
 import ErrandMap from './ErrandMap';
 import BottomSheet from './BottomSheet/BottomSheet';
 import NavBarContainer from '../NavBar/NavBarContainer';
-
-// console.log('height', Dimensions.get('window').height, 'width', Dimensions.get('window').width);
-// height 683.4285714285714 width 411.42857142857144
 
 const ErrandTrackerContainer = ({ route, navigation }) => {
   const { errand } = route.params;
@@ -60,15 +56,11 @@ const ErrandTrackerContainer = ({ route, navigation }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [eta]);
 
-  const toggleOverlay = () => {
-    setVisible(!visible);
-  };
-
   return (
     <>
       <View style={styles.map}>
         <ErrandMap
-          etEta={setEta}
+          setEta={setEta}
           errand={errand}
         />
       </View>
@@ -77,7 +69,6 @@ const ErrandTrackerContainer = ({ route, navigation }) => {
           navigation={navigation}
           eta={eta}
           errand={errand}
-          toggleOverlay={toggleOverlay}
         />
       </View>
     </>
