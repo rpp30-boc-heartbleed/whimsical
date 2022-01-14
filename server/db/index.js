@@ -10,7 +10,7 @@ const {
 const { Profile } = require('../models/userProfile');
 const { Errand } = require('../models/errand');
 
-const connectDb = () => mongoose.connect(`mongodb://${process.env.USERNAME}:${process.env.PASS}@3.83.254.62/quick-bagel`, {
+const connectDb = () => mongoose.connect(`mongodb://${process.env.MONGO_USERNAME}:${process.env.PASS}@3.83.254.62/quick-bagel`, {
 // const connectDb = () => mongoose.connect('mongodb://localhost:27017/quick-bagel', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -29,7 +29,7 @@ const connectDb = () => mongoose.connect(`mongodb://${process.env.USERNAME}:${pr
 
       // Seed Errands
       await mongoose.connection.db.dropCollection('errandCollection');
-      let requestor = null;
+      const requestor = null;
 
       const errands = mockErrands.forEach(async (errand, i) => {
         // alternate requestors but leave 2 un-requested errands

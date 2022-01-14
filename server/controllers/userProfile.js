@@ -41,9 +41,9 @@ const get = (req, res) => {
       Errand.find({ username: data[0].name, status: 'Delivered' })
         .then((info) => {
           console.log('errands', info);
-          res.json({ info: info.length, data: data });
+          res.json({ info: info.length, data });
         })
-        .catch(err => console.log(err));
+        .catch((err) => console.log(err));
     })
     .catch((err) => {
       console.log(err);

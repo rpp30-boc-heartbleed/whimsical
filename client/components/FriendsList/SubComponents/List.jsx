@@ -13,25 +13,34 @@ import { Avatar, Badge, IconButton } from 'react-native-paper';
 
 // Components
 import IconModal from '../../Modals/IconModal';
+import AddIcon from './AddIcon';
 // State
 import filterByNameSelector from '../../../state/selectors/filterByName';
+import addFriendState from '../../../state/atoms/addFriends';
+import userProfileState from '../../../state/atoms/userProfile';
+import addFriendsQuery from '../../../state/selectors/addFriendsQuery';
+import friendsListQuery from '../../../state/selectors/friendsListQuery';
 // Assets
 import { icons, SIZES } from '../../../constants';
 
 const { star } = icons;
 
 const List = ({ style, navigation }) => {
-  const filteredByName = useRecoilValue(filterByNameSelector('friends'));
+  const [addList, setAddList] = useRecoilState(addFriendState);
+  const [user] = useRecoilState(userProfileState);
+  const filteredFriends = useRecoilValue(filterByNameSelector('friends'));
+  const filteredUsers = useRecoilValue(filterByNameSelector('strangers'));
+  const list = addList ? filteredUsers : filteredFriends;
 
   return (
     <View style={style}>
       <FlatList
-        data={filteredByName}
+        data={list}
         renderItem={({ item, index }) => {
           return (
             <View style={styles.friend}>
               <TouchableOpacity style={styles.avatar}>
-                <Avatar.Image size={50} source={item.avatar} />
+                <Avatar.Image size={60} source={item.picture} />
               </TouchableOpacity>
               <View style={styles.text}>
                 <Text style={{ fontWeight: 'bold' }}>
@@ -42,20 +51,24 @@ const List = ({ style, navigation }) => {
                   </Text>
                 </Text>
               </View>
-              <TouchableOpacity style={styles.chat}>
-                <IconModal
-                  disable={false}
-                  icon='chat-outline'
-                  size={50}
-                  style={styles.chatIcon}
-                  currentErrands={item.currentErrands}
-                  navigation={navigation}
-                />
-              </TouchableOpacity>
+              {(!addList)
+                ? (
+                  <TouchableOpacity style={styles.chat}>
+                    <IconModal
+                      disable={false}
+                      icon='chat-outline'
+                      size={50}
+                      style={styles.chatIcon}
+                      currentErrands={item.currentErrands}
+                      navigation={navigation}
+                    />
+                  </TouchableOpacity>
+                )
+                : (<AddIcon stranger={item} />)}
             </View>
           );
         }}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item) => item._id}
         keyboardShouldPersistTaps="handled"
       />
     </View>
@@ -82,6 +95,9 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     height: 60,
     margin: 10,
+  },
+  name: {
+    fontSize: 20,
   },
   star: {
     width: 15,
