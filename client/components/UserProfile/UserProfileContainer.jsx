@@ -199,18 +199,17 @@ const UserProfileContainer = ({ navigation }) => {
             />
             <TouchableOpacity onPress={addImage} style={styles.uploadBtn}>
               <Icon name='photo' size={13} raised color='black' />
-              {/* <Text style={{ fontSize: 10 }}>{user.picture ? 'Edit' : 'Upload'}</Text> */}
             </TouchableOpacity>
             <Text style={styles.name}>{user.name}</Text>
             <Text style={styles.location}>{user.location}</Text>
             <Text style={styles.email}>{user.email}</Text>
-            <View style={styles.stats}>
+            <View style={styles.centered}>
               <Text style={styles.starCount}>
-                <Image source={icons.star} style={styles.starImage} /> {user.stars}
+                <Image source={icons.star} style={styles.starImage} /> :     {user.stars}
               </Text>
               <Text style={styles.errands}>
-                <Badge value="Errands Completed" status="success" />
-                {' '}: {user.errandsCompleted}
+                <Text>Errands Completed:</Text>
+                <Badge containerStyle={styles.badge} badgeStyle={styles.badge} value={user.errandsCompleted} status="success" />
               </Text>
             </View>
           </View>
@@ -280,7 +279,7 @@ const UserProfileContainer = ({ navigation }) => {
                     style={[styles.button, styles.buttonClose]}
                     // title="Cancel"
                   >
-                    <Text style={styles.textStyle}>Cancel</Text>
+                    <Text style={styles.textStyle}>CLOSE</Text>
                   </Pressable>
                 </View>
               </View>
@@ -349,7 +348,7 @@ const UserProfileContainer = ({ navigation }) => {
                   }}
                   style={[styles.button, styles.buttonClose]}
                 >
-                  <Text style={styles.textStyle}>Cancel</Text>
+                  <Text style={styles.textStyle}>CLOSE</Text>
                 </Pressable>
                 <Pressable
                   style={[styles.button, styles.buttonClose]}
@@ -401,6 +400,12 @@ const styles = StyleSheet.create({
     color: 'black',
     fontWeight: 'bold',
   },
+  badge: {
+    height: 50,
+    width: 50,
+    fontWeight: '600',
+    marginLeft: 30,
+  },
   email: {
     padding: 5,
     fontSize: 16,
@@ -422,20 +427,22 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   starImage: {
-    width: 17,
-    height: 17,
-    paddingHorizontal: 25,
-    marginBottom: 5,
+    width: 5,
+    height: 5,
+    // paddingHorizontal: 25,
+    margin: 25,
   },
   starCount: {
-    fontSize: 14,
+    fontSize: 50,
     fontWeight: '600',
+    alignItems: 'center',
   },
   errands: {
     marginTop: 2,
     paddingHorizontal: 25,
-    fontSize: 14,
+    fontSize: 25,
     fontWeight: '600',
+    justifyContent: 'space-between',
   },
   editForm: {
     borderRadius: 30,
@@ -448,6 +455,12 @@ const styles = StyleSheet.create({
   },
   centeredView: {
     flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 22,
+  },
+  centered: {
+
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 22,
