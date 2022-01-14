@@ -17,27 +17,11 @@ import {
 } from '../../../constants';
 import userProfileState from '../../../state/atoms/userProfile';
 
-const Courier = ({ errand }) => {
-  // const [user, setUser] = useRecoilState(userProfileState);
+const Courier = ({ errand, handleRating, count }) => {
   const { runner, errandId } = errand;
-  // console.log('runner', runner);
   const { stars } = runner;
-  const [count, setCount] = useState(stars);
 
-  // const handleOnClick = async () => {
-  //   console.log(stars);
-  //   try {
-  //     const response = await axios.put(`${HOST_URL}/userProfile/stars`, {
-  //       ...runner,
-  //       stars: runner.stars + 1,
-  //     });
-  //     console.log('user stars response', response);
-  //     setCount(count + 1);
-  //     return response;
-  //   } catch (err) {
-  //     return 'Unable to give gold star';
-  //   }
-  // };
+  console.log('count', count);
 
   return (
     <View style={styles.container}>

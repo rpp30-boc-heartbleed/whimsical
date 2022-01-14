@@ -5,8 +5,8 @@ import {
   StyleSheet,
   View,
   Text,
-  Alert,
   Button,
+  TouchableOpacity,
 } from 'react-native';
 import Modal from 'react-native-modal';
 import axios from 'axios';
@@ -52,16 +52,50 @@ const BottomSheet = ({
 
   return (
     <View style={styles.container}>
-      {/* <Button title='Show modal' onPress={toggleModal} /> */}
       <View>
         <Modal
           isVisible={isModalVisible}
-          animationIn='slideInUp'
-          animationOut='slideOutDown'
+          animationIn='zoomInDown'
+          animationOut='zoomOutUp'
+          hasBackdrop
+          backdropColor='black'
+          backdropOpacity={0.70}
+          animationInTiming={600}
+          animationOutTiming={600}
+          backdropTransitionInTiming={600}
+          backdropTransitionOutTiming={600}
         >
           <View style={{ backgroundColor: '#ffff' }}>
-            <Text>Context here</Text>
-            <Button title='Hide modal' onPress={toggleModal} />
+            <Text style={{ textAlign: 'center', marginTop: 10, fontSize: 16 }}>
+              Errand Complete! Give <Text style={{ fontWeight: 'bold', fontSize: 16 }}>{runner.name}</Text> a star?
+            </Text>
+            <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'center', margin: 20 }}>
+              <Text style={{ marginRight: 20 }}>
+                <Icon
+                  raised
+                  size={30}
+                  name='star'
+                  type='font-awesome'
+                  color='#F3D250'
+                  onPress={handleRating}
+                />
+              </Text>
+              <Text style={{ marginLeft: 20 }}>
+                <Icon
+                  raised
+                  size={30}
+                  name='meho'
+                  type='antdesign'
+                  onPress={toggleModal}
+                />
+              </Text>
+              {/* <Text>
+                Woo, yea!
+              </Text>
+              <Text>
+                Sorry, next time
+              </Text> */}
+            </TouchableOpacity>
           </View>
         </Modal>
       </View>
@@ -76,7 +110,7 @@ const BottomSheet = ({
         <LinearProgress color='#F78888' />
       </View>
       <View style={styles.content2}>
-        <Courier errand={errand} />
+        <Courier errand={errand} count={count} handleRating={handleRating} />
         <Text style={styles.starBtn}>
           {/* {
             // eslint-disable-next-line no-constant-condition
