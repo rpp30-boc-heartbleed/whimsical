@@ -40,13 +40,16 @@ const AddIcon = ({ stranger }) => {
 
   return (
     <View>
-      <IconButton
-        icon='plus-circle'
-        size={40}
-        style={styles.add}
-        onPress={onPress}
-        disabled={disabled}
-      />
+      <TouchableOpacity>
+        <IconButton
+          icon='plus-circle'
+          size={40}
+          style={styles.add}
+          onPress={onPress}
+          disabled={disabled}
+          accessibilityLabel='add friend'
+        />
+      </TouchableOpacity>
     </View>
   );
 };

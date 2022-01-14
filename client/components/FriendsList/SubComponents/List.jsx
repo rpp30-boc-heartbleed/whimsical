@@ -14,6 +14,7 @@ import { Avatar, Badge, IconButton } from 'react-native-paper';
 // Components
 import IconModal from '../../Modals/IconModal';
 import AddIcon from './AddIcon';
+// import WithBadge from './WithBadge';
 // State
 import filterByNameSelector from '../../../state/selectors/filterByName';
 import addFriendState from '../../../state/atoms/addFriends';
@@ -37,7 +38,8 @@ const List = ({ style, navigation }) => {
       <FlatList
         data={list}
         renderItem={({ item, index }) => {
-          const disabled = item.currentErrands.length === 0;
+          const onErrand = item.currentErrands.length;
+          const disabled = onErrand === 0;
           return (
             <View style={styles.friend}>
               <TouchableOpacity style={styles.avatar}>
