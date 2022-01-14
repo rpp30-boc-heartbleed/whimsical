@@ -58,7 +58,6 @@ const DashboardBody = ({ navigation }) => {
   useEffect(() => {
     axios
       .get(`${HOST_URL}/getErrandData`)
-      // .get('http://172.20.10.9:3000/getErrandData')
       .then((data) => {
         const dataArr = [];
         // create new array of only 'Pending' posts (deleting 'Completed' posts)
@@ -111,9 +110,8 @@ const DashboardBody = ({ navigation }) => {
     <View>
       <FlatList
         style={styles.container0}
-        // data={errandsList}
         data={filtering}
-        // data={newDataFromMongo}
+        keyExtractor={(item, index) => item._id}
         renderItem={({ item, index }) => (
           <View style={styles.container}>
             <View style={styles.container2}>
@@ -125,36 +123,35 @@ const DashboardBody = ({ navigation }) => {
                 <View style={styles.container4}>
                   <View style={styles.container5}>
                     <Text style={styles.username}>{item.runner.name}</Text>
-                    <TimeAgo time={item.timeOfPost} interval={120000} />
+                    <TimeAgo style={styles.timeOfPost} time={item.timeOfPost} interval={120000} />
                   </View>
 
                   <View style={styles.container6}>
-                    <Text style={[styles.cont6, styles.store]}>{item.storeName}</Text>
-                    <Text style={[styles.cont6, styles.breakbar]}>|</Text>
-                    <Text style={[styles.cont6, styles.errandname]}>{item.errandName}</Text>
+                    <View style={styles.testing}>
+                      <Text style={[styles.cont6, styles.store]}>{item.storeName}</Text>
+                    </View>
+                    <View style={styles.testing}>
+                      <Text style={[styles.cont6, styles.errandname]}>{item.errandName}</Text>
+                    </View>
                   </View>
                 </View>
               </View>
 
               <View style={styles.container7}>
-                <Text style={{ fontWeight: 'bold' }}>Address: <Text style={{ fontWeight: 'normal' }}>{item.storeAddress.streetName}</Text></Text>
-                <Text style={{ fontWeight: 'bold' }}>ETA: <Text style={{ fontWeight: 'bold', color: '#F78888' }}> {item.storeETA || '5 minutes'}</Text></Text>
+                <Text style={{ fontWeight: 'bold', fontSize: 12 }}>Address: <Text style={{ fontWeight: 'normal' }}>{item.storeAddress.streetName}</Text></Text>
+                <Text style={{ fontWeight: 'bold', fontSize: 12 }}>Store ETA: <Text style={{ fontWeight: 'bold', color: '#F78888' }}> {item.storeETA || '5 minutes'}</Text></Text>
               </View>
-              <View style={[styles.buttons, styles.clickable]}>
 
+              <View style={[styles.buttons, styles.clickable]}>
                 <TouchableOpacity
                   style={styles.messagetouch}
-                  onPress={() => navigation.push('Chat', {
-                    errandId: item._id,
-                  })}
+                  onPress={() => navigation.push('Chat', { errandId: item._id })}
                 >
                   <Image
                     source={{ uri: 'https://listimg.pinclipart.com/picdir/s/453-4531079_png-file-svg-message-box-icon-png-clipart.png' }}
                     style={styles.messagebox}
                   />
                 </TouchableOpacity>
-
-                <Text style={styles.clickable} />
 
                 <TouchableOpacity
                   style={styles.statustouch}
@@ -211,7 +208,7 @@ const useSnackBar = () => {
 
 const styles = StyleSheet.create({
   container0: {
-    height: 643,
+    height: 660,
     backgroundColor: '#90CCF4',
   },
   container: {
@@ -234,10 +231,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   avatar: {
-    borderWidth: 1,
-    borderRadius: 10,
+    borderWidth: 0.25,
+    borderColor: '#DEE1E6',
+    borderRadius: 32,
     paddingTop: 18,
-    width: 60,
+    width: 65,
+    height: 65,
     resizeMode: 'contain',
   },
   container4: {
@@ -255,22 +254,32 @@ const styles = StyleSheet.create({
     marginLeft: 15,
     fontWeight: 'bold',
   },
+  timeOfPost: {
+    marginTop: 4,
+    fontSize: 10,
+  },
   container6: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     justifyContent: 'center',
   },
   cont6: {
     fontSize: 15,
     fontWeight: 'normal',
+    paddingLeft: 15,
+  },
+  testing: {
+    flexDirection: 'column',
+    justifyContent: 'center',
   },
   store: {
-    marginLeft: -20,
-    paddingTop: 13,
+    paddingVertical: 4,
     fontWeight: 'bold',
+    fontSize: 17,
     color: '#5DA2D5',
   },
   errandname: {
-    paddingTop: 13,
+    fontStyle: 'italic',
+    fontSize: 13,
   },
   breakbar: {
     fontWeight: '200',
@@ -288,7 +297,6 @@ const styles = StyleSheet.create({
   buttons: {
     flexDirection: 'row',
     justifyContent: 'space-around',
-    // justifyContent: 'center',
   },
   clickable: {
     fontSize: 10,
@@ -299,10 +307,8 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
     resizeMode: 'contain',
-    marginRight: 100,
   },
   messagetouch: {
-    // borderWidth: 1,
   },
   status: {
     width: 20,
@@ -310,7 +316,6 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   statustouch: {
-    // borderWidth: 1,
   },
 });
 
