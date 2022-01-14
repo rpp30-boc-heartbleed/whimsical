@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
   textInputs: {
     width: 300,
     padding: 8,
-    marginTop: 10,
+    marginVertical: 10,
     textAlign: 'center',
     backgroundColor: 'white',
     borderRadius: 15,
