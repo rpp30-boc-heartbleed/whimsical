@@ -44,7 +44,6 @@ const BottomSheet = ({
         ...runner,
         stars: runner.stars + 1,
       });
-      console.log('user stars response', response);
       setCount(count + 1);
       setClicked(true);
       setModalVisible(false);
@@ -95,12 +94,6 @@ const BottomSheet = ({
                   onPress={toggleModal}
                 />
               </Text>
-              {/* <Text>
-                Woo, yea!
-              </Text>
-              <Text>
-                Sorry, next time
-              </Text> */}
             </TouchableOpacity>
           </View>
         </Modal>
@@ -118,7 +111,7 @@ const BottomSheet = ({
       <View style={styles.content2}>
         <Courier errand={errand} count={count} handleRating={handleRating} />
         <Text style={styles.starBtn}>
-          {/* {
+          {
             // eslint-disable-next-line no-constant-condition
             { status } === 'Pending' || eta > 0
               ? <Icon
@@ -128,16 +121,15 @@ const BottomSheet = ({
                   type='font-awesome'
                   color='#5F6368'
                   onPress={toggleModal}
-              /> */}
-              {/* :  */}
-              <Icon
+              />
+              : <Icon
                   raised
                   name='star'
                   type='font-awesome'
                   color='#F3D250'
                   onPress={toggleModal}
               />
-          {/* } */}
+          }
         </Text>
         <View style={styles.button}>
           <MessageButton navigation={navigation} errandId={errandId} />
