@@ -123,6 +123,7 @@ const BottomSheet = ({
                   onPress={toggleModal}
               />
               : <Icon
+                  disabled={isClicked}
                   raised
                   name='star'
                   type='font-awesome'
