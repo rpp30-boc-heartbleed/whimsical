@@ -37,7 +37,7 @@ const List = ({ style, navigation }) => {
       <FlatList
         data={list}
         renderItem={({ item, index }) => {
-          const disabled = !!item.currentErrands.length;
+          const disabled = item.currentErrands.length === 0;
           return (
             <View style={styles.friend}>
               <TouchableOpacity style={styles.avatar}>
@@ -55,13 +55,12 @@ const List = ({ style, navigation }) => {
               {(!addList)
                 ? (
                   <TouchableOpacity style={styles.chat}>
-                    <IconModal
-                      disable={false}
+                    <IconButton
+                      disabled={disabled}
                       icon='chat-outline'
                       size={50}
                       style={styles.chatIcon}
-                      currentErrands={item.currentErrands}
-                      navigation={navigation}
+                      navigation={() => navigation.push('Chat', { errandId: item.errandId[0] })}
                     />
                   </TouchableOpacity>
                 )
