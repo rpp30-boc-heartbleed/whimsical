@@ -7,6 +7,7 @@ import {
   Text,
   Button,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import Modal from 'react-native-modal';
 import axios from 'axios';
@@ -30,24 +31,33 @@ const BottomSheet = ({
   const { stars } = runner;
   const [count, setCount] = useState(stars);
   const [isModalVisible, setModalVisible] = useState(false);
+  const [isClicked, setClicked] = useState(false);
 
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
 
+  // const handleDisableRating = () => {
+  //   isClicked(true);
+  // };
+
   const handleRating = async () => {
-    console.log(stars);
     try {
-      const response = await axios.put(`${HOST_URL}/userProfile/stars`, {
-        ...runner,
-        stars: runner.stars + 1,
-      });
-      console.log('user stars response', response);
-      setCount(count + 1);
-      return response;
-    } catch (err) {
-      return 'Unable to give gold star';
+      // if (handleDisableRating) {
+        const response = await axios.put(`${HOST_URL}/userProfile/stars`, {
+          ...runner,
+          stars: runner.stars + 1,
+        });
+        console.log('user stars response', response);
+        setCount(count + 1);
+        setModalVisible(false);
+        return response;
+      // }
+      // return 'Already rated';
+    } catch (e) {
+      console.log('error', e);
     }
+    return null;
   };
 
   return (
@@ -78,6 +88,7 @@ const BottomSheet = ({
                   type='font-awesome'
                   color='#F3D250'
                   onPress={handleRating}
+                  // disabled={!isClicked}
                 />
               </Text>
               <Text style={{ marginLeft: 20 }}>

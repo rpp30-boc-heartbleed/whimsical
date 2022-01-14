@@ -20,16 +20,13 @@ import userProfileState from '../../../state/atoms/userProfile';
 const Courier = ({ errand, handleRating, count }) => {
   const { runner, errandId } = errand;
   const { stars } = runner;
-
-  console.log('count', count);
+  // console.log('count', count);
 
   return (
     <View style={styles.container}>
       <Text style={styles.profileName}>{runner.name}
       </Text>
-      {/* <TouchableOpacity onPress={handleOnClick}> */}
       <Image source={icons.star} style={styles.starImage} />
-      {/* </TouchableOpacity> */}
       <Text style={styles.starCount}>{count}</Text>
     </View>
   );
