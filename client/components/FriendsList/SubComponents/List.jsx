@@ -44,11 +44,11 @@ const List = ({ style, navigation }) => {
                 <Avatar.Image size={60} source={{ uri: item.picture }} />
               </TouchableOpacity>
               <View style={styles.text}>
-                <Text style={{ fontWeight: 'bold' }}>
+                <Text style={styles.name}>
                   {item.name}
                 </Text>
                 <Text><Image style={styles.star} source={star} />
-                  <Text style={{ margin: 5 }}>{item.goldStars}
+                  <Text style={{ margin: 5 }}>{item.stars}
                   </Text>
                 </Text>
               </View>
@@ -64,7 +64,7 @@ const List = ({ style, navigation }) => {
                     />
                   </TouchableOpacity>
                 )
-                : (<AddIcon stranger={item} />)}
+                : (<AddIcon index={index} stranger={item} />)}
             </View>
           );
         }}
@@ -90,14 +90,15 @@ const styles = StyleSheet.create({
   },
   text: {
     flex: 4,
+    alignItems: 'center',
     width: '100%',
-    fontSize: 14,
-    borderRadius: 30,
     height: 60,
     margin: 10,
   },
   name: {
-    fontSize: 20,
+    fontSize: 30,
+    fontWeight: 'bold',
+    paddingTop: 10,
   },
   star: {
     width: 15,
@@ -108,7 +109,7 @@ const styles = StyleSheet.create({
     marginRight: 30,
   },
   chatIcon: {
-    marginBottom: 20,
+    paddingTop: 10,
   },
 });
 
