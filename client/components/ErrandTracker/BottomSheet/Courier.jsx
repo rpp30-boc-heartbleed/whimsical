@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import axios from 'axios';
 import { HOST_URL } from '@env';
-// import Icon from 'react-native-vector-icons/FontAwesome';
 import { Icon, LinearProgress } from 'react-native-elements';
 import Modal from 'react-native-modal';
 import {
