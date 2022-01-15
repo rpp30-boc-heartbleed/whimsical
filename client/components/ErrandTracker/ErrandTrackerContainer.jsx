@@ -68,7 +68,7 @@ const ErrandTrackerContainer = ({ route, navigation }) => {
     <>
       <View style={styles.map}>
         <ErrandMap
-          etEta={setEta}
+          setEta={setEta}
           errand={errand}
         />
       </View>

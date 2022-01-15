@@ -1,11 +1,18 @@
+/* eslint-disable react/jsx-wrap-multilines */
 import React, { useState } from 'react';
 import {
   Dimensions,
   StyleSheet,
   View,
   Text,
+  Button,
+  TouchableOpacity,
+  Alert,
 } from 'react-native';
-import { Icon, LinearProgress, Overlay } from 'react-native-elements';
+import Modal from 'react-native-modal';
+import axios from 'axios';
+import { HOST_URL } from '@env';
+import { Icon, LinearProgress } from 'react-native-elements';
 import { errandState, refreshErrandsState } from '../../../state/atoms/errands';
 import MessageButton from './MessageButton';
 import Courier from './Courier';
@@ -13,32 +20,126 @@ import Courier from './Courier';
 const { width, height } = Dimensions.get('window').width;
 
 const BottomSheet = ({
-  navigation, eta, errand, toggleOverlay,
+  navigation, eta, errand,
 }) => {
-  const { errandName, errandId, status } = errand;
+  const {
+    errandName,
+    errandId,
+    status,
+    runner,
+    requestor,
+  } = errand;
+  const { stars, email } = runner;
+  const [count, setCount] = useState(stars);
+  const [isModalVisible, setModalVisible] = useState(false);
+  const [isClicked, setClicked] = useState(false);
+
+  const toggleModal = () => {
+    setModalVisible(!isModalVisible);
+  };
+
+  const handleRating = async ({ currentRunner }) => {
+    try {
+      const response = await axios.put(`${HOST_URL}/userProfile/stars`, {
+        ...runner,
+        stars: runner.stars + 1,
+      });
+        // console.log('RUNNER', runner);
+      setCount(count + 1);
+      setModalVisible(false);
+      setClicked(true);
+      return response;
+    } catch (e) {
+      console.log('error', e);
+    }
+    return null;
+  };
+  // console.log('status', status);
 
   return (
     <View style={styles.container}>
+      <View>
+        <Modal
+          isVisible={isModalVisible}
+          animationIn='zoomInDown'
+          animationOut='zoomOutUp'
+          hasBackdrop
+          backdropColor='black'
+          backdropOpacity={0.70}
+          animationInTiming={600}
+          animationOutTiming={600}
+          backdropTransitionInTiming={600}
+          backdropTransitionOutTiming={600}
+        >
+          <View style={{ backgroundColor: '#ffff' }}>
+            <Text style={{ textAlign: 'center', marginTop: 10, fontSize: 16 }}>
+              Errand Complete! Give <Text style={{ fontWeight: 'bold', fontSize: 16 }}>{runner.name}</Text> a star?
+            </Text>
+            <TouchableOpacity style={{ flexDirection: 'row', justifyContent: 'center', margin: 20 }}>
+              <Text style={{ marginRight: 20 }}>
+                <Icon
+                  raised
+                  size={30}
+                  name='star'
+                  type='font-awesome'
+                  color='#F3D250'
+                  onPress={handleRating}
+                  disabled={isClicked}
+                />
+              </Text>
+              <Text style={{ marginLeft: 20 }}>
+                <Icon
+                  raised
+                  size={30}
+                  name='meho'
+                  type='antdesign'
+                  onPress={toggleModal}
+                />
+              </Text>
+            </TouchableOpacity>
+          </View>
+        </Modal>
+      </View>
       <View style={styles.content}>
         <Text style={styles.errand}>{errandName}</Text>
         <Text style={styles.eta}>Arrives in
           <Text style={styles.time}> {Math.floor(eta)} min</Text>
         </Text>
-        <Text style={styles.status}>Status: <Text style={styles.pend}>{status}</Text></Text>
+        <Text style={styles.status}>Status:
+          <Text style={styles.pend}>
+            {status}
+          </Text>
+        </Text>
       </View>
       <View style={styles.progress}>
         <LinearProgress color='#F78888' />
       </View>
       <View style={styles.content2}>
-        <Courier errand={errand} />
-        <Icon
-          raised
-          name='star'
-          type='font-awesome'
-          color='#F3D250'
-          onPress={toggleOverlay}
-        />
-        <MessageButton style={styles.button} navigation={navigation} errandId={errandId} />
+        <Courier errand={errand} count={count} handleRating={handleRating} isClicked={isClicked} />
+        <Text style={styles.starBtn}>
+          {
+          // eslint-disable-next-line no-constant-condition
+          { status } === 'Pending' || eta > 0
+            ? <Icon
+                raised
+                name='star'
+                type='font-awesome'
+                color='#5F6368'
+                onPress={toggleModal}
+                disabled
+            />
+            : <Icon
+                raised
+                name='star'
+                type='font-awesome'
+                color='#F3D250'
+                onPress={toggleModal}
+            />
+          }
+        </Text>
+        <View style={styles.button}>
+          <MessageButton navigation={navigation} errandId={errandId} />
+        </View>
       </View>
     </View>
   );
@@ -57,17 +158,18 @@ const styles = StyleSheet.create({
   },
   content2: {
     flexDirection: 'row',
-    marginTop: 70,
+    marginTop: 65,
     justifyContent: 'space-between',
     borderWidth: 2,
     borderRadius: 1,
-    shadowOffset: { width: 1, height: 2 },
-    shadowColor: '#000000',
-    shadowOpacity: 3,
     borderColor: '#EFEFEF',
   },
+  starBtn: {
+    marginTop: 7,
+  },
   button: {
-    marginRight: 40,
+    marginRight: 30,
+    marginBottom: 30,
   },
   errand: {
     fontSize: 30,
