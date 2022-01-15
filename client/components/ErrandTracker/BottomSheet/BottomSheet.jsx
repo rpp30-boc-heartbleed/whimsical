@@ -126,6 +126,7 @@ const BottomSheet = ({
                 type='font-awesome'
                 color='#5F6368'
                 onPress={toggleModal}
+                disabled
             />
             : <Icon
                 raised
