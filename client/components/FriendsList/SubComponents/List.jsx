@@ -14,6 +14,7 @@ import { Avatar, Badge, IconButton } from 'react-native-paper';
 // Components
 import IconModal from '../../Modals/IconModal';
 import AddIcon from './AddIcon';
+// import WithBadge from './WithBadge';
 // State
 import filterByNameSelector from '../../../state/selectors/filterByName';
 import addFriendState from '../../../state/atoms/addFriends';
@@ -37,35 +38,35 @@ const List = ({ style, navigation }) => {
       <FlatList
         data={list}
         renderItem={({ item, index }) => {
-          const disabled = !!item.currentErrands.length;
+          const onErrand = item.currentErrands.length;
+          const disabled = onErrand === 0;
           return (
             <View style={styles.friend}>
               <TouchableOpacity style={styles.avatar}>
-                <Avatar.Image size={60} source={item.picture} />
+                <Avatar.Image size={60} source={{ uri: item.picture }} />
               </TouchableOpacity>
               <View style={styles.text}>
-                <Text style={{ fontWeight: 'bold' }}>
+                <Text style={styles.name}>
                   {item.name}
                 </Text>
                 <Text><Image style={styles.star} source={star} />
-                  <Text style={{ margin: 5 }}>{item.goldStars}
+                  <Text style={{ margin: 5 }}>{item.stars}
                   </Text>
                 </Text>
               </View>
               {(!addList)
                 ? (
                   <TouchableOpacity style={styles.chat}>
-                    <IconModal
-                      disable={false}
+                    <IconButton
+                      disabled={disabled}
                       icon='chat-outline'
                       size={50}
                       style={styles.chatIcon}
-                      currentErrands={item.currentErrands}
-                      navigation={navigation}
+                      navigation={() => navigation.push('Chat', { errandId: item.errandId[0] })}
                     />
                   </TouchableOpacity>
                 )
-                : (<AddIcon stranger={item} />)}
+                : (<AddIcon index={index} stranger={item} />)}
             </View>
           );
         }}
@@ -91,14 +92,15 @@ const styles = StyleSheet.create({
   },
   text: {
     flex: 4,
+    alignItems: 'center',
     width: '100%',
-    fontSize: 14,
-    borderRadius: 30,
     height: 60,
     margin: 10,
   },
   name: {
-    fontSize: 20,
+    fontSize: 30,
+    fontWeight: 'bold',
+    paddingTop: 10,
   },
   star: {
     width: 15,
@@ -109,7 +111,7 @@ const styles = StyleSheet.create({
     marginRight: 30,
   },
   chatIcon: {
-    marginBottom: 20,
+    paddingTop: 10,
   },
 });
 
