@@ -9,6 +9,8 @@ import {
   StyleSheet,
 } from 'react-native';
 
+import { Searchbar } from 'react-native-paper';
+
 import searchBarState from '../../state/atoms/searchBar';
 import filteredByNameSelector from '../../state/selectors/filterByName';
 
@@ -21,7 +23,7 @@ const SearchBar = ({ style }) => {
 
   return (
     <View>
-      <TextInput
+      <Searchbar
         style={style}
         placeholder='Search'
         onChangeText={onChange}

@@ -10,6 +10,7 @@ import {
 import { Button, Snackbar } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { errandState } from '../../state/atoms/errands';
+import NavBar from '../NavBar/NavBarContainer';
 import userProfileState from '../../state/atoms/userProfile';
 import auth from '../../config/firebase';
 // import dashSearchSelector from '../../state/selectors/dashSearchSelector';
@@ -108,6 +109,7 @@ const DashboardBody = ({ navigation }) => {
 
   return (
     <View>
+      <NavBar navigation={navigation} />
       <FlatList
         style={styles.container0}
         data={filtering}
