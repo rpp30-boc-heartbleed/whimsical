@@ -3,7 +3,7 @@ import { mockErrandsData } from '../../common/dummyData/mockErrandsData';
 
 export const errandState = atom({
   key: 'errandState',
-  default: [], // []
+  default: [],
 });
 
 export const refreshErrandsState = atom({

@@ -209,7 +209,7 @@ const UserProfileContainer = ({ navigation }) => {
               </Text>
               <Text style={styles.errands}>
                 <View style={styles.badge}><Text style={styles.badgeText} value={user.errandsCompleted} status="success">{user.errandsCompleted}</Text></View>
-                <Text style={{fontSize: 48}}>Errands Completed!</Text>
+                <Text style={{ fontSize: 48 }}>Errands Completed!</Text>
               </Text>
             </View>
           </View>

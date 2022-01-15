@@ -56,8 +56,7 @@ const RegisterContainer = ({ navigation }) => {
   };
   const isValidEmail = (str) => {
     // eslint-disable-next-line no-useless-escape
-    const regex =
-      /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    const regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(str);
   };
   const isValidForm = () => {
@@ -109,7 +108,7 @@ const RegisterContainer = ({ navigation }) => {
         // console.error('error', err.code);
         if (
           err.code ===
-          'auth/invalid-value-(email),-starting-an-object-on-a-scalar-field'
+'auth/invalid-value-(email),-starting-an-object-on-a-scalar-field'
         ) {
           setError('Please enter a valid email address');
         }

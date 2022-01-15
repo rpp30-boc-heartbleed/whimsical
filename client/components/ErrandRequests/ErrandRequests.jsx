@@ -96,7 +96,6 @@ const styles = StyleSheet.create({
   },
   text: {
     flex: 4,
-    // flexDirection: 'row',
     fontSize: 14,
     borderRadius: 30,
     borderColor: 'black',

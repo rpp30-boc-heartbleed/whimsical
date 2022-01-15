@@ -8,10 +8,8 @@ import {
   View,
   Image,
   Text,
-  Alert,
   TouchableOpacity,
 } from 'react-native';
-import { Title, Colors } from 'react-native-paper';
 import {
   COLORS,
   SIZES,
@@ -19,37 +17,17 @@ import {
 } from '../../../constants';
 import userProfileState from '../../../state/atoms/userProfile';
 
-const Courier = ({ errand }) => {
-  // const [user, setUser] = useRecoilState(userProfileState);
-  const { runner } = errand;
+const Courier = ({ errand, handleRating, count }) => {
+  const { runner, errandId } = errand;
   const { stars } = runner;
-  const [count, setCount] = useState(stars);
-
-  const handleOnClick = async () => {
-    console.log(stars);
-    try {
-      const response = await axios.put(`${HOST_URL}/userProfile/stars`, {
-        ...runner,
-        stars: runner.stars + 1,
-      });
-      console.log('user stars response', response);
-      setCount(count + 1);
-      return response;
-    } catch (err) {
-      return 'Unable to give gold star';
-    }
-  };
+  // console.log('count', count);
 
   return (
     <View style={styles.container}>
-      {/* <Text>{user.picture}</Text> */}
-      <Text style={styles.profileName}>{runner.name}  </Text>
-      <View style={styles.container2}>
-        <TouchableOpacity onPress={handleOnClick}>
-          <Image source={icons.star} style={styles.starImage} />
-        </TouchableOpacity>
-        <Text style={styles.starCount}>{count}</Text>
-      </View>
+      <Text style={styles.profileName}>{runner.name}
+      </Text>
+      <Image source={icons.star} style={styles.starImage} />
+      <Text style={styles.starCount}>{count}</Text>
     </View>
   );
 };
@@ -57,29 +35,26 @@ const Courier = ({ errand }) => {
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    marginTop: 40,
-    borderRadius: 40,
-    borderWidth: 4,
-    borderColor: 'white',
-  },
-  container2: {
-    flexDirection: 'row',
-    borderWidth: 4,
-    borderColor: 'white',
+    justifyContent: 'space-around',
   },
   profileName: {
     marginTop: 20,
-    paddingLeft: 5,
+    marginLeft: 10,
+    fontSize: 20,
+    fontWeight: 'bold',
   },
   starImage: {
-    marginTop: 12,
-    paddingLeft: 5,
-    width: 30,
-    height: 30,
+    marginTop: 22,
+    marginLeft: 5,
+    width: 20,
+    height: 20,
     marginRight: SIZES.padding,
   },
   starCount: {
-    marginTop: 15,
+    marginTop: 22,
+    marginRight: 5,
+    fontSize: 14,
+    fontWeight: '700',
   },
 });
 

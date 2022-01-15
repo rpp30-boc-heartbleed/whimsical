@@ -29,6 +29,7 @@ import NavBarContainer from '../NavBar/NavBarContainer';
 const ErrandTrackerContainer = ({ route, navigation }) => {
   const { errand } = route.params;
   const [eta, setEta] = useState(errand.storeETA);
+  const [visible, setVisible] = useState(false);
   const [errands, setErrands] = useRecoilState(errandState);
   const [refresh, setRefresh] = useRecoilState(refreshErrandsState);
   const index = errands.findIndex((errandItem) => errandItem.errandName === errand.errandName);
@@ -58,13 +59,17 @@ const ErrandTrackerContainer = ({ route, navigation }) => {
   return (
     <>
       <View style={styles.map}>
-        <ErrandMap setEta={setEta} errand={errand} />
+        <ErrandMap
+          setEta={setEta}
+          errand={errand}
+        />
       </View>
       <View style={styles.details}>
-        <BottomSheet navigation={navigation} eta={eta} errand={errand} />
-      </View>
-      <View>
-        <NavBarContainer navigation={navigation} />
+        <BottomSheet
+          navigation={navigation}
+          eta={eta}
+          errand={errand}
+        />
       </View>
     </>
   );
@@ -80,7 +85,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    height: 175,
+    height: Dimensions.get('window').height * 0.75,
     paddingLeft: 120,
     paddingRight: 120,
   },
@@ -88,12 +93,10 @@ const styles = StyleSheet.create({
     paddingLeft: 0.5,
     paddingRight: 0.5,
     flex: 0.44,
+    minHeight: Dimensions.get('window').height * 0.1,
     width: Dimensions.get('window').width,
   },
-  container: {
-    flex: 1,
-    paddingTop: 22,
-  },
+
 });
 
 export default ErrandTrackerContainer;

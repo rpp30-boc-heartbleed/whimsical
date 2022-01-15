@@ -1,17 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
-import MapView, { PROVIDER_GOOGLE, Marker, Callout } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
 import * as Location from 'expo-location';
 import {
   View,
-  Image,
   Text,
   StyleSheet,
-  TextInput,
-  StatusBar,
   Button,
+  Image,
   Dimensions,
-  TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
 import { GOOGLE_MAPS_API_KEY } from '@env';
@@ -52,11 +49,7 @@ const destination = {
 };
 
 const ErrandMap = ({ setEta, errand }) => {
-  // const mapRef = useRef();
-  // const markerRef = useRef();
   const { runner, runnerLocation } = errand;
-
-  // const [errands, setErrands] = useRecoilState(errandState);
 
   const [region, setRegion] = useState({
     latitude: 42.2966481,
@@ -73,7 +66,7 @@ const ErrandMap = ({ setEta, errand }) => {
     const timer = setInterval(() => {
       count += 1;
       if (count < path.length) {
-        console.log('count', count);
+        // console.log('count', count);
         if (isMounted) {
           setDriverPosition(path[count]);
         }
