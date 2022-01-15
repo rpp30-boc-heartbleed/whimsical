@@ -10,6 +10,13 @@ const {
 const { Profile } = require('../models/userProfile');
 const { Errand } = require('../models/errand');
 
+/**
+ * FYI I REPLACED with process.env.DB_URI, toggle between local and AWS in server .env
+ * ## Local
+DB_URI='mongodb://localhost:xxxxx/quick-bagel'
+## Remote
+#DB_URI="mongodb://$MONGO_USERNAME:$PASS@$HOST_IP/quick-bagel"
+ */
 // const connectDb = () => mongoose.connect(`mongodb://${process.env.MONGO_USERNAME}:${process.env.PASS}@3.83.254.62/quick-bagel`, {
 // const connectDb = () => mongoose.connect('mongodb://localhost:27017/quick-bagel',
 const connectDb = () => mongoose.connect(`${process.env.DB_URI}`, {

@@ -50,7 +50,7 @@ const ErrandTrackerContainer = ({ route, navigation }) => {
   }, [eta]);
 
   return (
-    <TouchableOpacity>
+    <>
       <View style={styles.map}>
         <ErrandMap
           setEta={setEta}
@@ -64,7 +64,7 @@ const ErrandTrackerContainer = ({ route, navigation }) => {
           errand={errand}
         />
       </View>
-    </TouchableOpacity>
+    </>
   );
 };
 

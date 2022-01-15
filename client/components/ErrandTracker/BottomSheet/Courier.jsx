@@ -18,6 +18,7 @@ const Courier = ({ errand, eta, status }) => {
   const [isModalVisible, setModalVisible] = useState(false);
   const [isClicked, setClicked] = useState(false);
   const setErrands = useSetRecoilState(errandState);
+
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
@@ -39,7 +40,7 @@ const Courier = ({ errand, eta, status }) => {
     } catch (e) {
       console.log('error', e);
     }
-    return null;
+    // return null;
   };
 
   return (
@@ -59,7 +60,7 @@ const Courier = ({ errand, eta, status }) => {
         >
           <View style={{ backgroundColor: '#ffff' }}>
             <Text style={{ textAlign: 'center', marginTop: 10, fontSize: 16 }}>
-              Errand Complete! Give{' '}
+              Errand Complete! Give
               <Text style={{ fontWeight: 'bold', fontSize: 16 }}>
                 {runner.name}
               </Text>{' '}
