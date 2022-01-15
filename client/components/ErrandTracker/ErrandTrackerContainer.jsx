@@ -1,7 +1,6 @@
 /* eslint-disable react/style-prop-object */
 import React, { useState, useEffect } from 'react';
-import { useRecoilState, useSetRecoilState } from 'recoil';
-import { Title, Colors } from 'react-native-paper';
+import { useRecoilState } from 'recoil';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import MapViewDirection from 'react-native-maps-directions';
 import { GOOGLE_MAPS_API_KEY, HOST_URL } from '@env';
@@ -10,17 +9,11 @@ import {
   View,
   Text,
   StyleSheet,
-  TextInput,
   StatusBar,
   Button,
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import {
-  COLORS,
-  SIZES,
-  icons,
-} from '../../constants';
 import { errandState, refreshErrandsState } from '../../state/atoms/errands';
 import ErrandMap from './ErrandMap';
 import BottomSheet from './BottomSheet/BottomSheet';
@@ -57,7 +50,7 @@ const ErrandTrackerContainer = ({ route, navigation }) => {
   }, [eta]);
 
   return (
-    <>
+    <TouchableOpacity>
       <View style={styles.map}>
         <ErrandMap
           setEta={setEta}
@@ -71,7 +64,7 @@ const ErrandTrackerContainer = ({ route, navigation }) => {
           errand={errand}
         />
       </View>
-    </>
+    </TouchableOpacity>
   );
 };
 

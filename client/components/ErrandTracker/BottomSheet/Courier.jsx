@@ -14,7 +14,6 @@ import userProfileState from '../../../state/atoms/userProfile';
 const Courier = ({ errand, eta, status }) => {
   const { runner, errandId } = errand;
   const { stars } = runner;
-  // console.log('count', count);
   const [count, setCount] = useState(stars);
   const [isModalVisible, setModalVisible] = useState(false);
   const [isClicked, setClicked] = useState(false);
