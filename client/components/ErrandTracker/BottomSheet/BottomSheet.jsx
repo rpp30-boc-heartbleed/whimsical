@@ -29,7 +29,7 @@ const BottomSheet = ({
     runner,
     requestor,
   } = errand;
-  const { stars } = runner;
+  const { stars, email } = runner;
   const [count, setCount] = useState(stars);
   const [isModalVisible, setModalVisible] = useState(false);
   const [isClicked, setClicked] = useState(false);
@@ -38,21 +38,23 @@ const BottomSheet = ({
     setModalVisible(!isModalVisible);
   };
 
-  const handleRating = async () => {
+  const handleRating = async ({ currentRunner }) => {
     try {
       const response = await axios.put(`${HOST_URL}/userProfile/stars`, {
         ...runner,
         stars: runner.stars + 1,
       });
+        // console.log('RUNNER', runner);
       setCount(count + 1);
-      setClicked(true);
       setModalVisible(false);
+      setClicked(true);
       return response;
     } catch (e) {
       console.log('error', e);
     }
     return null;
   };
+  // console.log('status', status);
 
   return (
     <View style={styles.container}>
@@ -103,7 +105,11 @@ const BottomSheet = ({
         <Text style={styles.eta}>Arrives in
           <Text style={styles.time}> {Math.floor(eta)} min</Text>
         </Text>
-        <Text style={styles.status}>Status: <Text style={styles.pend}>{status}</Text></Text>
+        <Text style={styles.status}>Status:
+          <Text style={styles.pend}>
+            {status}
+          </Text>
+        </Text>
       </View>
       <View style={styles.progress}>
         <LinearProgress color='#F78888' />
@@ -111,26 +117,25 @@ const BottomSheet = ({
       <View style={styles.content2}>
         <Courier errand={errand} count={count} handleRating={handleRating} />
         <Text style={styles.starBtn}>
-          {
+          {/* {
             // eslint-disable-next-line no-constant-condition
             { status } === 'Pending' || eta > 0
               ? <Icon
-                  disabled
                   raised
                   name='star'
                   type='font-awesome'
                   color='#5F6368'
                   onPress={toggleModal}
               />
-              : <Icon
-                  disabled={isClicked}
+              :  */}
+              <Icon
                   raised
                   name='star'
                   type='font-awesome'
                   color='#F3D250'
                   onPress={toggleModal}
               />
-          }
+          {/* } */}
         </Text>
         <View style={styles.button}>
           <MessageButton navigation={navigation} errandId={errandId} />
