@@ -109,7 +109,7 @@ const DashboardBody = ({ navigation }) => {
 
   return (
     <View>
-      <NavBar navigation={navigation} />
+      {/* <NavBar navigation={navigation} /> */}
       <FlatList
         style={styles.container0}
         data={filtering}
