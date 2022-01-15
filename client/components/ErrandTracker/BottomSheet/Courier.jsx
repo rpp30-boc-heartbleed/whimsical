@@ -13,7 +13,7 @@ import userProfileState from '../../../state/atoms/userProfile';
 
 const Courier = ({ errand, eta, status }) => {
   const {
-    runner, errandId, requestor, username,
+    runner, requestor, username, _id,
   } = errand;
   const { stars, name } = runner;
   const [count, setCount] = useState(stars);
@@ -26,8 +26,8 @@ const Courier = ({ errand, eta, status }) => {
   };
 
   useEffect(() => {
-    console.log('name', name, 'email', runner.name);
-
+    console.log('name', name, 'email', runner.name, _id);
+    handleRating();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -39,9 +39,9 @@ const Courier = ({ errand, eta, status }) => {
       });
       setCount(count + 1);
       setModalVisible(false);
-      setClicked(true);
+      // setClicked(true);
       const errandsResp = await axios.get(`${HOST_URL}/getErrandData`);
-      console.log(errandsResp.data);
+      // console.log(errandsResp.data);
       setErrands(errandsResp.data);
     } catch (e) {
       console.log('error', e);
