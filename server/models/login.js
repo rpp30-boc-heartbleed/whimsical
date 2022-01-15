@@ -2,11 +2,10 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const LoginSchema = new Schema({
-  email: String,
-  password: String,
+const egLoginSchema = new Schema({
+  placeholder: String,
 });
 
-const Login = mongoose.model('Login', LoginSchema, 'loginCollection');
+const Login = mongoose.model('Login', egLoginSchema, 'loginCollection');
 
 module.exports = { Login };

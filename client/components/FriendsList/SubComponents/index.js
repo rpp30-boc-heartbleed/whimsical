@@ -1,15 +1,13 @@
-import AddButton from './AddButton';
-import AddIcon from './AddIcon';
-import Chat from './Chat';
+import AddFriend from './AddFriend';
 import List from './List';
+import Search from './Search';
 import Title from './Title';
 import Toggle from './Toggle';
 
 export {
-  AddButton,
-  AddIcon,
-  Chat,
+  AddFriend,
   List,
+  Search,
   Title,
   Toggle,
 };

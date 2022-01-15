@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Modal, Portal, Text, Button, Provider,
-} from 'react-native-paper';
+import { Modal, Portal, Text, Button, Provider } from 'react-native-paper';
 
 // Test Modal Template to Share
 
@@ -12,7 +10,6 @@ const TestModal = () => {
   const hideModal = () => setVisible(false);
   const containerStyle = { backgroundColor: 'white', padding: 20 };
 
-  console.log('hi');
   return (
     <Provider>
       <Portal>

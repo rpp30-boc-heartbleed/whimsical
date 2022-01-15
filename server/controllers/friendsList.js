@@ -1,47 +1,14 @@
-const { Profile } = require('../models');
 const { Friend } = require('../models/friendsList');
 
-const getFriends = (req, res) => {
-  const { friends } = req.body;
-  const profiles = friends.map((profile) => {
-    return Profile.find({
-      email: profile.email,
-    });
-  });
-  Promise.all(profiles)
-    .then((friendsList) => {
-      res.status(200).json({ friendsList });
+const get = (req, res) => {
+  Friend.find()
+    .then((friends) => {
+      console.log(friends);
+      res.json(friends);
     })
     .catch((err) => {
       console.log(err);
-      res.json({ message: 'error getting friends' });
-    });
-};
-
-const getAll = (req, res) => {
-  Profile.find()
-    .then((users) => {
-      res.status(200).json({ users });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.json({ message: 'there are no people' });
-    });
-};
-
-const add = (req, res) => {
-  const { userEmail, friendEmail } = req.body;
-  Profile.findOneAndUpdate(
-    { email: userEmail },
-    { $push: { friends: friendEmail } },
-    { new: true, upsert: true },
-  )
-    .then((user) => {
-      res.json({ user });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.json({ message: 'failed to add friend' });
+      res.json({ message: 'you have no friends' });
     });
 };
 
@@ -57,6 +24,4 @@ const search = (req, res) => {
     });
 };
 
-module.exports = {
-  getFriends, getAll, add, search,
-};
+module.exports = { get, search };

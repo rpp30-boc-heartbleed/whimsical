@@ -1,5 +1,8 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
+
+// import Constants from 'expo-constants';
+
 import {
   FIREBASE_API_KEY,
   FIREBASE_AUTH_DOMAIN,

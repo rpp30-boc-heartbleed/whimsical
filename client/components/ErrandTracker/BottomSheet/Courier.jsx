@@ -1,171 +1,53 @@
-import React, { useState, useEffect } from 'react';
-import { useSetRecoilState } from 'recoil';
-import axios from 'axios';
-import { HOST_URL } from '@env';
-import { Icon, LinearProgress } from 'react-native-elements';
-import Modal from 'react-native-modal';
-import {
-  StyleSheet, View, Image, Text, TouchableOpacity,
-} from 'react-native';
-import { errandState } from '../../../state/atoms/errands';
-import { COLORS, SIZES, icons } from '../../../constants';
-import userProfileState from '../../../state/atoms/userProfile';
+import React, { useState } from 'react';
+import { StyleSheet, View, Image, Text, Alert } from 'react-native';
+import { Title, Colors } from 'react-native-paper';
+import { COLORS, SIZES, icons, images } from '../../../constants';
+import ProfilePhoto from '../../Shared/Avatar.jsx';
 
-const Courier = ({ errand, eta, status }) => {
-  const {
-    runner, requestor, username, _id,
-  } = errand;
-  const { stars, name } = runner;
-  const [count, setCount] = useState(stars);
-  const [isModalVisible, setModalVisible] = useState(false);
-  const [isClicked, setClicked] = useState(false);
-  const setErrands = useSetRecoilState(errandState);
+//Click Avatar Picture to go to User profile
 
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  };
-
-  useEffect(() => {
-    console.log('name', name, 'email', runner.name, _id);
-    // handleRating();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isClicked]);
-
-  // const handleDisable = () => {
-  //   setClicked(true);
-  // };
-
-  const handleRating = async () => {
-    try {
-      const response = await axios.put(`${HOST_URL}/userProfile/stars`, {
-        ...runner,
-        stars: runner.stars + 1,
-      });
-      setCount(count + 1);
-      setModalVisible(false);
-      setClicked(true);
-      const errandsResp = await axios.get(`${HOST_URL}/getErrandData`);
-      // console.log(errandsResp.data);
-      setErrands(errandsResp.data);
-    } catch (e) {
-      console.log('error', e);
-    }
-  };
-
+const Courier = () => {
+  const [count, setCount] = useState(9000)
   return (
-    <>
-      <View style={styles.container}>
-        <View>
-          <Modal
-            isVisible={isModalVisible}
-            animationIn='zoomInDown'
-            animationOut='zoomOutUp'
-            hasBackdrop
-            backdropColor='black'
-            backdropOpacity={0.7}
-            animationInTiming={600}
-            animationOutTiming={600}
-            backdropTransitionInTiming={600}
-            backdropTransitionOutTiming={600}
-          >
-            <View style={{ backgroundColor: '#ffff' }}>
-              <Text style={{ textAlign: 'center', marginTop: 10, fontSize: 16 }}>
-                Errand Complete! Give
-                <Text style={{ fontWeight: 'bold', fontSize: 16 }}> {runner.name}
-                </Text>{' '}
-                a star?
-              </Text>
-              <TouchableOpacity
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'center',
-                  margin: 20,
-                }}
-              >
-                <Text style={{ marginRight: 20 }}>
-                  <Icon
-                    raised
-                    size={30}
-                    name='star'
-                    type='font-awesome'
-                    color='#F3D250'
-                    onPress={handleRating}
-                    disabled={isClicked}
-                  />
-                </Text>
-                <Text style={{ marginLeft: 20 }}>
-                  <Icon
-                    raised
-                    size={30}
-                    name='meho'
-                    type='antdesign'
-                    onPress={toggleModal}
-                  />
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </Modal>
-        </View>
-        <Text style={styles.profileName}>{runner.name}</Text>
+    <View style={styles.container}>
+      <ProfilePhoto style={styles.image} />
+      <Text style={styles.profileName}> Lady Beth </Text>
+      <View style={styles.container2}>
         <Image source={icons.star} style={styles.starImage} />
-        <Text style={styles.starCount}>{count}</Text>
+        <Text style={styles.starCount} onPress={() => setCount(count + 1)}>{count}</Text>
       </View>
-      <View>
-        <Text style={styles.starBtn}>
-          {
-            // eslint-disable-next-line no-constant-condition
-            (status === 'Pending') || (username === runner.name) ? (
-              <Icon
-                raised
-                name='star'
-                type='font-awesome'
-                color='#5F6368'
-                onPress={toggleModal}
-                disabled
-              />
-            ) : (
-              <Icon
-                raised
-                name='star'
-                type='font-awesome'
-                color='#F3D250'
-                onPress={toggleModal}
-              />
-            )
-          }
-        </Text>
-      </View>
-    </>
-  );
+    </View>
+  )
 };
+
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    marginTop: 40,
+    borderRadius: 40,
+    borderWidth: 4,
+    borderColor: 'white',
+  },
+  container2: {
+    flexDirection: 'row',
+    borderWidth: 4,
+    borderColor: 'white',
   },
   profileName: {
     marginTop: 20,
-    marginLeft: 10,
-    fontSize: 20,
-    fontWeight: 'bold',
-  },
-  starBtn: {
-    marginTop: 7,
+    paddingLeft: 5,
   },
   starImage: {
-    marginTop: 22,
-    marginLeft: 5,
-    width: 20,
-    height: 20,
-    marginRight: SIZES.padding,
+    marginTop: 12,
+    paddingLeft: 5,
+    width: 30,
+    height: 30,
+    marginRight: SIZES.padding
   },
   starCount: {
-    marginTop: 22,
-    marginRight: 5,
-    fontSize: 14,
-    fontWeight: '700',
-  },
+    marginTop: 15,
+  }
 });
 
 export default Courier;

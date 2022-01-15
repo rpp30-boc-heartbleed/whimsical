@@ -1,12 +1,9 @@
 import { atom } from 'recoil';
-import { mockErrandsData } from '../../common/dummyData/mockErrandsData';
+import mockErrandsData from '../../common/dummyData/mockErrandsData';
 
-export const errandState = atom({
+const errandState = atom({
   key: 'errandState',
-  default: [],
+  default: mockErrandsData, // []
 });
 
-export const refreshErrandsState = atom({
-  key: 'refreshErrandsState',
-  default: false,
-});
+export default errandState;

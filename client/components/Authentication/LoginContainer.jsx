@@ -1,25 +1,33 @@
-/* eslint-disable no-useless-escape */
-/* eslint-disable global-require */
 import React, { useState, useEffect } from 'react';
 import {
   KeyboardAvoidingView,
   View,
   Text,
   StyleSheet,
+  TextInput,
   StatusBar,
+  Button,
   TouchableOpacity,
-  Image,
 } from 'react-native';
-import { TextInput } from 'react-native-paper';
-import { Button } from 'react-native-elements';
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { COLORS, SIZES, icons } from '../../constants';
+import { signInWithEmailAndPassword, onAuthStateChanged } from 'firebase/auth';
 import auth from '../../config/firebase';
 import NavBarContainer from '../NavBar/NavBarContainer';
 
 const LoginContainer = ({ navigation }) => {
   // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
+  const [user, setUser] = useState();
+
+  // Handle user state changes
+  const onAuthStateChanged = (user) => {
+    setUser(user);
+    if (initializing) setInitializing(false);
+  };
+
+  // useEffect(() => {
+  //   const subscriber = auth.onAuthStateChanged(onAuthStateChanged);
+  //   return subscriber; // unsubscribe on unmount
+  // });
 
   const [authenticationInfo, setAuthenticationInfo] = useState({
     email: '',
@@ -39,6 +47,7 @@ const LoginContainer = ({ navigation }) => {
     return Object.values(obj).every((value) => value.trim());
   };
   const isValidEmail = (str) => {
+    // eslint-disable-next-line no-useless-escape
     const regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     return regex.test(str);
   };
@@ -57,17 +66,16 @@ const LoginContainer = ({ navigation }) => {
   // authenticate user in firebase
   const handleLogin = (auth, email, password) => {
     signInWithEmailAndPassword(auth.auth, email, password)
-      .then(async (userCredentials) => {
-        const { user } = userCredentials;
-        // console.log('logged in with', user.email, user.uid);
+      .then((userCredentials) => {
+        setUser(userCredentials.user);
+        console.log('logged in with', user.email, user.uid);
+        // navigation.navigate('Dashboard');
         navigation.replace('Dashboard');
       })
       .catch((err) => {
-        // console.log('error', err);
+        console.log('error', err);
         console.log('err code', err.code);
-        if (
-          err.code === 'auth/invalid-value-(email),-starting-an-object-on-a-scalar-field'
-        ) {
+        if (err.code === 'auth/invalid-value-(email),-starting-an-object-on-a-scalar-field') {
           setError('Please enter a valid email address');
         }
         if (err.code === 'auth/wrong-password') {
@@ -76,10 +84,7 @@ const LoginContainer = ({ navigation }) => {
         if (err.code === 'auth/user-not-found') {
           setError('Please check the email address and try again');
         }
-        // eslint-disable-next-line max-len
-        setError(
-          "We're sorry. We're experiencing some technical difficulties. Please try again.",
-        );
+        setError("We're sorry. We're experiencing some technical difficulties. Please try again.");
       });
   };
 
@@ -87,7 +92,7 @@ const LoginContainer = ({ navigation }) => {
   const submitForm = () => {
     if (isValidForm()) {
       // submit form
-      // console.log('form info', authenticationInfo);
+      console.log('form info', authenticationInfo);
       // if authenticated, navigate to Dashboard
       handleLogin(auth, email, password);
       // clear form
@@ -98,77 +103,49 @@ const LoginContainer = ({ navigation }) => {
       setError('');
     }
   };
-
+  // if (initializing) {
+  //   return null;
+  // }
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to Quick Bagel!</Text>
-      <Image
-        style={styles.image}
-        size={1}
-        source={require('../../assets/icons/logo-bg.png')}
-      />
       <KeyboardAvoidingView style={styles.container}>
         <View style={styles.inputContainer}>
-          {error ? (
-            <Text style={styles.error} testID='errorMsg'>
-              {error}
-            </Text>
-          ) : null}
+          {error ? <Text style={styles.error}>{error}</Text> : null}
           <TextInput
             style={styles.input}
             placeholder='email'
             autoCapitalize='none'
-            dense
-            mode='outlined'
             value={email}
-            testID='email'
-            left={<TextInput.Icon name='account' />}
-            outlineColor="#fff"
             onChangeText={(value) => handleOnChangeText(value, 'email')}
           />
           <TextInput
             style={styles.input}
             placeholder='password'
-            dense
-            mode='outlined'
             autoCapitalize='none'
             value={password}
-            testID='password'
-            outlineColor="#fff"
-            left={<TextInput.Icon name='lock' />}
             onChangeText={(value) => handleOnChangeText(value, 'password')}
             secureTextEntry
           />
         </View>
         <View style={styles.buttonContainer}>
-          <Button
-            title='LOGIN'
+          <TouchableOpacity
+            style={[styles.button, styles.buttonOutline]}
             onPress={submitForm}
-            testID='submitLogin'
-            raised
-            buttonStyle={{
-              backgroundColor: '#F3D250',
-            }}
-            containerStyle={{
-              width: 200,
-              marginHorizontal: 50,
-              marginVertical: 10,
-            }}
-            titleStyle={{ fontWeight: 'bold', color: 'black' }}
-          />
+          >
+            <Text style={[styles.buttonText, styles.buttonOutlineText]}>Login</Text>
+          </TouchableOpacity>
         </View>
         <View style={styles.registerContainer}>
           <Text style={styles.registerText}>Don&apos;t have an acccount?</Text>
-          <TouchableOpacity
-            title='Register'
-            testID='register'
-            onPress={() => navigation.push('Register')}
-          >
-            <Text style={styles.registerLink}>Register now.</Text>
-          </TouchableOpacity>
+          <Button title='Register' onPress={() => navigation.push('Register')} />
+          <Text style={styles.registerText}>now.</Text>
         </View>
       </KeyboardAvoidingView>
-      {/* <NavBarContainer navigation={navigation} /> */}
+      {/* navbar at bottom of screen */}
+      <View style={styles.navbar}>
+        <NavBarContainer navigation={navigation} />
+      </View>
     </View>
   );
 };
@@ -176,63 +153,59 @@ const LoginContainer = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#90CCF4',
+    backgroundColor: '#fff',
     justifyContent: 'center',
   },
   title: {
-    fontWeight: 'bold',
-    color: '#fff',
-    fontSize: 26,
+    fontSize: 20,
     alignSelf: 'center',
-    margin: 20,
+    marginTop: 15,
   },
   error: {
-    color: '#00214d',
-    backgroundColor: '#F78888',
+    color: 'red',
     fontSize: 16,
-    fontWeight: '400',
+    fontWeight: '700',
     alignSelf: 'center',
-  },
-  image: {
-    alignSelf: 'center',
-    marginTop: 23,
-    marginLeft: 20,
   },
   inputContainer: {
-    width: '60%',
+    width: '80%',
     alignSelf: 'center',
   },
   input: {
     width: '100%',
-    padding: 1,
-    margin: 10,
+    backgroundColor: 'white',
+    paddingHorizontal: 15,
+    paddingVertical: 10,
+    borderWidth: 2,
+    borderStyle: 'solid',
+    borderColor: '#0782F9',
     borderRadius: 10,
+    marginTop: 5,
   },
   buttonContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginLeft: 20,
   },
   button: {
-    backgroundColor: '#F3D250',
-    width: '25%',
+    backgroundColor: '#0782F9',
+    width: '30%',
     padding: 15,
     borderRadius: 10,
   },
   buttonOutline: {
-    backgroundColor: '#F3D250',
+    backgroundColor: 'white',
     marginTop: 5,
-    borderColor: '#F3D250',
+    borderColor: '#0782F9',
     borderWidth: 2,
-    borderRadius: 15,
   },
   buttonText: {
+    color: 'white',
     fontWeight: '700',
     fontSize: 16,
     alignSelf: 'center',
   },
   buttonOutlineText: {
-    color: '#00214d',
+    color: '#0782F9',
   },
   registerContainer: {
     flexDirection: 'row',
@@ -242,14 +215,6 @@ const styles = StyleSheet.create({
   registerText: {
     fontSize: 16,
     marginTop: 9,
-    color: '#00214d',
-  },
-  registerLink: {
-    fontSize: 16,
-    marginTop: 9,
-    color: '#0057D9',
-    paddingLeft: 5,
-    paddingRight: 5,
   },
   navbar: {
     justifyContent: 'flex-end',
