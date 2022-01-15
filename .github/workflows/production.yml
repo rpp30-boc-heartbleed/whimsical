@@ -1,0 +1,89 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - "prod-[1-9]+.[0-9]+.[0-9]+"
+
+env:
+  FIREBASE_AUTH_DOMAIN: ${{secrets.FIREBASE_AUTH_DOMAIN}}
+  FIREBASE_API_KEY: ${{secrets.FIREBASE_API_KEY}}
+  FIREBASE_PROJECT_ID: ${{secrets.FIREBASE_PROJECT_ID}}
+  FIREBASE_STORAGE_BUCKET: ${{secrets.FIREBASE_STORAGE_BUCKET}}
+  FIREBASE_MESSAGING_SENDER: ${{secrets.FIREBASE_MESSAGING_SENDER_ID}}
+  FIREBASE_APP_ID: ${{secrets.FIREBASE_APP_ID}}
+  GOOGLE_MAPS_API_KEY: ${{secrets.GOOGLE_MAPS_API_KEY}}
+  GOOGLE_MAPS_API_KEY_IOS: ${{secrets.GOOGLE_MAPS_API_KEY_IOS}}
+  GOOGLE_MAPS_API_KEY_Android: ${{secrets.GOOGLE_MAPS_API_KEY_Android}}
+  GCLOUD_STORAGE_BUCKET: ${{secrets.GCLOUD_STORAGE_BUCKET}}
+  USERNAME: ${{secrets.USERNAME}}
+  PASS: ${{secrets.PASS}}
+
+jobs:
+  deploy_prod:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    outputs:
+      releaseChannel: ${{ steps.releaseChannel.outputs.releaseChannel }}
+      latestBinaryVersion: ${{ steps.latestBinaryVersion.outputs.version }}
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Fetch Tags
+        run: |
+          git fetch --prune --unshallow --tags -f
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16
+      - uses: expo/expo-github-action@v5
+        with:
+          expo-packager: npm
+          expo-token: ${{ secrets.EXPO_TOKEN}}
+          expo-cache: true
+      - uses: rlespinasse/github-slug-action@v2.x
+      - name: Generate Release Channel
+        id: releaseChannel
+        run: |
+          RELEASE_CHANNEL=$(echo ${{ env.GITHUB_REF_SLUG }} | sed -r 's/\.[0-9]+\.[0-9]+$//')
+          echo "::set-output name=releaseChannel::$RELEASE_CHANNEL"
+      - name: Install Root Packages
+        run: npm install
+      - name: Install Client Packages
+        working-directory: ./client
+        run: expo install
+      - name: Get Latest Binary Version
+        id: latestBinaryVersion
+        run: |
+          RELEASE_TAG=$(echo $(git describe --tags --abbrev=0))
+          echo "::set-output name=version::${RELEASE_TAG#*-}"
+      - name: Echo Version Details
+        run: |
+          echo Build number is $GITHUB_RUN_NUMBER
+          echo Latest release is ${{ steps.latestBinaryVersion.outputs.version }}
+      - name: Expo Publish Channel
+        working-directory: ./client
+        run: expo publish --non-interactive --release-channel=${{ steps.releaseChannel.outputs.releaseChannel }}
+
+  create_release:
+    name: Create Release
+    needs: deploy_prod
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: rlespinasse/github-slug-action@v2.x
+      - name: Generate Changelog
+        id: changelog
+        uses: metcalfc/changelog-generator@v0.4.0
+        with:
+          myToken: ${{ secrets.GITHUB_TOKEN }}
+          base-ref: 'prod-0'
+      - name: Creating Release
+        uses: ncipollo/release-action@v1
+        with:
+          body: |
+            Changes in this Release:
+            ${{ steps.changelog.outputs.changelog }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: Release ${{ env.GITHUB_REF_SLUG }}
+          allowUpdates: true

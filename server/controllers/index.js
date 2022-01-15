@@ -1,17 +1,25 @@
-const login = require('./login');
-const navBar = require('./navBar');
+const register = require('./register');
 const dashboard = require('./dashboard');
 const userProfile = require('./userProfile');
 const friendsList = require('./friendsList');
-const map = require('./map');
-const errandTracker = require('./errandTracker');
+const {
+  getRequestedErrands,
+  requestErrand,
+  getRunningErrands,
+  completeErrand,
+} = require('./errands');
+const chat = require('./chat');
+const { updateRating } = require('./stars');
 
 module.exports = {
-  login,
-  navBar,
+  register,
   dashboard,
   userProfile,
   friendsList,
-  map,
-  errandTracker,
+  updateRating,
+  getRequestedErrands,
+  requestErrand,
+  getRunningErrands,
+  completeErrand,
+  chat,
 };

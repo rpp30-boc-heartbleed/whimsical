@@ -13,44 +13,64 @@ import { Avatar, Badge, IconButton } from 'react-native-paper';
 
 // Components
 import IconModal from '../../Modals/IconModal';
+import AddIcon from './AddIcon';
+// import WithBadge from './WithBadge';
 // State
-import filteredByNameSelector from '../../../state/selectors/filterFriendsByName';
+import filterByNameSelector from '../../../state/selectors/filterByName';
+import addFriendState from '../../../state/atoms/addFriends';
+import userProfileState from '../../../state/atoms/userProfile';
+import addFriendsQuery from '../../../state/selectors/addFriendsQuery';
+import friendsListQuery from '../../../state/selectors/friendsListQuery';
 // Assets
-import { images, icons, SIZES } from '../../../constants';
+import { icons, SIZES } from '../../../constants';
 
-const { cat, dog } = images;
 const { star } = icons;
 
-const List = ({ style }) => {
-  const filteredByName = useRecoilValue(filteredByNameSelector);
+const List = ({ style, navigation }) => {
+  const [addList, setAddList] = useRecoilState(addFriendState);
+  const [user] = useRecoilState(userProfileState);
+  const filteredFriends = useRecoilValue(filterByNameSelector('friends'));
+  const filteredUsers = useRecoilValue(filterByNameSelector('strangers'));
+  const list = addList ? filteredUsers : filteredFriends;
 
   return (
     <View style={style}>
       <FlatList
-        data={filteredByName}
+        data={list}
         renderItem={({ item, index }) => {
+          const onErrand = item.currentErrands.length;
+          const disabled = onErrand === 0;
           return (
             <View style={styles.friend}>
               <TouchableOpacity style={styles.avatar}>
-                <Avatar.Image size={50} source={cat} />
+                <Avatar.Image size={60} source={{ uri: item.picture }} />
               </TouchableOpacity>
               <View style={styles.text}>
-                <Text>
+                <Text style={styles.name}>
                   {item.name}
                 </Text>
-                <Text>{item.goldStars}<Image style={styles.star} source={star} /></Text>
+                <Text><Image style={styles.star} source={star} />
+                  <Text style={{ margin: 5 }}>{item.stars}
+                  </Text>
+                </Text>
               </View>
-              <TouchableOpacity style={styles.chat}>
-                <IconButton
-                  icon='chat-outline'
-                  size={50}
-                  style={styles.chatIcon}
-                />
-              </TouchableOpacity>
+              {(!addList)
+                ? (
+                  <TouchableOpacity style={styles.chat}>
+                    <IconButton
+                      disabled={disabled}
+                      icon='chat-outline'
+                      size={50}
+                      style={styles.chatIcon}
+                      navigation={() => navigation.push('Chat', { errandId: item.errandId[0] })}
+                    />
+                  </TouchableOpacity>
+                )
+                : (<AddIcon index={index} stranger={item} />)}
             </View>
           );
         }}
-        keyExtractor={(friend) => friend.id}
+        keyExtractor={(item) => item._id}
         keyboardShouldPersistTaps="handled"
       />
     </View>
@@ -60,25 +80,27 @@ const List = ({ style }) => {
 const styles = StyleSheet.create({
   friend: {
     flexDirection: 'row',
-    padding: 15,
+    // padding: 15,
     width: '100%',
-    height: 80,
-    marginTop: 15,
+    height: 100,
+    borderColor: '#F1F3F4',
+    borderWidth: 1,
   },
   avatar: {
     flex: 1,
-    marginRight: 30,
-    marginLeft: 10,
+    margin: 20,
   },
   text: {
     flex: 4,
-    // flexDirection: 'row',
-    fontSize: 14,
-    borderRadius: 30,
-    borderColor: 'black',
-    borderWidth: 1,
+    alignItems: 'center',
+    width: '100%',
     height: 60,
-    padding: 10,
+    margin: 10,
+  },
+  name: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    paddingTop: 10,
   },
   star: {
     width: 15,
@@ -89,7 +111,7 @@ const styles = StyleSheet.create({
     marginRight: 30,
   },
   chatIcon: {
-    paddingBottom: 20,
+    paddingTop: 10,
   },
 });
 

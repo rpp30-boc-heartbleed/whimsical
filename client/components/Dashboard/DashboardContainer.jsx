@@ -1,27 +1,35 @@
-import React from 'react';
+import React, { useState, useEffect, Component } from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
+import axios from 'axios';
 import {
-  View,
-  Text,
-  StyleSheet,
-  TextInput,
-  StatusBar,
-  Button,
-  ScrollView,
+  View, ScrollView, StyleSheet, Button,
 } from 'react-native';
+import { HOST_URL } from '@env';
+import { NavigationContainer } from '@react-navigation/native';
 import DashboardHeader from './DashboardHeader';
 import DashboardStats from './DashboardStats';
 import DashboardBody from './DashboardBody';
 import NavBar from '../NavBar/NavBarContainer';
+import auth from '../../config/firebase';
+import userProfileState from '../../state/atoms/userProfile';
 
 const DashboardContainer = ({ navigation }) => {
+  const [user, setUser] = useRecoilState(userProfileState);
+
+  useEffect(() => {
+    axios.get(`${HOST_URL}/userProfile/get?email=${auth.auth.currentUser.email}`)
+      .then((data) => {
+        setUser(data.data.data[0]);
+      })
+      .catch((err) => console.error(err));
+  }, [setUser]);
+
   return (
     <View style={styles.container}>
       <DashboardHeader navigation={navigation} />
-      <ScrollView style={styles.scrollview}>
-        <DashboardStats />
-        <DashboardBody />
-      </ScrollView>
-      <NavBar navigation={navigation} style={styles.navbar} />
+      <DashboardBody navigation={navigation} />
+      <ScrollView />
+      <NavBar navigation={navigation} />
     </View>
   );
 };
@@ -30,12 +38,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-  },
-  scrollview: {
-    marginBottom: -53,
-  },
-  navbar: {
-    justifyContent: 'flex-end',
   },
 });
 

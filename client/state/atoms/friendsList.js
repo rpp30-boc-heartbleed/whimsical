@@ -1,9 +1,9 @@
 import { atom } from 'recoil';
-import dummyFriendsList from '../../common/dummyData/dummyFriendsList';
+import friendsListQuery from '../selectors/friendsListQuery';
 
 const friendsListState = atom({
   key: 'FriendsListState',
-  default: dummyFriendsList, // []
+  default: friendsListQuery,
 });
 
 export default friendsListState;
