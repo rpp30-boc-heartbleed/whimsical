@@ -29,36 +29,36 @@ const BottomSheet = ({
     runner,
     requestor,
   } = errand;
-  const { stars, email } = runner;
-  const [count, setCount] = useState(stars);
-  const [isModalVisible, setModalVisible] = useState(false);
-  const [isClicked, setClicked] = useState(false);
+  // const { stars, email } = runner;
+  // const [count, setCount] = useState(stars);
+  // const [isModalVisible, setModalVisible] = useState(false);
+  // const [isClicked, setClicked] = useState(false);
 
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  };
+  // const toggleModal = () => {
+  //   setModalVisible(!isModalVisible);
+  // };
 
-  const handleRating = async ({ currentRunner }) => {
-    try {
-      const response = await axios.put(`${HOST_URL}/userProfile/stars`, {
-        ...runner,
-        stars: runner.stars + 1,
-      });
-        // console.log('RUNNER', runner);
-      setCount(count + 1);
-      setModalVisible(false);
-      setClicked(true);
-      return response;
-    } catch (e) {
-      console.log('error', e);
-    }
-    return null;
-  };
+  // const handleRating = async ({ currentRunner }) => {
+  //   try {
+  //     const response = await axios.put(`${HOST_URL}/userProfile/stars`, {
+  //       ...runner,
+  //       stars: runner.stars + 1,
+  //     });
+  //       // console.log('RUNNER', runner);
+  //     setCount(count + 1);
+  //     setModalVisible(false);
+  //     setClicked(true);
+  //     return response;
+  //   } catch (e) {
+  //     console.log('error', e);
+  //   }
+  //   return null;
+  // };
   // console.log('status', status);
 
   return (
     <View style={styles.container}>
-      <View>
+      {/* <View>
         <Modal
           isVisible={isModalVisible}
           animationIn='zoomInDown'
@@ -99,7 +99,7 @@ const BottomSheet = ({
             </TouchableOpacity>
           </View>
         </Modal>
-      </View>
+      </View> */}
       <View style={styles.content}>
         <Text style={styles.errand}>{errandName}</Text>
         <Text style={styles.eta}>Arrives in
@@ -115,8 +115,8 @@ const BottomSheet = ({
         <LinearProgress color='#F78888' />
       </View>
       <View style={styles.content2}>
-        <Courier errand={errand} count={count} handleRating={handleRating} />
-        <Text style={styles.starBtn}>
+        <Courier errand={errand} eta={eta} status={status} />
+        {/* <Text style={styles.starBtn}>
           {
           // eslint-disable-next-line no-constant-condition
           { status } === 'Pending' || eta > 0
@@ -136,7 +136,7 @@ const BottomSheet = ({
                 onPress={toggleModal}
             />
           }
-        </Text>
+        </Text> */}
         <View style={styles.button}>
           <MessageButton navigation={navigation} errandId={errandId} />
         </View>

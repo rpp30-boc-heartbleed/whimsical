@@ -27,10 +27,10 @@ import BottomSheet from './BottomSheet/BottomSheet';
 import NavBarContainer from '../NavBar/NavBarContainer';
 
 const ErrandTrackerContainer = ({ route, navigation }) => {
-  const { errand } = route.params;
-  const [eta, setEta] = useState(errand.storeETA);
-  const [visible, setVisible] = useState(false);
+  // const { errand } = route.params;
   const [errands, setErrands] = useRecoilState(errandState);
+  const errand = errands.find((e) => e._id === route.params.errand._id);
+  const [eta, setEta] = useState(errand.storeETA);
   const [refresh, setRefresh] = useRecoilState(refreshErrandsState);
   const index = errands.findIndex((errandItem) => errandItem.errandName === errand.errandName);
 

@@ -18,7 +18,6 @@ const {
   dashboard,
   userProfile,
   friendsList,
-  map,
   updateRating,
   getRequestedErrands,
   requestErrand,

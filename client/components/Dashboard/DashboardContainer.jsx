@@ -26,7 +26,6 @@ const DashboardContainer = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      {/* <NavBar navigation={navigation} /> */}
       <DashboardHeader navigation={navigation} />
       <DashboardBody navigation={navigation} />
       <ScrollView />
