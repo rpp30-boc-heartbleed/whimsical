@@ -21,7 +21,6 @@ env:
 jobs:
   deploy_prod:
     name: Deploy to Production
-    needs: test
     runs-on: ubuntu-latest
     outputs:
       releaseChannel: ${{ steps.releaseChannel.outputs.releaseChannel }}
