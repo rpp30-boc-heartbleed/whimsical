@@ -34,10 +34,7 @@ const BottomSheet = ({
         <Text style={styles.eta}>Arrives in
           <Text style={styles.time}> {Math.floor(eta)} min</Text>
         </Text>
-        <Text style={styles.status}>Status:
-          <Text style={styles.pend}>
-            {status}
-          </Text>
+        <Text style={styles.status}>Status: <Text style={styles.pend}>{status}</Text>
         </Text>
       </View>
       <View style={styles.progress}>
@@ -66,18 +63,15 @@ const styles = StyleSheet.create({
   },
   content2: {
     flexDirection: 'row',
-    marginTop: 65,
+    marginTop: 55,
     justifyContent: 'space-between',
     borderWidth: 2,
     borderRadius: 1,
     borderColor: '#EFEFEF',
   },
-  starBtn: {
-    marginTop: 7,
-  },
   button: {
     marginRight: 30,
-    marginBottom: 30,
+    marginBottom: 25,
   },
   errand: {
     fontSize: 30,

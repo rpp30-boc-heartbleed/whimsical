@@ -44,86 +44,89 @@ const Courier = ({ errand, eta, status }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <View>
-        <Modal
-          isVisible={isModalVisible}
-          animationIn='zoomInDown'
-          animationOut='zoomOutUp'
-          hasBackdrop
-          backdropColor='black'
-          backdropOpacity={0.7}
-          animationInTiming={600}
-          animationOutTiming={600}
-          backdropTransitionInTiming={600}
-          backdropTransitionOutTiming={600}
-        >
-          <View style={{ backgroundColor: '#ffff' }}>
-            <Text style={{ textAlign: 'center', marginTop: 10, fontSize: 16 }}>
-              Errand Complete! Give
-              <Text style={{ fontWeight: 'bold', fontSize: 16 }}>
-                {runner.name}
-              </Text>{' '}
-              a star?
-            </Text>
-            <TouchableOpacity
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'center',
-                margin: 20,
-              }}
-            >
-              <Text style={{ marginRight: 20 }}>
-                <Icon
-                  raised
-                  size={30}
-                  name='star'
-                  type='font-awesome'
-                  color='#F3D250'
-                  onPress={handleRating}
-                  disabled={isClicked}
-                />
+    <>
+      <View style={styles.container}>
+        <View>
+          <Modal
+            isVisible={isModalVisible}
+            animationIn='zoomInDown'
+            animationOut='zoomOutUp'
+            hasBackdrop
+            backdropColor='black'
+            backdropOpacity={0.7}
+            animationInTiming={600}
+            animationOutTiming={600}
+            backdropTransitionInTiming={600}
+            backdropTransitionOutTiming={600}
+          >
+            <View style={{ backgroundColor: '#ffff' }}>
+              <Text style={{ textAlign: 'center', marginTop: 10, fontSize: 16 }}>
+                Errand Complete! Give
+                <Text style={{ fontWeight: 'bold', fontSize: 16 }}> {runner.name}
+                </Text>{' '}
+                a star?
               </Text>
-              <Text style={{ marginLeft: 20 }}>
-                <Icon
-                  raised
-                  size={30}
-                  name='meho'
-                  type='antdesign'
-                  onPress={toggleModal}
-                />
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </Modal>
+              <TouchableOpacity
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'center',
+                  margin: 20,
+                }}
+              >
+                <Text style={{ marginRight: 20 }}>
+                  <Icon
+                    raised
+                    size={30}
+                    name='star'
+                    type='font-awesome'
+                    color='#F3D250'
+                    onPress={handleRating}
+                    disabled={isClicked}
+                  />
+                </Text>
+                <Text style={{ marginLeft: 20 }}>
+                  <Icon
+                    raised
+                    size={30}
+                    name='meho'
+                    type='antdesign'
+                    onPress={toggleModal}
+                  />
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </Modal>
+        </View>
+        <Text style={styles.profileName}>{runner.name}</Text>
+        <Image source={icons.star} style={styles.starImage} />
+        <Text style={styles.starCount}>{count}</Text>
       </View>
-      <Text style={styles.profileName}>{runner.name}</Text>
-      <Image source={icons.star} style={styles.starImage} />
-      <Text style={styles.starCount}>{count}</Text>
-      <Text style={styles.starBtn}>
-        {
-          // eslint-disable-next-line no-constant-condition
-          { status } === 'Pending' || eta > 0 ? (
-            <Icon
-              raised
-              name='star'
-              type='font-awesome'
-              color='#5F6368'
-              onPress={toggleModal}
-              disabled
-            />
-          ) : (
-            <Icon
-              raised
-              name='star'
-              type='font-awesome'
-              color='#F3D250'
-              onPress={toggleModal}
-            />
-          )
-        }
-      </Text>
-    </View>
+      <View>
+        <Text style={styles.starBtn}>
+          {
+            // eslint-disable-next-line no-constant-condition
+            { status } === 'Pending' || eta > 0 ? (
+              <Icon
+                raised
+                name='star'
+                type='font-awesome'
+                color='#5F6368'
+                onPress={toggleModal}
+                disabled
+              />
+            ) : (
+              <Icon
+                raised
+                name='star'
+                type='font-awesome'
+                color='#F3D250'
+                onPress={toggleModal}
+              />
+            )
+          }
+        </Text>
+      </View>
+    </>
   );
 };
 
@@ -137,6 +140,9 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     fontSize: 20,
     fontWeight: 'bold',
+  },
+  starBtn: {
+    marginTop: 7,
   },
   starImage: {
     marginTop: 22,
