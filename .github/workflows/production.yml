@@ -1,8 +1,9 @@
 name: Create Release
 
 on:
-  pull_request:
-    branches: [main]
+  push:
+    tags:
+      - "prod-[1-9]+.[0-9]+.[0-9]+"
 
 env:
   FIREBASE_AUTH_DOMAIN: ${{secrets.FIREBASE_AUTH_DOMAIN}}
