@@ -40,7 +40,6 @@ const Courier = ({ errand, eta, status }) => {
     } catch (e) {
       console.log('error', e);
     }
-    // return null;
   };
 
   return (
@@ -105,7 +104,7 @@ const Courier = ({ errand, eta, status }) => {
         <Text style={styles.starBtn}>
           {
             // eslint-disable-next-line no-constant-condition
-            { status } === 'Pending' || eta > 0 ? (
+            status === 'Pending' ? (
               <Icon
                 raised
                 name='star'
