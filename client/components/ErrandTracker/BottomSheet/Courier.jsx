@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSetRecoilState } from 'recoil';
 import axios from 'axios';
 import { HOST_URL } from '@env';
@@ -12,8 +12,10 @@ import { COLORS, SIZES, icons } from '../../../constants';
 import userProfileState from '../../../state/atoms/userProfile';
 
 const Courier = ({ errand, eta, status }) => {
-  const { runner, errandId } = errand;
-  const { stars } = runner;
+  const {
+    runner, errandId, requestor, username,
+  } = errand;
+  const { stars, name } = runner;
   const [count, setCount] = useState(stars);
   const [isModalVisible, setModalVisible] = useState(false);
   const [isClicked, setClicked] = useState(false);
@@ -22,6 +24,12 @@ const Courier = ({ errand, eta, status }) => {
   const toggleModal = () => {
     setModalVisible(!isModalVisible);
   };
+
+  useEffect(() => {
+    console.log('name', name, 'email', runner.name);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleRating = async () => {
     try {
@@ -32,8 +40,6 @@ const Courier = ({ errand, eta, status }) => {
       setCount(count + 1);
       setModalVisible(false);
       setClicked(true);
-      // console.log('RESPONSE', response.data);
-
       const errandsResp = await axios.get(`${HOST_URL}/getErrandData`);
       console.log(errandsResp.data);
       setErrands(errandsResp.data);
@@ -104,7 +110,7 @@ const Courier = ({ errand, eta, status }) => {
         <Text style={styles.starBtn}>
           {
             // eslint-disable-next-line no-constant-condition
-            status === 'Pending' ? (
+            (status === 'Pending') || (username === runner.name) ? (
               <Icon
                 raised
                 name='star'
