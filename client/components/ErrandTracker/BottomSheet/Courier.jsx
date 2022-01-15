@@ -27,9 +27,13 @@ const Courier = ({ errand, eta, status }) => {
 
   useEffect(() => {
     console.log('name', name, 'email', runner.name, _id);
-    handleRating();
+    // handleRating();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isClicked]);
+
+  // const handleDisable = () => {
+  //   setClicked(true);
+  // };
 
   const handleRating = async () => {
     try {
@@ -39,7 +43,7 @@ const Courier = ({ errand, eta, status }) => {
       });
       setCount(count + 1);
       setModalVisible(false);
-      // setClicked(true);
+      setClicked(true);
       const errandsResp = await axios.get(`${HOST_URL}/getErrandData`);
       // console.log(errandsResp.data);
       setErrands(errandsResp.data);
