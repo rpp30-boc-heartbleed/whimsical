@@ -20,7 +20,7 @@ import Courier from './Courier';
 const { width, height } = Dimensions.get('window').width;
 
 const BottomSheet = ({
-  navigation, eta, errand, showModal,
+  navigation, eta, errand,
 }) => {
   const {
     errandName,
