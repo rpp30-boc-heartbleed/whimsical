@@ -2,7 +2,6 @@ const register = require('./register');
 const dashboard = require('./dashboard');
 const userProfile = require('./userProfile');
 const friendsList = require('./friendsList');
-const Map = require('./map');
 const {
   getRequestedErrands,
   requestErrand,
@@ -18,7 +17,6 @@ module.exports = {
   userProfile,
   friendsList,
   updateRating,
-  Map,
   getRequestedErrands,
   requestErrand,
   getRunningErrands,

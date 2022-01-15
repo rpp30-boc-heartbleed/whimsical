@@ -1,7 +1,6 @@
 /* eslint-disable react/style-prop-object */
 import React, { useState, useEffect } from 'react';
-import { useRecoilState, useSetRecoilState } from 'recoil';
-import { Title, Colors } from 'react-native-paper';
+import { useRecoilState } from 'recoil';
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import MapViewDirection from 'react-native-maps-directions';
 import { GOOGLE_MAPS_API_KEY, HOST_URL } from '@env';
@@ -10,27 +9,21 @@ import {
   View,
   Text,
   StyleSheet,
-  TextInput,
   StatusBar,
   Button,
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import {
-  COLORS,
-  SIZES,
-  icons,
-} from '../../constants';
 import { errandState, refreshErrandsState } from '../../state/atoms/errands';
 import ErrandMap from './ErrandMap';
 import BottomSheet from './BottomSheet/BottomSheet';
 import NavBarContainer from '../NavBar/NavBarContainer';
 
 const ErrandTrackerContainer = ({ route, navigation }) => {
-  const { errand } = route.params;
-  const [eta, setEta] = useState(errand.storeETA);
-  const [visible, setVisible] = useState(false);
+  // const { errand } = route.params;
   const [errands, setErrands] = useRecoilState(errandState);
+  const errand = errands.find((e) => e._id === route.params.errand._id);
+  const [eta, setEta] = useState(errand.storeETA);
   const [refresh, setRefresh] = useRecoilState(refreshErrandsState);
   const index = errands.findIndex((errandItem) => errandItem.errandName === errand.errandName);
 

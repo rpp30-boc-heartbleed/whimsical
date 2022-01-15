@@ -205,11 +205,11 @@ const UserProfileContainer = ({ navigation }) => {
             <Text style={styles.email}>{user.email}</Text>
             <View style={styles.centered}>
               <Text style={styles.starCount}>
-                <Image source={icons.star} style={styles.starImage} /> :     {user.stars}
+                <Image source={icons.star} size={25} style={styles.starImage} />  :  {user.stars}
               </Text>
               <Text style={styles.errands}>
                 <View style={styles.badge}><Text style={styles.badgeText} value={user.errandsCompleted} status="success">{user.errandsCompleted}</Text></View>
-                <Text style={{ fontSize: 48 }}>Errands Completed!</Text>
+                <Text style={{ fontSize: 20 }}>Errands Completed!</Text>
               </Text>
             </View>
           </View>
@@ -435,13 +435,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   starImage: {
-    width: 5,
-    height: 5,
+    width: 25,
+    height: 25,
     // paddingHorizontal: 25,
     margin: 25,
   },
   starCount: {
-    fontSize: 50,
+    fontSize: 20,
     fontWeight: '600',
     alignItems: 'center',
   },
@@ -459,7 +459,7 @@ const styles = StyleSheet.create({
     color: 'black',
     alignItems: 'center',
     justifyContent: 'center',
-    minHeight: 300,
+    minHeight: 260,
   },
   centeredView: {
     flex: 1,
