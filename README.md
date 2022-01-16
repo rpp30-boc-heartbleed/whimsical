@@ -27,8 +27,9 @@
 * [Installation](#installation)
     - [Getting Started](#getting-started)
 * [Tech Stack](#tech-stack)
-* [Demo](#demo)
+* [How it Works](#how-it-works)
     - [User Stories](#user-stories)
+    - [Demo](#demo)
 * [Features](#features)
 
 <!--------------------END OF TABLE OF CONTENTS---------------------->
@@ -73,7 +74,7 @@ $ npm test
 
 
 <!---------------------- TECH STACK/LIBRARIES----------------------->
-### Tech Stack
+## Tech Stack
 
 <!-- May include logos if desired -->
 
@@ -98,25 +99,47 @@ $ npm test
 
 
 <!--------------------------APP INFO & DEMO ------------------------>
-## Demo
+## How it Works
 
 <!--
 * What happens behind the scenes when the user interacts with it?
 * OR What are all the places the data travels?  What happens to that data?
 -->
-<img src="https://github.com/rpp30-boc-heartbleed/whimsical/blob/dev/trial2.gif" width="300" height="600">
+
+### User Stories
+
+<!-- What were the user stores / what was MVP (mention Minimal Viable Product) -->
+
+<!-- Should provide visuals and writeups on user stories but will leave link as placeholder for now-->
+📖   <a href="https://docs.google.com/spreadsheets/d/1heVGbScj-MP8areUMJkZk7aNSUPD_GR8Hwmd6uMnrQ8/edit#gid=484004821">Acceptance Criteria
+</a>
+
+### Testing
+✅  Jest and React Native Testing Library
+
+<br><br>
+
+## Demo
+
+<br>
+<br>
+
+<p align='center'>
+    <img src="https://github.com/rpp30-boc-heartbleed/whimsical/blob/dev/trial2.gif" width="300" height="600">
+    <img src="https://user-images.githubusercontent.com/56424589/149640610-a4280b99-4ae4-481b-9335-2db9cf26c740.png" width="300" height="600">
+    <img src="https://user-images.githubusercontent.com/56424589/149640915-1e1dd7c7-5283-41d7-b5ac-e5da256cb021.png" width="300" height="600">
+  </p>
+  
+  <br>
+  <br>
+  
 1. Login and registration information (email and password) is authenticated utilizing the Firebase API. 
 <pre>
 If registering, the user's account information (less their password), is saved in MongoDB while their email and password are saved in Firebase.
 </pre>
+
 <br>
-
-<div align='center'>
-<img src="https://user-images.githubusercontent.com/56424589/149639896-10081b18-fff8-4345-90fa-a17b30b02711.png" width="350" height="700">&nbsp;&nbsp;<img src="https://user-images.githubusercontent.com/56424589/149640008-15c5e3d8-5c7f-44ed-a8ac-93d796c0726e.png" width="350" height="700">
- </div>
- 
- <br>
-
+<br>
 
 2. Once authenticated, the user is taken to the Dashboard, which is populated by errand posts saved in MongoDB. 
   <pre>
@@ -125,13 +148,6 @@ If registering, the user's account information (less their password), is saved i
 
 
 <br>
-
-
-<div align='center'>
-<img src="https://user-images.githubusercontent.com/56424589/149640122-33d9aee6-e6df-43cb-93f7-b16a99e99165.png" width="350" height="700">&nbsp&nbsp;
-<img src="https://user-images.githubusercontent.com/56424589/149640372-ed93b412-b99f-4a09-89e1-ef5f00fed2b2.png" width="350" height="700">
-  </div>
-  
 <br>
 
 
@@ -142,13 +158,14 @@ They can also click on the errand tracker which utilizes Google Maps to display 
 
 
 <br>
-
+<br>
 
 <div align='center'>
-<img src="https://user-images.githubusercontent.com/56424589/149640706-6788c596-6129-4553-accd-04a63c9d6ee1.png" width="350" height="700">&nbsp;&nbsp;
-<img src="https://user-images.githubusercontent.com/56424589/149640757-c55c6d19-1012-48af-952c-eca459f3c48e.png" width="350" height="700">
+<img src="https://user-images.githubusercontent.com/56424589/149640706-6788c596-6129-4553-accd-04a63c9d6ee1.png" width="300" height="600">&nbsp;&nbsp;
+<img src="https://user-images.githubusercontent.com/56424589/149640757-c55c6d19-1012-48af-952c-eca459f3c48e.png" width="300" height="600">
 </div>
 
+<br>
 <br>
 
 4. To post an errand to the Dashboard, the user can click on the 'add errand' button in the navbar and fill out a form. 
@@ -157,13 +174,6 @@ The data is then saved in MongoDB and added to the Dashboard errand list.
 </pre>
 
 <br>
-
-
-<div align='center'>
-<img src="https://user-images.githubusercontent.com/56424589/149640610-a4280b99-4ae4-481b-9335-2db9cf26c740.png" width="350" height="700">&nbsp;&nbsp;
-<img src="https://user-images.githubusercontent.com/56424589/149640915-1e1dd7c7-5283-41d7-b5ac-e5da256cb021.png" width="350" height="700">
-</div>
-
 <br>
 
 
@@ -171,34 +181,24 @@ The data is then saved in MongoDB and added to the Dashboard errand list.
 <pre>
 They can update their profile information in MongoDB, as well as update their email and password in Firebase.
 </pre>
+
+<br>
 <br>
 
 
 <div align='center'>
-<img src="https://user-images.githubusercontent.com/56424589/149640766-0bc79059-9006-4200-acd3-d9cb577e8fb3.png" width="350" height="700">&nbsp;&nbsp;
-<img src="https://user-images.githubusercontent.com/56424589/149640810-b1c2fad0-32d3-4e0a-b20e-f7c665eb08ba.png" width="350" height="700">
+<img src="https://user-images.githubusercontent.com/56424589/149640766-0bc79059-9006-4200-acd3-d9cb577e8fb3.png" width="300" height="600">&nbsp;&nbsp;
+<img src="https://user-images.githubusercontent.com/56424589/149640810-b1c2fad0-32d3-4e0a-b20e-f7c665eb08ba.png" width="300" height="600">
 </div>
 
 <br>
-
+<br>
 
 6. Lastly, the user can then return to the Dashboard via a link in the navbar and signout via Firebase. They will then return to the Login screen.
 <!--
 * Optionally include a diagram
 * How does the tech stack come together?
 -->
-
-
-### User Stories
-
-<!-- What were the user stores / what was MVP (mention Minimal Viable Product) -->
-
-<!-- Should provide visuals and writeups on user stories but will leave link as placeholder for now-->
-📖   <a href="https://docs.google.com/spreadsheets/d/1heVGbScj-MP8areUMJkZk7aNSUPD_GR8Hwmd6uMnrQ8/edit#gid=484004821">User Stories
-</a>
-
-### Testing
-✅  Jest and React Native Testing Library
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
