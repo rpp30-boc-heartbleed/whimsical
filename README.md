@@ -25,6 +25,8 @@
 ## 📑 Table of Contents
 <!------------------------ TABLE OF CONTENTS ----------------------->
 * [Installation](#installation)
+* [Getting Started](#getting-started)
+* [Tech Stack](#tech-stack)
 <!--------------------END OF TABLE OF CONTENTS---------------------->
 
 ## 📜 About the App
@@ -37,7 +39,7 @@ This application will allow the community to save time while running errands for
 * User Inputs and Outputs
 -->
 
-# 💾 Installation
+### 💾 Installation
 
 1. Fork and clone the repo:
 ```
@@ -48,7 +50,7 @@ $ git clone https://github.com/rpp30-boc-heartbleed/whimsical.git
 $ npm install
 ```
 
-## Getting Started
+### Getting Started
 
 1. Start the server from the root directory and confirm connection to database:
 ```
