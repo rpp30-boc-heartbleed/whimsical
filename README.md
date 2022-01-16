@@ -115,7 +115,8 @@ $ npm test
 </a>
 
 ### Testing
-✅  Jest and React Native Testing Library
+* [Jest](https://jestjs.io/)
+* [React Native Testing Library](https://testing-library.com/docs/)
 
 
 ## Demo
@@ -283,10 +284,9 @@ What additional features do you plan to add, how do you plan to implement those 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!----------------- OPTIONAL RESOURCES SECTION --------------------->
-## Resources
+## ✅ Resources
 * [Recoil](https://recoiljs.org/docs/introduction/installation)
 * [React Native](https://reactnative.dev/docs/getting-started)
 * [Expo](https://docs.expo.dev/)
-* [Shields](https://shields.io)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
