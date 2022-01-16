@@ -28,6 +28,7 @@
     - [Getting Started](#getting-started)
 * [Tech Stack](#tech-stack)
 * [Demo](#demo)
+    - [User Stories](#user-stories)
 * [Features](#features)
 
 <!--------------------END OF TABLE OF CONTENTS---------------------->
