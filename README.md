@@ -25,8 +25,11 @@
 ## 📑 Table of Contents
 <!------------------------ TABLE OF CONTENTS ----------------------->
 * [Installation](#installation)
-* [Getting Started](#getting-started)
+    - [Getting Started](#getting-started)
 * [Tech Stack](#tech-stack)
+* [Demo](#demo)
+* [Features](#features)
+
 <!--------------------END OF TABLE OF CONTENTS---------------------->
 
 ## 📜 About the App
@@ -39,7 +42,7 @@ This application will allow the community to save time while running errands for
 * User Inputs and Outputs
 -->
 
-### 💾 Installation
+## Installation
 
 1. Fork and clone the repo:
 ```
@@ -69,7 +72,7 @@ $ npm test
 
 
 <!---------------------- TECH STACK/LIBRARIES----------------------->
-### ✔️ Tech Stack
+### Tech Stack
 
 <!-- May include logos if desired -->
 
@@ -94,7 +97,7 @@ $ npm test
 
 
 <!--------------------------APP INFO & DEMO ------------------------>
-## 📀 Demo
+## Demo
 
 <!--
 * What happens behind the scenes when the user interacts with it?
@@ -242,7 +245,7 @@ Everyone needs to be on the same page as to what features will be included and h
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!------------- OPTIMIZATIONS, REFACTORINGS, & FEATURES ------------>
-## ✨ Features
+## Features
 
 <!-- Any non-MVP tickets (optional)
 Code refactorings
