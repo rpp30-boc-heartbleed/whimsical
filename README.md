@@ -116,7 +116,7 @@ $ npm test
 
 ### Testing
 * [Jest](https://jestjs.io/)
-* [React Native Testing Library](https://testing-library.com/docs/)
+* [React Native Testing Library](https://github.com/callstack/react-native-testing-library)
 
 
 ## Demo
