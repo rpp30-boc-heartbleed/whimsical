@@ -104,7 +104,7 @@ $ npm test
 * What happens behind the scenes when the user interacts with it?
 * OR What are all the places the data travels?  What happens to that data?
 -->
-
+<img src="https://github.com/rpp30-boc-heartbleed/whimsical/blob/dev/trial2.gif" width="300" height="600">
 1. Login and registration information (email and password) is authenticated utilizing the Firebase API. 
 <pre>
 If registering, the user's account information (less their password), is saved in MongoDB while their email and password are saved in Firebase.
