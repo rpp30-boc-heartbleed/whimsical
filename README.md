@@ -117,17 +117,14 @@ $ npm test
 ### Testing
 ✅  Jest and React Native Testing Library
 
-<br><br>
 
 ## Demo
 
 <br>
-<br>
 
 <p align='center'>
-    <img src="https://github.com/rpp30-boc-heartbleed/whimsical/blob/dev/trial2.gif" width="300" height="600">
+    <img src="https://github.com/rpp30-boc-heartbleed/whimsical/blob/dev/trial2.gif" width="300" height="600">&nbsp;&nbsp;
     <img src="https://user-images.githubusercontent.com/56424589/149640610-a4280b99-4ae4-481b-9335-2db9cf26c740.png" width="300" height="600">
-    <img src="https://user-images.githubusercontent.com/56424589/149640915-1e1dd7c7-5283-41d7-b5ac-e5da256cb021.png" width="300" height="600">
   </p>
   
   <br>
