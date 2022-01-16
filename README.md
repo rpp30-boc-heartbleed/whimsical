@@ -69,7 +69,7 @@ $ npm test
 
 
 <!---------------------- TECH STACK/LIBRARIES----------------------->
-## ✔️ Tech Stack
+### ✔️ Tech Stack
 
 <!-- May include logos if desired -->
 
