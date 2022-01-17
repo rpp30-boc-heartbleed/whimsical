@@ -107,8 +107,7 @@ const RegisterContainer = ({ navigation }) => {
       .catch((err) => {
         // console.error('error', err.code);
         if (
-          err.code ===
-'auth/invalid-value-(email),-starting-an-object-on-a-scalar-field'
+          err.code === 'auth/invalid-value-(email),-starting-an-object-on-a-scalar-field'
         ) {
           setError('Please enter a valid email address');
         }
@@ -269,9 +268,7 @@ const RegisterContainer = ({ navigation }) => {
             dense
             mode='outlined'
             outlineColor="#fff"
-            onChangeText={(value) =>
-              handleOnChangeText(value, 'confirmPassword')
-            }
+            onChangeText={(value) => handleOnChangeText(value, 'confirmPassword')}
             secureTextEntry
           />
         </View>
