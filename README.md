@@ -124,11 +124,9 @@ $ npm test
 <br>
 
 <p align='center'>
-    <img src="https://github.com/rpp30-boc-heartbleed/whimsical/blob/dev/trial2.gif" width="300" height="600">&nbsp;&nbsp;
-    <img src="https://github.com/rpp30-boc-heartbleed/whimsical/blob/dev/adderrand.gif" width="300" height="600">
+    <img src="https://github.com/rpp30-boc-heartbleed/whimsical/blob/dev/trial2.gif" width="300" height="600">
   </p>
   
-  <br>
   <br>
   
 1. Login and registration information (email and password) is authenticated utilizing the Firebase API. 
@@ -137,36 +135,34 @@ If registering, the user's account information (less their password), is saved i
 </pre>
 
 <br>
-<br>
 
 2. Once authenticated, the user is taken to the Dashboard, which is populated by errand posts saved in MongoDB. 
   <pre>
   This list of errands is retrieved from MongoDB upon loading the app and saved in the Recoil global state.
   </pre>
 
-
-<br>
-<br>
-
-
-3. On each respective post, the user can click the chat button, which enables them to chat with the errand runner utilizing socket.io. 
-<pre>
-They can also click on the errand tracker which utilizes Google Maps to display a map of the errand runner's location and tracks their progress running the posted errand.
-</pre>
-
-
-<br>
 <br>
 
 <div align='center'>
-<img src="https://user-images.githubusercontent.com/56424589/149640706-6788c596-6129-4553-accd-04a63c9d6ee1.png" width="300" height="600">&nbsp;&nbsp;
-<img src="https://user-images.githubusercontent.com/56424589/149640757-c55c6d19-1012-48af-952c-eca459f3c48e.png" width="300" height="600">
+</div>
+
+3. On each respective post, the user can click the chat button, which enables them to chat with the errand runner utilizing socket.io. 
+
+
+<div align='center'>
+<img src="https://user-images.githubusercontent.com/56424589/149733765-3e2b6af4-e937-48f5-b77a-0595edf3e956.gif" width="300" height="600">&nbsp;&nbsp;
+ <img src="https://github.com/rpp30-boc-heartbleed/whimsical/blob/dev/adderrand.gif" width="300" height="600">
 </div>
 
 <br>
 <br>
 
-4. To post an errand to the Dashboard, the user can click on the 'add errand' button in the navbar and fill out a form. 
+4. The user can also click on the errand tracker which utilizes Google Maps to display a map of the errand runner's location and tracks their progress running the posted errand.
+
+<br>
+
+
+5. To post an errand to the Dashboard, the user can click on the 'add errand' button in the navbar and fill out a form. 
 <pre>
 The data is then saved in MongoDB and added to the Dashboard errand list.
 </pre>
@@ -174,25 +170,24 @@ The data is then saved in MongoDB and added to the Dashboard errand list.
 <br>
 <br>
 
-
-5. The user can update their profile by clicking on the User Profile button in the navbar. 
-<pre>
-They can update their profile information in MongoDB, as well as update their email and password in Firebase.
-</pre>
-
-<br>
-<br>
-
-
 <div align='center'>
-<img src="https://user-images.githubusercontent.com/56424589/149640766-0bc79059-9006-4200-acd3-d9cb577e8fb3.png" width="300" height="600">&nbsp;&nbsp;
-<img src="https://user-images.githubusercontent.com/56424589/149640810-b1c2fad0-32d3-4e0a-b20e-f7c665eb08ba.png" width="300" height="600">
+<img src="https://user-images.githubusercontent.com/56424589/149731039-4743cb3b-87b2-4160-b6fe-a54ad841fdd2.gif" width="300" height="600">&nbsp;&nbsp;
+  
 </div>
 
 <br>
 <br>
 
-6. Lastly, the user can then return to the Dashboard via a link in the navbar and signout via Firebase. They will then return to the Login screen.
+6. The user can update their profile by clicking on the User Profile button in the navbar. 
+<pre>
+They can update their profile information in MongoDB, as well as update their email and password in Firebase.
+</pre>
+
+
+<br>
+
+
+7. Lastly, the user can then return to the Dashboard via a link in the navbar and signout via Firebase. They will then return to the Login screen.
 <!--
 * Optionally include a diagram
 * How does the tech stack come together?
@@ -229,7 +224,9 @@ Able to authenticate users logging in or registering on React Native with Expo a
 ## 📘 Research
 
 <!-- Workflow and Key lessons from your team - specifically those related to: Agile, CI/CD, testing, working with external stakeholders, ticketing, and user stories. -->
-Everyone needs to be on the same page as to what features will be included and how the app will flow to ensure full integration of components and that client needs are met. This may require far more time and communication than a standard daily standup, especially in the beginning, but is well worth the investment of extra time to minimize unnecessary pivots and expensive refactoring during the building process. Discussing the user story as a narrative and as a diagram was extremely helpful to clarify what features to include, how they related to each other, and who would be responsible for them respectively.
+Everyone needs to be on the same page as to what features will be included and how the app will flow to ensure full integration of components and that client needs are met. 
+* This may require far more time and communication than a standard daily standup, especially in the beginning, but is well worth the investment of extra time to minimize unnecessary pivots and expensive refactoring during the building process.
+* Discussing the user story as a narrative and as a diagram was extremely helpful to clarify what features to include, how they related to each other, and who would be responsible for them respectively.
 <!--
 * Your git workflow, style guides, commit guides, etc
 * What did you learn from the process
