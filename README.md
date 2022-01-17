@@ -151,7 +151,7 @@ If registering, the user's account information (less their password), is saved i
 
 <div align='center'>
 <img src="https://user-images.githubusercontent.com/56424589/149733765-3e2b6af4-e937-48f5-b77a-0595edf3e956.gif" width="300" height="600">&nbsp;&nbsp;
- <img src="https://github.com/rpp30-boc-heartbleed/whimsical/blob/dev/adderrand.gif" width="300" height="600">
+ <img src="https://user-images.githubusercontent.com/56424589/149737236-6d1ef9d8-3b6f-4c66-bb4c-fa5e3c48f1a1.gif" width="300" height="600">
 </div>
 
 <br>
