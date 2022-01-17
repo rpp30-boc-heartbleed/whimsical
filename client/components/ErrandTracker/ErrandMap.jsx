@@ -59,6 +59,7 @@ const ErrandMap = ({ setEta, errand }) => {
   });
 
   const [driverPosition, setDriverPosition] = useState(runnerLocation);
+  const [state, setState] = useState({});
 
   useEffect(() => {
     let isMounted = true;
@@ -71,10 +72,11 @@ const ErrandMap = ({ setEta, errand }) => {
           setDriverPosition(path[count]);
         }
       }
-    }, 200);
+    }, 400);
     if (count >= path.length) clearInterval(timer);
     return () => {
       console.log('cleared');
+      setState({});
       isMounted = false;
       clearInterval(timer);
     };

@@ -25,16 +25,6 @@ const Courier = ({ errand, eta, status }) => {
     setModalVisible(!isModalVisible);
   };
 
-  useEffect(() => {
-    console.log('name', name, 'email', runner.name, _id);
-    // handleRating();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isClicked]);
-
-  // const handleDisable = () => {
-  //   setClicked(true);
-  // };
-
   const handleRating = async () => {
     try {
       const response = await axios.put(`${HOST_URL}/userProfile/stars`, {
@@ -114,7 +104,7 @@ const Courier = ({ errand, eta, status }) => {
         <Text style={styles.starBtn}>
           {
             // eslint-disable-next-line no-constant-condition
-            (status === 'Pending') || (username === runner.name) ? (
+            (status === 'Pending') ? (
               <Icon
                 raised
                 name='star'
