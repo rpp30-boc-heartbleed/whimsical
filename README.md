@@ -268,8 +268,6 @@ What additional features do you plan to add, how do you plan to implement those 
 - [ ] Errand Completion Feedback Form
 
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
 <!---------------------------CONTRIBUTORS -------------------------->
 ## 🎉 Team
 
@@ -280,8 +278,6 @@ What additional features do you plan to add, how do you plan to implement those 
 [![Surekha Avatar](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/71471412?v=4&h=60&w=60&fit=cover&mask=circle&maxage=7d)](https://github.com/surekhaw)
 [![Louisa Avatar](https://images.weserv.nl/?url=avatars.githubusercontent.com/u/56424589?v=4&h=60&w=60&fit=cover&mask=circle&maxage=7d)](https://github.com/Laweeza)
 
-
-<p align="right">(<a href="#top">back to top</a>)</p>
 
 <!----------------- OPTIONAL RESOURCES SECTION --------------------->
 ## ✅ Resources
