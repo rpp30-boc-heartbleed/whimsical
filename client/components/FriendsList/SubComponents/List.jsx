@@ -37,7 +37,8 @@ const List = ({ style, navigation }) => {
     <View style={style}>
       <FlatList
         data={list}
-        renderItem={({ item, index }) => {
+        keyExtractor={(item, index) => item._id}
+        renderItem={({ item }) => {
           const onErrand = item.currentErrands.length;
           const disabled = onErrand === 0;
           return (
@@ -66,11 +67,10 @@ const List = ({ style, navigation }) => {
                     />
                   </TouchableOpacity>
                 )
-                : (<AddIcon index={index} stranger={item} />)}
+                : (<AddIcon id={item._id} stranger={item} />)}
             </View>
           );
         }}
-        keyExtractor={(item) => item._id}
         keyboardShouldPersistTaps="handled"
       />
     </View>

@@ -2,8 +2,9 @@ import React, { useState, useEffect, Component } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import axios from 'axios';
 import {
-  View, Text, Image, StyleSheet, TextInput, StatusBar,
+  View, Text, Image, StyleSheet, TextInput, StatusBar, TouchableOpacity,
 } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import { Avatar } from 'react-native-paper';
 import { Button } from 'react-native-elements';
 import { signOut } from 'firebase/auth';
@@ -33,14 +34,17 @@ const DashboardHeader = ({ navigation }) => {
           source={{ uri: user.picture }}
           style={styles.profilePic}
         /> */}
-        <Avatar.Image
-          size={60}
-          style={styles.profilePic}
-          source={{
-            uri: user.picture,
-          }}
-        />
-
+        <TouchableOpacity
+          onPress={() => navigation.navigate('UserProfile')}
+        >
+          <Avatar.Image
+            size={60}
+            style={styles.profilePic}
+            source={{
+              uri: user.picture,
+            }}
+          />
+        </TouchableOpacity>
         {/* <TextInput
           style={styles.searchBar}
           placeholder='Search'

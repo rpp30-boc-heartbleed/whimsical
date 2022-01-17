@@ -2,7 +2,7 @@ import React, { useState, useEffect, Component } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 import axios from 'axios';
 import {
-  View, ScrollView, StyleSheet, Button,
+  View, SafeAreaView, StyleSheet, Button,
 } from 'react-native';
 import { HOST_URL } from '@env';
 import { NavigationContainer } from '@react-navigation/native';
@@ -28,7 +28,6 @@ const DashboardContainer = ({ navigation }) => {
     <View style={styles.container}>
       <DashboardHeader navigation={navigation} />
       <DashboardBody navigation={navigation} />
-      <ScrollView />
       <NavBar navigation={navigation} />
     </View>
   );

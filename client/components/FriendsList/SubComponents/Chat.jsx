@@ -17,14 +17,14 @@ import {
 import { images } from '../../../constants';
 import userProfileState from '../../../state/atoms/userProfile';
 // import findChat from '../../../state/selectors/findChat';
-// import chatState from '../../../state/atoms/chats';
+import chatState from '../../../state/atoms/chats';
 
 const { cat } = images;
 
 const Chat = ({ route, navigation }) => {
   const { errandId } = route.params;
   const [user] = useRecoilState(userProfileState);
-  // const [chats, setChats] = useRecoilState(chatState);
+  const [chats, setChats] = useRecoilState(chatState);
   const [messages, setMessages] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
 
