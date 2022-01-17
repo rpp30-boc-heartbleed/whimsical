@@ -125,7 +125,7 @@ $ npm test
 
 <p align='center'>
     <img src="https://github.com/rpp30-boc-heartbleed/whimsical/blob/dev/trial2.gif" width="300" height="600">&nbsp;&nbsp;
-    <img src="https://user-images.githubusercontent.com/56424589/149640610-a4280b99-4ae4-481b-9335-2db9cf26c740.png" width="300" height="600">
+    <img src="https://github.com/rpp30-boc-heartbleed/whimsical/blob/dev/adderrand.gif" width="300" height="600">
   </p>
   
   <br>
