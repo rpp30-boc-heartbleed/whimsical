@@ -31,6 +31,7 @@
     - [User Stories](#user-stories)
     - [Demo](#demo)
 * [Features](#features)
+* [Resources](#resources)
 
 <!--------------------END OF TABLE OF CONTENTS---------------------->
 
@@ -280,7 +281,7 @@ What additional features do you plan to add, how do you plan to implement those 
 
 
 <!----------------- OPTIONAL RESOURCES SECTION --------------------->
-## ✅ Resources
+## Resources
 * [Recoil](https://recoiljs.org/docs/introduction/installation)
 * [React Native](https://reactnative.dev/docs/getting-started)
 * [Expo](https://docs.expo.dev/)
