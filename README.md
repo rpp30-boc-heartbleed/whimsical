@@ -208,13 +208,16 @@ We anticipated that there would be some differences between using React Native a
 -->
 We learned that many dependencies and APIs have different configurations to be used with android versus iOS, so we had to do extra research, experimentation, and modification in order to use these dependencies and APIs with a single configuration for Expo to build for both android and iOS at the same time.
 
-* 🌊 Technical Challenges
+🌊 <b>Technical Challenges</b>
+
 Configuring Firebase SDK to work with Expo without converting the app.json file to a config.js file per the documentation as this would interfere with other aspects of the app worked on by teammates.
 
-* 🔨 Actions Taken
+🔨 <b> Actions Taken </b>
+
 Utilized the babel.config.js to declare a path for environmental variables to be used by Firebase and created an independent firebase config file.
 
-* 💡 Results Observed
+💡 <b> Results Observed </b>
+
 Able to authenticate users logging in or registering on React Native with Expo app without breaking configurations set up for other APIs.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
