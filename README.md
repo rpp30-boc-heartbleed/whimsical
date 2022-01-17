@@ -34,7 +34,7 @@
 
 <!--------------------END OF TABLE OF CONTENTS---------------------->
 
-## 📜 About the App
+## About the App
 <!-- Add any additional content here pertaining to timeline, personal goals, etc-->
 
 This application will allow the community to save time while running errands for one another.
